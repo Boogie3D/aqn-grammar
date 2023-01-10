@@ -3,5 +3,6 @@ An HPSG grammar for Northern Alta (ISO 639-3: aqn) built using the [LinGO Gramma
 
 # Contributors
 Steven Anaya (boogie3d)
+
 Jon Davenport (jmeld)
 
