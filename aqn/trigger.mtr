@@ -1,0 +1,43 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Semantically Empty Lexical Entries
+
+abs-marker_in_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "abs-marker_in" ] ].
+
+abs-marker_in_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "abs-marker_in" ] ].
+
+abs-marker_in_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "abs-marker_in" ] ].
+
+ti_2_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
+    FLAGS.TRIGGER "ti_2" ].
+
+in_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.ASPECT pfv ] >,
+    FLAGS.TRIGGER "in" ].
+
+_3Dde_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
+    FLAGS.TRIGGER "_3Dde" ].
+
+ten_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E [ ASPECT pfv,
+                                   MOOD oblig ] ] >,
+    FLAGS.TRIGGER "ten" ].
+
+kaldéro_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.ASPECT pot ] >,
+    FLAGS.TRIGGER "kaldéro" ].
+
+baga_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E [ ASPECT pfv,
+                                   MOOD oblig ] ] >,
+    FLAGS.TRIGGER "baga" ].
