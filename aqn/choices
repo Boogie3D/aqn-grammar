@@ -6,8 +6,6 @@ language=Northern_Alta
 iso-code=aqn
 punctuation-chars=keep-list
 punctuation-chars-list=~'=-
-archive=yes
-vcs=git
 
 section=word-order
 word-order=free
@@ -63,7 +61,7 @@ form-fin-nf=on
 section=sentential-negation
 neg-exp=1
 neg-aux=on
-neg-aux-index=9
+neg-aux-index=6
 
 section=coordination
   cs1_vp=on
@@ -1326,7 +1324,6 @@ section=morphology
     noun-pc3_lrt2_name=noun-pc3_lrt2
       noun-pc3_lrt2_feat1_name=pernum
       noun-pc3_lrt2_feat1_value=du
-      noun-pc3_lrt2_feat1_head=itself
       noun-pc3_lrt2_lri1_inflecting=yes
       noun-pc3_lrt2_lri1_orth==d
   noun-pc4_name=noun-pc4
@@ -1362,7 +1359,6 @@ section=morphology
     noun-pc9_lrt2_name=noun-pc9_lrt2
       noun-pc9_lrt2_feat1_name=case
       noun-pc9_lrt2_feat1_value=ins
-      noun-pc9_lrt2_feat1_head=itself
       noun-pc9_lrt2_lri1_inflecting=yes
       noun-pc9_lrt2_lri1_orth=peng-
   noun-pc10_name=noun-pc10
