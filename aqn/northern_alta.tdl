@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Thu Jan 12 01:56:23 UTC 2023
+;;;     Thu Jan 12 02:11:53 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Fri 10 Jun 2022 12:58:58 AM UTC
 ;;;
@@ -506,31 +506,31 @@ det1-determiner-lex := determiner-lex & no-icons-lex-item &
 
 ;;; Intermediate rule types
 
-verb-pc13-rule-dtr := word-or-lexrule.
-verb-pc24-rule-dtr := word-or-lexrule.
-verb-pc22-rule-dtr := word-or-lexrule.
-noun-pc23-rule-dtr := word-or-lexrule.
-verb-pc19-rule-dtr := word-or-lexrule.
-verb-pc10-rule-dtr := word-or-lexrule.
-verb-pc1-rule-dtr := word-or-lexrule.
-noun-pc8-rule-dtr := word-or-lexrule.
-noun-pc12-or-noun-pc16-or-noun-pc9-rule-dtr := word-or-lexrule.
-noun-pc11-rule-dtr := word-or-lexrule.
-verb-pc7-rule-dtr := word-or-lexrule.
-verb-pc6-rule-dtr := word-or-lexrule.
-verb-pc20-rule-dtr := word-or-lexrule.
-noun-pc5-rule-dtr := word-or-lexrule.
-noun-pc21-rule-dtr := word-or-lexrule.
-verb-pc15-rule-dtr := word-or-lexrule.
 verb-pc14-rule-dtr := word-or-lexrule.
+verb-pc22-rule-dtr := word-or-lexrule.
+verb-pc2-rule-dtr := word-or-lexrule.
 noun-pc10-rule-dtr := word-or-lexrule.
 verb-pc11-rule-dtr := word-or-lexrule.
-noun-pc1-rule-dtr := word-or-lexrule.
-verb-pc4-rule-dtr := word-or-lexrule.
+verb-pc24-rule-dtr := word-or-lexrule.
+noun-pc5-rule-dtr := word-or-lexrule.
+verb-pc7-rule-dtr := word-or-lexrule.
+verb-pc13-rule-dtr := word-or-lexrule.
+noun-pc23-rule-dtr := word-or-lexrule.
+verb-pc1-rule-dtr := word-or-lexrule.
+verb-pc15-rule-dtr := word-or-lexrule.
 noun-pc3-rule-dtr := word-or-lexrule.
+noun-pc12-or-noun-pc16-or-noun-pc9-rule-dtr := word-or-lexrule.
+verb-pc10-rule-dtr := word-or-lexrule.
+noun-pc1-rule-dtr := word-or-lexrule.
+noun-pc11-rule-dtr := word-or-lexrule.
+verb-pc19-rule-dtr := word-or-lexrule.
+noun-pc21-rule-dtr := word-or-lexrule.
 verb-pc9-rule-dtr := word-or-lexrule.
+verb-pc4-rule-dtr := word-or-lexrule.
+verb-pc6-rule-dtr := word-or-lexrule.
 verb-pc18-rule-dtr := word-or-lexrule.
-verb-pc2-rule-dtr := word-or-lexrule.
+noun-pc8-rule-dtr := word-or-lexrule.
+verb-pc20-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 

@@ -61,7 +61,6 @@ form-fin-nf=on
 section=sentential-negation
 neg-exp=1
 neg-aux=on
-neg-aux-index=6
 
 section=coordination
   cs1_vp=on

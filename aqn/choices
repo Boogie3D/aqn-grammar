@@ -1,5 +1,5 @@
 
-version=34
+version=32
 
 section=general
 language=Northern_Alta
@@ -61,7 +61,6 @@ form-fin-nf=on
 section=sentential-negation
 neg-exp=1
 neg-aux=on
-neg-aux-index=6
 
 section=coordination
   cs1_vp=on
@@ -95,8 +94,6 @@ section=coordination
   cs7_pat=a
 
 section=matrix-yes-no
-
-section=wh-q
 
 section=info-str
 
