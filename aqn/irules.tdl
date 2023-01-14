@@ -1,0 +1,38 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+noun-pc1_lrt1-suffix :=
+%suffix (* =i)
+noun-pc1_lrt1-lex-rule.
+
+noun-pc2_lrt1-prefix :=
+%prefix (* bet-)
+noun-pc2_lrt1-lex-rule.
+
+noun-pc3_lrt1-suffix1 :=
+%suffix (* =o)
+noun-pc3_lrt1-lex-rule.
+
+noun-pc3_lrt1-suffix2 :=
+%suffix (* =na)
+noun-pc3_lrt1-lex-rule.
+
+noun-pc3_lrt2-suffix :=
+%suffix (* =d)
+noun-pc3_lrt2-lex-rule.
+
+noun-pc4_lrt1-prefix :=
+%prefix (* ec-)
+noun-pc4_lrt1-lex-rule.
+
+noun-pc5_lrt1-suffix1 :=
+%suffix (* -an)
+noun-pc5_lrt1-lex-rule.
+
+noun-pc5_lrt1-suffix2 :=
+%suffix (* -en)
+noun-pc5_lrt1-lex-rule.
+
+noun-pc8_lrt1-prefix :=
+%prefix (* gu-)
+noun-pc8_lrt1-lex-rule.

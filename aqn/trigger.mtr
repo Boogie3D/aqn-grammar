@@ -1,0 +1,20 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Semantically Empty Lexical Entries
+
+_3Dde_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
+    FLAGS.TRIGGER "_3Dde" ].
+
+ten_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E [ ASPECT perfective,
+                                   MOOD oblig ] ] >,
+    FLAGS.TRIGGER "ten" ].
+
+kaldéro_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.ASPECT imperfective ] >,
+    FLAGS.TRIGGER "kaldéro" ].
+
+baga_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E [ ASPECT perfective,
+                                   MOOD oblig ] ] >,
+    FLAGS.TRIGGER "baga" ].
