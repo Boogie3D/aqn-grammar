@@ -19,6 +19,12 @@ head-spec := head-spec-phrase.
 
 bare-np := bare-np-phrase.
 
+adv1-bottom-coord := adv1-bottom-coord-rule.
+
+adv1-mid-coord := adv1-mid-coord-rule.
+
+adv1-top-coord := adv1-top-coord-rule.
+
 vp1-top-coord := vp1-top-coord-rule.
 
 vp1-bottom-coord := vp1-bottom-coord-rule.
@@ -56,3 +62,7 @@ np6-bottom-coord := np6-bottom-coord-rule.
 np7-top-coord := np7-top-coord-rule.
 
 np7-bottom-coord := np7-bottom-coord-rule.
+
+head-adj := my-head-adj-phrase.
+
+adj-head := my-adj-head-phrase.

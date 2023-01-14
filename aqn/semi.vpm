@@ -72,8 +72,6 @@ E.TENSE : E.TENSE
   * <> *
 
 E.ASPECT : E.ASPECT
-  pot <> pot
-  pfv <> pfv
   * <> *
 
 E.MOOD : E.MOOD

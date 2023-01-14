@@ -169,8 +169,8 @@ ti_27éd := noun2-noun-lex &
   [ STEM < "álak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wine_n_rel" ].
 
-asó := noun2-noun-lex &
-  [ STEM < "asó" >,
+aso := noun2-noun-lex &
+  [ STEM < "aso" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
 lípat_1 := noun2-noun-lex &
@@ -761,10 +761,6 @@ diyá := noun66-noun-lex &
   [ STEM < "diyá" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
-niden := noun67-noun-lex &
-  [ STEM < "niden" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
-
 si_27ámi_1 := noun68-noun-lex &
   [ STEM < "si'ámi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
@@ -789,25 +785,29 @@ te := noun73-noun-lex &
   [ STEM < "te" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
-ti_1 := noun74-noun-lex &
-  [ STEM < "ti" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
-
 si_27ámi_2 := noun75-noun-lex &
   [ STEM < "si'ámi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
+kaldero := noun76-noun-lex &
+  [ STEM < "kaldero" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pot_n_rel" ].
+
+wadi := noun77-noun-lex &
+  [ STEM < "wadi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sibling_n_rel" ].
+
+wadi_20na := noun78-noun-lex &
+  [ STEM < "wadi",
+           "na" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_his her sibling_n_rel" ].
+
+ana_27_20_27o := noun79-noun-lex &
+  [ STEM < "ana'",
+           "'o" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_my child_n_rel" ].
+
 ;;; Adjectives
-
-;;; Case-marking adpositions
-
-abs-marker_in := case-marking-adp-lex &
-  [ STEM < "in" >,
-    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
-                                 CLAUSE-KEY #clause ],
-                          ICONS.LIST < > ],
-                   CAT.HEAD [ CASE abs,
-                              CASE-MARKED + ] ] ].
 
 ;;; Verbs
 
@@ -891,13 +891,9 @@ dum_27el_1 := verb11-verb-lex &
   [ STEM < "dum'el" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grow_v_rel" ].
 
-mengastos := verb11-verb-lex &
-  [ STEM < "mengastos" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_spend_v_rel" ].
-
-rose := verb11-verb-lex &
-  [ STEM < "rose" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_kindofplant_v_rel" ].
+mengaso := verb11-verb-lex &
+  [ STEM < "mengaso" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hunt_v_rel" ].
 
 um_27uddén := verb11-verb-lex &
   [ STEM < "um'uddén" >,
@@ -1395,8 +1391,8 @@ eddén_2 := verb63-verb-lex &
   [ STEM < "eddén" >,
     SYNSEM.LKEYS.KEYREL.PRED "_load_v_rel" ].
 
-eg_27ángen := verb63-verb-lex &
-  [ STEM < "eg'ángen" >,
+eg_27angen := verb63-verb-lex &
+  [ STEM < "eg'angen" >,
     SYNSEM.LKEYS.KEYREL.PRED "_removesomething_v_rel" ].
 
 gapangan := verb63-verb-lex &
@@ -1791,17 +1787,31 @@ tipák_7E := verb148-verb-lex &
   [ STEM < "tipák~" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chop,slice_v_rel" ].
 
+me_27una := verb149-verb-lex &
+  [ STEM < "me'una" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+mengalaw := verb150-verb-lex &
+  [ STEM < "mengalaw" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_play_v_rel" ].
+
+lumelbut := verb151-verb-lex &
+  [ STEM < "lumelbut" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boil_v_rel" ].
+
+mengaliyo := verb152-verb-lex &
+  [ STEM < "mengaliyo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
+
+dumdateng := verb153-verb-lex &
+  [ STEM < "dumdateng" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_arrive_v_rel" ].
+
 ;;; Auxiliaries
 
 kung_2 := aux1-aux-lex &
   [ STEM < "kung" >,
     SYNSEM.LKEYS.KEYREL.PRED "_if_v_rel" ].
-
-ti_2 := aux2-aux-lex &
-  [ STEM < "ti" > ].
-
-in := aux3-aux-lex &
-  [ STEM < "in" > ].
 
 _3Dde := aux4-aux-lex &
   [ STEM < "=de" > ].
@@ -1825,7 +1835,57 @@ a_2 := det1-determiner-lex &
   [ STEM < "a" >,
     SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel" ].
 
+duwa := det2-determiner-lex &
+  [ STEM < "duwa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_two_q_rel" ].
+
+in := det3-determiner-lex &
+  [ STEM < "in" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_abs_q_rel" ].
+
+ni := det4-determiner-lex &
+  [ STEM < "ni" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_gen_q_rel" ].
+
+ti := det5-determiner-lex &
+  [ STEM < "ti" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_obl_q_rel" ].
+
+a_3 := det6-determiner-lex &
+  [ STEM < "a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_loc_q_rel" ].
+
+a_4 := det7-determiner-lex &
+  [ STEM < "a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_LK_q_rel" ].
+
 ;;; Adverbs
+
+ba_27ik := adv1-adverb-lex &
+  [ STEM < "ba'ik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_small_a_rel" ].
+
+sep := adv2-adverb-lex &
+  [ STEM < "sep" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_still_a_rel" ].
+
+_20ten_20araw := adv3-adverb-lex &
+  [ STEM < "",
+           "ten",
+           "araw" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ past_a_rel" ].
+
+dya_27yay := adv4-adverb-lex &
+  [ STEM < "dya'yay" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_now, today_a_rel" ].
+
+ududma := adv5-adverb-lex &
+  [ STEM < "ududma" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tomorrow_a_rel" ].
+
+nen := adv6-adverb-lex &
+  [ STEM < "nen" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_already_a_rel" ].
 
 at2 := conj-lex &
   [ STEM < "at" >,
