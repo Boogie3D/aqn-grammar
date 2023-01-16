@@ -1,0 +1,227 @@
+Language: Northern Alta
+Language code: aqn
+Lines: orth orth-seg translit-seg gloss translat
+Author: Jon Davenport & Steven Anaya
+Date: 13 January 2023
+Source a: Laguía, A.G. (2018). Documentation of Northern Alta: grammar, texts and glossary.
+
+#1
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {pronouns, case, determiners, word order}
+me'una siya
+me'una =siya
+me'una =siyá
+say    =3s.ABS
+'He said'
+
+#2
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una mo
+me'una =mo
+me'una =mo
+say    =2s.GEN
+'Your said'
+
+#3
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una 'o
+me'una  ='o
+me'una  =o
+say     =1s.GEN
+'my said'
+
+#4
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una na
+me'una =na
+me'una =na
+say    =ABS3sGEN
+'said their'
+
+#5
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una tam
+me'una =tam
+me'una =tam
+say    =ABS1peGEN
+'said mine'
+
+#6
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una di'ami
+me'una    di'ami
+me'una    di'ami
+say       ABS1pe.LOC
+'I said there'
+
+#7
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+lumelbut in kaldero
+lumel   -but    in kaldero
+l<um>el -but    [in kaldiru]
+<AV>RDP -boil   ABS pot
+'the (content of the) pot is boiling'
+
+#8
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ni kaldero
+lumel   -but   ni kaldero
+l<um>l  -but   [ni kaldiru]
+<AV>RDP -boil  GEN pot
+'the (content of the) pot's is boiling'
+
+#9
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ni kaldero
+lumel   -but    ni kaldero
+l<um>l  -but    [ni kaldiru]
+<AV>RDP -boil   LOC pot
+'the one (content of the) pot is boiling'
+
+#10
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ti kaldero
+lumel   -but   ti kaldero
+l<um>el -but   [ti kaldiru]
+<AV>RDP -boil  OBL pot
+'from (content of the) pot is boiling'
+
+#11
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+mengaliyo   in wadi na
+mengaliyo   in   wadi=na
+mengaliyo   [in  wadi=na]
+search    ABS younger.sibling=3sGEN
+'his younger sibling is searching'
+
+#12
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+mengaliyo   ni   wadi na
+mengaliyo   ni   wadi=na
+mengaliyo   [ni  wadi=na]
+search    GEN younger.sibling=3sGEN
+'of his younger sibling is searching'
+
+#13
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+mengaliyo   ti   wadi na
+mengaliyo   ti   wadi=na
+mengaliyo   [ti  wadi=na]
+search    OBL younger.sibling=3sGEN
+'to his younger sibling is searching'
+
+#14
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, tense aspect mood, determiners, word order}
+mengaliyo  ni   wadi na
+mengaliyo  ni   wadi=na
+mengaliyo  [ni  wadi=na]
+search   LOC younger.sibling=3sGEN
+'one his younger sibling is searching'
+
+#15
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut     nen       in kaldero
+ lumel-but   =nen      in kaldero
+l<um>l-but   =nen      [in kaldero]
+<AV>RDP-boil =already  ABS pot
+'the (content of the) pot is already boiling'
+
+#16
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut sep in kaldero
+  lumel-but  =sep     in kaldero
+ l<um>l-but  =sep     [in kaldero]
+<AV>RDP-boil =still    ABS pot
+'the (content of the) pot is still boiling'
+
+#17
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut dya'yay in kaldero
+ lumel-but   =dya'yay  in kaldero
+l<um>l-but   =dya'yay  [in kaldero]
+<AV>RDP-boil =now      ABS pot
+'the (content of the) pot is now boiling'
+
+#18
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut ududma in kaldero
+ lumel-but   =ududma   in kaldero
+l<um>l-but   =ududma   [in kaldero]
+<AV>RDP-boil =ududma   ABS pot
+'the (content of the) pot will be boiling tomorrow'
+
+#19
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+dumdateng in ana' 'o
+dumdateng      in  ana=o
+dumdateng      [in ana=o] 
+<AV>RDParrive ABS child=1s.GEN
+'my child is arriving'
+
+#20
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+dumdateng ni ana' 'o
+dumdateng      ni  ana=o
+dumdateng      [ni ana=o] 
+<AV>RDParrive GEN child=1s.GEN
+'my child's is arriving'
+
