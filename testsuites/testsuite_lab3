@@ -1,0 +1,248 @@
+Language: Northern Alta
+Language code: aqn
+Lines: orth orth-seg translit-seg gloss translat
+Author: Jon Davenport & Steven Anaya
+Date: 18 January 2023
+Source a: Laguía, A.G. (2018). Documentation of Northern Alta: grammar, texts and glossary.
+
+#1
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {pronouns, case, determiners, word order}
+me'una siya
+me'una=siya
+mәʔuna=sija
+say=3s.ABS
+'He said'
+
+#2
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una mo
+me'una=mo
+mәʔuna=mo
+say=2s.GEN
+'Your said'
+
+#3
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una 'o
+me'una='o
+mәʔuna=ʔu
+say=1s.GEN
+'my said'
+
+#4
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una na
+me'una=na
+mәʔuna=na
+say1=3s.GEN
+'said their'
+
+#5
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una tam
+me'una=tam
+mәʔuna=tam
+say=1pi.GEN
+'said mine'
+
+#6
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {pronouns, case, determiners, word order}
+me'una di'ami
+me'una di'ami
+mәʔuna diʔami
+say    1pi.LOC
+'I said there'
+
+#7 Square brackets appear sometimes in the phonological transcription tier in order to represent clausal constituent boundaries:
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+lumelbut in kaldero
+lumel-but    in kaldero
+l<um>el-but  [ʔin kaldiru]
+<AV>RDP-boil ABS pot
+'the (content of the) pot is boiling'
+
+#8
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ni kaldero
+lumel-but    ni kaldero
+l<um>l-but   [ni kaldiru]
+<AV>RDP-boil GEN pot
+'the (content of the) pot's is boiling'
+
+#9
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ni kaldero
+lumel-but    ni kaldero
+l<um>l-but   [ni kaldiru]
+<AV>RDP-boil LOC pot
+'the one (content of the) pot is boiling'
+
+#10
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+lumelbut ti kaldero
+lumel-but    ti kaldero
+l<um>el-but  [ti kaldiru]
+<AV>RDP-boil OBL pot
+'from (content of the) pot is boiling'
+
+#11
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+mengaliyo in wadi na
+meng-aliyo in  wadi=na
+mәŋ-ʔaliju [in wadi=na]
+AV-search  ABS younger.sibling=3s.GEN
+'his younger sibling is searching'
+
+#12
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+mengaliyo ni wadi na
+meng-aliyo ni  wadi=na
+mәŋ-ʔaliju [ni wadi=na]
+AV-search  GEN younger.sibling=3s.GEN
+'of his younger sibling is searching'
+
+#13
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+mengaliyo ti wadi na
+meng-aliyo ti   wadi=na
+mәŋ-ʔaliju [ti  wadi=na]
+AV-search  OBL younger.sibling=3sGEN
+'to his younger sibling is searching'
+
+#14
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, tense aspect mood, determiners, word order}
+mengaliyo ni wadi na
+meng-aliyo ni   wadi=na
+mәŋ-ʔaliju [ni  wadi=na]
+AV-search  LOC younger.sibling=3sGEN
+'one his younger sibling is searching'
+
+#15
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut nen in kaldero
+lumel-but=nen         in kaldero
+l<um>l-but=nәn        [ʔin kaldiru]
+<AV>RDP-boil=already  ABS pot
+'the (content of the) pot is already boiling'
+
+#16
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut sep in kaldero
+lumel-but=sep      in kaldero
+l<um>l-but=sip     [ʔin kaldiru]
+<AV>RDP-boil=still ABS pot
+'the (content of the) pot is still boiling'
+
+#17 Temporal adverbs come at the beginning or end of a sentence
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+dya'yay lumelbut in kaldero
+dya'yay  lumel-but    in kaldero
+dijaʔjaj l<um>l-but   [ʔin kaldiru]
+now      <AV>RDP-boil ABS pot
+'now the (content of the) pot is boiling'
+
+#18
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut dya'yay in kaldero
+lumel-but    dya'yay  in kaldero
+l<um>l-but   dijaʔjaj [ʔin kaldiru]
+<AV>RDP-boil now      ABS pot
+'now the (content of the) pot is boiling'
+
+#19
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+ududma lumelbut in kaldero
+ududma  lumel-but     in kaldero
+ʔududma l<um>l-but    [ʔin kaldiru]
+tomorrow <AV>RDP-boil ABS pot
+'tomorrow the (content of the) pot will be boiling'
+
+#20
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, tense aspect mood, determiners, word order}
+lumelbut ududma in kaldero
+lumel-but    ududma   in kaldero
+l<um>l-but   ʔududma  [ʔin kaldiru]
+<AV>RDP-boil tomorrow ABS pot
+'tomorrow the (content of the) pot will be boiling'
+
+#21
+Source: a
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+dumdateng in ana' 'o
+d<um>d-ateng in ana='o
+d<um>d-ateŋ [ʔin ʔanaʔ=ʔu] 
+<AV>RDP-arrive ABS child=1s.GEN
+'my child is arriving'
+
+#22
+Source: a
+Vetted: s
+Judgment: u
+Phenomena: {case, determiners, word order}
+dumdateng ni ana' 'o
+d<um>d-ateng  ni  ana=o
+d<um>d-ateŋ   [ni ʔanaʔ=ʔu] 
+<AV>RDP-arrive GEN child=1s.GEN
+'my child's is arriving'
