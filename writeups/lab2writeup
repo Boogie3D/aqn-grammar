@@ -1,0 +1,175 @@
+Language: Northern Alta (aqn)
+Lab 2
+Author: Jon Davenport & Steven Anaya
+Date: 13 January 2023
+
+
+Please note in our tarball, the files in tsdb/home that are labeled "old grammar" were run with the automatically generated grammar, 
+and the unlabeled files were run with the modified grammar.
+
+1. Yes, you may.
+2. Fortunately, I didn't have to take any steps to get from automatically constructed choice file to one that would customize and compile. The  automatically generated choice file was ready to work with no editing!
+3.
+
++-------------+----------------------+------------------+------------------------+
+|             |                      | Automatic        | Modified               |
+|             |                      | Grammar          | Grammar                |
++-------------+----------------------+------------------+------------------------+
+| Test Corpus | Items Parsed         | 2240             | 2240                   |
++-------------+----------------------+------------------+------------------------+
+|             | Readings             | 1671             | 161                    |
++-------------+----------------------+------------------+------------------------+
+|             | Readings/Parses      | 0.746            | 0.0719                 |
++-------------+----------------------+------------------+------------------------+
+|             | Coverage             | 12.9%            | 7.2%                   |
++-------------+----------------------+------------------+------------------------+
+|             | Overgeneration       | 100%             | 100%                   |
++-------------+----------------------+------------------+------------------------+
+|             | Most Ambiguous Item  | 122, Item 1730   | 52, Item 1440          |
++-------------+----------------------+------------------+------------------------+
+|             | Sources of           | Coordination,    | The lexical entry      |
+|             | Ambiguity            | Case mistakes,   | for "a." It's          |
+|             |                      | Mistaken Lexical | listed as a noun,      |
+|             |                      | entries          | but is actually a      |
+|             |                      |                  |                        |
+|             |                      |                  | determiner. I should   |
+|             |                      |                  | deleted it.            |
+|             |                      |                  | Likewise, there is a   |
+|             |                      |                  | spurious lexical entry |
+|             |                      |                  | for "tinapay" as a     |
+|             |                      |                  | verb.                  |
++-------------+----------------------+------------------+------------------------+
+| Testsuite   | Items Parsed         | 20               | 20                     |
++-------------+----------------------+------------------+------------------------+
+|             | Readings             | 0                | 13                     |
++-------------+----------------------+------------------+------------------------+
+|             | Readings/Parses      | 0                | 0.65                   |
++-------------+----------------------+------------------+------------------------+
+|             | False Readings       |                  | 5                      |
++-------------+----------------------+------------------+------------------------+
+|             | Coverage             | 0%               | 100%                   |
++-------------+----------------------+------------------+------------------------+
+|             | Overgeneration       | 0%               | 41.7%                  |
++-------------+----------------------+------------------+------------------------+
+|             | Most Ambiguous Item  | N/A              | N/A                    |
++-------------+----------------------+------------------+------------------------+
+|             | Sources of Ambiguity | Spurious lexical | N/A                    |
+|             |                      | entries          |                        |
++-------------+----------------------+------------------+------------------------+
+
+3.
+    1-4. Please not that my revised grammar claims 5 spurious readings. 
+         These readings are false because they do not account for each 
+         word in the item string. These terms are not in the lexicon because
+         are pronouns that go beyond the scope of my current modifications. The
+         Northern Alta's case and pronouns system is quite complex, and adding
+         those pronouns would be too large a time commitement for now, though is
+         an interesting future modification,
+    5. I didn't completely understand this instruction, but took it to mean 
+       "for any 10 arbitrary readings, which, if any, of them look reasonable
+        in the semantics?" Accordingly, I browsed the test corpus readings 
+        generated by the automatic grammar. I looked at over 15 and the only
+        item that looked like it might have reasonable semantics was item 720,
+        though its syntax seems off since it cannot stand alone as an S.
+        
+        After applying the modified grammar to the test corpus, there's a chance
+        simple items like 1550 and 1680 might have close semantics, though I'm not 
+        sure what kind of item they are since the word category of Northern Alta is
+        fairly comlpex. It seems possible that one of the readings of 5480 could be
+        semantically reasonable. Likewise for 20,950. Overall I'm still getting a 
+        grip on Northern Alta, it's difficult for me to parse for now as it's quite
+        distinct from any other language I've seen.
+
+4. I added basic case marking for actor-voice intransitive predicates to my test suite. Such predicates should
+   take Absolutive (or focus) case arguments. To test for this, I added sentences like "me'una siya" which may
+   take this construction in Northern Alta. Siya is a 3rd person singular absolutive inpersonal pronoun, and I
+   tested this same construciton against other pronouns, such as "mo," which is a second person inpersonal genitive
+   pronoun. I tested this phenomena across other predicates as well, for Northern Alta marks actor-voice predicates
+   in multiple ways. The prefix "men" or the infix "um" may contribute this case cosntraint. I also added tense 
+   to my testsuite. Northern Alta expresses tense largely with adverbs. So I added many of the pertitent adverbs
+   to distinguish between present, past, and future tense events. These include "ududma" (tomorrow), "dya'yay" 
+   (now, presently today), and "sep" (still).
+
+5. Case: Northern Alta has a complicated case system. It has voice marked clauses, which always have a voiced case
+   argument, and thus seems to be focus-case. The two most general voiced case categories are actor-voice and
+   undergoer-voice, though there are many different sub-categories of undergoer voice (patient, locative, conveyance).
+   The focus marked argument typically takes absoltuive voice. So in actor-voiced predicates the actor will be
+   absolutive case, but in undergoer-voiced predicates the undergoer will be absolutive case and the actor will be
+   genitive. However, Northern Alta also has predicates that are not voice-marked. In some such cases, e.g. existentials
+   and some possessives, the S value is typically absolutive case. In non-existential non-voiced predicates the S argument
+   is also typically marked with absolutive case.
+        #1
+        Source: a
+        Vetted: s
+        Judgment: g
+        Phenomena: {pronouns, case, determiners, word order}
+        me'una siya
+        me'una =siya
+        me'una =siyá
+        say    =3s.ABS
+        'He said'
+
+        #7
+        Source: a
+        Vetted: s
+        Judgment: g
+        Phenomena: {case, determiners, word order}
+        lumelbut in kaldero
+        lumel   -but    in kaldero
+        l<um>el -but    [in kaldiru]
+        <AV>RDP -boil   ABS pot
+        'the (content of the) pot is boiling'
+
+        #12
+        Source: a
+        Vetted: s
+        Judgment: u
+        Phenomena: {case, determiners, word order}
+        mengaliyo   ni   wadi na
+        mengaliyo   ni   wadi=na
+        mengaliyo   [ni  wadi=na]
+        search    GEN younger.sibling=3sGEN
+        'of his younger sibling is searching'     
+
+    Tense: Northern Alta does not inflect verbs to show tense, but instead relies on adverbial phrases. These adverbs should
+    follow the main predicate, and are not subject to agreement. Aspect: Northern Alta uses verb afixes to inflect for 
+    perfective and progressive  aspect.Verbs are inflected for voice, and depending on their voice inflection will take
+    slightly different inflections to show aspect. Sometimes an afix is added, other times consonant reduplication is involved.
+    Since modifying the afixes and infixes would be too difficult at this stage, I started by simply introducing some tense 
+    adverbs, since the automatically generated grammar had none.
+
+        #15
+        Source: a
+        Vetted: s
+        Judgment: g
+        Phenomena: {case, tense aspect mood, determiners, word order}
+        lumelbut     nen       in kaldero
+         lumel-but   =nen      in kaldero
+        l<um>l-but   =nen      [in kaldero]
+        <AV>RDP-boil =already  ABS pot
+        'the (content of the) pot is already boiling'
+
+        #17
+        Source: a
+        Vetted: s
+        Judgment: g
+        Phenomena: {case, tense aspect mood, determiners, word order}
+        lumelbut dya'yay in kaldero
+         lumel-but   =dya'yay  in kaldero
+        l<um>l-but   =dya'yay  [in kaldero]
+        <AV>RDP-boil =now      ABS pot
+        'the (content of the) pot is now boiling'
+
+6. Though I have started to implement a case system, Northern Alta's case markings are very complicated. There are many pronoun
+   categories and each also implements case variation. Moreover, Northern Alta often shows case via particles that have no
+   semantic or syntactical contribution beyond marking case to saturate the predicate's case requirements. I couldn't find an 
+   elegant solution for this on the Matrix, so I resorted to classifying these particles determiners so they would resolve nicely
+   with the arguments that follow them. However, this solution is at best temporary, since Northern Alta allows for such particles
+   to occur mutliple times in a phrase, even in adjacent positions it seems. So the particle can saturate the predicate's requirement
+   for an absolutive argument while the noun phrase itself might use a further locative or genitive determiner. Beyond this issue, I
+   would like to implement aspect, though Northern Alta's use of phonetically variable infixes and affixes will make this challenging.
+
+7. The automatically created choices file misidntifies many parts of speech. It doesn't handle case at all, and so many of the
+   case particles which I have treated as determiners the automatic grammar simply lists as nouns. The result is a preponderance
+   of readings with coordinated noun phrases. I plan to remove change the coordination rule to prevent this, but a better model of
+   case, determiners, and pronouns would help as well.
