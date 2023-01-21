@@ -1,0 +1,203 @@
+Language: Northern Alta (aqn)
+Lab 3
+Author: Steven Anaya
+Date: 20 January 2023
+
+1.1-1.4. 
++-------------+----------------------+-------------------+------------------------+
+|             |                      | Lab 2             | Lab 3                  |
+|             |                      | Grammar           | Grammar                |
++-------------+----------------------+-------------------+------------------------+
+| Test Corpus | Items Parsed         | 2240              | 2240                   |
++-------------+----------------------+-------------------+------------------------+
+|             | Total Results        | 161               | 192                    |
++-------------+----------------------+-------------------+------------------------+
+|             | Total Readings       | 507               | 593                    |
++-------------+----------------------+-------------------+------------------------+
+|             | Avg. Readings/Result | 3.149             | 3.089                  |
++-------------+----------------------+-------------------+------------------------+
+|             | Coverage             | 7.2 %             | 8.6%                   |
++-------------+----------------------+-------------------+------------------------+
+|             | Overgeneration       | 100%              | 100%                   |
++-------------+----------------------+-------------------+------------------------+
+|             | Most Ambiguous Item  | 52, Item 1440     | 40, Item 13,180        |
++-------------+----------------------+-------------------+------------------------+
+|             | Sources of           | The lexical entry | There are a large      |
+|             | Ambiguity            | for "a.". It's    | number of possible     |
+|             |                      | listed as a noun, | trees for NP, NP-B,    |
+|             |                      | but is actually a | and NP-T constituents. |
+|             |                      | determiner.       | This ambiguity seems   |
+|             |                      | Likewise, there   | to be caused by        |
+|             |                      | is a spurious     | coordination strategy  |
+|             |                      | lexical entry     | 7, which permits       |
+|             |                      | for "tinapay" as  | asyndeton NP           |
+|             |                      | a verb.           | coordination.          |
++-------------+----------------------+-------------------+------------------------+
+| Testsuite   | Items Parsed         | 30                | 30                     |
++-------------+----------------------+-------------------+------------------------+
+|             | Total Results        | 16                | 10                     |
++-------------+----------------------+-------------------+------------------------+
+|             | Total Readings       | 19                | 25                     |
++-------------+----------------------+-------------------+------------------------+
+|             | Avg. Readings/Result | 1.1875            | 2.5                    |
++-------------+----------------------+-------------------+------------------------+
+|             | Coverage             | 75%               | 50%                    |
++-------------+----------------------+-------------------+------------------------+
+|             | Overgeneration       | 38.9%             | 22.2%                  |
++-------------+----------------------+-------------------+------------------------+
+|             | Most Ambiguous Item  | 2, Items 17,19,25 | 8, Item 23             |
++-------------+----------------------+-------------------+------------------------+
+|             | Sources of Ambiguity | Spurious lexical  | We are seeing the same |
+|             |                      | entries.          | ambiguity being caused |
+|             |                      |                   | by coordination strat. |
+|             |                      |                   | 7, as in the corpus.   |
+|             |                      |                   | Additionally, some     |
+|             |                      |                   | redundant trees in     |
+|             |                      |                   | other testsuite results|
+|             |                      |                   | indicate ambiguous     |
+|             |                      |                   | lexical entries.       |
++-------------+----------------------+-------------------+------------------------+
+|             | Sources of           | N/A               | Missing lexical        |
+|             | Undergeneration      |                   | entries.               |
++-------------+----------------------+-------------------+------------------------+
+
+1.5. We examined the semantics of our 10 testsuite results (1, 7, 10-14, 17, 19, 23) and observed
+that 1, 7, 17, 19 (all intransitive, positive examples), appear to have reasonable semantics that connect
+their predicate relation to their actor/undergoer relation, although 'siya' (3s.ABS) in example 1 has the
+non-descript _siya_n_1_rel relation in one reading and _siya_n_2_rel relation in another reading.
+Meanwhile, 10-14 and 23 (all transitive examples, with 10, 12-14 being negative/overgenerated) do not seem
+to directly connect the verb relation to either the actor or object, although all the relations are
+co-indexed with the arguments of a spurious _and_coord_rel relation. Furthermore, in 10-14, the
+_search_v_rel relation does not appear to have enough arguments to represent a transitive verb, and its
+first argument is co-indexed with the exist_q_rel relation.
+
+2. The three phenomena for which we chose to create testsuites are Determiners,
+Coordination, and Argument Optionality.
+
+Ten new testsuite examples were added (17, 19, 23-30). 17 and 19 are positive examples
+that were added to contrast against 18 and 20, respectively, upon realizing that temporal adverbs
+must be located at the beginning or end of a clause. 18 and 20 were formerly positive examples
+that have since been changed to negative examples. Temporal adverbs are used in place of tense
+in Northern Alta, but these examples were added to represent word order rather than tense/aspect.
+
+    #17 Adverb (dya'yay) at beginning of clause
+    dya'yay  lumel-but    [in  kaldero]
+    now      <AV>RDP-boil ABS  pot
+    'now the (content of the) pot is boiling'
+
+    #18 Adverb (dya'yay) in middle of clause
+   *lumel-but    dya'yay  [in  kaldero]
+    <AV>RDP-boil now      ABS  pot
+    'now the (content of the) pot is boiling'
+
+    #19 Adverb (ududma) at beginning of clause
+    ududma  lumel-but     [in  kaldero]
+    tomorrow <AV>RDP-boil ABS  pot
+    'tomorrow the (content of the) pot will be boiling'
+
+    #20 Adverb (ududma) in middle of clause
+   *lumel-but    ududma   [in kaldero]
+    <AV>RDP-boil tomorrow ABS pot
+    'tomorrow the (content of the) pot will be boiling'
+
+23 (positive) and 24 (negative) were added to illustrate improvements made to the morphotactics
+(discussed below in answer to question 3). Specifically, the specificity marker =i (currently
+treated as an affix by our grammar rather than a clitic) must be applied before plural marker =sid,
+not after.
+
+    #23 Grammatical sentence with plural marker =sid on the absolutive argument
+    eg'ang-en=de    [in  karajum=sid]
+    leave-PV=3s.GEN ABS  needle=PL
+    'they remove the needles'
+
+    #24 Specificity marker =i must be before plural marker =sid
+   *eg'ang-en=de    [in  karajum=sid=i]
+    leave-PV=3s.GEN ABS  needle=PL=SPEC
+    'they remove the needles'
+
+25 (positive) and 26 (negative) were added to illustrate VP coordination phenomena. 25 shows
+asyndeton coordination of VPs.
+
+    #25 Asyndeton VP clause coordination
+    men-siyá men-siyá [pagka awon=na=a               <in>inta]
+    AV-cry   AV-cry   when   not.exist=3s.GEN=2s.ABS <PRF>see
+    'he cries and cries when he does not see you'
+
+26 shows incorrect usage of the conjunction 'kesara' (than), which can only coordinate
+DPs, pronouns, and AdvPs.
+
+    #26 'kesara' doesn't coordinate VP clauses
+   *men-siyá kesara men-siyá [pagka awon=na=a               <in>inta]
+    AV-cry   than   AV-cry   when   not.exist=3s.GEN=2s.ABS <PRF>see
+    'he cries than cries when he does not see you'
+
+27 (positive) and 28 (negative) were added to illustrate optionality of absolutive arguments
+in in Undergoer voice clauses with genitive actors.
+
+    #27 Omission of absolutive argument
+    aydi  g<in>uyod=nen        [ni Lettaw]
+    INTJ  <PRF.PV>pull=already GEN Lettaw
+    'ay di, Lettaw pulled it'
+
+28 additionally illustrates that the genitive actor [ni Lettaw] cannot be omitted.
+
+    #28 Cannot omit genitive actor
+   *aydi  g<in>uyod=nen
+    INTJ  <PRF.PV>pull=already
+    'ay di, (someone) pulled it'
+
+Currently, our choices file allows subject and object dropping for any verb, while our
+descriptive grammar suggests this phenomenon is more limited.
+
+Finally, 29 (positive) and 30 (negative) were added to illustrate how articles (phenomena: determiners)
+distinguish between "person words" and "common words." 29 specifically shows how the absolutive singular
+article 'ti' may only be used with person words.
+
+    #29 'ti' is an absolutive singular person word article
+    ti'sen       ma-poled [ti Alex]
+    PROX.DEM.LOC ST-sleep ABS Alex
+    'here is where Alex sleeps'
+
+30 shows that the absolutive singular 'in' is incompatible with person words (it is instead used
+only for common words).
+
+    #30 'in' is an absolutive singular common word article
+   *ti'sen       ma-poled [in  Alex]
+    PROX.DEM.LOC ST-sleep ABS  Alex
+    'here is where Alex sleeps'
+
+3. Many of the automatically generated noun inflection position classes have been removed, and the
+reasonable ones were given more descriptive names or incorporated into more comprehensive position classes.
+For instance, we observed the prefix "bet" in the automatic grammar, but upon examining our resource grammar,
+we found no such prefix exists. Another prefix "eC-" is provided by the resource grammar, but the "C" indicates
+consonant reduplication, rather than an actual character. We consolidated the remaining reasonable
+position classes and gave them more descriptive names. 
+
+The result is three main noun inflection position classes, all "obligatory," but with uninflecting
+options at each step. The first is "prefixes," which takes any common noun (currently this mainly means
+anything but a pronoun) as input. It can output an unchanged noun, or a noun with an appended prefix
+such as "pen," which is a gerundive prefix that indicates a noun is undergoing an action.
+Our position class should now allow for appending a prefix to a common noun like "uding" (coal).
+
+    pen-uding 
+    GER-coal
+    'burning coal'
+
+The "initial_suffix" noun position class takes the output of prefixes and optionally adds the "an"
+suffix, which contributes a locative sense to the noun. This applies to the output of the prefix
+position class to ensure prefixes are added first. However, it also applies to the personal pronoun
+class, since it seems like pronouns occassionally get suffixes, though usually not prefixes. 
+
+    pen-huli-an
+    GER-hunt-LC
+    '(someone's) hunting ground'
+
+Finally, the "ultimate_suffix" position class optionally adds a plural marker to the outputs of
+"initial_suffix". This position class has only one member, namely the plural marker -sid. However,
+it can also simply leave the noun unchanged. We have counted this plural marker as a suffix, even though the
+descriptive grammar treats it as an enclitic. We made this decision because it seems to only follow
+common nouns and mark their number value.
+
+    sundang-i-sid
+    knife-SPEC-PL
+    'the knives'

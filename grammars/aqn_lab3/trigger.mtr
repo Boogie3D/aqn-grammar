@@ -1,0 +1,10 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Semantically Empty Lexical Entries
+
+ti_3_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
+    FLAGS.TRIGGER "ti_3" ].
+
+baga_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ PRED "non_existing_rel" ] >,
+    FLAGS.TRIGGER "baga" ].
