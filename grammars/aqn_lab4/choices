@@ -40,7 +40,7 @@ focus-o-case-name=obl
 
 section=adnom-poss
   poss-strat1_order=head-initial
-  poss-strat1_mod-spec=spec
+  poss-strat1_mod-spec=mod
   poss-strat1_mark-loc=possessor
   poss-strat1_pronoun-allow=no
   poss-strat1_possessor-type=non-affix
@@ -525,6 +525,10 @@ section=lexicon
     noun2_stem198_pred=_pot_n_rel
     noun2_stem199_orth=karajum
     noun2_stem199_pred=_needle_n_rel
+    noun2_stem200_orth=aparato
+    noun2_stem200_pred=_device_n_rel
+    noun2_stem201_orth=beli
+    noun2_stem201_pred=_house, housing_n_rel
   noun80_name=unvoiced_person_words
   noun80_det=opt
   noun81_name=personal_pronoun
@@ -1357,6 +1361,8 @@ section=lexicon
     verb63_stem181_pred=_work_v_rel
     verb63_stem182_orth=báwal
     verb63_stem182_pred=_forbid_v_rel
+    verb63_stem183_orth=palit-an
+    verb63_stem183_pred=_change_v_rel
   aux1_name=aux1
   aux1_sem=add-pred
   aux1_subj=np
@@ -1432,8 +1438,6 @@ section=lexicon
   det7_name=common_gen_sing
     det7_stem1_orth=ni
     det7_stem1_pred=_q_sg_rel
-    det7_stem2_orth=nen
-    det7_stem2_pred=_nen_q_1_rel
     det7_feat1_name=case
     det7_feat1_value=a_case
   det8_name=common_gen_pl
@@ -1484,16 +1488,23 @@ section=lexicon
     adv5_stem1_orth=ududma
     adv5_stem1_pred=_tomorrow_a_rel
   adv5_type=loc
-  adv7_name=also, too
+  adv7_name=sela
     adv7_stem1_orth=séla
-    adv7_stem1_pred=_also_a_rel
+    adv7_stem1_pred=_sela_a_rel
     adv7_stem2_orth==séla
-    adv7_stem2_pred=_also_a_rel
+    adv7_stem2_pred=_sela_a_rel
+    adv7_stem3_orth==sela
+    adv7_stem3_pred=_=sela_a_rel
+    adv7_stem4_orth=sela
+    adv7_stem4_pred=_sela_a_rel
   adv7_type=manner
   adv8_name=again
     adv8_stem1_orth==nen
     adv8_stem1_pred=_=nen_a_rel
   adv8_type=loc
+    normadp1_stem1_orth=nen
+    normadp1_stem1_pred=_nen_p_rel
+  normadp1_order=before
   adp1_orth=in
   adp1_opt=on
   adp1_order=after
@@ -1541,35 +1552,25 @@ section=morphology
       noun-pc2_lrt3_lri1_inflecting=no
     noun-pc2_lrt4_name=alternation
       noun-pc2_lrt4_lri2_inflecting=yes
-      noun-pc2_lrt4_lri2_orth='an
+      noun-pc2_lrt4_lri2_orth=-'an
       noun-pc2_lrt4_lri3_inflecting=yes
       noun-pc2_lrt4_lri3_orth=-an
-      noun-pc2_lrt4_lri4_inflecting=yes
-      noun-pc2_lrt4_lri4_orth==an
       noun-pc2_lrt4_lri6_inflecting=yes
-      noun-pc2_lrt4_lri6_orth='en
+      noun-pc2_lrt4_lri6_orth=-'en
       noun-pc2_lrt4_lri7_inflecting=yes
       noun-pc2_lrt4_lri7_orth=-en
-      noun-pc2_lrt4_lri8_inflecting=yes
-      noun-pc2_lrt4_lri8_orth==en
       noun-pc2_lrt4_lri12_inflecting=yes
-      noun-pc2_lrt4_lri12_orth='na
+      noun-pc2_lrt4_lri12_orth=-'na
       noun-pc2_lrt4_lri13_inflecting=yes
       noun-pc2_lrt4_lri13_orth=-na
-      noun-pc2_lrt4_lri14_inflecting=yes
-      noun-pc2_lrt4_lri14_orth==na
       noun-pc2_lrt4_lri16_inflecting=yes
-      noun-pc2_lrt4_lri16_orth='e
+      noun-pc2_lrt4_lri16_orth=-'e
       noun-pc2_lrt4_lri17_inflecting=yes
       noun-pc2_lrt4_lri17_orth=-e
-      noun-pc2_lrt4_lri18_inflecting=yes
-      noun-pc2_lrt4_lri18_orth==e
       noun-pc2_lrt4_lri20_inflecting=yes
-      noun-pc2_lrt4_lri20_orth='o
+      noun-pc2_lrt4_lri20_orth=-'o
       noun-pc2_lrt4_lri21_inflecting=yes
       noun-pc2_lrt4_lri21_orth=-o
-      noun-pc2_lrt4_lri22_inflecting=yes
-      noun-pc2_lrt4_lri22_orth==o
     noun-pc2_lrt5_name=specifity
       noun-pc2_lrt5_lri1_inflecting=yes
       noun-pc2_lrt5_lri1_orth=-i
@@ -1663,27 +1664,15 @@ section=morphology
   verb-pc2_inputs=verb-pc1
     verb-pc2_lrt1_name=voice_suffix
       verb-pc2_lrt1_lri2_inflecting=yes
-      verb-pc2_lrt1_lri2_orth='en
+      verb-pc2_lrt1_lri2_orth=-'en
       verb-pc2_lrt1_lri3_inflecting=yes
       verb-pc2_lrt1_lri3_orth=-en
-      verb-pc2_lrt1_lri4_inflecting=yes
-      verb-pc2_lrt1_lri4_orth==en
       verb-pc2_lrt1_lri6_inflecting=yes
-      verb-pc2_lrt1_lri6_orth='an
+      verb-pc2_lrt1_lri6_orth=-'an
       verb-pc2_lrt1_lri7_inflecting=yes
       verb-pc2_lrt1_lri7_orth=-an
-      verb-pc2_lrt1_lri8_inflecting=yes
-      verb-pc2_lrt1_lri8_orth==an
     verb-pc2_lrt2_name=null_first_suffix
       verb-pc2_lrt2_lri1_inflecting=no
-  verb-pc4_name=circumfix_suffix
-  verb-pc4_order=suffix
-  verb-pc4_inputs=verb-pc1_lrt4
-    verb-pc4_lrt1_name=circumfix_suffix_part
-      verb-pc4_lrt1_lri1_inflecting=yes
-      verb-pc4_lrt1_lri1_orth=-an
-      verb-pc4_lrt1_lri2_inflecting=yes
-      verb-pc4_lrt1_lri2_orth=-en
 
 section=toolbox-import
 
