@@ -689,7 +689,7 @@ section=lexicon
     noun109_stem2_orth=hid
     noun109_stem2_pred=_hid_n_rel
     noun109_stem3_orth==sid
-    noun109_stem3_pred=_=hid_n_rel
+    noun109_stem3_pred=_=sid_n_rel
     noun109_stem4_orth==hid
     noun109_stem4_pred=_=sid_n_rel
   noun111_name=gen_1s
@@ -843,8 +843,6 @@ section=lexicon
     verb42_stem12_pred=_gold_v_rel
     verb42_stem13_orth=kalat
     verb42_stem13_pred=_spread_v_rel
-    verb42_stem14_orth=palit
-    verb42_stem14_pred=_barter_v_rel
     verb42_stem15_orth=payag
     verb42_stem15_pred=_agreement_v_rel
     verb42_stem16_orth=sawsaw
@@ -990,9 +988,6 @@ section=lexicon
     verb57_stem7_orth=uná
     verb57_stem7_pred=_say_v_rel
   verb63_name=transitive_verbs
-    verb63_feat1_name=case
-    verb63_feat1_value=focus
-    verb63_feat1_head=obj
     verb63_feat2_name=case
     verb63_feat2_value=a_case
     verb63_feat2_head=subj
@@ -1356,7 +1351,7 @@ section=lexicon
     verb63_stem179_orth=soli
     verb63_stem179_pred=_return_v_rel
     verb63_stem180_orth=tipák
-    verb63_stem180_pred=__chop,slice_v_rel_v_rel
+    verb63_stem180_pred=_chop,slice_v_rel_v_rel
     verb63_stem181_orth=tarabáho
     verb63_stem181_pred=_work_v_rel
     verb63_stem182_orth=báwal
@@ -1502,27 +1497,9 @@ section=lexicon
     adv8_stem1_orth==nen
     adv8_stem1_pred=_=nen_a_rel
   adv8_type=loc
-    normadp1_stem1_orth=nen
-    normadp1_stem1_pred=_nen_p_rel
-  normadp1_order=before
-  adp1_orth=in
-  adp1_opt=on
-  adp1_order=after
-    adp1_feat1_name=case
-    adp1_feat1_value=focus
-  adp2_orth=ni
-  adp2_opt=on
-  adp2_order=after
-    adp2_feat1_name=case
-    adp2_feat1_value=a_case
-  adp3_orth=ta
-  adp3_opt=on
-  adp3_order=after
-    adp3_feat1_name=case
-    adp3_feat1_value=loc
-  adp4_orth=ti
+  adp4_orth=tono
   adp4_opt=on
-  adp4_order=after
+  adp4_order=before
     adp4_feat1_name=case
     adp4_feat1_value=o_case
 
