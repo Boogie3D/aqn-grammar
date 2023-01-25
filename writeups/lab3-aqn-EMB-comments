@@ -1,0 +1,98 @@
+Language: Northern Alta (aqn)
+Lab 3
+Author: Steven Anaya
+Date: 20 January 2023
+
+EMB> Please include both partner's names, in addition to indicating who the author is.
+
+Ten new testsuite examples were added (17, 19, 23-30). 17 and 19 are positive examples
+that were added to contrast against 18 and 20, respectively, upon realizing that temporal adverbs
+must be located at the beginning or end of a clause. 18 and 20 were formerly positive examples
+that have since been changed to negative examples. Temporal adverbs are used in place of tense
+in Northern Alta, but these examples were added to represent word order rather than tense/aspect.
+
+EMB> Are the temporal adverbs obligatory? If not, they should not be involved in these examples --- the constitute a separate, complicating phenomenon.
+
+    #17 Adverb (dya'yay) at beginning of clause
+    dya'yay  lumel-but    [in  kaldero]
+    now      <AV>RDP-boil ABS  pot
+    'now the (content of the) pot is boiling'
+
+EMB> Why are there square brackets in this example? (Fortunately, the LKB seems to be stripping them, but they should not be there. The string in the first line should be what you expect to parse.)
+
+23 (positive) and 24 (negative) were added to illustrate improvements made to the morphotactics
+(discussed below in answer to question 3). Specifically, the specificity marker =i (currently
+treated as an affix by our grammar rather than a clitic) must be applied before plural marker =sid,
+not after.
+
+    #23 Grammatical sentence with plural marker =sid on the absolutive argument
+    eg'ang-en=de    [in  karajum=sid]
+    leave-PV=3s.GEN ABS  needle=PL
+    'they remove the needles'
+
+
+EMB> WHy doesn't #23 involve =i then?
+
+    #25 Asyndeton VP clause coordination
+    men-siyá men-siyá [pagka awon=na=a               <in>inta]
+    AV-cry   AV-cry   when   not.exist=3s.GEN=2s.ABS <PRF>see
+    'he cries and cries when he does not see you'
+
+EMB> This example is too complicated --- it also involves a modifying clause.
+
+Currently, our choices file allows subject and object dropping for any verb, while our
+descriptive grammar suggests this phenomenon is more limited.
+
+EMB> Limited in what way?
+
+
+Finally, 29 (positive) and 30 (negative) were added to illustrate how articles (phenomena: determiners)
+distinguish between "person words" and "common words." 29 specifically shows how the absolutive singular
+article 'ti' may only be used with person words.
+
+EMB> Is this an animacy distcintion?
+
+
+    #29 'ti' is an absolutive singular person word article
+    ti'sen       ma-poled [ti Alex]
+    PROX.DEM.LOC ST-sleep ABS Alex
+    'here is where Alex sleeps'
+
+30 shows that the absolutive singular 'in' is incompatible with person words (it is instead used
+only for common words).
+
+    #30 'in' is an absolutive singular common word article
+   *ti'sen       ma-poled [in  Alex]
+    PROX.DEM.LOC ST-sleep ABS  Alex
+    'here is where Alex sleeps'
+
+EMB> #30 looks identical to #29.
+
+EMB> Also this example is too complex! It appears to be a copular clause? Why not just "Alex sleeps"?
+
+EMB> In general, I was expecting to see descriptions of phenomena + how you illustrated them in your testsuite. What you wrote was a description of the testsuite, with reference to the phenomena. For example, this digression left me confused:
+
+Ten new testsuite examples were added (17, 19, 23-30). 17 and 19 are positive examples
+that were added to contrast against 18 and 20, respectively, upon realizing that temporal adverbs
+must be located at the beginning or end of a clause. 18 and 20 were formerly positive examples
+
+EMB> ... and having a hard time tracking which phenomena you were talking about!
+
+EMB> What is the evidence that ti is an 'article' rather than a case marking preposition?
+
+Another prefix "eC-" is provided by the resource grammar, but the "C"
+indicates consonant reduplication, rather than an actual character.
+
+EMB> What appeared in your choices file? What appears in the morpheme-segmented line that the grammar is targeting?
+
+a noun with an appended prefix
+such as "pen," which is a gerundive prefix that indicates a noun is undergoing an action.
+
+EMB> That's not what "gerundive" usually means. Also, how does this thing end up giving the sematics "burning"?
+
+    pen-uding 
+    GER-coal
+    'burning coal'
+
+
+
