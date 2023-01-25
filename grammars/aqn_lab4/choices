@@ -151,7 +151,7 @@ section=nominalclause
 section=clausal-comp
 
 section=clausalmods
-  cms1_position=after
+  cms1_position=either
   cms1_modifier-attach=s
   cms1_subordinator=free
   cms1_subposition=before
