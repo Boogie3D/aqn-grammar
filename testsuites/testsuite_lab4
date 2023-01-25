@@ -9,10 +9,10 @@ Source a: Laguía, A.G. (2018). Documentation of Northern Alta: grammar, texts a
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {case, determiners, pronouns, word order}
+Phenomena: {case, pronouns, word order}
 me'una siya
-me'una=siya
-mәʔuna=sija
+me'una sija
+mәʔuna sija
 say=3s.ABS
 'He said'
 
@@ -21,9 +21,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una mo
-me'una=mo
-mәʔuna=mu
+me'una =mo
+me'una =mo
+mәʔuna =mu
 say=2s.GEN
 'Your said'
 
@@ -32,9 +32,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una 'o
-me'una='o
-mәʔuna=ʔu
+me'una ='o
+me'una ='o
+mәʔuna =ʔu
 say=1s.GEN
 'my said'
 
@@ -43,10 +43,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una na
-me'una=na
-mәʔuna=na
-say1=3s.GEN
+me'una =na
+me'una =na
+mәʔuna =na
+say1 =3s.GEN
 'said their'
 
 #5
@@ -54,9 +54,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una tam
-me'una=tam
-mәʔuna=tam
+me'una =tam
+me'una =tam
+mәʔuna =tam
 say=1pi.GEN
 'said mine'
 
@@ -75,7 +75,7 @@ say    1pi.LOC
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {case, determiners, word order}
+Phenomena: {case, determiners}
 lumelbut in kaldero
 lumel-but    [in  kaldero]
 l<um>el-but  [ʔin kaldiru]
@@ -119,23 +119,23 @@ l<um>el-but  [ti kaldiru]
 Source: a:188
 Vetted: s
 Judgment: g
-Phenomena: {case, determiners, word order}
-mengaliyo in wadi na
-meng-aliyo [in  wadi=na]
-mәŋ-ʔaliju [ʔin wadi=na]
-AV-search  ABS  younger.sibling=3s.GEN
-'his younger sibling is searching'
+Phenomena: {case, determiners}
+mengaliyo in wadi
+meng-aliyo [in  wadi]
+mәŋ-ʔaliju [ʔin wadi]
+AV-search  ABS  younger.sibling
+'a younger sibling searches'
 
 #12
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-mengaliyo ni wadi na
-meng-aliyo [ni wadi=na]
-mәŋ-ʔaliju [ni wadi=na]
-AV-search  GEN younger.sibling=3s.GEN
-'of his younger sibling is searching'
+mengaliyo ni wadi
+meng-aliyo [ni wadi]
+mәŋ-ʔaliju [ni wadi]
+AV-search  GEN younger.sibling
+'of younger sibling searches'
 
 #13
 Source: author
@@ -143,21 +143,21 @@ Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
 mengaliyo ti wadi na
-meng-aliyo [ti wadi=na]
-mәŋ-ʔaliju [ti wadi=na]
-AV-search  OBL younger.sibling=3sGEN
-'to his younger sibling is searching'
+meng-aliyo [ti wadi]
+mәŋ-ʔaliju [ti wadi]
+AV-search  OBL younger.sibling
+'to younger sibling searches'
 
 #14
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-mengaliyo ni wadi na
-meng-aliyo [ni wadi=na]
-mәŋ-ʔaliju [ni wadi=na]
-AV-search  LOC younger.sibling=3sGEN
-'one his younger sibling is searching'
+mengaliyo ni wadi
+meng-aliyo [ni wadi]
+mәŋ-ʔaliju [ni wadi]
+AV-search  LOC younger.sibling
+'this younger sibling searches'
 
 #15
 Source: a:188
@@ -428,24 +428,13 @@ Source: a:190
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-eg'angen  mi in set ra
-eg'ang-en =mi      [in  set =ra]
-ʔәgʔaŋ-әn =mi      [ʔin sit =ra]
-remove-PV =1pe.GEN ABS  thorn =non
-'we remove thorn'
-
-#40 '=na' is a possessive pronoun enclitic
-Source: a:190
-Vetted: f
-Judgment: u
-Phenomena: {possessives}
 eg'angen  mi in na set
 eg'ang-en =mi      [in  =na set]
 ʔәgʔaŋ-әn =mi      [ʔin =na sit]
 remove-PV =1pe.GEN ABS  =3s.GEN thorn
 'we remove thorn his'
 
-#41 '=na' is a possessive pronoun enclitic
+#40 '=na' is a possessive pronoun enclitic
 Source: a:190
 Vetted: f
 Judgment: u
@@ -456,29 +445,29 @@ eg'ang-en =mi      [=na    [in  set]]
 remove-PV =1pe.GEN =3s.GEN ABS thorn
 'we remove his a thorn'
 
-#42 '=miyu' is a possessive pronoun enclitic
+#41 '=miyu' is a possessive pronoun enclitic
 Source: a:222
 Vetted: f
 Judgment: g
 Phenomena: {possessives}
 dumateng tiyama miyu
-d<um>ateng tijama =miyu
+d<um>ateng tiyama =miyu
 d<um>atәŋ  tijama =miju
 <AV>arrive ABS.father =2p.Gen
 'your father arrives'
 
-#43 '=miyu' is a possessive pronoun enclitic
+#42 '=miyu' is a possessive pronoun enclitic
 Source: a:222
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
 dumateng miyu tiyama 
-d<um>ateng =miyu tijama 
+d<um>ateng =miyu tiyama 
 d<um>atәŋ =miju tijama 
 <AV>arrive =2p.Gen ABS.father 
 'father your arrives'
 
-#44 '=miyu' is a possessive pronoun enclitic
+#43 '=miyu' is a possessive pronoun enclitic
 Source: a:222
 Vetted: f
 Judgment: u
@@ -489,18 +478,7 @@ d<um>atәŋ  =miju
 <AV>arrive =2p.Gen
 'your arrives'
 
-#45 '=miyu' is a possessive pronoun enclitic
-Source: a:222
-Vetted: f
-Judgment: u
-Phenomena: {possessives}
-dumateng tiyama miyu
-d<um>ateng ABS.father  =mito
-d<um>atәŋ  ABS.father  =mito
-<AV>arrive father      =non
-'[?] father arrives'
-
-#46 '=miyu' is a possessive pronoun enclitic
+#44 '=miyu' is a possessive pronoun enclitic
 Source: a:222
 Vetted: f
 Judgment: u
@@ -508,5 +486,61 @@ Phenomena: {possessives}
 dumateng siya miyu
 d<um>ateng sija   =miju
 d<um>atәŋ  sija   =miju
-<AV>arrive 3s.ABS =2p.Gen
+<AV>arrive ABS    =2p.Gen
 'your he arrives'
+
+#45 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {clausal modifier}
+dumateng tiyama habang meng-an
+d<um>ateng tiyama      habang meng-an
+d<um>atәŋ  tijama      habaŋ  meŋ-an
+<AV>arrive ABS.father  while  AV-eat.ABS
+'father arrives while eating'
+
+#46 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {clausal modifier}
+habang meng-an, dumateng tiyama 
+habang meng-an, d<um>ateng tiyama      
+habaŋ  meŋ-an,  d<um>atәŋ  tijama      
+while  AV-eat.ABS, <AV>arrive ABS.father  
+'while eating, father arrives'
+
+#47 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+meng-an, dumateng tiyama 
+meng-an, d<um>ateng tiyama      
+meŋ-an,  d<um>atәŋ  tijama      
+ AV-eat.ABS, <AV>arrive ABS.father  
+'eating, father arrives'
+
+#48 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+dumateng tiyama meng-an
+d<um>ateng tiyama      meng-an
+d<um>atәŋ  tijama      meŋ-an
+<AV>arrive ABS.father  while  AV-eat.ABS
+'father arrives eats'
+
+#48 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+dumateng habang tiyama meng-an
+d<um>ateng habang tiyama meng-an
+d<um>atәŋ  habeng tijama meŋ-an
+<AV>arrive while ABS.father AV-eat.ABS
+'arrives while father eats'
+
