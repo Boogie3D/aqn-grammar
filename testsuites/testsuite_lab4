@@ -533,7 +533,7 @@ d<um>atәŋ  tijama      meŋ-an
 <AV>arrive ABS.father  while  AV-eat.ABS
 'father arrives eats'
 
-#48 'habang' is a clausal modifier
+#49 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: u
@@ -543,4 +543,16 @@ d<um>ateng habang tiyama meng-an
 d<um>atәŋ  habeng tijama meŋ-an
 <AV>arrive while ABS.father AV-eat.ABS
 'arrives while father eats'
+
+#50 'pag' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+meng-an tiyama pag dumateng
+meng-an tiyama  pag  d<um>ateng
+meŋ-an  tijama  pag  d<um>atәŋ 
+AV-eat.ABS father when <AV>arrive
+'father eat when he arrives'
+
 
