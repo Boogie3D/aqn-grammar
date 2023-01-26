@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Thu Jan 26 03:53:45 UTC 2023
+;;;     Thu Jan 26 05:55:23 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Fri 10 Jun 2022 12:58:58 AM UTC
 ;;;
@@ -33,19 +33,19 @@ head :+ [ PRON bool,
 
 +npd :+ [ CASE case ].
 
-inflected :+ [ VERB_PREFIX_OPTIONS-FLAG luk,
-    ULTIMATE_SUFFIX-FLAG luk,
-    PREFIXES-FLAG luk,
-    VERB_FIRST_SUFFIX-FLAG luk,
+inflected :+ [ VERB_FIRST_SUFFIX-FLAG luk,
+    INITIAL_SUFFIX-FLAG luk,
     INTRANSITIVE-VERB-FLAG luk,
-    INITIAL_SUFFIX-FLAG luk ].
+    VERB_PREFIX_OPTIONS-FLAG luk,
+    PREFIXES-FLAG luk,
+    ULTIMATE_SUFFIX-FLAG luk ].
 
-infl-satisfied :+ [ VERB_PREFIX_OPTIONS-FLAG na-or-+,
-    ULTIMATE_SUFFIX-FLAG na-or-+,
-    PREFIXES-FLAG na-or-+,
-    VERB_FIRST_SUFFIX-FLAG na-or-+,
+infl-satisfied :+ [ VERB_FIRST_SUFFIX-FLAG na-or-+,
+    INITIAL_SUFFIX-FLAG na-or-+,
     INTRANSITIVE-VERB-FLAG na-or-+,
-    INITIAL_SUFFIX-FLAG na-or-+ ].
+    VERB_PREFIX_OPTIONS-FLAG na-or-+,
+    PREFIXES-FLAG na-or-+,
+    ULTIMATE_SUFFIX-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum ].
 
@@ -744,26 +744,26 @@ basic-adposition-lex :+ [ SYNSEM.LOCAL.CAT [ HEAD.POSSESSOR nonpossessive,
 
 ;;; Intermediate rule types
 
-ultimate_suffix-rule-dtr := word-or-lexrule.
 initial_suffix-rule-dtr := word-or-lexrule.
-verb_first_suffix-rule-dtr := word-or-lexrule.
 prefixes-rule-dtr := word-or-lexrule.
+verb_first_suffix-rule-dtr := word-or-lexrule.
+ultimate_suffix-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
   [ INFLECTED [ PREFIXES-FLAG +,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
                 VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                INITIAL_SUFFIX-FLAG #initial_suffix ],
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options ],
     DTR prefixes-rule-dtr &
-        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      INITIAL_SUFFIX-FLAG #initial_suffix ] ] ].
+                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options ] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
 
@@ -771,17 +771,17 @@ no_noun_prefix-lex-rule := const-lex-rule & prefixes-lex-rule-super.
 
 initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-dtr &
   [ INFLECTED [ INITIAL_SUFFIX-FLAG +,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes,
                 VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
-                INTRANSITIVE-VERB-FLAG #intransitive-verb ],
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
+                PREFIXES-FLAG #prefixes ],
     DTR initial_suffix-rule-dtr &
-        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      INTRANSITIVE-VERB-FLAG #intransitive-verb,
                       VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes,
-                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
-                      INTRANSITIVE-VERB-FLAG #intransitive-verb ] ] ].
+                      PREFIXES-FLAG #prefixes ] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
 
@@ -795,17 +795,17 @@ little_adj-lex-rule := infl-lex-rule & initial_suffix-lex-rule-super.
 
 ultimate_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ULTIMATE_SUFFIX-FLAG +,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes,
                 VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                INITIAL_SUFFIX-FLAG #initial_suffix ],
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
+                PREFIXES-FLAG #prefixes ],
     DTR ultimate_suffix-rule-dtr &
-        [ INFLECTED [ VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes,
-                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      INITIAL_SUFFIX-FLAG #initial_suffix ] ] ].
+                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
+                      PREFIXES-FLAG #prefixes ] ] ].
 
 no_ultimate_suffix-lex-rule := const-lex-rule & ultimate_suffix-lex-rule-super.
 
@@ -814,17 +814,17 @@ plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-supe
 
 verb_prefix_options-lex-rule-super := val-change-with-ccont-lex-rule & verb_first_suffix-rule-dtr &
   [ INFLECTED [ VERB_PREFIX_OPTIONS-FLAG +,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                PREFIXES-FLAG #prefixes,
                 VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                INITIAL_SUFFIX-FLAG #initial_suffix ],
+                PREFIXES-FLAG #prefixes ],
     DTR verb-lex &
-        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      PREFIXES-FLAG #prefixes,
-                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      INITIAL_SUFFIX-FLAG #initial_suffix ] ] ].
+                      PREFIXES-FLAG #prefixes ] ] ].
 
 oblique_obj_adding-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & verb_prefix_options-lex-rule-super &
   [ DTR.INFLECTED.INTRANSITIVE-VERB-FLAG +,
@@ -846,26 +846,32 @@ progressive_infix-lex-rule := add-only-no-ccont-rule & infl-lex-rule & verb_pref
 
 verb_first_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG +,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                INITIAL_SUFFIX-FLAG #initial_suffix ],
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
+                PREFIXES-FLAG #prefixes ],
     DTR verb_first_suffix-rule-dtr &
-        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes,
+        [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      INITIAL_SUFFIX-FLAG #initial_suffix ] ] ].
+                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
+                      PREFIXES-FLAG #prefixes ] ] ].
 
 voice_suffix-lex-rule := infl-lex-rule & verb_first_suffix-lex-rule-super.
 
 null_first_suffix-lex-rule := const-lex-rule & verb_first_suffix-lex-rule-super.
 
+added-arg2of2-non-local-lex-rule := lex-rule.
+
 added-arg2of2-np-head-lex-rule := lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
 
-added-arg2of2-non-local-lex-rule := lex-rule.
+basic-applicative-lex-rule := comps-change-only-lex-rule &
+  [ C-CONT [ RELS.LIST < event-relation &
+                         [ ARG1 #evt ] >,
+             HCONS.LIST < > ],
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
@@ -873,12 +879,6 @@ added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2
                                            CONT.HOOK.INDEX #nind ] ] >,
     C-CONT.RELS.LIST < [ ARG2 #nind ] >,
     DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
-
-basic-applicative-lex-rule := comps-change-only-lex-rule &
-  [ C-CONT [ RELS.LIST < event-relation &
-                         [ ARG1 #evt ] >,
-             HCONS.LIST < > ],
-    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types

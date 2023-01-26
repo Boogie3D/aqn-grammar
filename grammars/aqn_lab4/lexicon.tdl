@@ -1314,10 +1314,6 @@ li_27bet := intransitive_verb-verb-lex &
 pagpág := intransitive_verb-verb-lex &
   [ STEM < "pagpág" >,
     SYNSEM.LKEYS.KEYREL.PRED "_shake_v_rel" ].
-  
-póled := intransitive_verb-verb-lex &
-  [ STEM < "póled" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
 
 poti := intransitive_verb-verb-lex &
   [ STEM < "poti" >,
@@ -1394,6 +1390,14 @@ alap_1 := intransitive_verb-verb-lex &
 álap_1 := intransitive_verb-verb-lex &
   [ STEM < "álap" >,
     SYNSEM.LKEYS.KEYREL.PRED "_get_v_rel" ].
+
+poled := intransitive_verb-verb-lex &
+  [ STEM < "poled" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+póled := intransitive_verb-verb-lex &
+  [ STEM < "póled" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
 
 benta := di_transitive-verb-lex &
   [ STEM < "benta" >,
@@ -1602,10 +1606,6 @@ eg_27ang_1 := transitive_verbs-verb-lex &
 gapangan := transitive_verbs-verb-lex &
   [ STEM < "gapangan" >,
     SYNSEM.LKEYS.KEYREL.PRED "_crowlsomewhere_v_rel" ].
-
-ginuyod := transitive_verbs-verb-lex &
-  [ STEM < "ginuyod" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
 
 harbes_2 := transitive_verbs-verb-lex &
   [ STEM < "harbes" >,
@@ -2178,6 +2178,10 @@ eg_27ángen := transitive_verbs-verb-lex &
 iyán_3 := transitive_verbs-verb-lex &
   [ STEM < "iyán" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fruit_v_rel" ].
+
+ginuyod := transitive_verbs-verb-lex &
+  [ STEM < "ginuyod" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
 
 ;;; Auxiliaries
 
