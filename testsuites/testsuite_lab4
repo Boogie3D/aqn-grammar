@@ -11,9 +11,9 @@ Vetted: f
 Judgment: g
 Phenomena: {case, pronouns, word order}
 me'una siya
-me'una sija
-mәʔuna sija
-say=3s.ABS
+me'una =sija
+mәʔuna =sija
+say    =3s.ABS
 'He said'
 
 #2
@@ -21,10 +21,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una =mo
+me'una mo
 me'una =mo
 mәʔuna =mu
-say=2s.GEN
+say    =2s.GEN
 'Your said'
 
 #3
@@ -32,10 +32,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una ='o
+me'una 'o
 me'una ='o
 mәʔuna =ʔu
-say=1s.GEN
+say    =1s.GEN
 'my said'
 
 #4
@@ -43,10 +43,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una =na
+me'una na
 me'una =na
 mәʔuna =na
-say1 =3s.GEN
+say    =3s.GEN
 'said their'
 
 #5
@@ -54,10 +54,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una =tam
+me'una tam
 me'una =tam
 mәʔuna =tam
-say=1pi.GEN
+say    =1pi.GEN
 'said mine'
 
 #6
@@ -165,9 +165,9 @@ Vetted: s
 Judgment: g
 Phenomena: {case, tense aspect mood, determiners, word order}
 lumelbut nen in kaldero
-lumel-but=nen         [in  kaldero]
-l<um>l-but=nәn        [ʔin kaldiru]
-<AV>RDP-boil=already  ABS  pot
+lumel-but    =nen      [in  kaldero]
+l<um>l-but   =nәn      [ʔin kaldiru]
+<AV>RDP-boil =already  ABS  pot
 'the (content of the) pot is already boiling'
 
 #16
@@ -176,9 +176,9 @@ Vetted: f
 Judgment: g
 Phenomena: {case, tense aspect mood, determiners, word order}
 lumelbut sep in kaldero
-lumel-but=sep      [in  kaldero]
-l<um>l-but=sip     [ʔin kaldiru]
-<AV>RDP-boil=still ABS  pot
+lumel-but    =sep   [in  kaldero]
+l<um>l-but   =sip   [ʔin kaldiru]
+<AV>RDP-boil =still ABS  pot
 'the (content of the) pot is still boiling'
 
 #17 Northern Alta uses temporal adverbs in place of tense/aspect
@@ -231,9 +231,9 @@ Vetted: s
 Judgment: g
 Phenomena: {case, determiners, word order}
 dumdateng in ana' 'o
-d<um>d-ateng   [in  ana='o]
-d<um>d-ateŋ    [ʔin ʔanaʔ=ʔu] 
-<AV>RDP-arrive ABS  child=1s.GEN
+d<um>d-ateng   [in  ana'  ='o]
+d<um>d-ateŋ    [ʔin ʔanaʔ =ʔu] 
+<AV>RDP-arrive ABS  child =1s.GEN
 'my child is arriving'
 
 #22
@@ -242,9 +242,9 @@ Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
 dumdateng ni ana' 'o
-d<um>d-ateng   [ni ana=o]
-d<um>d-ateŋ    [ni ʔanaʔ=ʔu] 
-<AV>RDP-arrive GEN child=1s.GEN
+d<um>d-ateng   [ni ana'  ='o]
+d<um>d-ateŋ    [ni ʔanaʔ =ʔu] 
+<AV>RDP-arrive GEN child =1s.GEN
 'my child's is arriving'
 
 #23
@@ -252,21 +252,21 @@ Source: a:155
 Vetted: s
 Judgment: g
 Phenomena: {case, determiners, word order}
-eg'ang-en de in karajum-sid
-eg'ang-en=de    [in  karajum=sid]
-ʔәgʔaŋ-әn=dә    [ʔin karajum=sid]
-leave-PV=3s.GEN ABS  needle=PL
+eg'ang-en de in karajum-i-sid
+eg'ang-en =de     [in  karajum=i=sid]
+ʔәgʔaŋ-әn =dә     [ʔin karajum=i=sid]
+leave-PV  =3s.GEN ABS  needle=SPEC=PL
 'they remove the needles'
 
-#24 Specificity marker -i must be before plural marker =sid
+#24 Specificity marker =i must be before plural marker =sid
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {word order}
 eg'ang-en de in karajum-sid-i
-eg'ang-en=de    [in  karajum=sid=i]
-ʔәgʔaŋ-әn=dә    [ʔin karajum=sid=i]
-leave-PV=3s.GEN ABS  needle=PL=SPEC
+eg'ang-en =de     [in  karajum=sid=i]
+ʔәgʔaŋ-әn =dә     [ʔin karajum=sid=i]
+leave-PV  =3s.GEN ABS  needle=PL=SPEC
 'they remove the needles'
 
 #25 Asyndeton VP clause coordination
@@ -274,66 +274,66 @@ Source: a:148-149
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, coordination, negation, pronouns, word order}
-mensiyá mensiyá pagka awon na'a ininta
-men-siyá men-siyá [pagka awon=na=a               <in>inta]
-mәn-sija mәn-sija [pagka ʔawun=na=ʔa             ʔ<in>inta]
-AV-cry   AV-cry   when   not.exist=3s.GEN=2s.ABS <PRF>see
-'he cries and cries when he does not see you'
+mensiyá mensiyá
+men-siyá men-siyá
+mәn-sija mәn-sija
+AV-cry   AV-cry
+'(he) cries and cries'
 
 #26 'kesara' doesn't coordinate VP clauses
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {coordination}
-mensiyá kesara mensiyá pagka awon na'a ininta
-men-siyá kesara men-siyá [pagka awon=na=a               <in>inta]
-mәn-sija kisara mәn-sija [pagka ʔawun=na=ʔa             ʔ<in>inta]
-AV-cry   than   AV-cry   when   not.exist=3s.GEN=2s.ABS <PRF>see
-'he cries than cries when he does not see you'
+mensiyá kesara mensiyá
+men-siyá kesara men-siyá
+mәn-sija kisara mәn-sija
+AV-cry   than   AV-cry
+'(he) cries than cries'
 
 #27 Omission of absolutive argument
 Source: a:201
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, tense aspect mood}
-aydi, ginuyod nen ni Lettaw
-aydi  g<in>uyod=nen        [ni Lettaw]
-ʔajdi g<in>ujud=nәn        [ni littaw]
-INTJ  <PRF.PV>pull=already GEN Lettaw
-'ay di, Lettaw pulled it'
+ginuyod nen ni asó
+g<in>uyod    =nen     [ni asó]
+g<in>ujud    =nәn     [ni ʔasu]
+<PRF.PV>pull =already GEN dog
+'The dog pulled it'
 
 #28 Cannot omit genitive actor
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {argument optionality}
-aydi, ginuyod nen
-aydi  g<in>uyod=nen
-ʔajdi g<in>ujud=nәn
-INTJ  <PRF.PV>pull=already
-'ay di, (someone) pulled it'
+ginuyod nen
+g<in>uyod    =nen
+g<in>ujud    =nәn
+<PRF.PV>pull =already
+'(Someone) pulled it'
 
-#29 'ti' is an absolutive singular person word article
-Source: a:130-131
-Vetted: s
+#29 'in' is an absolutive singular common word article
+Source: author
+Vetted: f
 Judgment: g
 Phenomena: {case, determiners}
-ti'sen mapoled ti Alex
-ti'sen       ma-poled [ti Alex]
-tiʔsin       mә-pulәd [ti ʔaliks]
-PROX.DEM.LOC ST-sleep ABS Alex
-'here is where Alex sleeps'
+ma-póled in asó
+ma-póled [in asó]
+mә-pulәd [in ʔasu]
+ST-sleep ABS dog
+'The dog sleeps'
 
-#30 'in' is an absolutive singular common word article
+#30 'ti' is an absolutive singular person word article
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {determiners}
-ti'sen mapoled in Alex
-ti'sen       ma-poled [in  Alex]
-tiʔsin       mә-pulәd [ʔin ʔaliks]
-PROX.DEM.LOC ST-sleep ABS  Alex
-'here is where Alex sleeps'
+ma-póled ti asó
+ma-póled [ti  asó]
+mә-pulәd [ti ʔasu]
+ST-sleep ABS  dog
+'The dog sleeps'
 
 #31 'nen' is a possessive strategy particle
 Source: a
@@ -341,9 +341,9 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 palitan na in beli nen aparato
-palit-an=na       [in  beli  [nen aparato]]
-palit-an=na       [ʔin beli  [nen aparato]]
-change-LV=3s.GEN  ABS  frame POSS device
+palit-an  =na      [in  beli  [nen  aparato]]
+palit-an  =na      [ʔin bәli  [nәn  ʔaparatu]]
+change-LV =3s.GEN  ABS  house D.GEN device
 'he changes the frame of the device'
 
 #32 'nen' is a possessive strategy particle
@@ -352,9 +352,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na in beli aparato
-palit-an=na       [in  beli  aparato]
-palit-an=na       [ʔin beli  aparato]
-change-LV=3s.GEN  ABS  frame device
+palit-an  =na      [in  beli  aparato]
+palit-an  =na      [ʔin bәli  ʔaparatu]
+change-LV =3s.GEN  ABS  house device
 'he changes the frame device'
 
 #33 'nen' is a possessive strategy particle
@@ -363,9 +363,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na in beli aparato
-palit-an=na       [in [nen  beli  aparato]]
-palit-an=na       [in [nen  beli  aparato]]
-change-LV=3s.GEN  ABS POSS frame device
+palit-an  =na      [in [nen  beli  aparato]]
+palit-an  =na      [in [nәn  bәli  ʔaparatu]]
+change-LV =3s.GEN  ABS D.GEN house device
 'he changes of frame device'
 
 #34 'nen' is a possessive strategy particle
@@ -374,9 +374,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na in beli aparato nen
-palit-an=na       [in  beli  aparato nen]
-palit-an=na       [in beli  aparato  nen]
-change-LV=3s.GEN  ABS  frame device POSS
+palit-an  =na      [in  beli  aparato  nen]
+palit-an  =na      [in  bәli  ʔaparatu nәn]
+change-LV =3s.GEN  ABS  house device   D.GEN
 'he changes of frame device'
 
 #35 'nen' is a possessive strategy particle
@@ -385,10 +385,10 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na in beli nen
-palit-an=na       [in  beli  [nen]]
-palit-an=na       [ʔin beli  [nen]]
-change-LV=3s.GEN  ABS  frame POSS
-'he changes the frame of the '
+palit-an  =na      [in  beli  [nen]]
+palit-an  =na      [ʔin bәli  [nәn]]
+change-LV =3s.GEN  ABS  house D.GEN
+'he changes the frame of the'
 
 #36 'nen' is a possessive strategy particle
 Source: a
@@ -396,9 +396,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na in nen aparato
-palit-an=na       [in   [nen aparato]]
-palit-an=na       [ʔin  [nen aparato]]
-change-LV=3s.GEN  ABS POSS device
+palit-an  =na      [in   [nen  aparato]]
+palit-an  =na      [ʔin  [nәn  ʔaparatu]]
+change-LV =3s.GEN  ABS   D.GEN device
 'he changes the of the device'
 
 #37 'nen' is a possessive strategy particle
@@ -407,9 +407,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palitan na siya nen aparato
-palit-an=na       [sija     [nen aparato]]
-palit-an=na       [sija     [nen aparato]]
-change-LV=3s.GEN  [3s.ABS   [POSS device]]
+palit-an  =na      [siya     [nen   aparato]]
+palit-an  =na      [sija     [nәn   ʔaparatu]]
+change-LV =3s.GEN  3s.ABS    D.GEN  device
 'he changes it of the device'
 
 #38 '=na' is a possessive pronoun enclitic
@@ -418,8 +418,8 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 eg'angen  mi in set na
-eg'ang-en =mi      [in  set =na]
-ʔәgʔaŋ-әn =mi      [ʔin sit =na]
+eg'ang-en =mi      [in  set   =na]
+ʔәgʔaŋ-әn =mi      [ʔin sit   =na]
 remove-PV =1pe.GEN ABS  thorn =3s.GEN 
 'we remove his thorn'
 
@@ -429,8 +429,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 eg'angen  mi in na set
-eg'ang-en =mi      [in  =na set]
-ʔәgʔaŋ-әn =mi      [ʔin =na sit]
+eg'ang-en =mi      [in  =na     set]
+ʔәgʔaŋ-әn =mi      [ʔin =na     sit]
 remove-PV =1pe.GEN ABS  =3s.GEN thorn
 'we remove thorn his'
 
@@ -442,7 +442,7 @@ Phenomena: {possessives}
 eg'angen  mi na in set
 eg'ang-en =mi      [=na    [in  set]]
 ʔәgʔaŋ-әn =mi      [=na    [ʔin sit]]
-remove-PV =1pe.GEN =3s.GEN ABS thorn
+remove-PV =1pe.GEN =3s.GEN ABS  thorn
 'we remove his a thorn'
 
 #41 '=miyu' is a possessive pronoun enclitic
@@ -451,8 +451,8 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 dumateng tiyama miyu
-d<um>ateng tiyama =miyu
-d<um>atәŋ  tijama =miju
+d<um>ateng tiyama     =miyu
+d<um>atәŋ  tijama     =miju
 <AV>arrive ABS.father =2p.Gen
 'your father arrives'
 
@@ -462,8 +462,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 dumateng miyu tiyama 
-d<um>ateng =miyu tiyama 
-d<um>atәŋ =miju tijama 
+d<um>ateng =miyu   tiyama 
+d<um>atәŋ  =miju   tijama 
 <AV>arrive =2p.Gen ABS.father 
 'father your arrives'
 
@@ -484,9 +484,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 dumateng siya miyu
-d<um>ateng sija   =miju
-d<um>atәŋ  sija   =miju
-<AV>arrive ABS    =2p.Gen
+d<um>ateng sija =miyu
+d<um>atәŋ  sija =miju
+<AV>arrive ABS  =2p.Gen
 'your he arrives'
 
 #45 'habang' is a clausal modifier
@@ -496,7 +496,7 @@ Judgment: g
 Phenomena: {clausal modifier}
 dumateng tiyama habang meng-an
 d<um>ateng tiyama      habang meng-an
-d<um>atәŋ  tijama      habaŋ  meŋ-an
+d<um>atәŋ  tijama      habaŋ  mәŋ-ʔan
 <AV>arrive ABS.father  while  AV-eat.ABS
 'father arrives while eating'
 
@@ -506,9 +506,9 @@ Vetted: f
 Judgment: g
 Phenomena: {clausal modifier}
 habang meng-an, dumateng tiyama 
-habang meng-an, d<um>ateng tiyama      
-habaŋ  meŋ-an,  d<um>atәŋ  tijama      
-while  AV-eat.ABS, <AV>arrive ABS.father  
+habang meng-an,   d<um>ateng tiyama      
+habaŋ  meŋ-an,    d<um>atәŋ  tijama      
+while  AV-eat.ABS <AV>arrive ABS.father  
 'while eating, father arrives'
 
 #47 'habang' is a clausal modifier
@@ -517,9 +517,9 @@ Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
 meng-an, dumateng tiyama 
-meng-an, d<um>ateng tiyama      
-meŋ-an,  d<um>atәŋ  tijama      
- AV-eat.ABS, <AV>arrive ABS.father  
+meng-an,   d<um>ateng tiyama      
+meŋ-an,    d<um>atәŋ  tijama      
+AV-eat.ABS <AV>arrive ABS.father  
 'eating, father arrives'
 
 #48 'habang' is a clausal modifier
@@ -528,9 +528,9 @@ Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
 dumateng tiyama meng-an
-d<um>ateng tiyama      meng-an
-d<um>atәŋ  tijama      meŋ-an
-<AV>arrive ABS.father  while  AV-eat.ABS
+d<um>ateng tiyama     habang meng-an
+d<um>atәŋ  tijama     habeng mәŋ-ʔan
+<AV>arrive ABS.father while  AV-eat.ABS
 'father arrives eats'
 
 #49 'habang' is a clausal modifier
@@ -540,7 +540,7 @@ Judgment: u
 Phenomena: {clausal modifier}
 dumateng habang tiyama meng-an
 d<um>ateng habang tiyama meng-an
-d<um>atәŋ  habeng tijama meŋ-an
+d<um>atәŋ  habeng tijama mәŋ-ʔan
 <AV>arrive while ABS.father AV-eat.ABS
 'arrives while father eats'
 
@@ -550,9 +550,7 @@ Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
 meng-an tiyama pag dumateng
-meng-an tiyama  pag  d<um>ateng
-meŋ-an  tijama  pag  d<um>atәŋ 
+meng-an    tiyama pag  d<um>ateng
+meŋ-ʔan    tijama pag  d<um>atәŋ 
 AV-eat.ABS father when <AV>arrive
 'father eat when he arrives'
-
-

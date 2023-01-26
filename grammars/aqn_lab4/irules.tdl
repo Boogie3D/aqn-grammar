@@ -1,0 +1,258 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+content_word_prefixes-prefix1 :=
+%prefix (* a-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix2 :=
+%prefix (* pen-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix3 :=
+%prefix (* peng-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix4 :=
+%prefix (* pengi-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix5 :=
+%prefix (* pet-)
+content_word_prefixes-lex-rule.
+
+alternation-suffix1 :=
+%suffix (* -'an)
+alternation-lex-rule.
+
+alternation-suffix2 :=
+%suffix (* -an)
+alternation-lex-rule.
+
+alternation-suffix3 :=
+%suffix (* -'en)
+alternation-lex-rule.
+
+alternation-suffix4 :=
+%suffix (* -en)
+alternation-lex-rule.
+
+alternation-suffix5 :=
+%suffix (* -'na)
+alternation-lex-rule.
+
+alternation-suffix6 :=
+%suffix (* -na)
+alternation-lex-rule.
+
+alternation-suffix7 :=
+%suffix (* -'e)
+alternation-lex-rule.
+
+alternation-suffix8 :=
+%suffix (* -e)
+alternation-lex-rule.
+
+alternation-suffix9 :=
+%suffix (* -'o)
+alternation-lex-rule.
+
+alternation-suffix10 :=
+%suffix (* -o)
+alternation-lex-rule.
+
+specifity-suffix :=
+%suffix (* -i)
+specifity-lex-rule.
+
+adverb_D-suffix1 :=
+%suffix (* -d)
+adverb_D-lex-rule.
+
+adverb_D-suffix2 :=
+%suffix (* =d)
+adverb_D-lex-rule.
+
+little_adj-suffix1 :=
+%suffix (* -ba'ik)
+little_adj-lex-rule.
+
+little_adj-suffix2 :=
+%suffix (* ba'ik)
+little_adj-lex-rule.
+
+plural_ultimate_suffix-suffix1 :=
+%suffix (* -sid)
+plural_ultimate_suffix-lex-rule.
+
+plural_ultimate_suffix-suffix2 :=
+%suffix (* =sid)
+plural_ultimate_suffix-lex-rule.
+
+plural_ultimate_suffix-suffix3 :=
+%suffix (* 'sid)
+plural_ultimate_suffix-lex-rule.
+
+active_prefix-prefix1 :=
+%prefix (* men-)
+active_prefix-lex-rule.
+
+active_prefix-prefix2 :=
+%prefix (* meng-)
+active_prefix-lex-rule.
+
+active_prefix-prefix3 :=
+%prefix (* i-)
+active_prefix-lex-rule.
+
+active_prefix-prefix4 :=
+%prefix (* man-)
+active_prefix-lex-rule.
+
+active_prefix-prefix5 :=
+%prefix (* mang-)
+active_prefix-lex-rule.
+
+active_prefix-prefix6 :=
+%prefix (* mangi-)
+active_prefix-lex-rule.
+
+active_prefix-prefix7 :=
+%prefix (* mengi-)
+active_prefix-lex-rule.
+
+active_prefix-prefix8 :=
+%prefix (* um-)
+active_prefix-lex-rule.
+
+active_prefix-prefix9 :=
+%prefix (* -um-)
+active_prefix-lex-rule.
+
+passive_prefix-prefix1 :=
+%prefix (* ma-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix2 :=
+%prefix (* me-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix3 :=
+%prefix (* pan-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix4 :=
+%prefix (* pen-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix5 :=
+%prefix (* pang-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix6 :=
+%prefix (* peng-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix7 :=
+%prefix (* pangi-)
+passive_prefix-lex-rule.
+
+passive_prefix-prefix8 :=
+%prefix (* pengi-)
+passive_prefix-lex-rule.
+
+unknown-prefix1 :=
+%prefix (* pi-)
+unknown-lex-rule.
+
+unknown-prefix2 :=
+%prefix (* ma-)
+unknown-lex-rule.
+
+unknown-prefix3 :=
+%prefix (* me'a-)
+unknown-lex-rule.
+
+unknown-prefix4 :=
+%prefix (* me'e)
+unknown-lex-rule.
+
+unknown-prefix5 :=
+%prefix (* me'e-)
+unknown-lex-rule.
+
+unknown-prefix6 :=
+%prefix (* me'i-)
+unknown-lex-rule.
+
+unknown-prefix7 :=
+%prefix (* mengi-)
+unknown-lex-rule.
+
+unknown-prefix8 :=
+%prefix (* pengi-)
+unknown-lex-rule.
+
+unknown-prefix9 :=
+%prefix (* pe-)
+unknown-lex-rule.
+
+oblique_obj_adding-prefix :=
+%prefix (* meng-)
+oblique_obj_adding-lex-rule.
+
+perfective_infix-prefix1 :=
+%prefix (* -in--um-)
+perfective_infix-lex-rule.
+
+perfective_infix-prefix2 :=
+%prefix (* m--in--en-)
+perfective_infix-lex-rule.
+
+perfective_infix-prefix3 :=
+%prefix (* ma--in-)
+perfective_infix-lex-rule.
+
+perfective_infix-prefix4 :=
+%prefix (* meng--in-)
+perfective_infix-lex-rule.
+
+perfective_infix-prefix5 :=
+%prefix (* me'e--in-)
+perfective_infix-lex-rule.
+
+perfective_infix-prefix6 :=
+%prefix (* mengi--in-)
+perfective_infix-lex-rule.
+
+progressive_infix-prefix1 :=
+%prefix (* C--um-)
+progressive_infix-lex-rule.
+
+progressive_infix-prefix2 :=
+%prefix (* meng--CV-)
+progressive_infix-lex-rule.
+
+progressive_infix-prefix3 :=
+%prefix (* eC-)
+progressive_infix-lex-rule.
+
+progressive_infix-prefix4 :=
+%prefix (* i-eC-)
+progressive_infix-lex-rule.
+
+voice_suffix-suffix1 :=
+%suffix (* -'en)
+voice_suffix-lex-rule.
+
+voice_suffix-suffix2 :=
+%suffix (* -en)
+voice_suffix-lex-rule.
+
+voice_suffix-suffix3 :=
+%suffix (* -'an)
+voice_suffix-lex-rule.
+
+voice_suffix-suffix4 :=
+%suffix (* -an)
+voice_suffix-lex-rule.
