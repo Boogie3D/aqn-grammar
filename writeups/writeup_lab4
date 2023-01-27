@@ -10,13 +10,13 @@ Date: 25 January 2023
         +-------------+----------------------+-------------------------+------------------------------+
         | Test Corpus | Items Parsed         | 2240                    | 2240                         |
         +-------------+----------------------+-------------------------+------------------------------+
-        |             | Total Results        | 192                     | 137                          |
+        |             | Total Results        | 81                      | 137                          |
         +-------------+----------------------+-------------------------+------------------------------+
-        |             | Total Readings       | 593                     | 612                          |
+        |             | Total Readings       | 300                     | 612                          |
         +-------------+----------------------+-------------------------+------------------------------+
-        |             | Avg. Readings/Result | 3.089                   | 4.467                        |
+        |             | Avg. Readings/Result | 3.704                   | 4.467                        |
         +-------------+----------------------+-------------------------+------------------------------+
-        |             | Coverage             | 8.6%                    | 6.1%                         |
+        |             | Coverage             | 3.6%                    | 6.1%                         |
         +-------------+----------------------+-------------------------+------------------------------+
         |             | Overgeneration       | 100%                    | 100%                         |
         +-------------+----------------------+-------------------------+------------------------------+
@@ -44,7 +44,8 @@ Date: 25 January 2023
         |             |                      |                         | HEAD-ADJ-INT rule            |
         +-------------+----------------------+-------------------------+------------------------------+
 
-Please note that the drop in coverage can be attributed to using the updated LKB settings Professor Bender announced early this week.
+Please note that the difference in our lab3 grammar statistics between our last submission and this one is attributable to 
+the updated LKB settings Professor Bender announced early this week.
 
 2 & 3. We implemented the following phenomena in both our choices customizaiton file and testsuite:
 
