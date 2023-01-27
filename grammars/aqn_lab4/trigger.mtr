@@ -16,9 +16,9 @@ o_case-marker_tono_gr_3 := arg0e_gtr &
     FLAGS [ SUBSUME < #i >,
             TRIGGER "o_case-marker_tono" ] ].
 
-ti_3_gr := arg0e_gtr &
+ti_2_gr := arg0e_gtr &
   [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
-    FLAGS.TRIGGER "ti_3" ].
+    FLAGS.TRIGGER "ti_2" ].
 
 baga_gr := arg0e_gtr &
   [ CONTEXT.RELS.LIST < [ PRED "non_existing_rel" ] >,

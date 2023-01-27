@@ -256,3 +256,11 @@ voice_suffix-lex-rule.
 voice_suffix-suffix4 :=
 %suffix (* -an)
 voice_suffix-lex-rule.
+
+adverb_d_verb_lex-suffix1 :=
+%suffix (* -d)
+adverb_d_verb_lex-lex-rule.
+
+adverb_d_verb_lex-suffix2 :=
+%suffix (* =d)
+adverb_d_verb_lex-lex-rule.

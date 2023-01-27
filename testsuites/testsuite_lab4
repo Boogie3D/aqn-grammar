@@ -163,29 +163,29 @@ AV-search  LOC younger.sibling
 Source: a:188
 Vetted: s
 Judgment: g
-Phenomena: {case, tense aspect mood, determiners, word order}
-lumelbut nen in kaldero
-lumel-but    =nen      [in  kaldero]
-l<um>l-but   =nәn      [ʔin kaldiru]
-<AV>RDP-boil =already  ABS  pot
+Phenomena: {case, word order}
+lumelbut in kaldero
+lumel-but       [in  kaldero]
+l<um>l-but      [ʔin kaldiru]
+<AV>RDP-boil  ABS  pot
 'the (content of the) pot is already boiling'
 
 #16
 Source: author
 Vetted: f
-Judgment: g
-Phenomena: {case, tense aspect mood, determiners, word order}
-lumelbut sep in kaldero
-lumel-but    =sep   [in  kaldero]
-l<um>l-but   =sip   [ʔin kaldiru]
-<AV>RDP-boil =still ABS  pot
+Judgment: u
+Phenomena: {case, word order}
+lumelbut ti kaldero
+lumel-but       [ti  kaldero]
+l<um>l-but      [ti kaldiru]
+<AV>RDP-boil ABS  pot
 'the (content of the) pot is still boiling'
 
 #17 Northern Alta uses temporal adverbs in place of tense/aspect
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {case, tense aspect mood, determiners, word order}
+Phenomena: {tense aspect mood, word order}
 dya'yay lumelbut in kaldero
 dya'yay  lumel-but    [in  kaldero]
 dijaʔjaj l<um>l-but   [ʔin kaldiru]
@@ -230,7 +230,7 @@ Source: a:188
 Vetted: s
 Judgment: g
 Phenomena: {case, determiners, word order}
-dumdateng in ana' 'o
+dumdateng in ána' ='o
 d<um>d-ateng   [in  ana'  ='o]
 d<um>d-ateŋ    [ʔin ʔanaʔ =ʔu] 
 <AV>RDP-arrive ABS  child =1s.GEN
@@ -241,7 +241,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-dumdateng ni ana' 'o
+dumateng ni ána' ='o
 d<um>d-ateng   [ni ana'  ='o]
 d<um>d-ateŋ    [ni ʔanaʔ =ʔu] 
 <AV>RDP-arrive GEN child =1s.GEN
@@ -296,7 +296,7 @@ Source: a:201
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, tense aspect mood}
-ginuyod nen ni asó
+ginuyod =nen ni asó
 g<in>uyod    =nen     [ni asó]
 g<in>ujud    =nәn     [ni ʔasu]
 <PRF.PV>pull =already GEN dog
@@ -340,7 +340,7 @@ Source: a
 Vetted: f
 Judgment: g
 Phenomena: {possessives}
-palitan na in beli nen aparato
+palit-an na in beli nen aparato
 palit-an  =na      [in  beli  [nen  aparato]]
 palit-an  =na      [ʔin bәli  [nәn  ʔaparatu]]
 change-LV =3s.GEN  ABS  house D.GEN device
@@ -351,7 +351,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na in beli aparato
+palit-an na in beli aparato
 palit-an  =na      [in  beli  aparato]
 palit-an  =na      [ʔin bәli  ʔaparatu]
 change-LV =3s.GEN  ABS  house device
@@ -362,7 +362,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na in beli aparato
+palit-an na in beli aparato
 palit-an  =na      [in [nen  beli  aparato]]
 palit-an  =na      [in [nәn  bәli  ʔaparatu]]
 change-LV =3s.GEN  ABS D.GEN house device
@@ -373,7 +373,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na in beli aparato nen
+palit-an na in beli aparato nen
 palit-an  =na      [in  beli  aparato  nen]
 palit-an  =na      [in  bәli  ʔaparatu nәn]
 change-LV =3s.GEN  ABS  house device   D.GEN
@@ -384,7 +384,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na in beli nen
+palit-an na in beli nen
 palit-an  =na      [in  beli  [nen]]
 palit-an  =na      [ʔin bәli  [nәn]]
 change-LV =3s.GEN  ABS  house D.GEN
@@ -395,7 +395,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na in nen aparato
+palit-an na in nen aparato
 palit-an  =na      [in   [nen  aparato]]
 palit-an  =na      [ʔin  [nәn  ʔaparatu]]
 change-LV =3s.GEN  ABS   D.GEN device
@@ -406,7 +406,7 @@ Source: a
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-palitan na siya nen aparato
+palit-an na siya nen aparato
 palit-an  =na      [siya     [nen   aparato]]
 palit-an  =na      [sija     [nәn   ʔaparatu]]
 change-LV =3s.GEN  3s.ABS    D.GEN  device
@@ -417,7 +417,7 @@ Source: a:190
 Vetted: f
 Judgment: g
 Phenomena: {possessives}
-eg'angen  mi in set na
+eg'ang-en =mi in set =na
 eg'ang-en =mi      [in  set   =na]
 ʔәgʔaŋ-әn =mi      [ʔin sit   =na]
 remove-PV =1pe.GEN ABS  thorn =3s.GEN 
@@ -428,7 +428,7 @@ Source: a:190
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-eg'angen  mi in na set
+eg'ang-en  =mi in =na set
 eg'ang-en =mi      [in  =na     set]
 ʔәgʔaŋ-әn =mi      [ʔin =na     sit]
 remove-PV =1pe.GEN ABS  =3s.GEN thorn
@@ -439,7 +439,7 @@ Source: a:190
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-eg'angen  mi na in set
+eg'ang-en  =mi =na in set
 eg'ang-en =mi      [=na    [in  set]]
 ʔәgʔaŋ-әn =mi      [=na    [ʔin sit]]
 remove-PV =1pe.GEN =3s.GEN ABS  thorn
@@ -450,7 +450,7 @@ Source: a:222
 Vetted: f
 Judgment: g
 Phenomena: {possessives}
-dumateng tiyama miyu
+dumateng tiyama =miyu
 d<um>ateng tiyama     =miyu
 d<um>atәŋ  tijama     =miju
 <AV>arrive ABS.father =2p.Gen
@@ -544,13 +544,47 @@ d<um>atәŋ  habeng tijama mәŋ-ʔan
 <AV>arrive while ABS.father AV-eat.ABS
 'arrives while father eats'
 
-#50 'pag' is a clausal modifier
+#50 'adino' is an interrogative adverb
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wh- clauses}
+adino m--in--en-gina-d?
+adino      m<in>en-gina   =d?
+ʔadinu     m<in>әn-gina   =d?
+where      <PRF>AV-run    =d?
+'where did (you) run?'
+
+#51 adverbial question word order
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {clausal modifier}
-meng-an tiyama pag dumateng
-meng-an    tiyama pag  d<um>ateng
-meŋ-ʔan    tijama pag  d<um>atәŋ 
-AV-eat.ABS father when <AV>arrive
-'father eat when he arrives'
+Phenomena: {wh- clauses}
+m--in--en-gina-d adino?
+m<in>en-gina=d adino?
+m<in>әn-gina=d ʔadinu?
+<PRF>AV-run=d  where?
+'run (you) where?'
+
+#52 'tiyaheno' is an interrogative pronoun
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wh- clauses}
+tiyaheno dumateng?
+tiʔahinu d<um>ateng?
+tiʔahinu d<um>atәŋ?
+who  <AV>arrive?
+'who arrives?'
+
+#53 pronominal question word order
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {wh- clauses}
+dumateng tiyaheno?
+d<um>ateng tiʔahinu?
+d<um>atәŋ tiʔahinu?
+who  <AV>arrive?
+'arrives who?'
+

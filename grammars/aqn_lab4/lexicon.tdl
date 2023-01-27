@@ -1065,6 +1065,26 @@ i_27én := demonstrative_pronouns-noun-lex &
   [ STEM < "i'én" >,
     SYNSEM.LKEYS.KEYREL.PRED "_this_n_rel" ].
 
+aheno := interrogative_pronouns-noun-lex &
+  [ STEM < "aheno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thing_n_rel" ].
+
+tiyaheno := interrogative_pronouns-noun-lex &
+  [ STEM < "tiyaheno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
+
+ti-ahéno := interrogative_pronouns-noun-lex &
+  [ STEM < "ti-ahéno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
+
+tiyahéno := interrogative_pronouns-noun-lex &
+  [ STEM < "tiyahéno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
+
+ahéno := interrogative_pronouns-noun-lex &
+  [ STEM < "ahéno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thing _n_rel" ].
+
 ;;; Adjectives
 
 ;;; Case-marking adpositions
@@ -1398,6 +1418,30 @@ poled := intransitive_verb-verb-lex &
 póled := intransitive_verb-verb-lex &
   [ STEM < "póled" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+gína := intransitive_verb-verb-lex &
+  [ STEM < "gína" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+gínan := intransitive_verb-verb-lex &
+  [ STEM < "gínan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+gina := intransitive_verb-verb-lex &
+  [ STEM < "gina" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+ginan := intransitive_verb-verb-lex &
+  [ STEM < "ginan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+mengínan := intransitive_verb-verb-lex &
+  [ STEM < "mengínan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_away_v_rel" ].
+
+menginan := intransitive_verb-verb-lex &
+  [ STEM < "menginan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_away_v_rel" ].
 
 benta := di_transitive-verb-lex &
   [ STEM < "benta" >,
@@ -2155,10 +2199,6 @@ báwal := transitive_verbs-verb-lex &
   [ STEM < "báwal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_forbid_v_rel" ].
 
-palit-an := transitive_verbs-verb-lex &
-  [ STEM < "palit-an" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_change_v_rel" ].
-
 inesabit := transitive_verbs-verb-lex &
   [ STEM < "inesabit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hang_v_rel" ].
@@ -2169,7 +2209,7 @@ gate_27 := transitive_verbs-verb-lex &
 
 palit_2 := transitive_verbs-verb-lex &
   [ STEM < "palit" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_barter_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_barter_change_v_rel" ].
 
 eg_27ángen := transitive_verbs-verb-lex &
   [ STEM < "eg'ángen" >,
@@ -2189,7 +2229,7 @@ kung_2 := aux1-aux-lex &
   [ STEM < "kung" >,
     SYNSEM.LKEYS.KEYREL.PRED "_if_v_rel" ].
 
-ti_3 := aux2-aux-lex &
+ti_2 := aux2-aux-lex &
   [ STEM < "ti" > ].
 
 bísa := neg6-aux-lex &
@@ -2204,10 +2244,6 @@ awon := neg_exist-aux-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_not_v_rel" ].
 
 ;;; Determiners
-
-ti_1 := person_abs_sg-determiner-lex &
-  [ STEM < "ti" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_q_sg_rel" ].
 
 tid := person_abs_pl-determiner-lex &
   [ STEM < "tid" >,
@@ -2249,7 +2285,7 @@ niden_2 := common_loc_pl-determiner-lex &
   [ STEM < "niden" >,
     SYNSEM.LKEYS.KEYREL.PRED "_q_pl_rel" ].
 
-ti_2 := common_obl_sg-determiner-lex &
+ti_1 := common_obl_sg-determiner-lex &
   [ STEM < "ti" >,
     SYNSEM.LKEYS.KEYREL.PRED "_q_sg_rel" ].
 
@@ -2299,6 +2335,38 @@ _3Dnen := again-adverb-lex &
   [ STEM < "=nen" >,
     SYNSEM.LKEYS.KEYREL.PRED "_=nen_a_rel" ].
 
+adino := question_adverbs_time_space-adverb-lex &
+  [ STEM < "adino" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_where_a_rel" ].
+
+nu_27ano := question_adverbs_time_space-adverb-lex &
+  [ STEM < "nu'ano" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_when_a_rel" ].
+
+anon := question_adverb_manner-adverb-lex &
+  [ STEM < "anon" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_why_a_rel" ].
+
+anompan := question_adverb_manner-adverb-lex &
+  [ STEM < "anompan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_why_a_rel" ].
+
+kumusta := question_adverb_manner-adverb-lex &
+  [ STEM < "kumusta" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_how_is_a_rel" ].
+
+ma_27in := question_adverb_manner-adverb-lex &
+  [ STEM < "ma'in" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_why_a_rel" ].
+
+papeno := question_adverb_manner-adverb-lex &
+  [ STEM < "papeno" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_how_a_rel" ].
+
+sa_27ano := question_adverb_manner-adverb-lex &
+  [ STEM < "sa'ano" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_how_many_much_a_rel" ].
+
 possessor-adp-1 := possessor-adp-lex-1 &
   [ STEM < "nen" > ].
 
@@ -2344,9 +2412,9 @@ at5 := conj-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
     CFORM "5" ].
 
-da := s-attach-clause-init-subord-lex-item &
-  [ STEM < "da" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_because_subord_rel" ].
+habang := s-attach-clause-init-subord-lex-item &
+  [ STEM < "habang" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_while_subord_rel" ].
 
 bagay := s-attach-clause-init-subord-lex-item &
   [ STEM < "bagay" >,
@@ -2356,17 +2424,17 @@ balo := s-attach-clause-init-subord-lex-item &
   [ STEM < "balo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_before_subord_rel" ].
 
+da := s-attach-clause-init-subord-lex-item &
+  [ STEM < "da" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_because_since_subord_rel" ].
+
 dahil := s-attach-clause-init-subord-lex-item &
   [ STEM < "dahil" >,
     SYNSEM.LKEYS.KEYREL.PRED "_because_subord_rel" ].
 
-habang := s-attach-clause-init-subord-lex-item &
-  [ STEM < "habang" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_while_subord_rel" ].
-
 hangan := s-attach-clause-init-subord-lex-item &
   [ STEM < "hangan" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_evenif_subord_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_while_subord_rel" ].
 
 kasi := s-attach-clause-init-subord-lex-item &
   [ STEM < "kasi" >,

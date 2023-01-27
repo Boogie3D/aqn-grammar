@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Thu Jan 26 05:55:23 UTC 2023
+;;;     Fri Jan 27 19:44:46 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Fri 10 Jun 2022 12:58:58 AM UTC
 ;;;
@@ -33,18 +33,18 @@ head :+ [ PRON bool,
 
 +npd :+ [ CASE case ].
 
-inflected :+ [ VERB_FIRST_SUFFIX-FLAG luk,
-    INITIAL_SUFFIX-FLAG luk,
-    INTRANSITIVE-VERB-FLAG luk,
+inflected :+ [ PREFIXES-FLAG luk,
     VERB_PREFIX_OPTIONS-FLAG luk,
-    PREFIXES-FLAG luk,
+    INITIAL_SUFFIX-FLAG luk,
+    VERB_FIRST_SUFFIX-FLAG luk,
+    INTRANSITIVE-VERB-FLAG luk,
     ULTIMATE_SUFFIX-FLAG luk ].
 
-infl-satisfied :+ [ VERB_FIRST_SUFFIX-FLAG na-or-+,
-    INITIAL_SUFFIX-FLAG na-or-+,
-    INTRANSITIVE-VERB-FLAG na-or-+,
+infl-satisfied :+ [ PREFIXES-FLAG na-or-+,
     VERB_PREFIX_OPTIONS-FLAG na-or-+,
-    PREFIXES-FLAG na-or-+,
+    INITIAL_SUFFIX-FLAG na-or-+,
+    VERB_FIRST_SUFFIX-FLAG na-or-+,
+    INTRANSITIVE-VERB-FLAG na-or-+,
     ULTIMATE_SUFFIX-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum ].
@@ -176,6 +176,22 @@ oblig := mood.
 ;;;;;;;;;;;;;;;;;;;
 
 ;;; Nouns
+
+wh-pronoun-noun-lex := basic-wh-word-lex & norm-hook-lex-item & basic-icons-lex-item & non-mod-lex-item & zero-arg-que &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD noun,
+                           VAL [ SPR < >,
+                                 SUBJ < >,
+                                 COMPS < >,
+                                 SPEC < > ] ],
+                     CONT [ RELS.LIST < [ LBL #larg,
+                                          ARG0 ref-ind & #arg0 ],
+                                        quant-relation &
+                                        [ PRED "which_q_rel",
+                                          ARG0 #arg0,
+                                          RSTR #harg ] >,
+                            HCONS.LIST < [ HARG #harg,
+                                           LARG #larg ] > ] ],
+             NON-LOCAL.QUE.LIST < #arg0 > ] ].
 
 noun-lex := basic-noun-lex & basic-non-wh-word-lex & non-local-none-lex-item & no-hcons-lex-item & non-mod-lex-item &
   [ ARG-ST < #spr >,
@@ -334,6 +350,8 @@ demonstrative_pronouns-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CAT.HEAD [ CASE abs,
                             CASE-MARKED + ] ].
 
+interrogative_pronouns-noun-lex := wh-pronoun-noun-lex.
+
 poss-pron1-noun-lex := non-local-none-lex-item &
   [ SYNSEM [ LKEYS.ALTKEYREL #altkeyrel & noun-relation &
                              [ PRED "pron_rel",
@@ -442,8 +460,9 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
                        HEAD.INIT + ] ].
 
 intransitive_verb-verb-lex := intransitive-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
-                                                     CASE-MARKED + ] ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL [ CAT.HEAD [ CASE abs,
+                                                       CASE-MARKED + ],
+                                            CONT.HOOK.ICONS-KEY focus ] ].
 
 di_transitive-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
@@ -543,7 +562,21 @@ s-attach-clause-init-subord-lex-item := subord-with-verbal-comp-lex &
                        HEAD [ MOD < [ LOCAL.CAT.VAL.SUBJ < > ] >,
                               INIT + ] ] ].
 
-clause :+ [ SYNSEM.NON-LOCAL.QUE.LIST < > ].
+; Do not allow extracting "And Kim"
+
+basic-head-filler-phrase :+ [ ARGS < [ SYNSEM.LOCAL.COORD - ],
+           [ SYNSEM.LOCAL.COORD - ] > ].
+
+extracted-comp-phrase := basic-extracted-comp-phrase &
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
+
+; Subject extraction
+
+extracted-subj-phrase := basic-extracted-subj-phrase &
+  [ SYNSEM.LOCAL.CAT.HEAD verb ].
+
+phrase-or-lexrule :+ [ SYNSEM.L-QUE #lque,
+    ARGS.FIRST.SYNSEM.L-QUE #lque ].
 
 ;;; Complementizers
 
@@ -577,11 +610,6 @@ determiner-lex := basic-determiner-lex & basic-non-wh-word-lex & norm-zero-arg &
                              COMPS < >,
                              SUBJ < > ],
                        HEAD.INIT + ] ].
-
-person_abs_sg-determiner-lex := determiner-lex & no-icons-lex-item &
-  [ SYNSEM [ L-QUE -,
-             LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD [ CASE abs,
-                                                       CASE-MARKED + ] ] ].
 
 person_abs_pl-determiner-lex := determiner-lex & no-icons-lex-item &
   [ SYNSEM [ L-QUE -,
@@ -695,6 +723,17 @@ sela-adverb-lex := manner-adverb-lex-item & adverb-lex.
 
 again-adverb-lex := loc-adverb-lex-item & adverb-lex.
 
+wh-adverb-lex := basic-wh-word-lex & adverb-lex-item & zero-arg-que &
+  [ SYNSEM [ LOCAL.CONT.RELS.LIST < [ ],
+                                    [ ARG0 #arg0 ],
+                                    quant-relation &
+                                    [ PRED "which_q_rel" ] >,
+             NON-LOCAL.QUE.LIST < #arg0 > ] ].
+
+question_adverbs_time_space-adverb-lex := loc-adverb-lex-item & wh-adverb-lex.
+
+question_adverb_manner-adverb-lex := manner-adverb-lex-item & wh-adverb-lex.
+
 two-rel-adposition-lex := basic-icons-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD adp,
                            VAL.COMPS < [ LOCAL [ CAT cat-sat,
@@ -742,28 +781,40 @@ basic-adposition-lex :+ [ SYNSEM.LOCAL.CAT [ HEAD.POSSESSOR nonpossessive,
 ;;; Lexical Rules
 ;;;;;;;;;;;;;;;;;;;
 
+; Adjective Incorporation
+
+adj_incorporation-lex-rule := add-only-rule &
+  [ C-CONT [ RELS.LIST < arg1-ev-relation &
+                         [ LBL #ltop,
+                           ARG1 #index ] >,
+             HOOK #hook ],
+    DTR.SYNSEM.LOCAL [ CAT.HEAD noun,
+                       CONT.HOOK #hook &
+                                 [ LTOP #ltop,
+                                   INDEX #index ] ] ].
+
 ;;; Intermediate rule types
 
 initial_suffix-rule-dtr := word-or-lexrule.
-prefixes-rule-dtr := word-or-lexrule.
-verb_first_suffix-rule-dtr := word-or-lexrule.
 ultimate_suffix-rule-dtr := word-or-lexrule.
+verb_first_suffix-rule-dtr := word-or-lexrule.
+prefixes-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
   [ INFLECTED [ PREFIXES-FLAG +,
-                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options ],
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ],
     DTR prefixes-rule-dtr &
-        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options ] ] ].
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
 
@@ -771,17 +822,17 @@ no_noun_prefix-lex-rule := const-lex-rule & prefixes-lex-rule-super.
 
 initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-dtr &
   [ INFLECTED [ INITIAL_SUFFIX-FLAG +,
-                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                PREFIXES-FLAG #prefixes,
                 VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes ],
+                INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ],
     DTR initial_suffix-rule-dtr &
-        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INTRANSITIVE-VERB-FLAG #intransitive-verb,
+        [ INFLECTED [ PREFIXES-FLAG #prefixes,
                       VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes ] ] ].
+                      INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
 
@@ -795,17 +846,17 @@ little_adj-lex-rule := infl-lex-rule & initial_suffix-lex-rule-super.
 
 ultimate_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ULTIMATE_SUFFIX-FLAG +,
-                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                PREFIXES-FLAG #prefixes,
+                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes ],
+                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ],
     DTR ultimate_suffix-rule-dtr &
-        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ PREFIXES-FLAG #prefixes,
+                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes ] ] ].
+                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ] ] ].
 
 no_ultimate_suffix-lex-rule := const-lex-rule & ultimate_suffix-lex-rule-super.
 
@@ -814,17 +865,17 @@ plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-supe
 
 verb_prefix_options-lex-rule-super := val-change-with-ccont-lex-rule & verb_first_suffix-rule-dtr &
   [ INFLECTED [ VERB_PREFIX_OPTIONS-FLAG +,
-                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+                PREFIXES-FLAG #prefixes,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                PREFIXES-FLAG #prefixes ],
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ],
     DTR verb-lex &
-        [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG #verb_first_suffix,
+        [ INFLECTED [ PREFIXES-FLAG #prefixes,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       INTRANSITIVE-VERB-FLAG #intransitive-verb,
-                      PREFIXES-FLAG #prefixes ] ] ].
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      VERB_FIRST_SUFFIX-FLAG #verb_first_suffix ] ] ].
 
 oblique_obj_adding-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & verb_prefix_options-lex-rule-super &
   [ DTR.INFLECTED.INTRANSITIVE-VERB-FLAG +,
@@ -846,32 +897,33 @@ progressive_infix-lex-rule := add-only-no-ccont-rule & infl-lex-rule & verb_pref
 
 verb_first_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ VERB_FIRST_SUFFIX-FLAG +,
-                INITIAL_SUFFIX-FLAG #initial_suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                PREFIXES-FLAG #prefixes,
                 VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                PREFIXES-FLAG #prefixes ],
+                INITIAL_SUFFIX-FLAG #initial_suffix,
+                INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix ],
     DTR verb_first_suffix-rule-dtr &
-        [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INTRANSITIVE-VERB-FLAG #intransitive-verb,
+        [ INFLECTED [ PREFIXES-FLAG #prefixes,
                       VERB_PREFIX_OPTIONS-FLAG #verb_prefix_options,
-                      PREFIXES-FLAG #prefixes ] ] ].
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
+                      INTRANSITIVE-VERB-FLAG #intransitive-verb,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix ] ] ].
 
 voice_suffix-lex-rule := infl-lex-rule & verb_first_suffix-lex-rule-super.
 
 null_first_suffix-lex-rule := const-lex-rule & verb_first_suffix-lex-rule-super.
 
-added-arg2of2-non-local-lex-rule := lex-rule.
+adverb_d_verb_lex-lex-rule := infl-lex-rule & verb_first_suffix-lex-rule-super.
 
-added-arg2of2-np-head-lex-rule := lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
+uninflected_intrans-lex-rule-super := add-only-no-ccont-rule & const-lex-rule &
+  [ INFLECTED #infl,
+    DTR intransitive_verb-verb-lex &
+        [ INFLECTED #infl ] ].
 
-basic-applicative-lex-rule := comps-change-only-lex-rule &
-  [ C-CONT [ RELS.LIST < event-relation &
-                         [ ARG1 #evt ] >,
-             HCONS.LIST < > ],
-    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
+control_intrans-lex-rule := uninflected_intrans-lex-rule-super &
+  [ DTR.ARG-ST #arg-st,
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ] > ].
 
 added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
@@ -879,6 +931,17 @@ added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2
                                            CONT.HOOK.INDEX #nind ] ] >,
     C-CONT.RELS.LIST < [ ARG2 #nind ] >,
     DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+
+added-arg2of2-np-head-lex-rule := lex-rule &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
+
+added-arg2of2-non-local-lex-rule := lex-rule.
+
+basic-applicative-lex-rule := comps-change-only-lex-rule &
+  [ C-CONT [ RELS.LIST < event-relation &
+                         [ ARG1 #evt ] >,
+             HCONS.LIST < > ],
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
@@ -901,7 +964,8 @@ possessum-mod-rule := basic-head-mod-phrase-simple &
     HEAD-DTR.SYNSEM.LOCAL.CAT.POSSESSUM #poss ].
 
 head-adj-int-phrase :+ possessum-mod-rule &
-  [ NON-HEAD-DTR.SYNSEM.NON-LOCAL.QUE.LIST < > ].
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ clist,
+                                    COMPS clist ] ].
 
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
@@ -932,15 +996,31 @@ my-adj-head-phrase := adj-head-int-phrase &
     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD +jrp,
                                     VAL.COMPS < > ] ].
 
+;;; Wh-question-related phrasal types
+
+wh-ques-phrase := basic-head-filler-phrase & interrogative-clause & head-final &
+  [ SYNSEM [ LOCAL.CAT [ WH.BOOL +,
+                         MC bool,
+                         VAL #val,
+                         HEAD verb ],
+             NON-LOCAL.QUE.LIST < > ],
+    NON-HEAD-DTR.SYNSEM [ NON-LOCAL [ QUE.LIST < ref-ind >,
+                                      SLASH.LIST < >,
+                                      REL.LIST < > ],
+                          LOCAL.CONT.HOOK.ICONS-KEY focus ],
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ VAL #val &
+                                    [ SUBJ < >,
+                                      COMPS < > ],
+                                MC na-or-+ ] ].
+
+; Complement extraction
+
+; Adjunct extraction
+
 basic-filler-phrase :+ [ SYNSEM.NON-LOCAL.SLASH.LIST < >,
     ARGS < [ SYNSEM [ LOCAL #slash,
                       NON-LOCAL.SLASH.LIST < > ] ],
            [ SYNSEM.NON-LOCAL.SLASH.LIST < #slash > ] > ].
-
-extracted-subj-phrase := basic-extracted-subj-phrase &
-  [ SYNSEM.LOCAL.CAT.HEAD verb ].
-
-;;; Wh-question-related phrasal types
 
 ;;;;;;;;;;;;;;;;;;
 ;;; Coordination

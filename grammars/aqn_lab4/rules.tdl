@@ -50,3 +50,13 @@ head-adj-scop := head-adj-scop-phrase.
 head-adj := my-head-adj-phrase.
 
 adj-head := my-adj-head-phrase.
+
+ex-comp := extracted-comp-phrase.
+
+ex-adj := basic-extracted-adj-phrase.
+
+ex-subj := extracted-subj-phrase.
+
+wh-ques := wh-ques-phrase.
+
+ex-det := extracted-det-phrase.
