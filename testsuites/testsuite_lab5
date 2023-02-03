@@ -591,15 +591,19 @@ who  <AV>arrive?
 #54 eng.txt 1 "Dogs sleep"
 Source: author
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: {case, determiners}
-meng-póled in asó
-meng-póled [in  asó]
-mәŋ-pulәd  [in  ʔasu]
-AV-sleep    ABS dog=PL
+ma-póled in asó
+ma-póled [in  asó]
+ma-pulәd  [in  ʔasu]
+AV-sleep    ABS dog
 'Dogs sleep'
 
 #55 eng.txt 2 "Dogs chase cars"
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, determiners}
 meng-damolag in asó ti sasakyan
 meng-damolag [in asó [ti  sasakyan]]
 mәŋ-damulag  [in asu [ti  sasakijan]]
@@ -607,6 +611,10 @@ AV-chase      ABS dog OBL vehicle
 'Dogs chase cars'
 
 #56 eng.txt 3 "I chase you"
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, pronouns}
 damolag-en ta'a
 damolag-en ta'a
 damulag-әn taʔa
