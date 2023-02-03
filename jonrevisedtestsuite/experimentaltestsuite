@@ -241,10 +241,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-C-um-daténg ni ána' ='o
-d-<um>-dateng   ni ana'  ='o
-d-<um>-dateŋ     ni ʔanaʔ =ʔu
-RDP-<AV>-arrive GEN child =1s.GEN
+C--um-daténg ni ána' ='o
+d--<um>-dateng   ni ana'  ='o
+d--<um>-dateŋ     ni ʔanaʔ =ʔu
+RDP--<AV>-arrive GEN child =1s.GEN
 'my child's is arriving'
 
 #23
@@ -285,7 +285,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {coordination}
-mensiyá kesara mensiyá
+men-siyá kesara men-siyá
 men-siyá kesara men-siyá
 mәn-sija kisara mәn-sija
 AV-cry   than   AV-cry
@@ -296,10 +296,10 @@ Source: a:201
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, tense aspect mood}
-C-in-guyod ni asó
-g-<in>-uyod  ni asó
-g-<in>-ujud  ni ʔasu
--<PRF.PV>-pull GEN dog
+C--in-guyod ni asó
+g--<in>-uyod  ni asó
+g--<in>-ujud  ni ʔasu
+RDP--<PRF.PV>-pull GEN dog
 'The dog pulled it'
 
 #28 Cannot omit genitive actor

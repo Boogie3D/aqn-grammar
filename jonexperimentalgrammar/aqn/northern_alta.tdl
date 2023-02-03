@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Fri Feb 03 03:07:36 UTC 2023
+;;;     Fri Feb 03 20:45:42 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Thu 28 Jul 2022 12:31:08 AM UTC
 ;;;
@@ -34,23 +34,27 @@ head :+ [ PRON bool,
 +npd :+ [ CASE case ].
 
 inflected :+ [ INITIAL_SUFFIX-FLAG luk,
-    PREFIX_VOICE-FLAG luk,
-    INFIX_PROGRESSIVE-FLAG luk,
     ULTIMATE_SUFFIX-FLAG luk,
     PREFIXES-FLAG luk,
-    INFIX_PERF-FLAG luk,
+    STATIVE_V_WORDS-VERB-FLAG luk,
+    PREFIX_VOICE-FLAG luk,
+    INFIX_ASPECT-FLAG luk,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG luk,
+    INFIX_UM_INTRANS-FLAG luk,
     SUFFIX-FLAG luk,
-    INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG luk,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG luk,
     INFIX_UM-FLAG luk ].
 
 infl-satisfied :+ [ INITIAL_SUFFIX-FLAG na-or-+,
-    PREFIX_VOICE-FLAG na-or-+,
-    INFIX_PROGRESSIVE-FLAG na-or-+,
     ULTIMATE_SUFFIX-FLAG na-or-+,
     PREFIXES-FLAG na-or-+,
-    INFIX_PERF-FLAG na-or-+,
+    STATIVE_V_WORDS-VERB-FLAG na-or-+,
+    PREFIX_VOICE-FLAG na-or-+,
+    INFIX_ASPECT-FLAG na-or-+,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG na-or-+,
+    INFIX_UM_INTRANS-FLAG na-or-+,
     SUFFIX-FLAG na-or-+,
-    INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG na-or-+,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG na-or-+,
     INFIX_UM-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum ].
@@ -305,7 +309,8 @@ abs_1pi-noun-lex := absolutive_pronoun-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 abs_2p-noun-lex := absolutive_pronoun-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ].
+  [ SYNSEM.LOCAL [ CAT.HEAD.PRON +,
+                   CONT.HOOK.INDEX.PNG.PERNUM 2pl ] ].
 
 abs_3p-noun-lex := absolutive_pronoun-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
@@ -425,8 +430,8 @@ verb-lex := non-mod-lex-item &
   [ SYNSEM [ L-QUE -,
              LOCAL.CAT [ HEAD verb,
                          HC-LIGHT - ] ],
-    INFLECTED [ INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG na-or--,
-                INFIX_UM-FLAG na-or-- ] ].
+    INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG na-or--,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG na-or-- ] ].
 
 main-verb-lex := verb-lex & basic-verb-lex & basic-non-wh-word-lex &
   [ SYNSEM [ L-QUE -,
@@ -462,9 +467,9 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
     SYNSEM.LOCAL.CAT [ VAL.COMPS < #comps >,
                        HEAD.INIT + ] ].
 
-non_derived_V_words-verb-lex := intransitive-verb-lex & infix_perf-rule-dtr & infix_progressive-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
-  [ INFLECTED [ INFIX_PERF-FLAG -,
-                INFIX_PROGRESSIVE-FLAG -,
+non_derived_V_words-verb-lex := intransitive-verb-lex & infix_aspect-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
+  [ INFLECTED [ INFIX_UM-FLAG -,
+                INFIX_ASPECT-FLAG -,
                 PREFIX_VOICE-FLAG -,
                 SUFFIX-FLAG - ] ].
 
@@ -487,6 +492,9 @@ simple_verbs_trans-verb-lex := transitive-verb-lex &
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                         CASE-MARKED + ] ] ].
+
+stative_V_words-verb-lex := non_derived_V_words-verb-lex &
+  [ INFLECTED.STATIVE_V_WORDS-VERB-FLAG + ].
 
 ;;; Auxiliaries
 
@@ -804,34 +812,37 @@ adj_incorporation-lex-rule := add-only-rule &
 
 ;;; Intermediate rule types
 
-initial_suffix-rule-dtr := word-or-lexrule.
-prefixes-rule-dtr := word-or-lexrule.
-infix_perf-rule-dtr := word-or-lexrule.
-prefix_voice-rule-dtr := word-or-lexrule.
-infix_progressive-rule-dtr := word-or-lexrule.
 suffix-rule-dtr := word-or-lexrule.
+prefixes-rule-dtr := word-or-lexrule.
 ultimate_suffix-rule-dtr := word-or-lexrule.
+initial_suffix-rule-dtr := word-or-lexrule.
+prefix_voice-rule-dtr := word-or-lexrule.
+infix_aspect-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
   [ INFLECTED [ PREFIXES-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INFIX_PERF-FLAG #infix_perf,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-FLAG #infix_aspect,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 SUFFIX-FLAG #suffix,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                 INFIX_UM-FLAG #infix_um ],
     DTR prefixes-rule-dtr &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INFIX_PERF-FLAG #infix_perf,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-FLAG #infix_aspect,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       SUFFIX-FLAG #suffix,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
@@ -840,22 +851,26 @@ no_noun_prefix-lex-rule := const-lex-rule & prefixes-lex-rule-super.
 
 initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-dtr &
   [ INFLECTED [ INITIAL_SUFFIX-FLAG +,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-FLAG #infix_aspect,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 SUFFIX-FLAG #suffix,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                 INFIX_UM-FLAG #infix_um ],
     DTR initial_suffix-rule-dtr &
-        [ INFLECTED [ PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-FLAG #infix_aspect,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       SUFFIX-FLAG #suffix,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
@@ -871,21 +886,25 @@ little_adj-lex-rule := infl-lex-rule & initial_suffix-lex-rule-super.
 ultimate_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ULTIMATE_SUFFIX-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-FLAG #infix_aspect,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 SUFFIX-FLAG #suffix,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                 INFIX_UM-FLAG #infix_um ],
     DTR ultimate_suffix-rule-dtr &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-FLAG #infix_aspect,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       SUFFIX-FLAG #suffix,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
 no_ultimate_suffix-lex-rule := const-lex-rule & ultimate_suffix-lex-rule-super.
@@ -896,26 +915,30 @@ plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-supe
 suffix-lex-rule-super := val-change-with-ccont-lex-rule &
   [ INFLECTED [ SUFFIX-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-FLAG #infix_aspect,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                 INFIX_UM-FLAG #infix_um ],
     DTR suffix-rule-dtr &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-FLAG #infix_aspect,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
 suffix_patient_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & suffix-lex-rule-super &
   [ C-CONT.RELS.LIST < [ PRED "patient" ] >,
-    DTR [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG +,
+    DTR [ INFLECTED.INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE gen ],
@@ -927,7 +950,7 @@ suffix_patient_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2
 
 suffix_locative_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & suffix-lex-rule-super &
   [ C-CONT.RELS.LIST < [ PRED "locative" ] >,
-    DTR [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG +,
+    DTR [ INFLECTED.INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE gen ],
@@ -939,113 +962,106 @@ suffix_locative_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg
 
 suffix_none-lex-rule := add-only-no-ccont-rule & const-lex-rule & suffix-lex-rule-super.
 
-infix_um-lex-rule-super := add-only-no-ccont-rule & infix_perf-rule-dtr & infix_progressive-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
+infix_um-lex-rule-super := add-only-no-ccont-rule & infix_aspect-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ INFIX_UM-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-FLAG #infix_aspect,
                 SUFFIX-FLAG #suffix ],
     DTR non_derived_V_words-verb-lex &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-FLAG #infix_aspect,
                       SUFFIX-FLAG #suffix ] ] ].
 
-no_um_infix-lex-rule := const-lex-rule & infix_um-lex-rule-super &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG + ].
-
 infix_um_intrans-lex-rule := infix_um-lex-rule-super & infl-lex-rule &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
-    DTR [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+  [ INFLECTED [ INFIX_UM_INTRANS-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                      CASE-MARKED + ] ].
 
-infix_perf-lex-rule-super := add-only-no-ccont-rule & prefix_voice-rule-dtr & suffix-rule-dtr &
-  [ INFLECTED [ INFIX_PERF-FLAG +,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG +,
+no_um_infix-lex-rule := const-lex-rule & infix_um-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans ],
+    DTR.INFLECTED.INFIX_UM_INTRANS-FLAG #infix_um_intrans ].
+
+infix_aspect-lex-rule-super := add-only-no-ccont-rule & prefix_voice-rule-dtr & suffix-rule-dtr &
+  [ INFLECTED [ INFIX_ASPECT-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 PREFIXES-FLAG #prefixes,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 SUFFIX-FLAG #suffix,
                 INFIX_UM-FLAG #infix_um ],
-    DTR infix_perf-rule-dtr &
+    DTR infix_aspect-rule-dtr &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       PREFIXES-FLAG #prefixes,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       SUFFIX-FLAG #suffix,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
-infix_in-lex-rule := infix_perf-lex-rule-super & infl-lex-rule &
+perfect_aspect-lex-rule := infix_aspect-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT perfective ].
 
-infix_not_perfect-lex-rule := const-lex-rule & infix_perf-lex-rule-super & infix_progressive-rule-dtr.
+no_aspect-lex-rule := const-lex-rule & infix_aspect-lex-rule-super.
 
-infix_progressive-lex-rule-super := add-only-no-ccont-rule & prefix_voice-rule-dtr & suffix-rule-dtr &
-  [ INFLECTED [ INFIX_PROGRESSIVE-FLAG +,
-                INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG +,
-                INITIAL_SUFFIX-FLAG #initial_suffix,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
-                SUFFIX-FLAG #suffix,
-                INFIX_UM-FLAG #infix_um ],
-    DTR infix_progressive-rule-dtr &
-        [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
-                      SUFFIX-FLAG #suffix,
-                      INFIX_UM-FLAG #infix_um ] ] ].
-
-prefix_progressive_C-lex-rule := infix_progressive-lex-rule-super & infl-lex-rule &
-  [ DTR.INFLECTED.INFIX_UM-FLAG +,
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
-
-prefix_not_progressive-lex-rule := const-lex-rule & infix_progressive-lex-rule-super.
-
-prefix_progressive_eC-lex-rule := infix_progressive-lex-rule-super & infl-lex-rule &
+progressive_eC-lex-rule := infix_aspect-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
-prefix_progressive_CV-lex-rule := infix_progressive-lex-rule-super & infl-lex-rule &
+progressive_CV-lex-rule := infix_aspect-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
+
+progressive_C-lex-rule := infix_aspect-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 prefix_voice-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex-rule &
   [ INFLECTED [ PREFIX_VOICE-FLAG +,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                INFIX_PROGRESSIVE-FLAG #infix_progressive,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 PREFIXES-FLAG #prefixes,
-                INFIX_PERF-FLAG #infix_perf,
+                INFIX_ASPECT-FLAG #infix_aspect,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 SUFFIX-FLAG #suffix,
                 INFIX_UM-FLAG #infix_um ],
     DTR prefix_voice-rule-dtr &
         [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
-                      INFIX_PROGRESSIVE-FLAG #infix_progressive,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       PREFIXES-FLAG #prefixes,
-                      INFIX_PERF-FLAG #infix_perf,
+                      INFIX_ASPECT-FLAG #infix_aspect,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       SUFFIX-FLAG #suffix,
                       INFIX_UM-FLAG #infix_um ] ] ].
 
 prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
-    DTR [ INFLECTED [ INFIX_UM-FLAG na,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive ],
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
@@ -1053,10 +1069,13 @@ prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_
                                                      CASE-MARKED + ] ].
 
 prefix_meng_trans-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice-lex-rule-super & same-cont-lex-rule &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
-    C-CONT.RELS.LIST < [ PRED "transitive" ] >,
-    DTR [ INFLECTED [ INFIX_UM-FLAG na,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive ],
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    C-CONT.RELS.LIST < [ PRED "active" ] >,
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ],
@@ -1067,10 +1086,13 @@ prefix_meng_trans-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2
                                                         CASE-MARKED + ] ] ].
 
 prefix_conveyance-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice-lex-rule-super & same-cont-lex-rule &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive,
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
     C-CONT.RELS.LIST < [ PRED "conveyance" ] >,
-    DTR [ INFLECTED [ INFIX_UM-FLAG na,
-                      INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG #infix_perf-or-infix_progressive-or-no_um_infix-or-prefix_no_voice-or-prefix_potentive ],
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE gen ],
@@ -1080,11 +1102,177 @@ prefix_conveyance-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                         CASE-MARKED + ] ] ].
 
-prefix_potentive-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG + ].
+prefix_potentive_actor-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG + ],
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ] >,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                     CASE-MARKED + ] ].
 
 prefix_no_voice-lex-rule := add-only-no-ccont-rule & const-lex-rule & prefix_voice-lex-rule-super &
-  [ INFLECTED.INFIX_PERF-OR-INFIX_PROGRESSIVE-OR-NO_UM_INFIX-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE-FLAG + ].
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG + ] ].
+
+prefix_stative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR [ INFLECTED [ INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ] >,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                     CASE-MARKED + ] ].
+
+prefix_stative_av-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR [ INFLECTED [ INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ] >,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                     CASE-MARKED + ] ].
+
+prefix_stative_locative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ],
+    DTR.INFLECTED [ INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ] ].
+
+prefix_stative_conveyance-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR.INFLECTED [ INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ] ].
+
+prefix_causative_av-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR.INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                    INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ] ].
+
+prefix_causative_patient-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR.INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                    INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ] ].
+
+prefix_causative_locative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ],
+    DTR.INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                    INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ] ].
+
+prefix_causative_conveyance-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    DTR.INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                    INFIX_UM_INTRANS-FLAG na,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ] ].
+
+prefix_potentive_patient-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rule & prefix_voice-lex-rule-super & same-non-local-lex-rule &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    C-CONT.RELS.LIST < [ PRED "potentive_patient" ] >,
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ],
+             [ LOCAL.CAT.HEAD.CASE obl ] >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                       CASE-MARKED + ],
+                           COMPS.FIRST.LOCAL.CAT.HEAD [ CASE obl,
+                                                        CASE-MARKED + ] ] ].
+
+prefix_potentive_locative-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice-lex-rule-super & same-cont-lex-rule &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG +,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ],
+    C-CONT.RELS.LIST < [ PRED "potentive_locative" ] >,
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ],
+             [ LOCAL.CAT.HEAD.CASE obl ] >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                       CASE-MARKED + ],
+                           COMPS.FIRST.LOCAL.CAT.HEAD [ CASE obl,
+                                                        CASE-MARKED + ] ] ].
+
+prefix_potentive_causative-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice-lex-rule-super & same-cont-lex-rule &
+  [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+    C-CONT.RELS.LIST < [ PRED "potentive_conveyance" ] >,
+    DTR [ INFLECTED [ STATIVE_V_WORDS-VERB-FLAG na,
+                      INFIX_UM_INTRANS-FLAG na,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-FLAG #infix_aspect-or-no_um_infix-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative ],
+          ARG-ST #arg-st ],
+    ARG-ST #arg-st &
+           < [ LOCAL.CAT.HEAD.CASE abs ],
+             [ LOCAL.CAT.HEAD.CASE obl ] >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                       CASE-MARKED + ],
+                           COMPS.FIRST.LOCAL.CAT.HEAD [ CASE obl,
+                                                        CASE-MARKED + ] ] ].
+
+added-arg2of2-non-local-lex-rule := lex-rule.
+
+causative-to-arg2-itr-op-lex-rule := scopal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.VAL [ SPR < >,
+                                                    COMPS < > ] ] >,
+                           COMPS < [ LOCAL [ CONT.HOOK.INDEX #arg2,
+                                             CAT [ HEAD [ MOD #mod,
+                                                          KEYS #keys ],
+                                                   VAL #val ] ],
+                                     NON-LOCAL #nl ] > ],
+    DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg2,
+                                                CAT [ HEAD [ MOD #mod,
+                                                             KEYS #keys ],
+                                                      VAL #val ] ],
+                                        NON-LOCAL #nl ] >,
+                               COMPS < > ] ].
+
+scopal-rel-lex-rule := lex-rule &
+  [ C-CONT [ RELS.LIST < event-relation &
+                         [ LBL #ltop,
+                           ARG0 #hidx,
+                           ARG1 #arg1,
+                           ARG2 #arg2,
+                           ARG3 #harg ] >,
+             HOOK [ LTOP #ltop,
+                    INDEX #hidx,
+                    XARG #arg1 ],
+             HCONS.LIST < qeq &
+                          [ HARG #harg,
+                            LARG #scoped ] > ],
+    SYNSEM.LOCAL.CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg1 ] >,
+    DTR.SYNSEM.LOCAL [ CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg2 ] >,
+                       CONT.HOOK.LTOP #scoped ] ].
+
+basic-applicative-lex-rule := comps-change-only-lex-rule &
+  [ C-CONT [ RELS.LIST < event-relation &
+                         [ ARG1 #evt ] >,
+             HCONS.LIST < > ],
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
@@ -1092,14 +1280,6 @@ added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2
                                            CONT.HOOK.INDEX #nind ] ] >,
     C-CONT.RELS.LIST < [ ARG2 #nind ] >,
     DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
-
-added-arg2of2-non-local-lex-rule := lex-rule.
-
-basic-applicative-lex-rule := comps-change-only-lex-rule &
-  [ C-CONT [ RELS.LIST < event-relation &
-                         [ ARG1 #evt ] >,
-             HCONS.LIST < > ],
-    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 added-arg2of2-np-head-lex-rule := lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].

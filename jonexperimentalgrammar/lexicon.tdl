@@ -785,53 +785,57 @@ pósa := unvoiced_common-noun-lex &
   [ STEM < "pósa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-sasakyan := unvoiced_common-noun-lex &
+sasakyan_1 := unvoiced_common-noun-lex &
   [ STEM < "sasakyan" >,
     SYNSEM.LKEYS.KEYREL.PRED "_vehicle_n_rel" ].
 
+sasakyan_2 := unvoiced_common-noun-lex &
+  [ STEM < "sasakyan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
+
 si_27en := unmarked_1s-noun-lex &
   [ STEM < "si'en" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_si'en_n_2_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 si_27aw := unmarked_2s-noun-lex &
   [ STEM < "si'aw" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_si'aw_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 siya_1 := unmarked_3s-noun-lex &
   [ STEM < "siya" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_siya_n_1_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 si_27ami := unmarked_1pe-noun-lex &
   [ STEM < "si'ami" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_si'ami_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 si_27etam := unmarked_1pi-noun-lex &
   [ STEM < "si'etam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_si'etam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 si_27am := unmarked_2p-noun-lex &
   [ STEM < "si'am" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_si'am_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 sidde := unmarked_3p-noun-lex &
   [ STEM < "sidde" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sidde_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 e_27 := abs_1s-noun-lex &
   [ STEM < "e'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_e'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3De_27 := abs_1s-noun-lex &
   [ STEM < "=e'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=e'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _27a := abs_2s-noun-lex &
   [ STEM < "'a" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3D_27a := abs_2s-noun-lex &
   [ STEM < "='a" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 siya_2 := abs_3s-noun-lex &
   [ STEM < "siya" >,
@@ -839,223 +843,223 @@ siya_2 := abs_3s-noun-lex &
 
 siyá_1 := abs_3s-noun-lex &
   [ STEM < "siyá" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dsiya := abs_3s-noun-lex &
   [ STEM < "=siya" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dsiyá := abs_3s-noun-lex &
   [ STEM < "=siyá" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=siyá_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 ami := abs_1pe-noun-lex &
   [ STEM < "ami" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dami := abs_1pe-noun-lex &
   [ STEM < "=ami" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=ami_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 a_27mi := abs_1pe-noun-lex &
   [ STEM < "a'mi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_'ami_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Da_27mi := abs_1pe-noun-lex &
   [ STEM < "=a'mi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ami=_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 ami_27 := abs_1pe-noun-lex &
   [ STEM < "ami'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ami'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 a_27mi_27 := abs_1pe-noun-lex &
   [ STEM < "a'mi'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_a'mi'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Da_27mi_27 := abs_1pe-noun-lex &
   [ STEM < "=a'mi'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=a'mi'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Damí := abs_1pe-noun-lex &
   [ STEM < "=amí" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=amí_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Damí_3Dd := abs_1pe-noun-lex &
   [ STEM < "=amí=d" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_amí_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 itam := abs_1pi-noun-lex &
   [ STEM < "itam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_itam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 i_27tam := abs_1pi-noun-lex &
   [ STEM < "i'tam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=itam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Ditam := abs_1pi-noun-lex &
   [ STEM < "=itam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_'itam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Di_27tam := abs_1pi-noun-lex &
   [ STEM < "=i'tam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_itam'_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 am := abs_2p-noun-lex &
   [ STEM < "am" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_am_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dam := abs_2p-noun-lex &
   [ STEM < "=am" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=am_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 amyu := abs_2p-noun-lex &
   [ STEM < "amyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_amyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 am_27yu := abs_2p-noun-lex &
   [ STEM < "am'yu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=amyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Damyu := abs_2p-noun-lex &
   [ STEM < "=amyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_-amyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dam_27yu := abs_2p-noun-lex &
   [ STEM < "=am'yu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_'amyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Damyú := abs_2p-noun-lex &
   [ STEM < "=amyú" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 sid := abs_3p-noun-lex &
   [ STEM < "sid" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sid_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 hid := abs_3p-noun-lex &
   [ STEM < "hid" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hid_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dsid := abs_3p-noun-lex &
   [ STEM < "=sid" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=sid_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dhid := abs_3p-noun-lex &
   [ STEM < "=hid" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=sid_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _27o := gen_1s-noun-lex &
   [ STEM < "'o" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_'o_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3D_27o := gen_1s-noun-lex &
   [ STEM < "='o" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=o_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 mo := gen_2s-noun-lex &
   [ STEM < "mo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_mo_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 m := gen_2s-noun-lex &
   [ STEM < "m" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_m_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dm := gen_2s-noun-lex &
   [ STEM < "=m" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=m_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dmo := gen_2s-noun-lex &
   [ STEM < "=mo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=mo_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 na := gen_3s-noun-lex &
   [ STEM < "na" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_na_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dna := gen_3s-noun-lex &
   [ STEM < "=na" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=na_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 mi := gen_1pe-noun-lex &
   [ STEM < "mi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_mi_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dmi := gen_1pe-noun-lex &
   [ STEM < "=mi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=mi_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 tam := gen_1pi-noun-lex &
   [ STEM < "tam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_tam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dtam := gen_1pi-noun-lex &
   [ STEM < "=tam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=tam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 miyu := gen_2p-noun-lex &
   [ STEM < "miyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_miyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dmiyu := gen_2p-noun-lex &
   [ STEM < "=miyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=miyu_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 de := gen_3p-noun-lex &
   [ STEM < "de" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_de_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Dde := gen_3p-noun-lex &
   [ STEM < "=de" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_=de_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27en := loc_1s-noun-lex &
   [ STEM < "di'en" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'en_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27aw_2 := loc_2s-noun-lex &
   [ STEM < "di'aw" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'aw_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27áw := loc_2s-noun-lex &
   [ STEM < "di'áw" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'áw_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 diya := loc_3s-noun-lex &
   [ STEM < "diya" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_diya_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27ami := loc_1pe-noun-lex &
   [ STEM < "di'ami" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'ami_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27ámi := loc_1pe-noun-lex &
   [ STEM < "di'ámi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'ámi_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27etam := loc_1pi-noun-lex &
   [ STEM < "di'etam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'etam_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27am := loc_2p-noun-lex &
   [ STEM < "di'am" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'am_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27amiyu := loc_2p-noun-lex &
   [ STEM < "di'amiyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'amiyu_n_1_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27ám := loc_2p-noun-lex &
   [ STEM < "di'ám" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'ám_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 di_27ámiyu := loc_2p-noun-lex &
   [ STEM < "di'ámiyu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_di'amiyu_n_2_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 didde := loc_3p-noun-lex &
   [ STEM < "didde" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_didde_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_rel" ].
 
 _3Den := demonstrative_pronouns-noun-lex &
   [ STEM < "=en" >,
@@ -1255,10 +1259,6 @@ dum_27el_1 := non_derived_V_words-verb-lex &
   [ STEM < "dum'el" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grow_v_rel" ].
 
-mengaso := non_derived_V_words-verb-lex &
-  [ STEM < "mengaso" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hunt_v_rel" ].
-
 um_27uddén := non_derived_V_words-verb-lex &
   [ STEM < "um'uddén" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rain_v_rel" ].
@@ -1278,10 +1278,6 @@ dedde_27len_2 := non_derived_V_words-verb-lex &
 dum_27el_2 := non_derived_V_words-verb-lex &
   [ STEM < "dum'el" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grow_v_rel" ].
-
-mengastos := non_derived_V_words-verb-lex &
-  [ STEM < "mengastos" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hunt_v_rel" ].
 
 _27uddén := non_derived_V_words-verb-lex &
   [ STEM < "'uddén" >,
@@ -1358,10 +1354,6 @@ tonaw := non_derived_V_words-verb-lex &
 uddén_2 := non_derived_V_words-verb-lex &
   [ STEM < "uddén" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rain_v_rel" ].
-
-mengaliyo := non_derived_V_words-verb-lex &
-  [ STEM < "mengaliyo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
 lbut := non_derived_V_words-verb-lex &
   [ STEM < "lbut" >,
@@ -1543,8 +1535,8 @@ ated := non_derived_V_words-verb-lex &
   [ STEM < "ated" >,
     SYNSEM.LKEYS.KEYREL.PRED "_give_someone_v_rel" ].
 
-an_1 := non_derived_V_words-verb-lex &
-  [ STEM < "an" >,
+án := non_derived_V_words-verb-lex &
+  [ STEM < "án" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
 alap_2 := non_derived_V_words-verb-lex &
@@ -1659,29 +1651,17 @@ daténg := non_derived_V_words-verb-lex &
   [ STEM < "daténg" >,
     SYNSEM.LKEYS.KEYREL.PRED "_arrive_v_rel" ].
 
-siyá_2 := non_derived_V_words-verb-lex &
-  [ STEM < "siyá" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
-
-_27uná := non_derived_V_words-verb-lex &
-  [ STEM < "'uná" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
-
 uná_1 := non_derived_V_words-verb-lex &
   [ STEM < "uná" >,
     SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
 
-_27uná_27 := non_derived_V_words-verb-lex &
-  [ STEM < "'uná'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+intá_2 := non_derived_V_words-verb-lex &
+  [ STEM < "intá" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
-uná_27 := non_derived_V_words-verb-lex &
-  [ STEM < "uná'" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
-
-bitíl := non_derived_V_words-verb-lex &
-  [ STEM < "bitíl" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
+an := non_derived_V_words-verb-lex &
+  [ STEM < "an" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
 benta := di_transitive-verb-lex &
   [ STEM < "benta" >,
@@ -1703,7 +1683,7 @@ buduh := di_transitive-verb-lex &
   [ STEM < "buduh" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hairycoveringonfruits_v_rel" ].
 
-intá_2 := di_transitive-verb-lex &
+intá_3 := di_transitive-verb-lex &
   [ STEM < "intá" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
@@ -1810,10 +1790,6 @@ sdep := transitive_verbs-verb-lex &
 aláten := transitive_verbs-verb-lex &
   [ STEM < "aláten" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bitesomething_v_rel" ].
-
-anen := transitive_verbs-verb-lex &
-  [ STEM < "anen" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eatsomething_v_rel" ].
 
 as_27an := transitive_verbs-verb-lex &
   [ STEM < "as'an" >,
@@ -2030,30 +2006,6 @@ me_27leb := transitive_verbs-verb-lex &
 mebílis := transitive_verbs-verb-lex &
   [ STEM < "mebílis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fast_v_rel" ].
-
-men_27awon := transitive_verbs-verb-lex &
-  [ STEM < "men'awon" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_abandon_v_rel" ].
-
-menbutol := transitive_verbs-verb-lex &
-  [ STEM < "menbutol" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_toproduceseeds_v_rel" ].
-
-meng_27ut_27ut := transitive_verbs-verb-lex &
-  [ STEM < "meng'ut'ut" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_dig_v_rel" ].
-
-mengán := transitive_verbs-verb-lex &
-  [ STEM < "mengán" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
-
-mengíyan := transitive_verbs-verb-lex &
-  [ STEM < "mengíyan" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_producefruit_v_rel" ].
-
-menherbal := transitive_verbs-verb-lex &
-  [ STEM < "menherbal" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_consumemedicinalplants_v_rel" ].
 
 ngaddén_2 := transitive_verbs-verb-lex &
   [ STEM < "ngaddén" >,
@@ -2383,10 +2335,6 @@ gámit_4 := transitive_verbs-verb-lex &
   [ STEM < "gámit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tool_v_rel" ].
 
-an_2 := transitive_verbs-verb-lex &
-  [ STEM < "an" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
-
 álap_2 := transitive_verbs-verb-lex &
   [ STEM < "álap" >,
     SYNSEM.LKEYS.KEYREL.PRED "_get_v_rel" ].
@@ -2426,6 +2374,30 @@ iyán_4 := transitive_verbs-verb-lex &
 ginuyod := transitive_verbs-verb-lex &
   [ STEM < "ginuyod" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
+
+bitíl := stative_V_words-verb-lex &
+  [ STEM < "bitíl" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
+
+uná_27 := stative_V_words-verb-lex &
+  [ STEM < "uná'" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+_27uná_27 := stative_V_words-verb-lex &
+  [ STEM < "'uná'" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+uná_3 := stative_V_words-verb-lex &
+  [ STEM < "uná" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+_27uná := stative_V_words-verb-lex &
+  [ STEM < "'uná" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+siyá_2 := stative_V_words-verb-lex &
+  [ STEM < "siyá" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
 
 ;;; Auxiliaries
 

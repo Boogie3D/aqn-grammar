@@ -9,8 +9,6 @@ suffix_none-lex := suffix_none-lex-rule.
 
 no_um_infix-lex := no_um_infix-lex-rule.
 
-infix_not_perfect-lex := infix_not_perfect-lex-rule.
-
-prefix_not_progressive-lex := prefix_not_progressive-lex-rule.
+no_aspect-lex := no_aspect-lex-rule.
 
 prefix_no_voice-lex := prefix_no_voice-lex-rule.
