@@ -1363,7 +1363,7 @@ mengaliyo := non_derived_V_words-verb-lex &
   [ STEM < "mengaliyo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
-lbut_1 := non_derived_V_words-verb-lex &
+lbut := non_derived_V_words-verb-lex &
   [ STEM < "lbut" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boil_v_rel" ].
 
@@ -1663,6 +1663,26 @@ siyá_2 := non_derived_V_words-verb-lex &
   [ STEM < "siyá" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
 
+_27uná := non_derived_V_words-verb-lex &
+  [ STEM < "'uná" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+uná_1 := non_derived_V_words-verb-lex &
+  [ STEM < "uná" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+_27uná_27 := non_derived_V_words-verb-lex &
+  [ STEM < "'uná'" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+uná_27 := non_derived_V_words-verb-lex &
+  [ STEM < "uná'" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+bitíl := non_derived_V_words-verb-lex &
+  [ STEM < "bitíl" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
+
 benta := di_transitive-verb-lex &
   [ STEM < "benta" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sell_v_rel" ].
@@ -1687,7 +1707,7 @@ intá_2 := di_transitive-verb-lex &
   [ STEM < "intá" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
-uná := di_transitive-verb-lex &
+uná_2 := di_transitive-verb-lex &
   [ STEM < "uná" >,
     SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
 
@@ -1774,10 +1794,6 @@ háti := transitive_verbs-verb-lex &
 inom := transitive_verbs-verb-lex &
   [ STEM < "inom" >,
     SYNSEM.LKEYS.KEYREL.PRED "_drink_v_rel" ].
-
-lbut_2 := transitive_verbs-verb-lex &
-  [ STEM < "lbut" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_boil_v_rel" ].
 
 pasok := transitive_verbs-verb-lex &
   [ STEM < "pasok" >,
@@ -2410,18 +2426,6 @@ iyán_4 := transitive_verbs-verb-lex &
 ginuyod := transitive_verbs-verb-lex &
   [ STEM < "ginuyod" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
-
-me_27una := simple_verbs_intrans-verb-lex &
-  [ STEM < "me'una" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
-
-ma-póled := simple_verbs_intrans-verb-lex &
-  [ STEM < "ma-póled" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
-
-ma-bitíl := simple_verbs_intrans-verb-lex &
-  [ STEM < "ma-bitíl" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_behungry_v_rel" ].
 
 ;;; Auxiliaries
 

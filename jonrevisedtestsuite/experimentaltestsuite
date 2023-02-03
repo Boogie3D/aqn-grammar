@@ -10,10 +10,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, pronouns, word order}
-me'una siya
-me'una =sija
-mәʔuna =sija
-say    =3s.ABS
+me-'uná siya
+me-'una =sija
+mә-ʔuna =sija
+ST-say    =3s.ABS
 'He said'
 
 #2
@@ -21,10 +21,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una mo
-me'una =mo
-mәʔuna =mu
-say    =2s.GEN
+me-'uná mo
+me-'una =mo
+mә-ʔuna =mu
+ST-say    =2s.GEN
 'Your said'
 
 #3
@@ -32,10 +32,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una 'o
-me'una ='o
-mәʔuna =ʔu
-say    =1s.GEN
+me-'uná 'o
+me-'una ='o
+mә-ʔuna =ʔu
+ST-say    =1s.GEN
 'my said'
 
 #4
@@ -43,10 +43,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una na
-me'una =na
-mәʔuna =na
-say    =3s.GEN
+me-'uná na
+me-'una =na
+mә-ʔuna =na
+ST-say    =3s.GEN
 'said their'
 
 #5
@@ -54,10 +54,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una tam
-me'una =tam
-mәʔuna =tam
-say    =1pi.GEN
+me-'uná tam
+me-'una =tam
+mә-ʔuna =tam
+ST-say    =1pi.GEN
 'said mine'
 
 #6
@@ -65,10 +65,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una di'ami
-me'una di'ami
-mәʔuna diʔami
-say    1pi.LOC
+me-'uná di'ami
+me-'una di'ami
+mә-ʔuna diʔami
+ST-say    1pi.LOC
 'I said there'
 
 #7 Square brackets appear sometimes in the phonological transcription tier in order to represent clausal constituent boundaries
@@ -241,10 +241,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-C--um-daténg ni ána' ='o
-d--<um>-dateng   ni ana'  ='o
-d--<um>-dateŋ     ni ʔanaʔ =ʔu
-RDP--<AV>-arrive GEN child =1s.GEN
+C-um-daténg ni ána' ='o
+d-<um>-dateng   ni ana'  ='o
+d-<um>-dateŋ     ni ʔanaʔ =ʔu
+RDP-<AV>-arrive GEN child =1s.GEN
 'my child's is arriving'
 
 #23
@@ -307,10 +307,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {argument optionality}
-C-in-guyod
-g-<in>-uyod
-g-<in>-ujud
--<PRF.PV>-pull
+C--in-guyod
+g--<in>-uyod
+g--<in>-ujud
+RDP--<PRF>-pull
 '(Someone) pulled it'
 
 #29 'in' is an absolutive singular common word article
@@ -451,9 +451,9 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 C--um-daténg tiyama =miyu
-d<um>dateng tiyama     =miyu
-d<um>datәŋ  tijama     =miju
-<AV>arrive ABS.father =2p.Gen
+d--<um>-dateng tiyama     =miyu
+d--<um>-datәŋ  tijama     =miju
+RDP--<AV>-arrive ABS.father =2p.Gen
 'your father arrives'
 
 #42 '=miyu' is a possessive pronoun enclitic
@@ -462,9 +462,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 C--um-dateng miyu tiyama 
-d<um>dateng =miyu   tiyama 
-d<um>datәŋ  =miju   tijama 
-<AV>arrive =2p.Gen ABS.father 
+d--<um>-dateng =miyu   tiyama 
+d--<um>-datәŋ  =miju   tijama 
+RDP--<AV>-arrive =2p.Gen ABS.father 
 'father your arrives'
 
 #43 '=miyu' is a possessive pronoun enclitic
@@ -473,9 +473,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 C--um-daténg miyu 
-d<um>dateng =miyu 
-d<um>datәŋ  =miju 
-<AV>arrive =2p.Gen
+d--<um>-dateng =miyu 
+d--<um>-datәŋ  =miju 
+RDP--<AV>-arrive =2p.Gen
 'your arrives'
 
 #44 '=miyu' is a possessive pronoun enclitic
@@ -484,9 +484,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 C--um-daténg siya miyu
-d<um>dateng sija =miyu
-d<um>datәŋ  sija =miju
-<AV>arrive ABS  =2p.Gen
+d--<um>-dateng sija =miyu
+d--<um>-datәŋ  sija =miju
+RDP--<AV>-arrive ABS  =2p.Gen
 'your he arrives'
 
 #45 'habang' is a clausal modifier
@@ -495,9 +495,9 @@ Vetted: f
 Judgment: g
 Phenomena: {clausal modifier}
 C--um-daténg tiyama habang meng-an
-d<um>dateng tiyama      habang meng-an
-d<um>datәŋ  tijama      habaŋ  mәŋ-ʔan
-<AV>arrive ABS.father  while  AV-eat.ABS
+d--<um>-dateng tiyama      habang meng-an
+d--<um>-datәŋ  tijama      habaŋ  mәŋ-ʔan
+RDP--<AV>-arrive ABS.father  while  AV-eat.ABS
 'father arrives while eating'
 
 #46 'habang' is a clausal modifier
@@ -505,10 +505,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {clausal modifier}
-habang meng-an, C-um-daténg tiyama 
-habang meng-an,   d<um>dateng tiyama      
-habaŋ  meŋ-an,    d<um>datәŋ  tijama      
-while  AV-eat.ABS <AV>arrive ABS.father  
+habang meng-an, C--um-daténg tiyama 
+habang meng-an,   d--<um>-dateng tiyama      
+habaŋ  meŋ-an,    d--<um>-datәŋ  tijama      
+while  AV-eat.ABS RDP--<AV>-arrive ABS.father  
 'while eating, father arrives'
 
 #47 'habang' is a clausal modifier
@@ -516,10 +516,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
-meng-an, C-um-daténg tiyama 
-meng-an,   d<um>dateng tiyama      
-meŋ-an,    d<um>datәŋ  tijama      
-AV-eat.ABS <AV>arrive ABS.father  
+meng-an, C--um-daténg tiyama 
+meng-an,   d--<um>-dateng tiyama      
+meŋ-an,    d--<um>-datәŋ  tijama      
+AV-eat.ABS RDP--<AV>-arrive ABS.father  
 'eating, father arrives'
 
 #48 'habang' is a clausal modifier
@@ -527,10 +527,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
-C-um-daténg tiyama meng-an
-d<um>dateng tiyama     habang meng-an
-d<um>datәŋ  tijama     habeng mәŋ-ʔan
-<AV>arrive ABS.father while  AV-eat.ABS
+C--um-daténg tiyama meng-an
+d--<um>-dateng tiyama     habang meng-an
+d--<um>-datәŋ  tijama     habeng mәŋ-ʔan
+RDP--<AV>-arrive ABS.father while  AV-eat.ABS
 'father arrives eats'
 
 #49 'habang' is a clausal modifier
@@ -538,10 +538,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {clausal modifier}
-C-um-daténg habang tiyama meng-an
-d<um>dateng habang tiyama meng-an
-d<um>datәŋ  habeng tijama mәŋ-ʔan
-<AV>arrive while ABS.father AV-eat.ABS
+C--um-daténg habang tiyama meng-an
+d--<um>-dateng habang tiyama meng-an
+d--<um>-datәŋ  habeng tijama mәŋ-ʔan
+RDp--<AV>-arrive while ABS.father AV-eat.ABS
 'arrives while father eats'
 
 #50 'adino' is an interrogative adverb
@@ -561,9 +561,9 @@ Vetted: f
 Judgment: u
 Phenomena: {wh- clauses}
 meng--in-gína adino?
-m<in>en-gina adino?
-m<in>әn-gina ʔadinu?
-<PRF>AV-run  where?
+meng--in-gina adino?
+mәng--in-gina ʔadinu?
+AV--PRF-run  where?
 'run (you) where?'
 
 #52 'tiyaheno' is an interrogative pronoun
@@ -571,10 +571,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {wh- clauses}
-tiyaheno C-um-daténg?
-tiʔahinu d<um>dateng?
-tiʔahinu d<um>datәŋ?
-who  <AV>arrive?
+tiyaheno C--um-daténg?
+tiʔahinu d--<um>-dateng?
+tiʔahinu d--<um>-datәŋ?
+who  RDP--<AV>-arrive?
 'who arrives?'
 
 #53 pronominal question word order
@@ -582,9 +582,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {wh- clauses}
-C-um-daténg tiyaheno?
-d<um>dateng tiʔahinu?
-d<um>datәŋ tiʔahinu?
-who  <AV>arrive?
+C--um-daténg tiyaheno?
+d--<um>-dateng tiʔahinu?
+d--<um>-datәŋ tiʔahinu?
+RDP--<AV>-arrive who?
 'arrives who?'
 
