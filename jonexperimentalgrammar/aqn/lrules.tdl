@@ -12,3 +12,5 @@ no_um_infix-lex := no_um_infix-lex-rule.
 no_aspect-lex := no_aspect-lex-rule.
 
 prefix_no_voice-lex := prefix_no_voice-lex-rule.
+
+not_progressive-lex := not_progressive-lex-rule.

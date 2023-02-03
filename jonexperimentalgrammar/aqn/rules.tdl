@@ -58,3 +58,5 @@ ex-adj := basic-extracted-adj-phrase.
 ex-subj := extracted-subj-phrase.
 
 wh-ques := wh-ques-phrase.
+
+ex-det := extracted-det-phrase.

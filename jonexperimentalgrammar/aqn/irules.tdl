@@ -101,8 +101,12 @@ suffix_locative_voice-suffix :=
 %suffix (* -an)
 suffix_locative_voice-lex-rule.
 
-infix_um_intrans-prefix :=
+infix_um_intrans-prefix1 :=
 %prefix (* -um-)
+infix_um_intrans-lex-rule.
+
+infix_um_intrans-prefix2 :=
+%prefix (* C-um-)
 infix_um_intrans-lex-rule.
 
 perfect_aspect-prefix1 :=
@@ -112,26 +116,6 @@ perfect_aspect-lex-rule.
 perfect_aspect-prefix2 :=
 %prefix (* C-in-)
 perfect_aspect-lex-rule.
-
-progressive_eC-prefix1 :=
-%prefix (* eC-)
-progressive_eC-lex-rule.
-
-progressive_eC-prefix2 :=
-%prefix (* -eC-)
-progressive_eC-lex-rule.
-
-progressive_CV-prefix1 :=
-%prefix (* CV-)
-progressive_CV-lex-rule.
-
-progressive_CV-prefix2 :=
-%prefix (* -CV-)
-progressive_CV-lex-rule.
-
-progressive_C-prefix :=
-%prefix (* C-)
-progressive_C-lex-rule.
 
 prefix_meng_intrans-prefix1 :=
 %prefix (* men-)
@@ -224,3 +208,15 @@ prefix_potentive_causative-lex-rule.
 prefix_potentive_causative-prefix2 :=
 %prefix (* me'-i-)
 prefix_potentive_causative-lex-rule.
+
+progressive_C_um-prefix :=
+%prefix (* -C-)
+progressive_C_um-lex-rule.
+
+progressive_CV_meng-prefix :=
+%prefix (* -CV-)
+progressive_CV_meng-lex-rule.
+
+progressive_eC_conveyance-prefix :=
+%prefix (* -'eC-)
+progressive_eC_conveyance-lex-rule.
