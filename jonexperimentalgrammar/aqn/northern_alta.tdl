@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Fri Feb 03 22:19:36 UTC 2023
+;;;     Fri Feb 03 22:47:03 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Thu 28 Jul 2022 12:31:08 AM UTC
 ;;;
@@ -33,40 +33,40 @@ head :+ [ PRON bool,
 
 +npd :+ [ CASE case ].
 
-inflected :+ [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG luk,
-    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG luk,
-    PREFIX_VOICE-FLAG luk,
-    PREFIXES-FLAG luk,
-    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG luk,
-    SUFFIX-FLAG luk,
-    ULTIMATE_SUFFIX-FLAG luk,
-    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG luk,
+inflected :+ [ SUFFIX-FLAG luk,
     INITIAL_SUFFIX-FLAG luk,
+    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG luk,
+    ULTIMATE_SUFFIX-FLAG luk,
     PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG luk,
-    INFIX_UM_INTRANS-FLAG luk,
     STATIVE_V_WORDS-VERB-FLAG luk,
     NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG luk,
-    INFIX_UM-FLAG luk,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG luk,
     NOT_PROGRESSIVE-FLAG luk,
     PROGRESSIVE_INFIX-FLAG luk,
+    INFIX_UM_INTRANS-FLAG luk,
+    PREFIX_VOICE-FLAG luk,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG luk,
+    INFIX_UM-FLAG luk,
+    PREFIXES-FLAG luk,
+    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG luk,
     INFIX_ASPECT-FLAG luk ].
 
-infl-satisfied :+ [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG na-or-+,
-    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG na-or-+,
-    PREFIX_VOICE-FLAG na-or-+,
-    PREFIXES-FLAG na-or-+,
-    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG na-or-+,
-    SUFFIX-FLAG na-or-+,
-    ULTIMATE_SUFFIX-FLAG na-or-+,
-    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG na-or-+,
+infl-satisfied :+ [ SUFFIX-FLAG na-or-+,
     INITIAL_SUFFIX-FLAG na-or-+,
+    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG na-or-+,
+    ULTIMATE_SUFFIX-FLAG na-or-+,
     PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG na-or-+,
-    INFIX_UM_INTRANS-FLAG na-or-+,
     STATIVE_V_WORDS-VERB-FLAG na-or-+,
     NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG na-or-+,
-    INFIX_UM-FLAG na-or-+,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG na-or-+,
     NOT_PROGRESSIVE-FLAG na-or-+,
     PROGRESSIVE_INFIX-FLAG na-or-+,
+    INFIX_UM_INTRANS-FLAG na-or-+,
+    PREFIX_VOICE-FLAG na-or-+,
+    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG na-or-+,
+    INFIX_UM-FLAG na-or-+,
+    PREFIXES-FLAG na-or-+,
+    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG na-or-+,
     INFIX_ASPECT-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum ].
@@ -829,50 +829,50 @@ adj_incorporation-lex-rule := add-only-rule &
 
 ;;; Intermediate rule types
 
-prefixes-rule-dtr := word-or-lexrule.
-infix_aspect-rule-dtr := word-or-lexrule.
-suffix-rule-dtr := word-or-lexrule.
 prefix_voice-rule-dtr := word-or-lexrule.
 ultimate_suffix-rule-dtr := word-or-lexrule.
+prefixes-rule-dtr := word-or-lexrule.
 initial_suffix-rule-dtr := word-or-lexrule.
 infix_um-rule-dtr := word-or-lexrule.
+infix_aspect-rule-dtr := word-or-lexrule.
+suffix-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
   [ INFLECTED [ PREFIXES-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 SUFFIX-FLAG #suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                INFIX_UM-FLAG #infix_um,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR prefixes-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      SUFFIX-FLAG #suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                      INFIX_UM-FLAG #infix_um,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
@@ -881,38 +881,38 @@ no_noun_prefix-lex-rule := const-lex-rule & prefixes-lex-rule-super.
 
 initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-dtr &
   [ INFLECTED [ INITIAL_SUFFIX-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                PREFIXES-FLAG #prefixes,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 SUFFIX-FLAG #suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                INFIX_UM-FLAG #infix_um,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR initial_suffix-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      PREFIXES-FLAG #prefixes,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      SUFFIX-FLAG #suffix,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                      INFIX_UM-FLAG #infix_um,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
@@ -927,38 +927,38 @@ little_adj-lex-rule := infl-lex-rule & initial_suffix-lex-rule-super.
 
 ultimate_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ULTIMATE_SUFFIX-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                PREFIXES-FLAG #prefixes,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 SUFFIX-FLAG #suffix,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                INFIX_UM-FLAG #infix_um,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR ultimate_suffix-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      PREFIXES-FLAG #prefixes,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      SUFFIX-FLAG #suffix,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                      INFIX_UM-FLAG #infix_um,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 no_ultimate_suffix-lex-rule := const-lex-rule & ultimate_suffix-lex-rule-super.
@@ -968,38 +968,38 @@ plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-supe
 
 suffix-lex-rule-super := val-change-with-ccont-lex-rule &
   [ INFLECTED [ SUFFIX-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                PREFIXES-FLAG #prefixes,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                INFIX_UM-FLAG #infix_um,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR suffix-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      PREFIXES-FLAG #prefixes,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
+        [ INFLECTED [ INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
-                      INITIAL_SUFFIX-FLAG #initial_suffix,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                      INFIX_UM-FLAG #infix_um,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 suffix_patient_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & suffix-lex-rule-super &
@@ -1031,32 +1031,32 @@ suffix_none-lex-rule := add-only-no-ccont-rule & const-lex-rule & suffix-lex-rul
 
 infix_um-lex-rule-super := add-only-no-ccont-rule & infix_aspect-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ INFIX_UM-FLAG +,
-                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                PREFIXES-FLAG #prefixes,
-                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
-                INITIAL_SUFFIX-FLAG #initial_suffix,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                NOT_PROGRESSIVE-FLAG #not_progressive,
                 SUFFIX-FLAG #suffix,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-FLAG #not_progressive,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR infix_um-rule-dtr &
-        [ INFLECTED [ PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      PREFIXES-FLAG #prefixes,
-                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
-                      INITIAL_SUFFIX-FLAG #initial_suffix,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      NOT_PROGRESSIVE-FLAG #not_progressive,
+        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
                       SUFFIX-FLAG #suffix,
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-FLAG #not_progressive,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
                       ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                      PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 infix_um_intrans-lex-rule := infix_um-lex-rule-super & infl-lex-rule &
@@ -1083,35 +1083,35 @@ infix_aspect-lex-rule-super := add-only-no-ccont-rule & prefix_voice-rule-dtr & 
   [ INFLECTED [ INFIX_ASPECT-FLAG +,
                 INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG +,
                 INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                PREFIX_VOICE-FLAG #prefix_voice,
-                PREFIXES-FLAG #prefixes,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 SUFFIX-FLAG #suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
-                PROGRESSIVE_INFIX-FLAG #progressive_infix ],
+                PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                PREFIX_VOICE-FLAG #prefix_voice,
+                INFIX_UM-FLAG #infix_um,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
     DTR infix_aspect-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      PREFIX_VOICE-FLAG #prefix_voice,
-                      PREFIXES-FLAG #prefixes,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      SUFFIX-FLAG #suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
-                      PROGRESSIVE_INFIX-FLAG #progressive_infix ] ] ].
+                      PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      PREFIX_VOICE-FLAG #prefix_voice,
+                      INFIX_UM-FLAG #infix_um,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ] ] ].
 
 perfect_aspect-lex-rule := infix_aspect-lex-rule-super & infl-lex-rule &
   [ DTR.INFLECTED.NOT_PROGRESSIVE-FLAG +,
@@ -1121,34 +1121,34 @@ no_aspect-lex-rule := const-lex-rule & infix_aspect-lex-rule-super.
 
 prefix_voice-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex-rule &
   [ INFLECTED [ PREFIX_VOICE-FLAG +,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                PREFIXES-FLAG #prefixes,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 SUFFIX-FLAG #suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                INFIX_UM-FLAG #infix_um,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
                 PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                INFIX_UM-FLAG #infix_um,
+                PREFIXES-FLAG #prefixes,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR prefix_voice-rule-dtr &
-        [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
-                      PREFIXES-FLAG #prefixes,
-                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
-                      SUFFIX-FLAG #suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                      INFIX_UM-FLAG #infix_um,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
                       PROGRESSIVE_INFIX-FLAG #progressive_infix,
+                      INFIX_UM_INTRANS-FLAG #infix_um_intrans,
+                      INFIX_UM-FLAG #infix_um,
+                      PREFIXES-FLAG #prefixes,
+                      NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice-lex-rule-super &
@@ -1335,24 +1335,24 @@ prefix_potentive_causative-lex-rule := added-arg2of2-applicative-lex-rule & adde
 
 progressive_infix-lex-rule-super := add-only-no-ccont-rule & infix_aspect-rule-dtr & infix_um-rule-dtr & prefix_voice-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ PROGRESSIVE_INFIX-FLAG +,
-                PREFIX_VOICE-FLAG #prefix_voice,
+                SUFFIX-FLAG #suffix,
+                INITIAL_SUFFIX-FLAG #initial_suffix,
                 INFIX_UM_INTRANS-FLAG #infix_um_intrans,
-                PREFIXES-FLAG #prefixes,
+                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                PREFIX_VOICE-FLAG #prefix_voice,
                 STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                 INFIX_UM-FLAG #infix_um,
-                SUFFIX-FLAG #suffix,
-                ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                INITIAL_SUFFIX-FLAG #initial_suffix,
+                PREFIXES-FLAG #prefixes,
                 INFIX_ASPECT-FLAG #infix_aspect ],
     DTR non_derived_V_words-verb-lex &
-        [ INFLECTED [ PREFIX_VOICE-FLAG #prefix_voice,
+        [ INFLECTED [ SUFFIX-FLAG #suffix,
+                      INITIAL_SUFFIX-FLAG #initial_suffix,
                       INFIX_UM_INTRANS-FLAG #infix_um_intrans,
-                      PREFIXES-FLAG #prefixes,
+                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      PREFIX_VOICE-FLAG #prefix_voice,
                       STATIVE_V_WORDS-VERB-FLAG #stative_v_words-verb,
                       INFIX_UM-FLAG #infix_um,
-                      SUFFIX-FLAG #suffix,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      INITIAL_SUFFIX-FLAG #initial_suffix,
+                      PREFIXES-FLAG #prefixes,
                       INFIX_ASPECT-FLAG #infix_aspect ] ] ].
 
 not_progressive-lex-rule := const-lex-rule & progressive_infix-lex-rule-super &
@@ -1367,61 +1367,74 @@ not_progressive-lex-rule := const-lex-rule & progressive_infix-lex-rule-super &
 
 progressive_C_um-lex-rule := infl-lex-rule & progressive_infix-lex-rule-super &
   [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG +,
-                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
                 INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
                 INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ],
-    DTR.INFLECTED [ PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
+    DTR.INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                     NOT_PROGRESSIVE-FLAG #not_progressive,
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                    PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
                     INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ] ].
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 progressive_CV_meng-lex-rule := infl-lex-rule & progressive_infix-lex-rule-super &
   [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG +,
-                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ],
-    DTR.INFLECTED [ PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient ],
+    DTR.INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
                     INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
                     NOT_PROGRESSIVE-FLAG #not_progressive,
-                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ] ].
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                    PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 progressive_eC_locative_patient-lex-rule := progressive_infix-lex-rule-super &
   [ INFLECTED [ INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG +,
                 INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG +,
                 PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG +,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ],
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
     DTR.INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                     NOT_PROGRESSIVE-FLAG #not_progressive,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance ] ].
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG #not_progressive-or-progressive_ec_conveyance,
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 progressive_eC_conveyance-lex-rule := infl-lex-rule & progressive_infix-lex-rule-super &
   [ INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_EC_CONVEYANCE-FLAG +,
-                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
-                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient ],
-    DTR.INFLECTED [ PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
+    DTR.INFLECTED [ NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
                     INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_PATIENT-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_patient-or-prefix_no_voice-or-prefix_potentive_actor-or-progressive_ec_locative_patient,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_C_UM-FLAG #not_progressive-or-progressive_c_um,
-                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng,
                     NOT_PROGRESSIVE-FLAG #not_progressive,
-                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient ] ].
+                    PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #progressive_ec_locative_patient,
+                    INFIX_ASPECT-OR-NO_UM_INFIX-OR-NOT_PROGRESSIVE-OR-PREFIX_CAUSATIVE_LOCATIVE-OR-PREFIX_NO_VOICE-OR-PREFIX_POTENTIVE_ACTOR-OR-PREFIX_POTENTIVE_LOCATIVE-OR-PREFIX_STATIVE_LOCATIVE-OR-PROGRESSIVE_EC_LOCATIVE_PATIENT-FLAG #infix_aspect-or-no_um_infix-or-not_progressive-or-prefix_causative_locative-or-prefix_no_voice-or-prefix_potentive_actor-or-prefix_potentive_locative-or-prefix_stative_locative-or-progressive_ec_locative_patient,
+                    NOT_PROGRESSIVE-OR-PROGRESSIVE_CV_MENG-FLAG #not_progressive-or-progressive_cv_meng ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
+
+added-arg2of2-non-local-lex-rule := lex-rule.
+
+added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
+                                                     COMPS < > ],
+                                           CONT.HOOK.INDEX #nind ] ] >,
+    C-CONT.RELS.LIST < [ ARG2 #nind ] >,
+    DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
 
 causative-to-arg2-itr-op-lex-rule := scopal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.VAL [ SPR < >,
@@ -1438,23 +1451,11 @@ causative-to-arg2-itr-op-lex-rule := scopal-rel-lex-rule & same-spr-lex-rule & s
                                         NON-LOCAL #nl ] >,
                                COMPS < > ] ].
 
-added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
-                                                     COMPS < > ],
-                                           CONT.HOOK.INDEX #nind ] ] >,
-    C-CONT.RELS.LIST < [ ARG2 #nind ] >,
-    DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
-
-added-arg2of2-non-local-lex-rule := lex-rule.
-
 basic-applicative-lex-rule := comps-change-only-lex-rule &
   [ C-CONT [ RELS.LIST < event-relation &
                          [ ARG1 #evt ] >,
              HCONS.LIST < > ],
     DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
-
-added-arg2of2-np-head-lex-rule := lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
 
 scopal-rel-lex-rule := lex-rule &
   [ C-CONT [ RELS.LIST < event-relation &
@@ -1472,6 +1473,9 @@ scopal-rel-lex-rule := lex-rule &
     SYNSEM.LOCAL.CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg1 ] >,
     DTR.SYNSEM.LOCAL [ CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg2 ] >,
                        CONT.HOOK.LTOP #scoped ] ].
+
+added-arg2of2-np-head-lex-rule := lex-rule &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
