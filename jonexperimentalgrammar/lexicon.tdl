@@ -785,6 +785,10 @@ pósa := unvoiced_common-noun-lex &
   [ STEM < "pósa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
+sasakyan := unvoiced_common-noun-lex &
+  [ STEM < "sasakyan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_vehicle_n_rel" ].
+
 si_27en := unmarked_1s-noun-lex &
   [ STEM < "si'en" >,
     SYNSEM.LKEYS.KEYREL.PRED "_si'en_n_2_rel" ].
@@ -2410,6 +2414,14 @@ ginuyod := transitive_verbs-verb-lex &
 me_27una := simple_verbs_intrans-verb-lex &
   [ STEM < "me'una" >,
     SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+ma-póled := simple_verbs_intrans-verb-lex &
+  [ STEM < "ma-póled" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+ma-bitíl := simple_verbs_intrans-verb-lex &
+  [ STEM < "ma-bitíl" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_behungry_v_rel" ].
 
 ;;; Auxiliaries
 
