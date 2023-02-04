@@ -1,24 +1,24 @@
 Ma-póled in asó
 Meng-damolag in asó ti sasakyan
 Damolag-en ta'a
-Mengán in asó
-Awon meng-damolag in asó-i-sid ti sasakyan
+Meng-án in asó
+Awon meng-damolag siden asó-i ti sasakyan
 SKIPPED
 SKIPPED
 Meng-damolag in pósa at asó ti sasakyan
 Meng-damolag in asó ti sasakyan at saka meng-damolag in pósa ti asó
 Meng-damolag in pósa ti asó at meng-póled
-SKIPPED
-Mengán in asó a bitélen
-Mengán in asó ni kampo-i
-Mengán in asó ta kampo-i
-Ma-bitíl in asó-i-sid
-Isay asó-i-sid ta kampo-i
+Meng-damolag bat in pósa ti pósa
+Meng-án in asó a bitélen
+Meng-án in asó ni kampo
+Meng-án in asó ta kampo
+Ma-bitíl siden asó-i
+Isay asó-i-sid ta kampo
 Asó-i-sid ay pósa-i-sid
 Ma-póled in sasakyan ni asó-i
-Ma-póled in asó='-i-sid
+Ma-póled siden asó='-i
 Tiyaheno ma-póled
-Aheno damolag-en ni asó-i-sid
+Aheno damolag-en niden asó-i
 SKIPPED
 SKIPPED
 SKIPPED

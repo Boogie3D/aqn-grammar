@@ -1,0 +1,475 @@
+Language: Northern Alta (aqn)
+Lab 5
+Group: Jon Davenport & Steven Anaya
+Author: Steven Anaya
+Date: 03 Feburary, 2023
+
+1. We implemented the following phenomena in both our choices customization file and testsuite:
+
+  i. Aspect:
+
+      A. Perfect
+          Northern Alta by default doesn't show aspect. However, there are two inflections
+          that show perfect and progressive aspect, respectively. These inflections are common,
+          but the descriptive grammar's examples suggest that most sentences' verbs simply don't 
+          show aspect. The perfect aspect inflection is an infix, -in-, that is typically just
+          "inside" the verb stem. However, -in- actually precedes some other infixes. In particular
+          one active voice infix, -um-, when applied, must appear to the right, e.g. "-in-um-."
+
+              #27 perfective infix
+              Source: a:201
+              Vetted: s
+              Judgment: g
+              Phenomena: {argument optionality, case, tense aspect mood}
+              C-in-guyod ni asó
+              g-<in>-guyod  ni asó
+              g-<in>-gujud  ni ʔasu
+              RDP-<PRF>-pull GEN dog
+              'The dog pulled it'
+
+              #50 perfective infix with active voice prefix
+              Source: author
+              Vetted: f
+              Judgment: g
+              Phenomena: {wh- clauses}
+              adino meng--in-gína?
+              adino      m<in>en-gina?
+              ʔadinu     m<in>әn-gina?
+              where      <PRF>AV-run?
+              'where did (you) run?'
+
+          We modeled this aspect inflection by implementing a verb morphotactics position class. 
+          "Infix-aspect" is an obligatory infix position class with two lexical rules: one changes
+          nothing and simply passes the verb on to the next position class. The other lexical rule
+          adds either -in- or C-in- to the input, and specifies perfective aspect in its feature
+          structure.
+
+                verb-pc5_name=infix_aspect
+                verb-pc5_obligatory=on
+                verb-pc5_order=prefix
+                verb-pc5_inputs=verb-pc4
+                  verb-pc5_lrt1_name=perfect_aspect
+                    verb-pc5_lrt1_feat1_name=aspect
+                    verb-pc5_lrt1_feat1_value=perfective
+                    verb-pc5_lrt1_feat1_head=verb
+                    verb-pc5_lrt1_require1_others=verb-pc8_lrt1
+                    verb-pc5_lrt1_lri1_inflecting=yes
+                    verb-pc5_lrt1_lri1_orth=-in-
+                    verb-pc5_lrt1_lri2_inflecting=yes
+                    verb-pc5_lrt1_lri2_orth=C-in-
+                  verb-pc5_lrt2_name=no_aspect
+                    verb-pc5_lrt2_lri1_inflecting=no
+
+      B. Progressive/Imperfect
+
+          Progressive aspect is shown by an infixed consontant reduplication, -C-. This inflection
+          is less perpiscuously marked since other affixes may cause consonant reduplication 
+          towards the beginning of the verb. So while perfect aspect might show "-in-um-" the 
+          analogous voiced verb with progressive aspect is "C-um--C-." Our descriptive grammar 
+          claims that the opening consonant reduplication is merely phonolgoical, and not morphotactic.
+
+              #7 progressive infix
+              Source: author
+              Vetted: f
+              Judgment: g
+              Phenomena: {aspect}
+              C-um--C-lbut in kaldero
+              l-um--l-lbut   in  kaldero
+              l-um--l-elbut  ʔin kaldiru
+              RDP-AV--PRG-boil ABS  pot
+              'the (content of the) pot is boiling'
+
+              #46 'habang' is a clausal modifier
+              Source: author
+              Vetted: f
+              Judgment: g
+              Phenomena: {clausal modifier}
+              habang meng-an, C-um--C-daténg tiyama 
+              habang meng-an,   d-<um>--d-dateng tiyama      
+              habaŋ  meŋ-an,    d-<um>--d-datәŋ  tijama      
+              while  AV-eat.ABS RDP-<AV>--PRG-arrive ABS.father  
+              'while eating, father arrives'
+
+          We modeled this aspect by adding a morphotactic position class "progressive_infix." This
+          position class is obligatory, takes the non_derived_V_words lexical type as input. We added
+          this lexical type this week to contain all the verbs we could identify that can be inflected
+          for aspect. This infix is actually the very first in our chain of verb affixes, since
+          progressive affixes seem to occur in the innermost position. Unfortunately, since the perfective
+          infix appears a bit further out, we cannot simply have a single aspect position class to handle
+          both progressive and perfective affixes. The exact construction of the progressive consonant
+          reduplication also depends on the particular voicing the verb will receive, thus there are more
+          lexical rules and options in this position class than there are in the perfective "infix-aspect."
+          If the verb receives the actor-voice "meng-" prefix, then the progressive infix is actually -CV-,
+          whereas for conveyance voice progressive, the infix is "-eC-." To accomodate this variability we
+          used the following lexical rules. Each of these lexical rules change the verb's aspect to imperfect.
+          
+                verb-pc8_name=progressive_infix
+                verb-pc8_obligatory=on
+                verb-pc8_order=prefix
+                verb-pc8_inputs=verb42
+                  verb-pc8_lrt1_name=not_progressive
+                    verb-pc8_lrt1_lri1_inflecting=no
+                  verb-pc8_lrt2_name=progressive_C_um
+                    verb-pc8_lrt2_feat1_name=aspect
+                    verb-pc8_lrt2_feat1_value=imperfective
+                    verb-pc8_lrt2_feat1_head=verb
+                    verb-pc8_lrt2_lri1_inflecting=yes
+                    verb-pc8_lrt2_lri1_orth=-C-
+                  verb-pc8_lrt3_name=progressive_CV_meng
+                    verb-pc8_lrt3_feat1_name=aspect
+                    verb-pc8_lrt3_feat1_value=imperfective
+                    verb-pc8_lrt3_feat1_head=verb
+                    verb-pc8_lrt3_lri1_inflecting=yes
+                    verb-pc8_lrt3_lri1_orth=-CV-
+                  verb-pc8_lrt4_name=progressive_eC_locative_patient
+                    verb-pc8_lrt4_feat1_name=aspect
+                    verb-pc8_lrt4_feat1_value=imperfective
+                    verb-pc8_lrt4_feat1_head=verb
+                  verb-pc8_lrt5_name=progressive_eC_conveyance
+                    verb-pc8_lrt5_feat1_name=aspect
+                    verb-pc8_lrt5_feat1_value=imperfective
+                    verb-pc8_lrt5_feat1_head=verb
+                    verb-pc8_lrt5_lri1_inflecting=yes
+                    verb-pc8_lrt5_lri1_orth=-'eC-
+
+          These implementations of aspect seem to work. The morphotactics at least seems to accept verbs with
+          valid affix concatenations. To that end, we testsed some examples that are not in our current test
+          suite:
+
+          -in--um-de'él in ána'
+          -in--um-de'el in ana'
+          -PRF--AV-grew.up ABS child
+          the child grew up
+
+          But, as per lab instructions and as shown above, some of our testsuite examples actually already
+          manfisted this phenomenon.
+
+  ii. Voice Affixes:
+
+          Northern Alta has an extensive "voice" system whereby verb stems gain change argument structure
+          and their arguments change semantic role. There are several, but we attempted to implement the
+          main six: actor, patient, locative, stative, conveyance, and potentive.
+          Each of these requires distinct affixes and the voices themselves are generally incompatible, 
+          with the exception of potentive, which may be combined with other voices.
+          
+      A. Actor voice -um- and meng-
+          There are two different actor voice affixes, -um- and meng-. They both inflect the verb-stem
+          for actor voice, which always takes an absolutive subject and may take an optional oblique
+          undergoer object. The actor voice -um- infix may be used for meterological events (though we 
+          have not yet implemented these), change of state, or in predicates where the subject takes an
+          "actor" role. The actor-voice "men-" prefix expresses a "durative action that lacks an inherent
+          terminal point" (García Laguía, 222). This actor voice prefix likewise takes an absolutive subject
+          argument and optionally an oblique or locative undergoer object. Following the descriptive grammar,
+          we grouped this prefix together with the actor-voice prefix "meng-" which also express actions, take
+          an absolutive subject, and an optional oblique object.
+
+                  #7 -um- actor voice infix
+                  Source: author
+                  Vetted: f
+                  Judgment: g
+                  Phenomena: {case, determiners}
+                  C-um--C-lbut in kaldero
+                  l-um--l-lbut   in  kaldero
+                  l-um--l-elbut  ʔin kaldiru
+                  RDP-AV--PRG-boil ABS  pot
+                  'the (content of the) pot is boiling'
+
+                  #21 -um- actor voice infix
+                  Source: a:188
+                  Vetted: s
+                  Judgment: g
+                  Phenomena: {case, determiners, word order}
+                  C-um--C-daténg in ána' ='o
+                  d-<um>--d-dateng   in  ana'  ='o
+                  d-<um>--d-dateŋ    ʔin ʔanaʔ =ʔu
+                  RDP-AV--PRG-boil ABS  child =1s.GEN
+                  'my child is arriving'
+
+          
+                  #11 meng- actor voice prefix
+                  Source: a:188
+                  Vetted: s
+                  Judgment: g
+                  Phenomena: {case, determiners}
+                  meng-aliyo in wadi
+                  meng-aliyo in  wadi
+                  mәŋ-ʔaliju ʔin wadi
+                  AV-search  ABS  younger.sibling
+                  'a younger sibling searches'
+
+                  #25 men- actor voice prefix
+                  Source: a:148-149
+                  Vetted: s
+                  Judgment: g
+                  Phenomena: {argument optionality, case, coordination, negation, pronouns, word order}
+                  men-siyá men-siyá
+                  men-siyá men-siyá
+                  mәn-sija mәn-sija
+                  AV-cry   AV-cry
+                  '(he) cries and cries'
+
+                  #46 meng- actor voice prefix
+                  Source: author
+                  Vetted: f
+                  Judgment: g
+                  Phenomena: {clausal modifier}
+                  habang meng-an, C-um--C-daténg tiyama 
+                  habang meng-an,   d-<um>--d-dateng tiyama      
+                  habaŋ  meŋ-an,    d-<um>--d-datәŋ  tijama      
+                  while  AV-eat.ABS RDP-<AV>--PRG-arrive ABS.father  
+                  'while eating, father arrives'
+
+                  #50 meng- actor voice prefix
+                  Source: author
+                  Vetted: f
+                  Judgment: g
+                  Phenomena: {wh- clauses}
+                  adino meng--in-gína?
+                  adino      m<in>en-gina?
+                  ʔadinu     m<in>әn-gina?
+                  where      <PRF>AV-run?
+                  'where did (you) run?'
+
+          To implement this actor voice affix, we wrote two separate position classes. Since -um- is an
+          infix close to the verb stem, it is the second link of our verb morphotactic chain, after
+          the progressive inflection. Unfortunately, we could not get the transitive version of -um- to
+          work. We tried implementing it as part of the same position class as the intransitive lexical
+          rule below, and as an independent position class. Both of these methods failed, and it's unclear
+          to us why. We did manage to implement the intransitive version, as follows:
+
+                verb-pc4_name=infix_um
+                verb-pc4_obligatory=on
+                verb-pc4_order=prefix
+                verb-pc4_inputs=verb-pc8
+                  verb-pc4_lrt1_name=infix_um_intrans
+                    verb-pc4_lrt1_feat1_name=argument structure
+                    verb-pc4_lrt1_feat1_value=focus
+                    verb-pc4_lrt1_feat1_head=verb
+                    verb-pc4_lrt1_feat2_name=case
+                    verb-pc4_lrt1_feat2_value=focus
+                    verb-pc4_lrt1_feat2_head=subj
+                    verb-pc4_lrt1_require1_others=verb-pc8_lrt1, verb-pc8_lrt2
+                    verb-pc4_lrt1_forbid1_others=verb66
+                    verb-pc4_lrt1_lri1_inflecting=yes
+                    verb-pc4_lrt1_lri1_orth=-um-
+                    verb-pc4_lrt1_lri2_inflecting=yes
+                    verb-pc4_lrt1_lri2_orth=C-um-
+                  verb-pc4_lrt3_name=no_um_infix
+                    verb-pc4_lrt3_lri1_inflecting=no
+
+          To implement the meng- actor voice prefix, we created corresponding valence-changing lexical 
+          rules in our "prefix_voice" position class. This class contains all prefixes that alter verb
+          voice, including conveyance voice, potentive voice, stative voice, and causative. We restricted
+          the meng- lexical rules to make sure they don't take verbs already inflected with the -um- affix
+          but allow them to modify stems that have progressive or perfective infixes. The intransitive
+          meng- lexical rule changes the argument structure to intransitive, and constrains the subject
+          to be absolutive. The transitive meng-lexical rule changes the argument structure to intransitive
+          (abs-obl), adds an object, constrains the subject to be absolutive, and constrains the 
+          added-object to be oblique case.
+      
+
+                verb-pc7_name=prefix_voice
+                verb-pc7_obligatory=on
+                verb-pc7_order=prefix
+                verb-pc7_inputs=verb-pc5
+                  verb-pc7_lrt1_name=prefix_meng_intrans
+                    verb-pc7_lrt1_feat1_name=argument structure
+                    verb-pc7_lrt1_feat1_value=focus
+                    verb-pc7_lrt1_feat1_head=verb
+                    verb-pc7_lrt1_feat2_name=case
+                    verb-pc7_lrt1_feat2_value=focus
+                    verb-pc7_lrt1_feat2_head=subj
+                    verb-pc7_lrt1_require1_others=verb-pc8_lrt1, verb-pc8_lrt3
+                    verb-pc7_lrt1_forbid1_others=verb-pc4_lrt1
+                    verb-pc7_lrt1_forbid2_others=verb66
+                    verb-pc7_lrt1_lri1_inflecting=yes
+                    verb-pc7_lrt1_lri1_orth=men-
+                    verb-pc7_lrt1_lri2_inflecting=yes
+                    verb-pc7_lrt1_lri2_orth=meng-
+                    verb-pc7_lrt1_lri3_inflecting=yes
+                    verb-pc7_lrt1_lri3_orth=mengi-
+                  verb-pc7_lrt2_name=prefix_meng_trans
+                    verb-pc7_lrt2_feat1_name=argument structure
+                    verb-pc7_lrt2_feat1_value=focus-o_case
+                    verb-pc7_lrt2_feat1_head=verb
+                    verb-pc7_lrt2_feat2_name=case
+                    verb-pc7_lrt2_feat2_value=focus
+                    verb-pc7_lrt2_feat2_head=subj
+                    verb-pc7_lrt2_feat3_name=case
+                    verb-pc7_lrt2_feat3_value=o_case
+                    verb-pc7_lrt2_feat3_head=newobj
+                    verb-pc7_lrt2_valchg1_operation=obj-add
+                    verb-pc7_lrt2_valchg1_inputs=intrans
+                    verb-pc7_lrt2_valchg1_predname=active
+                    verb-pc7_lrt2_valchg1_argpos=pre
+                    verb-pc7_lrt2_valchg1_argtype=np
+                    verb-pc7_lrt2_require1_others=verb-pc8_lrt1, verb-pc8_lrt3
+                    verb-pc7_lrt2_forbid1_others=verb-pc4_lrt1
+                    verb-pc7_lrt2_forbid2_others=verb66
+                    verb-pc7_lrt2_lri1_inflecting=yes
+                    verb-pc7_lrt2_lri1_orth=men-
+                    verb-pc7_lrt2_lri2_inflecting=yes
+                    verb-pc7_lrt2_lri2_orth=meng-
+                    verb-pc7_lrt2_lri3_inflecting=yes
+                    verb-pc7_lrt2_lri3_orth=mengi-
+
+  iii. Coordination
+          
+          Northern Alta has a number of coordinate conjunctions, which coordinate different
+          types of linguistic units:
+
+            Conjunction       Meaning       Coordinated Linguistic Unit
+            -----------------------------------------------------------
+            at                and           Unmarked phrases (UPs), DPs, Demonstratives, Clauses
+            saka              and           UPs, Dems, AdvPs, Clauses
+            at saka           and           DPs, Pronouns, Clauses
+            kesa              than          AdvPs
+            kesara            than          DPs, Pronouns, AdvPs
+            o                 or            DPs, Dems, AdvPs, Clauses
+            pero              but           Clauses
+
+          Additionally, voice-marked phrases (VPs) may be coordinated asyndetonically.
+          Of these conjunctions, only 'at' and 'saka' were initially implemented, with 'at'
+          coordinating NPs and VPs and 'saka' coordinating VPs only.
+
+          The following changes were made to coordination in the choices file:
+
+            - 'saka' now coordinates NPs in addition to VPs
+            - 'at saka' was added to coordinate sentences
+            - 'o' was added to coordinate sentences
+            - 'pero' was added to coordinate sentences
+          
+          Each conjunction is a word that marks units in a monosyndeton pattern and comes before the
+          coordinand. Due to limitations in the customizer, 'at saka' could not be made to coordinate
+          DPs or pronouns without coordinating UPs. Additionally, 'kesa' and 'kesara' could not be made
+          to coordinate AdvPs.
+
+              cs6_np=on
+              cs6_pat=mono
+              cs6_mark=word
+              cs6_orth=saka
+              cs6_order=before
+              cs7_s=on
+              cs7_pat=mono
+              cs7_mark=word
+              cs7_orth=at saka
+              cs7_order=before
+              cs8_s=on
+              cs8_pat=mono
+              cs8_mark=word
+              cs8_orth=o
+              cs8_order=before
+              cs9_s=on
+              cs9_pat=mono
+              cs9_mark=word
+              cs9_orth=pero
+              cs9_order=before
+
+2. The descriptive grammar resource was consulted to determine how to translate the MMT sentences
+   according to vocabulary, case, and voice-marking.
+
+   The nouns 'dog', 'cat', 'car', and 'park' were translated as 'asó', 'pósa', 'sasakyan' (vehicle),
+   and 'kampo' (field) respectively. Exact equivalents for 'car' and 'park' could not be found in
+   the grammar resource. Plural nouns were marked with the plural-marking affix '-sid', unless they could
+   instead be marked with the plural absolutive article 'siden' or plural genitive 'niden'. For
+   examples where nouns are accompanied by the definite article 'the', we use the specificity marker
+   affix -i.
+
+   The intranstive verbs 'sleep' and 'be hungry' were translated as stative voice-marked words
+   'ma-póled' (ST-sleep) and 'ma-bitíl' (ST-hunger) respectively.  These stative-marked words each take
+   one argument case-marked by an absolutive singular article 'in' or plural 'siden'. The intransitive verb
+   'eat', however, is typically found as actor voice-marked meng-án (AV-eat) in the grammar resource, also
+   taking one argument with an absolutive article.
+
+   The transitive verb 'chase' was translated as active voice-marked 'meng-damalog' with an absolutive
+   case-marked subject and oblique case-marked object for all applicable sentences except 'I chase you',
+   for which it is instead translated as patient voice-marked 'damalog-en' (chase-PV) with the
+   1pi.GEN+2s.ABS fused pronoun "ta'a", which is similar to the example "ebbud-en ta'a" ('I love you')
+   found in the grammar resource.
+
+   For the adnominal modifier 'in the park' we use genitive case-marker 'ni' to mark 'kampo' (field)
+   as the "possessor" of the dogs and for prepositional 'in the park' or predicational 'be in the park'
+   we use locative case-marker 'ta' to mark 'kampo' as the location of the activity/state of being. For
+   the modifer 'hungry' we use the unmarked word 'bitélen' (hungry) with linker particle 'a'.
+
+   For the predicational 'be' as in 'The dogs are the cats' we use predicate marker 'ay'.
+
+   For coordination of NPs we use the conjunction 'at' and for clauses we use 'at saka'.
+
+   For negation of predicates we use clause-initial negative existential 'awon'.
+
+   For wh- question words we use clause-initial 'tiyaheno' (who) and 'aheno' (what).
+
+   For yes/no questions we use the question particle 'bat' after the predicate.
+
+   For the subordinating conjunction 'because' we use clause-initial 'dahil' (because).
+
+   The skipped sentences are not necessarily impossible to translate but examples of complement phrases
+   in the resource grammar are esoteric.
+
+3. The first problem encountered in setting up the MT was the difference between the version of ACE
+   used in the pre-compiled eng and sje grammars and the version downloaded from the ACE home page.
+   This incompatibility was solved by simply recompiling the grammars the same way we would compile the
+   aqn grammar. After solving this problem, we attempted to translate the first eng sentence into aqn.
+   This failed due to an extraneous rule definition `ex-det := extracted-det-phrase.` which LKB ignored
+   but ACE considered a fatal error. We were able to safely delete this rule and did not encounter any
+   other problems thereafter.
+   
+   Upon translating the first eng sentence to aqn, 51375 results were produced. One such result was
+   'Ma-póled asó-i-sid', which is almost correct but is missing the absolutive singular article 'in'.
+   Inspecting more of the translated outputs, we observed that none actually contained this article,
+   leading us to believe that the case-marking articles may be mistakenly considered optional in the
+   grammar.
+
+   Upon translating the first sje sentence to aqn, 51292 results were produced. 'Ma-póled asó-i-sid'
+   was again a produced output.
+
+4. NOTE: Initial grammar testsuite results are considerably worse than in Lab 4 as our testsuite was
+   rewritten to reflect our changes to morphotactics and to be more in-line with the conventions used
+   in the corpus. One such change was marking reduplication with the character 'C' and surrounding
+   infixes with dashes '-', e.g. 'lumelbut' was changed to 'C-um--C-lbut'
+
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             |                      | Lab 4                   | Lab 5                        |
+      +-------------+----------------------+-------------------------+------------------------------+
+      | Test Corpus | Items Parsed         | 2240                    | 2240                         |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Total Results        | 137                     | 103                          |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Total Readings       | 612                     | 398                          |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Avg. Readings/Result | 4.467                   | 3.827                        |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Coverage             | 6.1%                    | 4.6%                         |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Overgeneration       | 100%                    | 100%                         |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Most Ambiguous Item  | 104 Readings, Item 1180 | 30 Readings, Item 3000       |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Sources of           | Verb morphotactic       | Verb morphotactic rules      |
+      |             | Ambiguity            | rules, argument option- |                              |
+      |             |                      | ality, HEAD-ADJ-INT rule|                              |
+      +-------------+----------------------+-------------------------+------------------------------+
+      | Testsuite   | Items Parsed         | 56                      | 56                           |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Total Results        | 8                       | 27                           |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Total Readings       | 14                      | 466                          |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Avg. Readings/Result | 1.75                    | 17.259                       |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Coverage             | 28.6%                   | 95.2%                        |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Overgeneration       | 5.7%                    | 20%                          |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Most Ambiguous Item  | 2 readings, Items 23, 29| 253 readings, Item 25        |
+      |             |                      | 31, 35, 38, 54          |                              |
+      +-------------+----------------------+-------------------------+------------------------------+
+      |             | Sources of Ambiguity | Affix ambiguity         | Coordination rules,          |
+      |             |                      |                         | verb morphotactics           |
+      +-------------+----------------------+-------------------------+------------------------------+
+
+    It appears likely that our morphotactics and coordination rule changes have increased ambiguity
+    drastically only for certain examples. Two testsuite examples are responsible for nearly 74% of our
+    total testsuite readings. Additionally, our total translation results for eng to aqn increased
+    from roughly 26000 to roughly 51000. This will be addressed in future labs.
