@@ -1,0 +1,222 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+content_word_prefixes-prefix1 :=
+%prefix (* a-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix2 :=
+%prefix (* pen-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix3 :=
+%prefix (* peng-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix4 :=
+%prefix (* pengi-)
+content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix5 :=
+%prefix (* pet-)
+content_word_prefixes-lex-rule.
+
+alternation-suffix1 :=
+%suffix (* -'an)
+alternation-lex-rule.
+
+alternation-suffix2 :=
+%suffix (* -an)
+alternation-lex-rule.
+
+alternation-suffix3 :=
+%suffix (* -'en)
+alternation-lex-rule.
+
+alternation-suffix4 :=
+%suffix (* -en)
+alternation-lex-rule.
+
+alternation-suffix5 :=
+%suffix (* -'na)
+alternation-lex-rule.
+
+alternation-suffix6 :=
+%suffix (* -na)
+alternation-lex-rule.
+
+alternation-suffix7 :=
+%suffix (* -'e)
+alternation-lex-rule.
+
+alternation-suffix8 :=
+%suffix (* -e)
+alternation-lex-rule.
+
+alternation-suffix9 :=
+%suffix (* -'o)
+alternation-lex-rule.
+
+alternation-suffix10 :=
+%suffix (* -o)
+alternation-lex-rule.
+
+specifity-suffix :=
+%suffix (* -i)
+specifity-lex-rule.
+
+adverb_D-suffix1 :=
+%suffix (* -d)
+adverb_D-lex-rule.
+
+adverb_D-suffix2 :=
+%suffix (* =d)
+adverb_D-lex-rule.
+
+little_adj-suffix1 :=
+%suffix (* -ba'ik)
+little_adj-lex-rule.
+
+little_adj-suffix2 :=
+%suffix (* ba'ik)
+little_adj-lex-rule.
+
+plural_ultimate_suffix-suffix1 :=
+%suffix (* -sid)
+plural_ultimate_suffix-lex-rule.
+
+plural_ultimate_suffix-suffix2 :=
+%suffix (* =sid)
+plural_ultimate_suffix-lex-rule.
+
+plural_ultimate_suffix-suffix3 :=
+%suffix (* 'sid)
+plural_ultimate_suffix-lex-rule.
+
+suffix_patient_voice-suffix :=
+%suffix (* -en)
+suffix_patient_voice-lex-rule.
+
+suffix_locative_voice-suffix :=
+%suffix (* -an)
+suffix_locative_voice-lex-rule.
+
+infix_um_intrans-prefix1 :=
+%prefix (* -um-)
+infix_um_intrans-lex-rule.
+
+infix_um_intrans-prefix2 :=
+%prefix (* C-um-)
+infix_um_intrans-lex-rule.
+
+perfect_aspect-prefix1 :=
+%prefix (* -in-)
+perfect_aspect-lex-rule.
+
+perfect_aspect-prefix2 :=
+%prefix (* C-in-)
+perfect_aspect-lex-rule.
+
+prefix_meng_intrans-prefix1 :=
+%prefix (* men-)
+prefix_meng_intrans-lex-rule.
+
+prefix_meng_intrans-prefix2 :=
+%prefix (* meng-)
+prefix_meng_intrans-lex-rule.
+
+prefix_meng_intrans-prefix3 :=
+%prefix (* mengi-)
+prefix_meng_intrans-lex-rule.
+
+prefix_meng_trans-prefix1 :=
+%prefix (* men-)
+prefix_meng_trans-lex-rule.
+
+prefix_meng_trans-prefix2 :=
+%prefix (* meng-)
+prefix_meng_trans-lex-rule.
+
+prefix_meng_trans-prefix3 :=
+%prefix (* mengi-)
+prefix_meng_trans-lex-rule.
+
+prefix_conveyance-prefix :=
+%prefix (* i-)
+prefix_conveyance-lex-rule.
+
+prefix_potentive_actor-prefix :=
+%prefix (* me'e-)
+prefix_potentive_actor-lex-rule.
+
+prefix_stative-prefix1 :=
+%prefix (* me-)
+prefix_stative-lex-rule.
+
+prefix_stative-prefix2 :=
+%prefix (* ma-)
+prefix_stative-lex-rule.
+
+prefix_stative_av-prefix :=
+%prefix (* me'e)
+prefix_stative_av-lex-rule.
+
+prefix_stative_locative-prefix :=
+%prefix (* a-)
+prefix_stative_locative-lex-rule.
+
+prefix_stative_conveyance-prefix :=
+%prefix (* i'a-)
+prefix_stative_conveyance-lex-rule.
+
+prefix_causative_av-prefix :=
+%prefix (* men-pa-)
+prefix_causative_av-lex-rule.
+
+prefix_causative_patient-prefix :=
+%prefix (* pa-)
+prefix_causative_patient-lex-rule.
+
+prefix_causative_locative-prefix1 :=
+%prefix (* pe-)
+prefix_causative_locative-lex-rule.
+
+prefix_causative_locative-prefix2 :=
+%prefix (* pa-)
+prefix_causative_locative-lex-rule.
+
+prefix_causative_conveyance-prefix :=
+%prefix (* i-pa-)
+prefix_causative_conveyance-lex-rule.
+
+prefix_potentive_patient-prefix :=
+%prefix (* me-)
+prefix_potentive_patient-lex-rule.
+
+prefix_potentive_locative-prefix1 :=
+%prefix (* me-)
+prefix_potentive_locative-lex-rule.
+
+prefix_potentive_locative-prefix2 :=
+%prefix (* me'-)
+prefix_potentive_locative-lex-rule.
+
+prefix_potentive_causative-prefix1 :=
+%prefix (* me'i-)
+prefix_potentive_causative-lex-rule.
+
+prefix_potentive_causative-prefix2 :=
+%prefix (* me'-i-)
+prefix_potentive_causative-lex-rule.
+
+progressive_C_um-prefix :=
+%prefix (* -C-)
+progressive_C_um-lex-rule.
+
+progressive_CV_meng-prefix :=
+%prefix (* -CV-)
+progressive_CV_meng-lex-rule.
+
+progressive_eC_conveyance-prefix :=
+%prefix (* -'eC-)
+progressive_eC_conveyance-lex-rule.

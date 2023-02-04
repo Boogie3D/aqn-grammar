@@ -10,10 +10,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, pronouns, word order}
-me'una siya
-me'una =sija
-mәʔuna =sija
-say    =3s.ABS
+me-'uná siya
+me-'una =sija
+mә-ʔuna =sija
+ST-say  =3s.ABS
 'He said'
 
 #2
@@ -21,10 +21,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una mo
-me'una =mo
-mәʔuna =mu
-say    =2s.GEN
+me-'uná mo
+me-'una =mo
+mә-ʔuna =mu
+ST-say  =2s.GEN
 'Your said'
 
 #3
@@ -32,10 +32,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una 'o
-me'una ='o
-mәʔuna =ʔu
-say    =1s.GEN
+me-'uná 'o
+me-'una ='o
+mә-ʔuna =ʔu
+ST-say  =1s.GEN
 'my said'
 
 #4
@@ -43,10 +43,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una na
-me'una =na
-mәʔuna =na
-say    =3s.GEN
+me-'uná na
+me-'una =na
+mә-ʔuna =na
+ST-say  =3s.GEN
 'said their'
 
 #5
@@ -54,10 +54,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una tam
-me'una =tam
-mәʔuna =tam
-say    =1pi.GEN
+me-'uná tam
+me-'una =tam
+mә-ʔuna =tam
+ST-say  =1pi.GEN
 'said mine'
 
 #6
@@ -65,10 +65,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, pronouns}
-me'una di'ami
-me'una di'ami
-mәʔuna diʔami
-say    1pi.LOC
+me-'uná di'ami
+me-'una di'ami
+mә-ʔuna diʔami
+ST-say  1pi.LOC
 'I said there'
 
 #7 Square brackets appear sometimes in the phonological transcription tier in order to represent clausal constituent boundaries
@@ -76,10 +76,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, determiners}
-lumelbut in kaldero
-lumel-but   [in  kaldero]
-l<um>el-but [ʔin kaldiru]
-<AV>RDP-boil ABS pot
+C-um--C-lbut in kaldero
+l-um--l-lbut     in  kaldero
+l-um--l-elbut    ʔin kaldiru
+RDP-AV--PRG-boil ABS pot
 'the (content of the) pot is boiling'
 
 #8
@@ -87,10 +87,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-lumelbut ni kaldero
-lumel-but   [ni  kaldero]
-l<um>l-but  [ni  kaldiru]
-<AV>RDP-boil GEN pot
+C-um--C-lbut ni kaldero
+l-um--l-lbut     ni  kaldero
+l-um--l-elbut    ni  kaldiru
+RDP-AV--PRG-boil GEN pot
 'the (content of the) pot's is boiling'
 
 #9
@@ -98,10 +98,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-lumelbut ni kaldero
-lumel-but   [ni  kaldero]
-l<um>l-but  [ni  kaldiru]
-<AV>RDP-boil LOC pot
+C-um--C-lbut ni kaldero
+l-um--l-lbut     ni  kaldero
+l-um--l-elbut    ni  kaldiru
+RDP-AV--PRG-boil LOC pot
 'the one (content of the) pot is boiling'
 
 #10
@@ -109,10 +109,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-lumelbut ti kaldero
-lumel-but   [ti  kaldero]
-l<um>el-but [ti  kaldiru]
-<AV>RDP-boil OBL pot
+C-um--C-lbut ti kaldero
+l-um--l-lbut     ti  kaldero
+l-um--l-elbut    ti  kaldiru
+RDP-AV--PRG-boil OBL pot
 'from (content of the) pot is boiling'
 
 #11
@@ -120,10 +120,10 @@ Source: a:188
 Vetted: s
 Judgment: g
 Phenomena: {case, determiners}
-mengaliyo in wadi
-meng-aliyo [in  wadi]
-mәŋ-ʔaliju [ʔin wadi]
-AV-search   ABS younger.sibling
+meng-aliyo in wadi
+meng-aliyo in  wadi
+mәŋ-ʔaliju ʔin wadi
+AV-search  ABS younger.sibling
 'a younger sibling searches'
 
 #12
@@ -131,10 +131,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-mengaliyo ni wadi
-meng-aliyo [ni  wadi]
-mәŋ-ʔaliju [ni  wadi]
-AV-search   GEN younger.sibling
+meng-aliyo ni  wadi
+meng-aliyo ni  wadi
+mәŋ-ʔaliju ni  wadi
+AV-search  GEN younger.sibling
 'of younger sibling searches'
 
 #13
@@ -142,10 +142,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-mengaliyo ti wadi na
-meng-aliyo [ti  wadi]
-mәŋ-ʔaliju [ti  wadi]
-AV-search   OBL younger.sibling
+meng-aliyo ti  wadi
+meng-aliyo ti  wadi
+mәŋ-ʔaliju ti  wadi
+AV-search  OBL younger.sibling
 'to younger sibling searches'
 
 #14
@@ -153,10 +153,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-mengaliyo ni wadi
-meng-aliyo [ni  wadi]
-mәŋ-ʔaliju [ni  wadi]
-AV-search   LOC younger.sibling
+meng-aliyo ni  wadi
+meng-aliyo ni  wadi
+mәŋ-ʔaliju ni  wadi
+AV-search  LOC younger.sibling
 'this younger sibling searches'
 
 #15
@@ -164,21 +164,21 @@ Source: a:188
 Vetted: s
 Judgment: g
 Phenomena: {case, word order}
-lumelbut in kaldero
-lumel-but   [in  kaldero]
-l<um>l-but  [ʔin kaldiru]
-<AV>RDP-boil ABS pot
-'the (content of the) pot is already boiling'
+C-um--C-lbut in kaldero
+l-um--l-lbut     in  kaldero
+l-um--l-elbut    ʔin kaldiru
+RDP-AV--PRG-boil ABS pot
+'the (content of the) pot is boiling'
 
 #16
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, word order}
-lumelbut ti kaldero
-lumel-but   [ti  kaldero]
-l<um>l-but  [ti  kaldiru]
-<AV>RDP-boil ABS pot
+C-um--C-lbut ti kaldero
+l-um--l-lbut     ti  kaldero
+l-um--l-elbut    ti  kaldiru
+RDP-AV--PRG-boil ABS pot
 'the (content of the) pot is still boiling'
 
 #17 Northern Alta uses temporal adverbs in place of tense/aspect
@@ -186,10 +186,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {tense aspect mood, word order}
-dya'yay lumelbut in kaldero
-dya'yay  lumel-but   [in  kaldero]
-dijaʔjaj l<um>l-but  [ʔin kaldiru]
-now      <AV>RDP-boil ABS pot
+dya'yay C-um--C-lbut in kaldero
+dya'yay  l-um--l-lbut     in  kaldero
+dijaʔjaj l-um--l-elbut    ʔin kaldiru
+now      RDP-AV--PRG-boil ABS pot
 'now the (content of the) pot is boiling'
 
 #18 Temporal adverbs come at the beginning or end of a clause
@@ -197,10 +197,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {tense aspect mood, word order}
-lumelbut dya'yay in kaldero
-lumel-but    dya'yay  [in  kaldero]
-l<um>l-but   dijaʔjaj [ʔin kaldiru]
-<AV>RDP-boil now       ABS pot
+C-um--C-lbut dya'yay in kaldero
+l-um--l-lbut     dya'yay  in  kaldero
+l-um--l-elbut    dijaʔjaj ʔin kaldiru
+RDP-AV--PRG-boil now      ABS pot
 'now the (content of the) pot is boiling'
 
 #19
@@ -208,10 +208,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, tense aspect mood, determiners, word order}
-ududma lumelbut in kaldero
-ududma  lumel-but    [in  kaldero]
-ʔududma l<um>l-but   [ʔin kaldiru]
-tomorrow <AV>RDP-boil ABS pot
+ududma C-um--C-lbut in kaldero
+ududma  l-um--l-lbut      in  kaldero
+ʔududma l-um--l-elbut     ʔin kaldiru
+tomorrow RDP-AV--PRG-boil ABS pot
 'tomorrow the (content of the) pot will be boiling'
 
 #20
@@ -219,10 +219,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {tense aspect mood, word order}
-lumelbut ududma in kaldero
-lumel-but    ududma  [in  kaldero]
-l<um>l-but   ʔududma [ʔin kaldiru]
-<AV>RDP-boil tomorrow ABS pot
+C-um--C-lbut ududma in kaldero
+l-um--l-lbut     ududma   in  kaldero
+l-um--l-elbut    ʔududma  ʔin kaldiru
+RDP-AV--PRG-boil tomorrow ABS pot
 'tomorrow the (content of the) pot will be boiling'
 
 #21
@@ -230,10 +230,10 @@ Source: a:188
 Vetted: s
 Judgment: g
 Phenomena: {case, determiners, word order}
-dumdateng in ána' ='o
-d<um>d-ateng  [in  ana'  ='o]
-d<um>d-ateŋ   [ʔin ʔanaʔ =ʔu] 
-<AV>RDP-arrive ABS child =1s.GEN
+C-um--C-daténg in ána' ='o
+d-<um>--d-dateng in  ana'  ='o
+d-<um>--d-dateŋ  ʔin ʔanaʔ =ʔu
+RDP-AV--PRG-boil ABS child =1s.GEN
 'my child is arriving'
 
 #22
@@ -241,10 +241,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {case, determiners}
-dumateng ni ána' ='o
-d<um>d-ateng  [ni  ana'  ='o]
-d<um>d-ateŋ   [ni  ʔanaʔ =ʔu] 
-<AV>RDP-arrive GEN child =1s.GEN
+C-um--C-daténg ni ána' ='o
+d-<um>--d-dateng ni  ana'  ='o
+d-<um>--d-dateŋ  ni  ʔanaʔ =ʔu
+RDP-AV--PRG-boil GEN child =1s.GEN
 'my child's is arriving'
 
 #23
@@ -253,8 +253,8 @@ Vetted: s
 Judgment: g
 Phenomena: {case, determiners, word order}
 eg'ang-en de in karajum-i-sid
-eg'ang-en =de    [in  karajum=i=sid]
-ʔәgʔaŋ-әn =dә    [ʔin karajum=i=sid]
+eg'ang-en =de     in  karajum=i=sid
+ʔәgʔaŋ-әn =dә     ʔin karajum=i=sid
 leave-PV  =3s.GEN ABS needle=SPEC=PL
 'they remove the needles'
 
@@ -264,8 +264,8 @@ Vetted: f
 Judgment: u
 Phenomena: {word order}
 eg'ang-en de in karajum-sid-i
-eg'ang-en =de    [in  karajum=sid=i]
-ʔәgʔaŋ-әn =dә    [ʔin karajum=sid=i]
+eg'ang-en =de     in  karajum=sid=i
+ʔәgʔaŋ-әn =dә     ʔin karajum=sid=i
 leave-PV  =3s.GEN ABS needle=PL=SPEC
 'they remove the needles'
 
@@ -274,7 +274,7 @@ Source: a:148-149
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, coordination, negation, pronouns, word order}
-mensiyá mensiyá
+men-siyá men-siyá
 men-siyá men-siyá
 mәn-sija mәn-sija
 AV-cry   AV-cry
@@ -285,7 +285,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {coordination}
-mensiyá kesara mensiyá
+men-siyá kesara men-siyá
 men-siyá kesara men-siyá
 mәn-sija kisara mәn-sija
 AV-cry   than   AV-cry
@@ -296,10 +296,10 @@ Source: a:201
 Vetted: s
 Judgment: g
 Phenomena: {argument optionality, case, tense aspect mood}
-ginuyod =nen ni asó
-g<in>uyod    =nen    [ni  asó]
-g<in>ujud    =nәn    [ni  ʔasu]
-<PRF.PV>pull =already GEN dog
+C-in-guyod ni asó
+g-<in>-uyod       ni  asó
+g-<in>-ujud       ni  ʔasu
+RDP-<PRF.PV>-pull GEN dog
 'The dog pulled it'
 
 #28 Cannot omit genitive actor
@@ -307,10 +307,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: {argument optionality}
-ginuyod nen
-g<in>uyod    =nen
-g<in>ujud    =nәn
-<PRF.PV>pull =already
+C-in-guyod
+g-<in>-uyod
+g-<in>-ujud
+RDP-<PRF>-pull
 '(Someone) pulled it'
 
 #29 'in' is an absolutive singular common word article
@@ -318,10 +318,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, determiners}
-ma-póled in asó
-ma-póled [in  asó]
-mә-pulәd [in  ʔasu]
-ST-sleep  ABS dog
+ma-póled in  asó
+ma-póled in  asói
+mә-pulәd in  ʔasu
+ST-sleep ABS dog
 'The dog sleeps'
 
 #30 'ti' is an absolutive singular person word article
@@ -330,9 +330,9 @@ Vetted: f
 Judgment: u
 Phenomena: {determiners}
 ma-póled ti asó
-ma-póled [ti  asó]
-mә-pulәd [ti  ʔasu]
-ST-sleep  ABS dog
+ma-póled ti  asó
+mә-pulәd ti  ʔasu
+ST-sleep ABS dog
 'The dog sleeps'
 
 #31 'nen' is a possessive strategy particle
@@ -341,8 +341,8 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 palit-an na in beli nen aparato
-palit-an  =na    [in  beli [nen   aparato]]
-palit-an  =na    [ʔin bәli [nәn   ʔaparatu]]
+palit-an  =na     in  beli  nen   aparato
+palit-an  =na     ʔin bәli  nәn   ʔaparatu
 change-LV =3s.GEN ABS house D.GEN device
 'he changes the frame of the device'
 
@@ -352,8 +352,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na in beli aparato
-palit-an  =na    [in  beli  aparato]
-palit-an  =na    [ʔin bәli  ʔaparatu]
+palit-an  =na     in  beli  aparato
+palit-an  =na     ʔin bәli  ʔaparatu
 change-LV =3s.GEN ABS house device
 'he changes the frame device'
 
@@ -363,8 +363,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na in beli aparato
-palit-an  =na    [in [nen   beli  aparato]]
-palit-an  =na    [in [nәn   bәli  ʔaparatu]]
+palit-an  =na     in  nen   beli  aparato
+palit-an  =na     in  nәn   bәli  ʔaparatu
 change-LV =3s.GEN ABS D.GEN house device
 'he changes of frame device'
 
@@ -374,8 +374,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na in beli aparato nen
-palit-an  =na    [in  beli  aparato  nen]
-palit-an  =na    [in  bәli  ʔaparatu nәn]
+palit-an  =na     in  beli  aparato  nen
+palit-an  =na     in  bәli  ʔaparatu nәn
 change-LV =3s.GEN ABS house device   D.GEN
 'he changes of frame device'
 
@@ -385,9 +385,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na in beli nen
-palit-an  =na    [in  beli  [nen]]
-palit-an  =na    [ʔin bәli  [nәn]]
-change-LV =3s.GEN ABS house  D.GEN
+palit-an  =na     in  beli  nen
+palit-an  =na     ʔin bәli  nәn
+change-LV =3s.GEN ABS house D.GEN
 'he changes the frame of the'
 
 #36 'nen' is a possessive strategy particle
@@ -396,9 +396,9 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na in nen aparato
-palit-an  =na    [in  [nen   aparato]]
-palit-an  =na    [ʔin [nәn   ʔaparatu]]
-change-LV =3s.GEN ABS  D.GEN device
+palit-an  =na     in  nen   aparato
+palit-an  =na     ʔin nәn   ʔaparatu
+change-LV =3s.GEN ABS D.GEN device
 'he changes the of the device'
 
 #37 'nen' is a possessive strategy particle
@@ -407,8 +407,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 palit-an na siya nen aparato
-palit-an  =na    [siya  [nen   aparato]]
-palit-an  =na    [sija  [nәn   ʔaparatu]]
+palit-an  =na     siya   nen   aparato
+palit-an  =na     sija   nәn   ʔaparatu
 change-LV =3s.GEN 3s.ABS D.GEN device
 'he changes it of the device'
 
@@ -418,8 +418,8 @@ Vetted: f
 Judgment: g
 Phenomena: {possessives}
 eg'ang-en =mi in set =na
-eg'ang-en =mi     [in  set   =na]
-ʔәgʔaŋ-әn =mi     [ʔin sit   =na]
+eg'ang-en =mi      in  set   =na
+ʔәgʔaŋ-әn =mi      ʔin sit   =na
 remove-PV =1pe.GEN ABS thorn =3s.GEN 
 'we remove his thorn'
 
@@ -429,8 +429,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 eg'ang-en  =mi in =na set
-eg'ang-en =mi     [in  =na     set]
-ʔәgʔaŋ-әn =mi     [ʔin =na     sit]
+eg'ang-en =mi      in  =na     set
+ʔәgʔaŋ-әn =mi      ʔin =na     sit
 remove-PV =1pe.GEN ABS =3s.GEN thorn
 'we remove thorn his'
 
@@ -440,8 +440,8 @@ Vetted: f
 Judgment: u
 Phenomena: {possessives}
 eg'ang-en  =mi =na in set
-eg'ang-en =mi     [=na    [in  set]]
-ʔәgʔaŋ-әn =mi     [=na    [ʔin sit]]
+eg'ang-en =mi      =na     in  set
+ʔәgʔaŋ-әn =mi      =na     ʔin sit
 remove-PV =1pe.GEN =3s.GEN ABS thorn
 'we remove his a thorn'
 
@@ -450,10 +450,10 @@ Source: a:222
 Vetted: f
 Judgment: g
 Phenomena: {possessives}
-dumateng tiyama =miyu
-d<um>ateng tiyama     =miyu
-d<um>atәŋ  tijama     =miju
-<AV>arrive ABS.father =2p.Gen
+C-um--C-daténg tiyama =miyu
+d-<um>--d-dateng     tiyama     =miyu
+d-<um>--d-datәŋ      tijama     =miju
+RDP-<AV>--PRG-arrive ABS.father =2p.Gen
 'your father arrives'
 
 #42 '=miyu' is a possessive pronoun enclitic
@@ -461,10 +461,10 @@ Source: a:222
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-dumateng miyu tiyama 
-d<um>ateng =miyu   tiyama 
-d<um>atәŋ  =miju   tijama 
-<AV>arrive =2p.Gen ABS.father 
+C-um--C-daténg miyu tiyama 
+d-<um>--d-dateng     =miyu   tiyama 
+d-<um>--d-datәŋ      =miju   tijama 
+RDP-<AV>--PRG-arrive =2p.Gen ABS.father 
 'father your arrives'
 
 #43 '=miyu' is a possessive pronoun enclitic
@@ -472,10 +472,10 @@ Source: a:222
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-dumateng miyu 
-d<um>ateng =miyu 
-d<um>atәŋ  =miju 
-<AV>arrive =2p.Gen
+C-um--C-daténg miyu 
+d-<um>--d-dateng     =miyu 
+d-<um>--d-datәŋ      =miju 
+RDP-<AV>--PRG-arrive =2p.Gen
 'your arrives'
 
 #44 '=miyu' is a possessive pronoun enclitic
@@ -483,109 +483,109 @@ Source: a:222
 Vetted: f
 Judgment: u
 Phenomena: {possessives}
-dumateng siya miyu
-d<um>ateng sija =miyu
-d<um>atәŋ  sija =miju
-<AV>arrive ABS  =2p.Gen
+C-um--C-daténg siya miyu
+d-<um>--d-dateng     sija =miyu
+d-<um>--d-datәŋ      sija =miju
+RDP-<AV>--PRG-arrive ABS  =2p.Gen
 'your he arrives'
 
 #45 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {clausal modifiers}
-dumateng tiyama habang meng-an
-d<um>ateng tiyama      habang meng-an
-d<um>atәŋ  tijama      habaŋ  mәŋ-ʔan
-<AV>arrive ABS.father  while  AV-eat.ABS
+Phenomena: {clausal modifier}
+C-um--C-daténg tiyama habang meng-an
+d-<um>--d-dateng     tiyama     habang meng-an
+d-<um>--d-datәŋ      tijama     habaŋ  mәŋ-ʔan
+RDP-<AV>--PRG-arrive ABS.father while  AV-eat.ABS
 'father arrives while eating'
 
 #46 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {clausal modifiers}
-habang meng-an, dumateng tiyama 
-habang meng-an,   d<um>ateng tiyama      
-habaŋ  meŋ-an,    d<um>atәŋ  tijama      
-while  AV-eat.ABS <AV>arrive ABS.father  
+Phenomena: {clausal modifier}
+habang meng-an, C-um--C-daténg tiyama 
+habang meng-an,   d-<um>--d-dateng     tiyama      
+habaŋ  meŋ-an,    d-<um>--d-datәŋ      tijama      
+while  AV-eat.ABS RDP-<AV>--RDP-arrive ABS.father  
 'while eating, father arrives'
 
 #47 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {clausal modifiers}
-meng-an, dumateng tiyama 
-meng-an,   d<um>ateng tiyama      
-meŋ-an,    d<um>atәŋ  tijama      
-AV-eat.ABS <AV>arrive ABS.father  
+Phenomena: {clausal modifier}
+meng-an, C-um--C-daténg tiyama 
+meng-an,   d-<um>--d-dateng     tiyama      
+meŋ-an,    d-<um>--d-datәŋ      tijama      
+AV-eat.ABS RDP-<AV>--PRG-arrive ABS.father  
 'eating, father arrives'
 
 #48 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {clausal modifiers}
-dumateng tiyama meng-an
-d<um>ateng tiyama     meng-an
-d<um>atәŋ  tijama     mәŋ-ʔan
-<AV>arrive ABS.father AV-eat.ABS
+Phenomena: {clausal modifier}
+C-um--C-daténg tiyama meng-an
+d-<um>--d-dateng     tiyama     habang meng-an
+d-<um>--d-datәŋ      tijama     habeng mәŋ-ʔan
+RDP-<AV>--PRG-arrive ABS.father while  AV-eat.ABS
 'father arrives eats'
 
 #49 'habang' is a clausal modifier
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {clausal modifiers}
-dumateng habang tiyama meng-an
-d<um>ateng habang tiyama meng-an
-d<um>atәŋ  habeng tijama mәŋ-ʔan
-<AV>arrive while ABS.father AV-eat.ABS
+Phenomena: {clausal modifier}
+C-um--C-daténg habang tiyama meng-an
+d-<um>--d-dateng     habang tiyama     meng-an
+d-<um>--d-datәŋ      habeng tijama     mәŋ-ʔan
+RDP-<AV>--PRG-arrive while  ABS.father AV-eat.ABS
 'arrives while father eats'
 
 #50 'adino' is an interrogative adverb
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {wh questions}
-adino m--in--en-gina-d?
-adino      m<in>en-gina   =d?
-ʔadinu     m<in>әn-gina   =d?
-where      <PRF>AV-run    =d?
+Phenomena: {wh- clauses}
+adino meng--in-gína?
+adino  m<in>en-gina?
+ʔadinu m<in>әn-gina?
+where  <PRF>AV-run?
 'where did (you) run?'
 
 #51 adverbial question word order
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {wh questions}
-m--in--en-gina-d adino?
-m<in>en-gina=d adino?
-m<in>әn-gina=d ʔadinu?
-<PRF>AV-run=d  where?
+Phenomena: {wh- clauses}
+meng--in-gína adino?
+meng--in-gina adino?
+mәng--in-gina ʔadinu?
+AV--PRF-run   where?
 'run (you) where?'
 
 #52 'tiyaheno' is an interrogative pronoun
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {wh questions}
-tiyaheno dumateng?
-tiʔahinu d<um>ateng?
-tiʔahinu d<um>atәŋ?
-who  <AV>arrive?
+Phenomena: {wh- clauses}
+tiyaheno C-um--C-daténg?
+tiʔahinu d-<um>--d-dateng?
+tiʔahinu d-<um>--d-datәŋ?
+who      RDP-<AV>--PRG-arrive
 'who arrives?'
 
 #53 pronominal question word order
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {wh questions}
-dumateng tiyaheno?
-d<um>ateng tiʔahinu?
-d<um>atәŋ tiʔahinu?
-who  <AV>arrive?
+Phenomena: {wh- clauses}
+C-um--C-daténg       tiyaheno?
+d-<um>--d-dateng     tiʔahinu?
+d-<um>--d-datәŋ      tiʔahinu?
+RDP-<AV>--PRG-arrive who?
 'arrives who?'
 
 #54 eng.txt 1 "Dogs sleep"
@@ -594,9 +594,9 @@ Vetted: f
 Judgment: g
 Phenomena: {case, determiners}
 ma-póled in asó
-ma-póled [in  asó]
-ma-pulәd  [in  ʔasu]
-AV-sleep    ABS dog
+ma-póled in  asó
+ma-pulәd in  ʔasu
+AV-sleep ABS dog
 'Dogs sleep'
 
 #55 eng.txt 2 "Dogs chase cars"
@@ -605,9 +605,9 @@ Vetted: f
 Judgment: g
 Phenomena: {case, determiners}
 meng-damolag in asó ti sasakyan
-meng-damolag [in asó [ti  sasakyan]]
-mәŋ-damulag  [in asu [ti  sasakijan]]
-AV-chase      ABS dog OBL vehicle
+meng-damolag in  asó ti  sasakyan
+mәŋ-damulag  in  asu ti  sasakijan
+AV-chase     ABS dog OBL vehicle
 'Dogs chase cars'
 
 #56 eng.txt 3 "I chase you"
