@@ -1,6 +1,6 @@
 Ma-póled in asó
-Meng-damolag in asó ti sasakyan
-Damolag-en ta'a
+damólag-en ni asó in sasakyan
+damólag-en 'o 'a
 Meng-án in asó
 Awon meng-damolag siden asó-i ti sasakyan
 SKIPPED
@@ -24,3 +24,4 @@ SKIPPED
 SKIPPED
 Dahil ma-póled in pósa-i ma-póled in asó-i
 SKIPPED
+Palit-an na in beli nen aparato

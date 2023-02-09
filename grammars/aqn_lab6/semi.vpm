@@ -1,0 +1,71 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+; A basic VPM for Matrix grammars.
+event          <> e
+ref-ind        <> x
+individual     <> i
+handle         <> h
+non_event      <> p
+*              >> u
+semarg         << u
+
+SPECI : SPECI
+  * <> *
+
+SF : SF
+  prop <> prop
+  ques <> ques
+  prop-or-ques >> prop-or-ques
+  prop << prop-or-ques
+  comm <> comm
+  * <> *
+
+COG-ST : COG-ST
+  type-id <> type-id
+  uniq-id <> uniq-id
+  familiar <> familiar
+  activated <> activated
+  in-foc <> in-foc
+  activ+fam <> activ+fam
+  uniq+fam <> uniq+fam
+  activ-or-more <> activ-or-more
+  uniq-or-less <> uniq-or-less
+  uniq+fam+act <> uniq+fam+act
+  fam-or-more <> fam-or-more
+  fam-or-less <> fam-or-less
+  uniq-or-more <> uniq-or-more
+  activ-or-less <> activ-or-less
+  * <> *
+
+  PNG.PN : PERS NUM
+    1sg  <> 1 sg
+    1pl  <> 1 pl
+    1per <> 1 !
+    1per << 1 *
+    2sg  <> 2 sg
+    2pl  <> 2 pl
+    2per <> 2 !
+    2per << 2 *
+    3sg  <> 3 sg
+    3pl  <> 3 pl
+    3per <> 3 !
+    3per << 3 *
+    *    >> ! !
+    !    << * *
+
+PNG.GEND : PNG.GEND
+  * <> *
+
+E.TENSE : TENSE
+  present <> present
+  present << [e]
+
+E.ASPECT : ASPECT
+  imperfective << progressive
+  imperfective <> imperfective
+  perfective <> perfective
+  aspect << [e]
+
+E.MOOD : MOOD
+  oblig <> oblig
+  no-mood << [e]
+  * >> no-mood
