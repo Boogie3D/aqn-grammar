@@ -202,12 +202,12 @@ Date: 9 Feburary, 2023
     nouns as - for case marking, which implements the requirement that they take a case-marking 
     adposition before unifying withe HEAD-COMPLEMENT or HEAD-SUBJECT rule. 
 
-        unvoiced_common-noun-lex := noun-lex & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
-          [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.PNG.PERNUM 3rd,
-		           CAT.HEAD.CASE-MARKED - ],
-            INFLECTED [ PREFIXES-FLAG -,
-                        INITIAL_SUFFIX-FLAG -,
-                        ULTIMATE_SUFFIX-FLAG - ] ].
+      unvoiced_common-noun-lex := noun-lex & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
+        [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+		          CAT.HEAD.CASE-MARKED - ],
+          INFLECTED [ PREFIXES-FLAG -,
+                      INITIAL_SUFFIX-FLAG -,
+                      ULTIMATE_SUFFIX-FLAG - ] ].
 
     Once this revision was made, our grammar successfully parses testsuite item #29, and, as desired,
     rejects item #30, where the case-marking adposition is absent.
@@ -235,32 +235,31 @@ Date: 9 Feburary, 2023
         'The dog sleeps'
 
     We also had difficulty getting our grammar to accept PP's for the complement argument in the
-    HEAD-COMPLEMENT rule. We found that  get case to work as desired, we changed all our case-marking
-    determiners into case-marking adpositions. After this transition, we had difficulty getting PP's
-    to combine with VP's via the HEAD-COMPLEMENT rule. We learned that we can specify if a verb takes 
-    an NP or VP complement in the valence-changing operation section of the morphology sub-page. 
-    Additionaly, we learned how to edit northern_alta.tdl directly to allow the HEAD-COMPLEMENT rule to 
-    take different phrase types for the complement value.
+    HEAD-COMPLEMENT rule. We changed all our case-marking determiners into case-marking adpositions.
+    After this transition, we had difficulty getting PP's to combine with VP's via the HEAD-COMPLEMENT
+    rule. We learned that we can specify if a verb takes an NP or VP complement in the valence-changing
+    operation section of the morphology sub-page. Additionaly, we learned how to edit northern_alta.tdl
+    directly to allow the HEAD-COMPLEMENT rule to take different phrase types for the complement value.
 
-        intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
-          [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
-            ARG-ST < [ LOCAL.CAT.HEAD +np &
-                                      [ CASE real-case ] ] >,
-            INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                        LOCATIVE-VERB-FLAG na-or--,
-                        MEN_TRANS-VERB-FLAG na-or--,
-                        CONVEYANCE-VERB-FLAG na-or--,
-                        LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+      intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
+        [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
+          ARG-ST < [ LOCAL.CAT.HEAD +np &
+                                    [ CASE real-case ] ] >,
+          INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                      LOCATIVE-VERB-FLAG na-or--,
+                      MEN_TRANS-VERB-FLAG na-or--,
+                      CONVEYANCE-VERB-FLAG na-or--,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
-        transitive-verb-lex := main-verb-lex & transitive-lex-item &
-          [ ARG-ST < [ LOCAL.CAT.HEAD +np &
-                                      [ CASE real-case ] ],
-                     #comps &
-                     [ LOCAL.CAT cat-sat &
-                                 [ VAL [ SPR < >,
-                                         COMPS < > ],
-                                   HEAD +np &
-                                        [ CASE real-case ] ] ] >,
+      transitive-verb-lex := main-verb-lex & transitive-lex-item &
+        [ ARG-ST < [ LOCAL.CAT.HEAD +np &
+                                    [ CASE real-case ] ],
+                    #comps &
+                    [ LOCAL.CAT cat-sat &
+                                [ VAL [ SPR < >,
+                                        COMPS < > ],
+                                  HEAD +np &
+                                      [ CASE real-case ] ] ] >,
 
     Once this revision was made, our grammar successfully parses testsuite item #23, where the 
     complement is a PP formed by a case-marking adposition and noun.
@@ -294,6 +293,17 @@ Date: 9 Feburary, 2023
         change-LV =3s.GEN  ABS  house D.GEN device
         'he changes the frame of the device'
 
+        #38 '=na' is a possessive pronoun enclitic
+        Source: a:190
+        Vetted: f
+        Judgment: g
+        Phenomena: {possessives}
+        eg'ang-en =mi in set =na
+        eg'ang-en =mi      in  set   =na
+        ʔәgʔaŋ-әn =mi      ʔin sit   =na
+        remove-PV =1pe.GEN ABS  thorn =3s.GEN 
+        'we remove his thorn'
+
 3. Performance
 
     +-------------+----------------------+-------------------------+---------------------------------------+
@@ -318,20 +328,20 @@ Date: 9 Feburary, 2023
     +-------------+----------------------+-------------------------+---------------------------------------+
     | Testsuite   | Items Parsed         | 54                      | 54                                    |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Total Results        | 27                      | 23                                    |
+    |             | Total Results        | 20                      | 23                                    |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Total Readings       | 466                     | 29                                    |
+    |             | Total Readings       | 358                     | 29                                    |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Avg. Readings/Result | 17.259                  | 1.261                                 |
+    |             | Avg. Readings/Result | 17.9                    | 1.261                                 |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Coverage             | 95.2%                   | 100%                                  |
+    |             | Coverage             | 89.5%                   | 100%                                  |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Overgeneration       | 20%                     | 11.4%                                 |
+    |             | Overgeneration       | 8.6%                    | 11.4%                                 |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Most Ambiguous Item  | 253 readings, Item 2    | 2 readings                            |
+    |             | Most Ambiguous Item  | 253 readings, Item 25   | 2 readings                            |
     |             |                      |                         | Items 1, 17,19, 31, 35, 46            |
     +-------------+----------------------+-------------------------+---------------------------------------+
-    |             | Sources of Ambiguity | Coordination rules,     | HEAD-ADJ-INT rule, ADJ-HEAD rule      |
+    |             | Sources of Ambiguity | Coordination rules,     | HEAD-ADJ-INT rule,                    |
     |             |                      | verb morphotactics      |                                       |
     +-------------+----------------------+-------------------------+---------------------------------------+
 
