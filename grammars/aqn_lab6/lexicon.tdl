@@ -1622,10 +1622,6 @@ intá_2 := non_derived-verb-lex &
   [ STEM < "intá" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
-an := non_derived-verb-lex &
-  [ STEM < "an" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
-
 palit_2 := non_derived-verb-lex &
   [ STEM < "palit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_exchange_v_rel" ].
@@ -2394,10 +2390,6 @@ ginuyod := transitive_verbs-verb-lex &
   [ STEM < "ginuyod" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
 
-siyá_2 := intrans_verbs-verb-lex &
-  [ STEM < "siyá" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
-
 bitíl := stative-verb-lex &
   [ STEM < "bitíl" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
@@ -2522,15 +2514,15 @@ damólag := patient-verb-lex &
   [ STEM < "damólag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
 
-aliyo_2 := men-verb-lex &
+aliyo_2 := men_trans-verb-lex &
   [ STEM < "aliyo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
-án := men-verb-lex &
+án_1 := men_trans-verb-lex &
   [ STEM < "án" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
-gína_2 := men-verb-lex &
+gína_2 := men_trans-verb-lex &
   [ STEM < "gína" >,
     SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
 
@@ -2669,6 +2661,22 @@ gúlay_3 := conveyance-verb-lex &
 póled := stative_intransitive-verb-lex &
   [ STEM < "póled" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+siyá_2 := men_intrans-verb-lex &
+  [ STEM < "siyá" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
+
+án_2 := men_intrans-verb-lex &
+  [ STEM < "án" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+gína_3 := men_intrans-verb-lex &
+  [ STEM < "gína" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+aliyo_3 := men_intrans-verb-lex &
+  [ STEM < "aliyo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
 ;;; Auxiliaries
 

@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Northern_Alta
 ;;; created at:
-;;;     Wed Feb 08 23:47:17 UTC 2023
+;;;     Thu Feb 09 22:47:01 UTC 2023
 ;;; based on Matrix customization system version of:
 ;;;     Thu 28 Jul 2022 12:31:08 AM UTC
 ;;;
@@ -31,43 +31,45 @@ head :+ [ PRON bool,
 +np :+ [ CASE-MARKED bool,
     CASE case ].
 
-inflected :+ [ UM-VERB-FLAG luk,
-    PROGRESSIVE_FIRST_INFIX-FLAG luk,
-    INFIX_PERFECT_THIRD-FLAG luk,
-    CONVEYANCE-VERB-FLAG luk,
-    INTRANS_VERBS-VERB-FLAG luk,
-    PREFIX_VOICE_FINAL-FLAG luk,
-    MEN-VERB-FLAG luk,
-    STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG luk,
-    LOCATIVE-VERB-FLAG luk,
-    PREFIXES-FLAG luk,
-    ULTIMATE_SUFFIX-FLAG luk,
+inflected :+ [ ULTIMATE_SUFFIX-FLAG luk,
+    UM-VERB-FLAG luk,
     INITIAL_SUFFIX-FLAG luk,
-    CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG luk,
     PATIENT-VERB-FLAG luk,
-    INFIX_UM_SECOND-FLAG luk,
+    PREFIXES-FLAG luk,
+    CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG luk,
+    CONVEYANCE-VERB-FLAG luk,
+    LOCATIVE-VERB-OR-PATIENT-VERB-FLAG luk,
     NOT_PROGRESSIVE-FLAG luk,
+    STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG luk,
+    INTRANS_VERBS-VERB-FLAG luk,
+    PROGRESSIVE_FIRST_INFIX-FLAG luk,
+    LOCATIVE-VERB-FLAG luk,
+    MEN_INTRANS-VERB-FLAG luk,
     SUFFIX-FLAG luk,
-    LOCATIVE-VERB-OR-PATIENT-VERB-FLAG luk ].
+    INFIX_UM_SECOND-FLAG luk,
+    PREFIX_VOICE_FINAL-FLAG luk,
+    INFIX_PERFECT_THIRD-FLAG luk,
+    MEN_TRANS-VERB-FLAG luk ].
 
-infl-satisfied :+ [ UM-VERB-FLAG na-or-+,
-    PROGRESSIVE_FIRST_INFIX-FLAG na-or-+,
-    INFIX_PERFECT_THIRD-FLAG na-or-+,
-    CONVEYANCE-VERB-FLAG na-or-+,
-    INTRANS_VERBS-VERB-FLAG na-or-+,
-    PREFIX_VOICE_FINAL-FLAG na-or-+,
-    MEN-VERB-FLAG na-or-+,
-    STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-+,
-    LOCATIVE-VERB-FLAG na-or-+,
-    PREFIXES-FLAG na-or-+,
-    ULTIMATE_SUFFIX-FLAG na-or-+,
+infl-satisfied :+ [ ULTIMATE_SUFFIX-FLAG na-or-+,
+    UM-VERB-FLAG na-or-+,
     INITIAL_SUFFIX-FLAG na-or-+,
-    CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG na-or-+,
     PATIENT-VERB-FLAG na-or-+,
-    INFIX_UM_SECOND-FLAG na-or-+,
+    PREFIXES-FLAG na-or-+,
+    CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-+,
+    CONVEYANCE-VERB-FLAG na-or-+,
+    LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-+,
     NOT_PROGRESSIVE-FLAG na-or-+,
+    STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-+,
+    INTRANS_VERBS-VERB-FLAG na-or-+,
+    PROGRESSIVE_FIRST_INFIX-FLAG na-or-+,
+    LOCATIVE-VERB-FLAG na-or-+,
+    MEN_INTRANS-VERB-FLAG na-or-+,
     SUFFIX-FLAG na-or-+,
-    LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-+ ].
+    INFIX_UM_SECOND-FLAG na-or-+,
+    PREFIX_VOICE_FINAL-FLAG na-or-+,
+    INFIX_PERFECT_THIRD-FLAG na-or-+,
+    MEN_TRANS-VERB-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum ].
 
@@ -250,7 +252,8 @@ head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
 unvoiced_common-noun-lex := noun-lex & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+		   CAT.HEAD.CASE-MARKED - ],
     INFLECTED [ PREFIXES-FLAG -,
                 INITIAL_SUFFIX-FLAG -,
                 ULTIMATE_SUFFIX-FLAG - ] ].
@@ -471,7 +474,8 @@ aux-lex := verb-lex & basic-icons-lex-item &
   [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ],
@@ -482,7 +486,12 @@ aux-lex := verb-lex & basic-icons-lex-item &
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST < [ LOCAL.CAT.HEAD +np &
-                              [ CASE real-case ] ] > ].
+                              [ CASE real-case ] ] >,
+    INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                LOCATIVE-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or--,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
 transitive-verb-lex := main-verb-lex & transitive-lex-item &
   [ ARG-ST < [ LOCAL.CAT.HEAD +np &
@@ -493,118 +502,105 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
                                  COMPS < > ],
                            HEAD +np &
                                 [ CASE real-case ] ] ] >,
-    INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ],
+    INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ],
     SYNSEM.LOCAL.CAT [ VAL.COMPS < #comps >,
                        HEAD.INIT + ] ].
 
 non_derived-verb-lex := intransitive-verb-lex &
-  [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+  [ INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
 
 di_transitive-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
-                                                        CASE-MARKED + ] ] ].
+                                                        CASE-MARKED + ] ],
+    INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                LOCATIVE-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or--,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
 transitive_verbs-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
-                                                     CASE-MARKED + ] ].
+                                                     CASE-MARKED + ],
+    INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                LOCATIVE-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or--,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
 intrans_verbs-verb-lex := intransitive-verb-lex &
-  [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
+  [ INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
                 INTRANS_VERBS-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
 
 simple_verbs_trans-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
-                                                        CASE-MARKED + ] ] ].
-
-stative-verb-lex := intransitive-verb-lex &
-  [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                                                        CASE-MARKED + ] ],
+    INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
-patient-verb-lex := intransitive-verb-lex &
+stative-verb-lex := intransitive-verb-lex &
+  [ INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG + ] ].
+
+patient-verb-lex := transitive-verb-lex &
   [ INFLECTED [ PATIENT-VERB-FLAG +,
                 LOCATIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG +,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or-- ] ].
 
-men-verb-lex := intransitive-verb-lex &
+men_trans-verb-lex := transitive-verb-lex &
   [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG +,
+                MEN_TRANS-VERB-FLAG +,
                 CONVEYANCE-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
 um-verb-lex := intransitive-verb-lex &
-  [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG +,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+  [ INFLECTED [ UM-VERB-FLAG +,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
 
-locative-verb-lex := intransitive-verb-lex &
+locative-verb-lex := transitive-verb-lex &
   [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG +,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG +,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or-- ] ].
 
-conveyance-verb-lex := intransitive-verb-lex &
+conveyance-verb-lex := transitive-verb-lex &
   [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG +,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
 
 stative_intransitive-verb-lex := intransitive-verb-lex &
-  [ INFLECTED [ PATIENT-VERB-FLAG na-or--,
-                LOCATIVE-VERB-FLAG na-or--,
-                UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-FLAG na-or--,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG +,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+  [ INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG + ] ].
+
+men_intrans-verb-lex := intransitive-verb-lex &
+  [ INFLECTED [ UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG +,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ] ].
 
 ;;; Auxiliaries
 
@@ -638,7 +634,8 @@ aux1-aux-lex := subj-raise-aux-with-pred &
     INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
@@ -651,7 +648,8 @@ aux2-aux-lex := subj-raise-aux-no-pred &
     INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
@@ -661,7 +659,8 @@ neg6-aux-lex := subj-raise-aux-with-pred &
     INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
@@ -671,7 +670,8 @@ aux8-aux-lex := subj-raise-aux-no-pred &
     INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
@@ -681,7 +681,8 @@ neg_exist-aux-lex := subj-raise-aux-with-pred &
     INFLECTED [ PATIENT-VERB-FLAG na-or--,
                 LOCATIVE-VERB-FLAG na-or--,
                 UM-VERB-FLAG na-or--,
-                MEN-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
                 CONVEYANCE-VERB-FLAG na-or--,
                 STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
                 LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
@@ -903,52 +904,54 @@ adj_incorporation-lex-rule := add-only-rule &
 
 ;;; Intermediate rule types
 
-suffix-rule-dtr := word-or-lexrule.
-infix_perfect_third-rule-dtr := word-or-lexrule.
-initial_suffix-rule-dtr := word-or-lexrule.
 ultimate_suffix-rule-dtr := word-or-lexrule.
+suffix-rule-dtr := word-or-lexrule.
+initial_suffix-rule-dtr := word-or-lexrule.
 prefix_voice_final-rule-dtr := word-or-lexrule.
 infix_um_second-rule-dtr := word-or-lexrule.
+infix_perfect_third-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
   [ INFLECTED [ PREFIXES-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR unvoiced_common-noun-lex &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
 
@@ -956,41 +959,43 @@ no_noun_prefix-lex-rule := const-lex-rule & prefixes-lex-rule-super.
 
 initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-dtr &
   [ INFLECTED [ INITIAL_SUFFIX-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
+                UM-VERB-FLAG #um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR initial_suffix-rule-dtr &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
 
@@ -1005,148 +1010,144 @@ little_adj-lex-rule := infl-lex-rule & initial_suffix-lex-rule-super.
 ultimate_suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ULTIMATE_SUFFIX-FLAG +,
                 UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR ultimate_suffix-rule-dtr &
         [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 no_ultimate_suffix-lex-rule := const-lex-rule & ultimate_suffix-lex-rule-super.
 
 plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-super &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
 
-suffix-lex-rule-super := val-change-with-ccont-lex-rule &
+suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ SUFFIX-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR suffix-rule-dtr &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
-suffix_patient_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & suffix-lex-rule-super &
-  [ C-CONT.RELS.LIST < [ PRED "patient" ] >,
-    DTR [ INFLECTED.PATIENT-VERB-FLAG +,
-          ARG-ST #arg-st ],
-    ARG-ST #arg-st &
-           < [ LOCAL.CAT.HEAD.CASE gen ],
-             [ LOCAL.CAT.HEAD.CASE abs ] >,
+suffix_patient_voice-lex-rule := infl-lex-rule & suffix-lex-rule-super &
+  [ DTR.INFLECTED.PATIENT-VERB-FLAG +,
     SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                         CASE-MARKED + ] ] ].
 
-suffix_locative_voice-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & same-cont-lex-rule & suffix-lex-rule-super &
-  [ C-CONT.RELS.LIST < [ PRED "locative" ] >,
-    DTR [ INFLECTED.LOCATIVE-VERB-FLAG +,
-          ARG-ST #arg-st ],
-    ARG-ST #arg-st &
-           < [ LOCAL.CAT.HEAD.CASE gen ],
-             [ LOCAL.CAT.HEAD.CASE abs ] >,
+suffix_locative_voice-lex-rule := infl-lex-rule & suffix-lex-rule-super &
+  [ DTR.INFLECTED.LOCATIVE-VERB-FLAG +,
     SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                         CASE-MARKED + ] ] ].
 
-suffix_none-lex-rule := add-only-no-ccont-rule & const-lex-rule & suffix-lex-rule-super &
+suffix_none-lex-rule := const-lex-rule & suffix-lex-rule-super &
   [ DTR.INFLECTED.LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na ].
 
 infix_um_second-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-rule-dtr & prefix_voice_final-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ INFIX_UM_SECOND-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR infix_um_second-rule-dtr &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 infix_um_intrans-lex-rule := infix_um_second-lex-rule-super & infl-lex-rule &
   [ DTR [ INFLECTED.UM-VERB-FLAG +,
@@ -1161,41 +1162,43 @@ no_um_infix-lex-rule := const-lex-rule & infix_um_second-lex-rule-super &
 
 infix_perfect_third-lex-rule-super := add-only-no-ccont-rule & prefix_voice_final-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ INFIX_PERFECT_THIRD-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR infix_perfect_third-rule-dtr &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 perfect_aspect-lex-rule := infix_perfect_third-lex-rule-super & infl-lex-rule &
   [ DTR.INFLECTED.NOT_PROGRESSIVE-FLAG +,
@@ -1205,61 +1208,63 @@ not_perfect-lex-rule := const-lex-rule & infix_perfect_third-lex-rule-super.
 
 prefix_voice_final-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex-rule &
   [ INFLECTED [ PREFIX_VOICE_FINAL-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                 NOT_PROGRESSIVE-FLAG #not_progressive,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR prefix_voice_final-rule-dtr &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
                       NOT_PROGRESSIVE-FLAG #not_progressive,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      PROGRESSIVE_FIRST_INFIX-FLAG #progressive_first_infix,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
-  [ DTR [ INFLECTED.MEN-VERB-FLAG +,
+  [ DTR [ INFLECTED.MEN_INTRANS-VERB-FLAG +,
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                      CASE-MARKED + ] ].
 
-prefix_meng_trans-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice_final-lex-rule-super & same-cont-lex-rule &
-  [ C-CONT.RELS.LIST < [ PRED "active" ] >,
-    DTR [ INFLECTED.MEN-VERB-FLAG +,
+prefix_meng_trans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
+  [ DTR [ INFLECTED [ MEN_TRANS-VERB-FLAG +,
+                      MEN_INTRANS-VERB-FLAG na ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ],
              [ LOCAL.CAT.HEAD.CASE obl ] >,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+    SYNSEM.LOCAL.CAT [ VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                        CASE-MARKED + ],
-                           COMPS.FIRST.LOCAL.CAT.HEAD [ CASE obl,
-                                                        CASE-MARKED + ] ] ].
+                       HEAD [ CASE obl,
+                              CASE-MARKED + ] ] ].
 
 prefix_conveyance-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice_final-lex-rule-super & same-cont-lex-rule &
   [ C-CONT.RELS.LIST < [ PRED "conveyance" ] >,
@@ -1275,7 +1280,7 @@ prefix_conveyance-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2
                                                         CASE-MARKED + ] ] ].
 
 no_voice_prefix-lex-rule := add-only-no-ccont-rule & const-lex-rule & prefix_voice_final-lex-rule-super &
-  [ DTR.INFLECTED.CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG na ].
+  [ DTR.INFLECTED.CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na ].
 
 prefix_stative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
   [ DTR [ INFLECTED.STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
@@ -1287,39 +1292,41 @@ prefix_stative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice
 
 progressive_first_infix-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-rule-dtr & infix_um_second-rule-dtr & prefix_voice_final-rule-dtr & suffix-rule-dtr &
   [ INFLECTED [ PROGRESSIVE_FIRST_INFIX-FLAG +,
-                UM-VERB-FLAG #um-verb,
-                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                CONVEYANCE-VERB-FLAG #conveyance-verb,
-                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                MEN-VERB-FLAG #men-verb,
-                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                LOCATIVE-VERB-FLAG #locative-verb,
-                PREFIXES-FLAG #prefixes,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
-                CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                 PATIENT-VERB-FLAG #patient-verb,
-                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIXES-FLAG #prefixes,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                CONVEYANCE-VERB-FLAG #conveyance-verb,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                LOCATIVE-VERB-FLAG #locative-verb,
+                MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                 SUFFIX-FLAG #suffix,
-                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ],
+                INFIX_UM_SECOND-FLAG #infix_um_second,
+                PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                MEN_TRANS-VERB-FLAG #men_trans-verb ],
     DTR verb-lex &
-        [ INFLECTED [ UM-VERB-FLAG #um-verb,
-                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
-                      CONVEYANCE-VERB-FLAG #conveyance-verb,
-                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
-                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
-                      MEN-VERB-FLAG #men-verb,
-                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
-                      LOCATIVE-VERB-FLAG #locative-verb,
-                      PREFIXES-FLAG #prefixes,
-                      ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+        [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
-                      CONVEYANCE-VERB-OR-MEN-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-OR-UM-VERB-FLAG #conveyance-verb-or-men-verb-or-stative-verb-or-stative_intransitive-verb-or-um-verb,
                       PATIENT-VERB-FLAG #patient-verb,
-                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIXES-FLAG #prefixes,
+                      CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #conveyance-verb-or-men_trans-verb-or-stative-verb-or-stative_intransitive-verb,
+                      CONVEYANCE-VERB-FLAG #conveyance-verb,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb,
+                      STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG #stative-verb-or-stative_intransitive-verb,
+                      INTRANS_VERBS-VERB-FLAG #intrans_verbs-verb,
+                      LOCATIVE-VERB-FLAG #locative-verb,
+                      MEN_INTRANS-VERB-FLAG #men_intrans-verb,
                       SUFFIX-FLAG #suffix,
-                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG #locative-verb-or-patient-verb ] ] ].
+                      INFIX_UM_SECOND-FLAG #infix_um_second,
+                      PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
+                      INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
+                      MEN_TRANS-VERB-FLAG #men_trans-verb ] ] ].
 
 not_progressive-lex-rule := const-lex-rule & progressive_first_infix-lex-rule-super &
   [ INFLECTED.NOT_PROGRESSIVE-FLAG + ].
@@ -1332,7 +1339,7 @@ progressive_C_um_only-lex-rule := infl-lex-rule & progressive_first_infix-lex-ru
 
 progressive_CV_meng_only-lex-rule := infl-lex-rule & progressive_first_infix-lex-rule-super &
   [ INFLECTED.NOT_PROGRESSIVE-FLAG #not_progressive,
-    DTR.INFLECTED [ MEN-VERB-FLAG +,
+    DTR.INFLECTED [ MEN_TRANS-VERB-FLAG +,
                     NOT_PROGRESSIVE-FLAG #not_progressive ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
@@ -1348,23 +1355,23 @@ progressive_eC_conveyance_i-lex-rule := infl-lex-rule & progressive_first_infix-
                     NOT_PROGRESSIVE-FLAG #not_progressive ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
-added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
-                                                     COMPS < > ],
-                                           CONT.HOOK.INDEX #nind ] ] >,
-    C-CONT.RELS.LIST < [ ARG2 #nind ] >,
-    DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+basic-applicative-lex-rule := comps-change-only-lex-rule &
+  [ C-CONT [ RELS.LIST < event-relation &
+                         [ ARG1 #evt ] >,
+             HCONS.LIST < > ],
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
 
 added-arg2of2-non-local-lex-rule := lex-rule.
 
 added-arg2of2-np-head-lex-rule := lex-rule &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD noun ] > ].
 
-basic-applicative-lex-rule := comps-change-only-lex-rule &
-  [ C-CONT [ RELS.LIST < event-relation &
-                         [ ARG1 #evt ] >,
-             HCONS.LIST < > ],
-    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #evt ].
+added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2-non-local-lex-rule &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT.VAL [ SPR < >,
+                                                     COMPS < > ],
+                                           CONT.HOOK.INDEX #nind ] ] >,
+    C-CONT.RELS.LIST < [ ARG2 #nind ] >,
+    DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
