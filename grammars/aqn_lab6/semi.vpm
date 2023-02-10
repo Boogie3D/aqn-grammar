@@ -36,19 +36,19 @@ COG-ST : COG-ST
   activ-or-less <> activ-or-less
   * <> *
 
-  PNG.PN : PERS NUM
-    1sg  <> 1 sg
-    1pl  <> 1 pl
-    1per <> 1 !
-    1per << 1 *
-    2sg  <> 2 sg
-    2pl  <> 2 pl
-    2per <> 2 !
-    2per << 2 *
-    3sg  <> 3 sg
-    3pl  <> 3 pl
-    3per <> 3 !
-    3per << 3 *
+  PNG.PERNUM : PER NUM
+    1sg  <> first sg
+    1pl  <> first pl
+    1per <> first !
+    1per << first *
+    2sg  <> second sg
+    2pl  <> second pl
+    2per <> second !
+    2per << second *
+    3sg  <> third sg
+    3pl  <> third pl
+    3per <> third !
+    3per << third *
     *    >> ! !
     !    << * *
 
