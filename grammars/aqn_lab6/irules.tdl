@@ -1,0 +1,98 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+;;; content_word_prefixes-prefix1 :=
+;;; %prefix (* a-)
+;;; content_word_prefixes-lex-rule.
+
+content_word_prefixes-prefix2 :=
+%prefix (* pen-) (* peng-) (* pengi-)
+content_word_prefixes-lex-rule.
+
+;;; content_word_prefixes-prefix5 :=
+;;; %prefix (* pet-)
+;;; content_word_prefixes-lex-rule.
+
+;;; alternation-suffix1 :=
+;;; %suffix (* -an) (* -'an)
+;;; alternation-lex-rule.
+
+;;; alternation-suffix3 :=
+;;; %suffix (* -'en) (* -en)
+;;; alternation-lex-rule.
+
+;;; alternation-suffix5 :=
+;;; %suffix (* -'na) (* -na)
+;;; alternation-lex-rule.
+
+;;; alternation-suffix7 :=
+;;; %suffix (* -'e) (* -e)
+;;; alternation-lex-rule.
+
+;;; alternation-suffix9 :=
+;;; %suffix (* -'o) (* -o)
+;;; alternation-lex-rule.
+
+specifity-suffix :=
+%suffix (* -i)
+specifity-lex-rule.
+
+;;; adverb_D-suffix1 :=
+;;; %suffix (* -d) (* =d)
+;;; adverb_D-lex-rule.
+
+;;; little_adj-suffix1 :=
+;;; %suffix (* -ba'ik) (* ba'ik)
+;;; little_adj-lex-rule.
+
+plural_ultimate_suffix-suffix1 :=
+%suffix (* -sid) (* 'sid) (* =sid)
+plural_ultimate_suffix-lex-rule.
+
+suffix_patient_voice-suffix :=
+%suffix (* -en)
+suffix_patient_voice-lex-rule.
+
+suffix_locative_voice-suffix :=
+%suffix (* -an)
+suffix_locative_voice-lex-rule.
+
+infix_um_intrans-prefix1 :=
+%prefix (* -um-) (* C-um-)
+infix_um_intrans-lex-rule.
+
+perfect_aspect-prefix1 :=
+%prefix (* -in-) (* C-in-)
+perfect_aspect-lex-rule.
+
+prefix_meng_intrans-prefix1 :=
+%prefix (* men-) (* mengi-) (* meng-)
+prefix_meng_intrans-lex-rule.
+
+prefix_meng_trans-prefix1 :=
+%prefix (* men-) (* mengi-) (* meng-)
+prefix_meng_trans-lex-rule.
+
+prefix_conveyance-prefix :=
+%prefix (* i-)
+prefix_conveyance-lex-rule.
+
+prefix_stative-prefix :=
+%prefix (* me-) (* ma-)
+prefix_stative-lex-rule.
+
+progressive_C_um_only-prefix :=
+%prefix (* -C-)
+progressive_C_um_only-lex-rule.
+
+progressive_CV_meng_only-prefix :=
+%prefix (* -CV-)
+progressive_CV_meng_only-lex-rule.
+
+progressive_eC_locative_patient-prefix :=
+%prefix (* eC-)
+progressive_eC_locative_patient-lex-rule.
+
+progressive_eC_conveyance_i-prefix :=
+%prefix (* -eC-)
+progressive_eC_conveyance_i-lex-rule.

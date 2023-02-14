@@ -1,0 +1,349 @@
+Language: Northern Alta (aqn)
+Lab 6
+Group: Jon Davenport & Steven Anaya
+Author: Jon Davenport
+Date: 9 Feburary, 2023
+
+1. semi.vpm changes
+
+    A. The most significant section of the semi.vpm file we changed is the PNG.PN section. We tried
+    implementing some of our own, and had moderate success. But the basic variable rules provided 
+    on the DELPHIN Github page seemed to work better. So we used those values as a starting point 
+    and modified them slightly. Northern Alta has one person value that English lacks, 
+    first-person-exclusive. We initially thought to map this value to third-person, but weren't certain.
+    But we couldn't seem to get the exclusive code to read in semi-vpm, so we omitted it. Editing this 
+    file significantly reduced our realizations. This improvement was most evident when translating from 
+    Northern Alta to English. For example, we now achieve only three realizations for translation sentence 
+    3, all differing only in tense, for which Northern Alta doesn't inflect. The resulting PNG.PN section 
+    is as follows:
+
+            PNG.PERNUM : PER NUM
+              1sg  <> first sg
+              1pl  <> first pl
+              2sg  <> second sg
+              2pl  <> second pl
+              3sg  <> third sg
+              3pl  <> third pl
+              1st  <> first !
+              1st  << first *
+              2nd  <> second !
+              2nd  << second *
+              3rd  <> third !
+              3rd  << third *
+              sg   <> ! sg
+              sg   << * sg
+              pl   <> ! pl
+              pl   << * pl
+              *    >> ! !
+              !    << * *
+
+    B. Since Northern Alta doesn't have tense as a grammatical category, our E.TENSE section is quite
+    small. To show past or future Northern Alta uses temporal adverbs that specify when an event occurs.
+    Accordingly, we follow the descriptive grammar and treat instances without a temporal adverb as 
+    present tense by default. The resulting in the following semi.vpm section:
+
+        E.TENSE : TENSE
+          present <> present
+          present << [e]
+
+    C. Northern Alta inflects verbs for perfective and imperfective aspect. Accordingly we edited 
+    the E.ASPECT section of semi.vpm file to map these specific values, and all others to an empty
+    parent aspect type simply titled "aspect."
+
+        E.ASPECT : ASPECT
+          imperfective << progressive
+          imperfective <> imperfective
+          perfective <> perfective
+          aspect << [e]
+
+2. Improved Phenomena
+
+    A. Morphology: Since a huge portion of the realizations our grammar produced showed different
+    verb and noun affixes, we heavily edited and constrained these options. We divided the verb
+    lexicon according to which prefixes and suffixes they accept in our current testsuite and
+    translation sentences. We then restricted the morphotactics to require the corresponding verb
+    type. These cosntraints led to a vast reduction in realizations, but a concomittant reduction in
+    flexibility or "coverage." Now verbs the descriptive grammar shows as taking two or three affixes,
+    some transitive others intransitive, take one and only one affix. Accordingly each of our verb
+    morphology position classes has a new require rule in the choices.tdl file:
+
+          verb-pc3_inputs=verb-pc7
+            verb-pc3_lrt1_name=suffix_patient_voice
+              verb-pc3_lrt1_feat2_name=case
+              verb-pc3_lrt1_feat2_value=a_case
+              verb-pc3_lrt1_feat2_head=subj
+              verb-pc3_lrt1_feat3_name=case
+              verb-pc3_lrt1_feat3_value=focus
+              verb-pc3_lrt1_feat3_head=obj
+              verb-pc3_lrt1_require1_others=verb67
+              verb-pc3_lrt1_lri1_inflecting=yes
+              verb-pc3_lrt1_lri1_orth=-en
+
+            verb-pc3_lrt2_name=suffix_locative_voice
+              verb-pc3_lrt2_feat2_name=case
+              verb-pc3_lrt2_feat2_value=a_case
+              verb-pc3_lrt2_feat2_head=subj
+              verb-pc3_lrt2_feat3_name=case
+              verb-pc3_lrt2_feat3_value=focus
+              verb-pc3_lrt2_feat3_head=obj
+              verb-pc3_lrt2_require1_others=verb70
+              verb-pc3_lrt2_lri1_inflecting=yes
+              verb-pc3_lrt2_lri1_orth=-an
+
+          verb-pc7_inputs=verb-pc5
+            verb-pc7_lrt1_name=prefix_meng_intrans
+              verb-pc7_lrt1_feat1_name=argument structure
+              verb-pc7_lrt1_feat1_value=focus
+              verb-pc7_lrt1_feat1_head=verb
+              verb-pc7_lrt1_feat2_name=case
+              verb-pc7_lrt1_feat2_value=focus
+              verb-pc7_lrt1_feat2_head=subj
+              verb-pc7_lrt1_require1_others=verb73
+              verb-pc7_lrt1_lri1_inflecting=yes
+              verb-pc7_lrt1_lri1_orth=men-
+              verb-pc7_lrt1_lri2_inflecting=yes
+              verb-pc7_lrt1_lri2_orth=meng-
+              verb-pc7_lrt1_lri3_inflecting=yes
+              verb-pc7_lrt1_lri3_orth=mengi-
+
+            verb-pc7_lrt2_name=prefix_meng_trans
+              verb-pc7_lrt2_feat1_name=argument structure
+              verb-pc7_lrt2_feat1_value=focus-o_case
+              verb-pc7_lrt2_feat1_head=verb
+              verb-pc7_lrt2_feat2_name=case
+              verb-pc7_lrt2_feat2_value=focus
+              verb-pc7_lrt2_feat2_head=subj
+              verb-pc7_lrt2_feat3_name=case
+              verb-pc7_lrt2_feat3_value=o_case
+              verb-pc7_lrt2_feat3_head=newobj
+              verb-pc7_lrt2_require1_others=verb68
+              verb-pc7_lrt2_forbid1_others=verb73
+              verb-pc7_lrt2_lri1_inflecting=yes
+              verb-pc7_lrt2_lri1_orth=men-
+              verb-pc7_lrt2_lri2_inflecting=yes
+              verb-pc7_lrt2_lri2_orth=meng-
+              verb-pc7_lrt2_lri3_inflecting=yes
+              verb-pc7_lrt2_lri3_orth=mengi-
+
+    Additionally, many of our verb affixes have allophonetic variation we encoded with multiple
+    orthographies. To prevent the translation from providing a different realization for each form 
+    of the same affix, we included each form in a single lexical rule. Thus our irules.tdl file 
+    implemented the following changes:
+
+        infix_um_intrans-prefix1 :=
+        %prefix (* -um-) (* C-um-)
+        infix_um_intrans-lex-rule.
+
+        perfect_aspect-prefix1 :=
+        %prefix (* -in-) (* C-in-)
+        perfect_aspect-lex-rule.
+
+        prefix_meng_intrans-prefix1 :=
+        %prefix (* men-) (* mengi-) (* meng-)
+        prefix_meng_intrans-lex-rule.
+
+        prefix_meng_trans-prefix1 :=
+        %prefix (* men-) (* mengi-) (* meng-)
+        prefix_meng_trans-lex-rule.
+
+        prefix_stative-prefix :=
+        %prefix (* me-) (* ma-)
+        prefix_stative-lex-rule.
+
+    Since we implemented morphotactics for nouns, but omitted most of the affixes' semantic and
+    grammatical contributions, we were able to comment those lexical rules out in irules.tdl. So
+    though our grammar includes lexical rules for appending noun affixes such as peng-, which is
+    a locative common noun inflection, they currently will not apply in translation.
+
+        ;;; content_word_prefixes-prefix1 :=
+        ;;; %prefix (* a-)
+        ;;; content_word_prefixes-lex-rule.
+
+        ;;; content_word_prefixes-prefix5 :=
+        ;;; %prefix (* pet-)
+        ;;; content_word_prefixes-lex-rule.
+
+        ;;; content_word_prefixes-prefix5 :=
+        ;;; %prefix (* pet-)
+        ;;; content_word_prefixes-lex-rule.
+
+        ;;; alternation-suffix1 :=
+        ;;; %suffix (* -an) (* -'an)
+        ;;; alternation-lex-rule.
+
+        ;;; alternation-suffix3 :=
+        ;;; %suffix (* -'en) (* -en)
+        ;;; alternation-lex-rule.
+
+        ;;; alternation-suffix5 :=
+        ;;; %suffix (* -'na) (* -na)
+        ;;; alternation-lex-rule.
+
+        ;;; alternation-suffix7 :=
+        ;;; %suffix (* -'e) (* -e)
+        ;;; alternation-lex-rule.
+
+        ;;; alternation-suffix9 :=
+        ;;; %suffix (* -'o) (* -o)
+        ;;; alternation-lex-rule.
+
+        ;;; adverb_D-suffix1 :=
+        ;;; %suffix (* -d) (* =d)
+        ;;; adverb_D-lex-rule.
+
+        ;;; little_adj-suffix1 :=
+        ;;; %suffix (* -ba'ik) (* ba'ik)
+        ;;; little_adj-lex-rule.
+
+    B. Initially the unvoiced_common-noun-lex definition did not have any value specified for 
+    CAT.HEAD.CASE-MARKED, and thus common nouns were able to combine with verbs via the 
+    HEAD-COMPLEMENT or HEAD-SUBJECT rule without the prequisite case-marking adposition. To 
+    rectify this, we included a new line in the lexical type definition that specifies common 
+    nouns as - for case marking, which implements the requirement that they take a case-marking 
+    adposition before unifying withe HEAD-COMPLEMENT or HEAD-SUBJECT rule. 
+
+      unvoiced_common-noun-lex := noun-lex & initial_suffix-rule-dtr & ultimate_suffix-rule-dtr &
+        [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+		          CAT.HEAD.CASE-MARKED - ],
+          INFLECTED [ PREFIXES-FLAG -,
+                      INITIAL_SUFFIX-FLAG -,
+                      ULTIMATE_SUFFIX-FLAG - ] ].
+
+    Once this revision was made, our grammar successfully parses testsuite item #29, and, as desired,
+    rejects item #30, where the case-marking adposition is absent.
+
+        #29 'in' is an absolutive singular case-marking adposition
+        Source: author
+        Vetted: f
+        Judgment: g
+        Phenomena: {case, determiners}
+        ma-póled in asó
+        ma-póled in asó
+        mә-pulәd in ʔasu
+        ST-sleep ABS dog
+        'The dog sleeps'
+
+        #30 a case-marking adposition is necessary
+        Source: author
+        Vetted: f
+        Judgment: u
+        Phenomena: {determiners}
+        ma-póled asó
+        ma-póled asó
+        mә-pulәd ʔasu
+        ST-sleep  dog
+        'The dog sleeps'
+
+    We also had difficulty getting our grammar to accept PP's for the complement argument in the
+    HEAD-COMPLEMENT rule. We changed all our case-marking determiners into case-marking adpositions.
+    After this transition, we had difficulty getting PP's to combine with VP's via the HEAD-COMPLEMENT
+    rule. We learned that we can specify if a verb takes an NP or VP complement in the valence-changing
+    operation section of the morphology sub-page. Additionaly, we learned how to edit northern_alta.tdl
+    directly to allow the HEAD-COMPLEMENT rule to take different phrase types for the complement value.
+
+      intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
+        [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
+          ARG-ST < [ LOCAL.CAT.HEAD +np &
+                                    [ CASE real-case ] ] >,
+          INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                      LOCATIVE-VERB-FLAG na-or--,
+                      MEN_TRANS-VERB-FLAG na-or--,
+                      CONVEYANCE-VERB-FLAG na-or--,
+                      LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+
+      transitive-verb-lex := main-verb-lex & transitive-lex-item &
+        [ ARG-ST < [ LOCAL.CAT.HEAD +np &
+                                    [ CASE real-case ] ],
+                    #comps &
+                    [ LOCAL.CAT cat-sat &
+                                [ VAL [ SPR < >,
+                                        COMPS < > ],
+                                  HEAD +np &
+                                      [ CASE real-case ] ] ] >,
+
+    Once this revision was made, our grammar successfully parses testsuite item #23, where the 
+    complement is a PP formed by a case-marking adposition and noun.
+
+        #23
+        Source: a:155
+        Vetted: s
+        Judgment: g
+        Phenomena: {case, determiners, word order}
+        eg'ang-en de in karajum-i-sid
+        eg'ang-en =de     in  karajum=i=sid
+        ʔәgʔaŋ-әn =dә     ʔin karajum=i=sid
+        leave-PV  =3s.GEN ABS  needle=SPEC=PL
+        'they remove the needles'
+
+    Once we had implemented these changes, our adnominal possession possessive strategy worked as planned!
+    Northern Alta's possessive particle "nen" follows the possessum and precedes the possessor. Norhtern 
+    Alta's also allows for possessive pronouns, which worked before the modificaitons above. With the 
+    modifications above and our pre-existing implementation of possessive pronouns and the possessive strategy 
+    for "nen" our grammar succeessfully translated to and from the sample sentences provided in eng.txt and 
+    sje.txt with few supperfluous realizations.
+
+        #31 'nen' is a possessive strategy particle
+        Source: a
+        Vetted: f
+        Judgment: g
+        Phenomena: {possessives}
+        palit-an na in beli nen aparato
+        palit-an  =na      in  beli  nen  aparato
+        palit-an  =na      ʔin bәli  nәn  ʔaparatu
+        change-LV =3s.GEN  ABS  house D.GEN device
+        'he changes the frame of the device'
+
+        #38 '=na' is a possessive pronoun enclitic
+        Source: a:190
+        Vetted: f
+        Judgment: g
+        Phenomena: {possessives}
+        eg'ang-en =mi in set =na
+        eg'ang-en =mi      in  set   =na
+        ʔәgʔaŋ-әn =mi      ʔin sit   =na
+        remove-PV =1pe.GEN ABS  thorn =3s.GEN 
+        'we remove his thorn'
+
+3. Performance
+
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             |                      | Lab 5                   | Lab 6                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    | Test Corpus | Items Parsed         | 2240                    | 2240                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Results        | 103                     | 72                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Readings       | 398                     | 138                                   |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Avg. Readings/Result | 3.827                   | 1.917                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Coverage             | 4.6%                    | 3.2%                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Overgeneration       | 100%                    | 100%                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Most Ambiguous Item  | 30 Readings, Item 3000  | 8 Readings, Item 16,420               |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Sources of           | Verb morphotactic rules | HEAD-ADJ-INT rule, Omitted Arguments, |
+    |             | Ambiguity            |                         | EX-COMP, EX-SUBJ                      |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    | Testsuite   | Items Parsed         | 54                      | 54                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Results        | 20                      | 23                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Readings       | 358                     | 29                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Avg. Readings/Result | 17.9                    | 1.261                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Coverage             | 89.5%                   | 100%                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Overgeneration       | 8.6%                    | 11.4%                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Most Ambiguous Item  | 253 readings, Item 25   | 2 readings                            |
+    |             |                      |                         | Items 1, 17,19, 31, 35, 46            |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Sources of Ambiguity | Coordination rules,     | HEAD-ADJ-INT rule,                    |
+    |             |                      | verb morphotactics      |                                       |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+
+
+
