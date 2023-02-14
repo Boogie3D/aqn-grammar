@@ -56,8 +56,8 @@ PNG.PERNUM : PER NUM
   *    >> ! !
   !    << * *
 
-PNG.GEND : PNG.GEND
-  * <> *
+;PNG.GEND : PNG.GEND
+;  * <> *
 
 E.TENSE : TENSE
   present <> present
