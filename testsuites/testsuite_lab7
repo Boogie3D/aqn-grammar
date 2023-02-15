@@ -1,0 +1,602 @@
+Language: Northern Alta
+Language code: aqn
+Lines: orth orth-seg translit-seg gloss translat
+Author: Jon Davenport & Steven Anaya
+Date: 25 January 2023
+Source a: Laguía, A.G. (2018). Documentation of Northern Alta: grammar, texts and glossary.
+
+#1
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, pronouns, word order}
+ma-'uná siya
+ma-'una =sija
+mә-ʔuna =sija
+ST-say    =3s.ABS
+'He said'
+
+#2
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, pronouns}
+ma-'uná mo
+ma-'una =mo
+mә-ʔuna =mu
+ST-say    =2s.GEN
+'Your said'
+
+#3
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, pronouns}
+ma-'uná 'o
+ma-'una ='o
+mә-ʔuna =ʔu
+ST-say    =1s.GEN
+'my said'
+
+#4
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, pronouns}
+ma-'uná na
+ma-'una =na
+mә-ʔuna =na
+ST-say    =3s.GEN
+'said their'
+
+#5
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, pronouns}
+ma-'uná tam
+ma-'una =tam
+mә-ʔuna =tam
+ST-say    =1pi.GEN
+'said mine'
+
+#6
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, pronouns}
+ma-'uná di'ami
+ma-'una di'ami
+mә-ʔuna diʔami
+ST-say    1pi.LOC
+'I said there'
+
+#7 Square brackets appear sometimes in the phonological transcription tier in order to represent clausal constituent boundaries
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, determiners}
+C-um--C-lbut in kaldero
+l-um--l-lbut   in  kaldero
+l-um--l-elbut  ʔin kaldiru
+RDP-AV--PRG-boil ABS  pot
+'the (content of the) pot is boiling'
+
+#8
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+C-um--C-lbut ni kaldero
+l-um--l-lbut    ni kaldero
+l-um--l-elbut   ni kaldiru
+RDP-AV--PRG-boil GEN pot
+'the (content of the) pot's is boiling'
+
+#9
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+C-um--C-lbut ni kaldero
+l-um--l-lbut   ni kaldero
+l-um--l-elbut  ni kaldiru
+RDP-AV--PRG-boil LOC pot
+'the one (content of the) pot is boiling'
+
+#10
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+C-um--C-lbut ti kaldero
+l-um--l-lbut   ti kaldero
+l-um--l-elbut  ti kaldiru
+RDP-AV--PRG-boil OBL pot
+'from (content of the) pot is boiling'
+
+#11
+Source: a:188
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners}
+meng-aliyo in wadi
+meng-aliyo in  wadi
+mәŋ-ʔaliju ʔin wadi
+AV-search  ABS  younger.sibling
+'a younger sibling searches'
+
+#12
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+meng-aliyo ni wadi
+meng-aliyo ni wadi
+mәŋ-ʔaliju ni wadi
+AV-search  GEN younger.sibling
+'of younger sibling searches'
+
+#13
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+meng-aliyo ti wadi na
+meng-aliyo ti wadi
+mәŋ-ʔaliju ti wadi
+AV-search  OBL younger.sibling
+'to younger sibling searches'
+
+#14
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+meng-aliyo ni wadi
+meng-aliyo ni wadi
+mәŋ-ʔaliju ni wadi
+AV-search  LOC younger.sibling
+'this younger sibling searches'
+
+#15
+Source: a:188
+Vetted: s
+Judgment: g
+Phenomena: {case, word order}
+C-um--C-lbut in kaldero
+l-um--l-lbut    in  kaldero
+l-um--l-elbut  ʔin kaldiru
+RDP-AV--PRG-boil ABS  pot
+'the (content of the) pot is boiling'
+
+#16
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, word order}
+C-um--C-lbut ti kaldero
+l-um--l-lbut       ti  kaldero
+l-um--l-elbut      ti kaldiru
+RDP-AV--PRG-boil ABS  pot
+'the (content of the) pot is still boiling'
+
+#17 Northern Alta uses temporal adverbs in place of tense/aspect
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {tense aspect mood, word order}
+dya'yay C-um--C-lbut in kaldero
+dya'yay  l-um--l-lbut    in  kaldero
+dijaʔjaj l-um--l-elbut   ʔin kaldiru
+now      RDP-AV--PRG-boil ABS  pot
+'now the (content of the) pot is boiling'
+
+#18 Temporal adverbs come at the beginning or end of a clause
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {tense aspect mood, word order}
+C-um--C-lbut dya'yay in kaldero
+l-um--l-lbut    dya'yay  in  kaldero
+l-um--l-elbut   dijaʔjaj ʔin kaldiru
+RDP-AV--PRG-boil now      ABS  pot
+'now the (content of the) pot is boiling'
+
+#19
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, tense aspect mood, determiners, word order}
+ududma C-um--C-lbut in kaldero
+ududma  l-um--l-lbut     in  kaldero
+ʔududma l-um--l-elbut    ʔin kaldiru
+tomorrow RDP-AV--PRG-boil ABS  pot
+'tomorrow the (content of the) pot will be boiling'
+
+#20
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {tense aspect mood, word order}
+C-um--C-lbut ududma in kaldero
+l-um--l-lbut    ududma   in kaldero
+l-um--l-elbut   ʔududma  ʔin kaldiru
+RDP-AV--PRG-boil tomorrow ABS pot
+'tomorrow the (content of the) pot will be boiling'
+
+#21
+Source: a:188
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+C-um--C-daténg in ána' ='o
+d-<um>--d-dateng   in  ana'  ='o
+d-<um>--d-dateŋ    ʔin ʔanaʔ =ʔu
+RDP-AV--PRG-boil ABS  child =1s.GEN
+'my child is arriving'
+
+#22
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case, determiners}
+C-um--C-daténg ni ána' ='o
+d-<um>--d-dateng   ni ana'  ='o
+d-<um>--d-dateŋ     ni ʔanaʔ =ʔu
+RDP-AV--PRG-boil GEN child =1s.GEN
+'my child's is arriving'
+
+#23
+Source: a:155
+Vetted: s
+Judgment: g
+Phenomena: {case, determiners, word order}
+eg'ang-en de in karajum-i-sid
+eg'ang-en =de     in  karajum=i=sid
+ʔәgʔaŋ-әn =dә     ʔin karajum=i=sid
+leave-PV  =3s.GEN ABS  needle=SPEC=PL
+'they remove the needles'
+
+#24 Specificity marker =i must be before plural marker =sid
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {word order}
+eg'ang-en de in karajum-sid-i
+eg'ang-en =de     in  karajum=sid=i
+ʔәgʔaŋ-әn =dә     ʔin karajum=sid=i
+leave-PV  =3s.GEN ABS  needle=PL=SPEC
+'they remove the needles'
+
+#25 Asyndeton VP clause coordination
+Source: a:148-149
+Vetted: s
+Judgment: g
+Phenomena: {argument optionality, case, coordination, negation, pronouns, word order}
+men-siyá men-siyá
+men-siyá men-siyá
+mәn-sija mәn-sija
+AV-cry   AV-cry
+'(he) cries and cries'
+
+#26 'kesara' doesn't coordinate VP clauses
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {coordination}
+men-siyá kesara men-siyá
+men-siyá kesara men-siyá
+mәn-sija kisara mәn-sija
+AV-cry   than   AV-cry
+'(he) cries than cries'
+
+#27 Omission of absolutive argument
+Source: a:201
+Vetted: s
+Judgment: g
+Phenomena: {argument optionality, case, tense aspect mood}
+C-in-guyód-en ni asó
+g-<in>-uyod  ni asó
+g-<in>-ujud  ni ʔasu
+RDP-<PRF.PV>-pull GEN dog
+'The dog pulled it'
+
+#28 Cannot omit genitive actor
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {argument optionality}
+C-in-guyód-en
+g-<in>-uyod
+g-<in>-ujud
+RDP-<PRF>-pull
+'(Someone) pulled it'
+
+#29 'in' is an absolutive singular common word article
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, determiners}
+ma-póled in asó
+ma-póled in asó
+mә-pulәd in ʔasu
+ST-sleep ABS dog
+'The dog sleeps'
+
+#30 'ti' is an absolutive singular person word article
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {determiners}
+ma-póled ti asó
+ma-póled ti  asó
+mә-pulәd ti ʔasu
+ST-sleep ABS  dog
+'The dog sleeps'
+
+#31 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: g
+Phenomena: {possessives}
+palit-an na in beli nen aparato
+palit-an  =na      in  beli  nen  aparato
+palit-an  =na      ʔin bәli  nәn  ʔaparatu
+change-LV =3s.GEN  ABS  house D.GEN device
+'he changes the frame of the device'
+
+#32 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na in beli aparato
+palit-an  =na      in  beli  aparato
+palit-an  =na      ʔin bәli  ʔaparatu
+change-LV =3s.GEN  ABS  house device
+'he changes the frame device'
+
+#33 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na in beli aparato
+palit-an  =na      in nen  beli  aparato
+palit-an  =na      in nәn  bәli  ʔaparatu
+change-LV =3s.GEN  ABS D.GEN house device
+'he changes of frame device'
+
+#34 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na in beli aparato nen
+palit-an  =na      in  beli  aparato  nen
+palit-an  =na      in  bәli  ʔaparatu nәn
+change-LV =3s.GEN  ABS  house device   D.GEN
+'he changes of frame device'
+
+#35 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na in beli nen
+palit-an  =na      in  beli  nen
+palit-an  =na      ʔin bәli  nәn
+change-LV =3s.GEN  ABS  house D.GEN
+'he changes the frame of the'
+
+#36 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na in nen aparato
+palit-an  =na      in   nen  aparato
+palit-an  =na      ʔin  nәn  ʔaparatu
+change-LV =3s.GEN  ABS   D.GEN device
+'he changes the of the device'
+
+#37 'nen' is a possessive strategy particle
+Source: a
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+palit-an na siya nen aparato
+palit-an  =na      siya     nen   aparato
+palit-an  =na      sija     nәn   ʔaparatu
+change-LV =3s.GEN  3s.ABS    D.GEN  device
+'he changes it of the device'
+
+#38 '=na' is a possessive pronoun enclitic
+Source: a:190
+Vetted: f
+Judgment: g
+Phenomena: {possessives}
+eg'ang-en =mi in set =na
+eg'ang-en =mi      in  set   =na
+ʔәgʔaŋ-әn =mi      ʔin sit   =na
+remove-PV =1pe.GEN ABS  thorn =3s.GEN 
+'we remove his thorn'
+
+#39 '=na' is a possessive pronoun enclitic
+Source: a:190
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+eg'ang-en  =mi in =na set
+eg'ang-en =mi      in  =na     set
+ʔәgʔaŋ-әn =mi      ʔin =na     sit
+remove-PV =1pe.GEN ABS  =3s.GEN thorn
+'we remove thorn his'
+
+#40 '=na' is a possessive pronoun enclitic
+Source: a:190
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+eg'ang-en  =mi =na in set
+eg'ang-en =mi      =na    in  set
+ʔәgʔaŋ-әn =mi      =na    ʔin sit
+remove-PV =1pe.GEN =3s.GEN ABS  thorn
+'we remove his a thorn'
+
+#41 '=miyu' is a possessive pronoun enclitic
+Source: a:222
+Vetted: f
+Judgment: g
+Phenomena: {possessives}
+C-um--C-daténg in asó =miyu
+d-<um>--d-dateng in aso     =miyu
+d-<um>--d-datәŋ  in aso     =miju
+RDP-<AV>--PRG-arrive ABS dog =2p.Gen
+'your dog arrives'
+
+#42 '=miyu' is a possessive pronoun enclitic
+Source: a:222
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+C-um--C-daténg miyu asó 
+d-<um>--d-dateng =miyu   aso 
+d-<um>--d-datәŋ  =miju   aso 
+RDP-<AV>--PRG-arrive =2p.Gen dog 
+'dog your arrives'
+
+#43 '=miyu' is a possessive pronoun enclitic
+Source: a:222
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+C-um--C-daténg miyu 
+d-<um>--d-dateng =miyu 
+d-<um>--d-datәŋ  =miju 
+RDP-<AV>--PRG-arrive =2p.Gen
+'your arrives'
+
+#44 '=miyu' is a possessive pronoun enclitic
+Source: a:222
+Vetted: f
+Judgment: u
+Phenomena: {possessives}
+C-um--C-daténg siya miyu
+d-<um>--d-dateng sija =miyu
+d-<um>--d-datәŋ  sija =miju
+RDP-<AV>--PRG-arrive ABS  =2p.Gen
+'your he arrives'
+
+#45 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {clausal modifier}
+C-um--C-daténg in asó habang meng-án
+d-<um>--d-dateng in aso  habang meng-an
+d-<um>--d-datәŋ  in aso  habaŋ  mәŋ-ʔan
+RDP-<AV>--PRG-arrive ABS dog  while  AV-eat.ABS
+'the dog arrives while eating'
+
+#46 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {clausal modifier}
+habang meng-án, C-um--C-daténg in asó
+habang meng-an,   d-<um>--d-dateng in aso      
+habaŋ  meŋ-an,    d-<um>--d-datәŋ  in aso      
+while  AV-eat.ABS RDP-<AV>--PRG-arrive ABS dog 
+'while eating, the dog arrives'
+
+#47 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+meng-án, C-um--C-daténg in asó 
+meng-an,   d-<um>--d-dateng in aso      
+meŋ-an,    d-<um>--d-datәŋ  in aso     
+AV-eat.ABS RDP-<AV>--PRG-arrive ABS dog
+'eating, the dog arrives'
+
+#48 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+C-um--C-daténg in asó meng-án
+d-<um>--d-dateng in aso     habang meng-an
+d-<um>--d-datәŋ  in aso     habeng mәŋ-ʔan
+RDP-<AV>--PRG-arrive ABS dog while  AV-eat.ABS
+'dog arrives eats'
+
+#49 'habang' is a clausal modifier
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {clausal modifier}
+C-um--C-daténg habang in asó meng-án
+d-<um>--d-dateng habang in aso meng-an
+d-<um>--d-datәŋ  habeng in aso mәŋ-ʔan
+RDP-<AV>--PRG-arrive while ABS dog AV-eat.ABS
+'arrives while dog eats'
+
+#50 'adino' is an interrogative adverb
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wh- clauses}
+adino meng--in-gína?
+adino      m<in>en-gina?
+ʔadinu     m<in>әn-gina?
+where      <PRF>AV-run?
+'where did (you) run?'
+
+#51 adverbial question word order
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {wh- clauses}
+meng--in-gína adino?
+meng--in-gina adino?
+mәng--in-gina ʔadinu?
+AV--PRF-run  where?
+'run (you) where?'
+
+#52 'tiyaheno' is an interrogative pronoun
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wh- clauses}
+tiyaheno C-um--C-daténg?
+tiʔahinu d-<um>--d-dateng?
+tiʔahinu d-<um>--d-datәŋ?
+who  RDP-<AV>--PRG-arrive
+'who arrives?'
+
+#53 pronominal question word order
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {wh- clauses}
+C-um--C-daténg tiyaheno?
+d-<um>--d-dateng tiʔahinu?
+d-<um>--d-datәŋ tiʔahinu?
+RDP-<AV>--PRG-arrive who?
+'arrives who?'
+
+#54 pronominal question word order
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, morphotactics}
+damólag-en ='o ='a
+damolag-en ='o ='a
+damolag-en =ʔo =ʔa
+chase-PV =GEN.1s =ABS.2s
+'I chase you'
+
+
