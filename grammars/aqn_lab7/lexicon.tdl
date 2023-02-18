@@ -77,9 +77,9 @@ kahirapan := unvoiced_common-noun-lex &
   [ STEM < "kahirapan" >,
     SYNSEM.LKEYS.KEYREL.PRED "_adversity_n_rel" ].
 
-;kampo_1 := unvoiced_common-noun-lex &
-;  [ STEM < "kampo" >,
-;    SYNSEM.LKEYS.KEYREL.PRED "_field_n_rel" ].
+kampo_1 := unvoiced_common-noun-lex &
+  [ STEM < "kampo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_field_n_rel" ].
 
 kampo_2 := unvoiced_common-noun-lex &
   [ STEM < "kampo" >,
