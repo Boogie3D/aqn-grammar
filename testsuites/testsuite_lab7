@@ -660,8 +660,9 @@ Vetted: f
 Judgment: g
 Phenomena: {non-verbal predicates}
 pósa-i-sid asó-i-sid
-pósa=i=sid asó=i=sid
-pusa=i=sid asu=i=sid
+pósa=i=sid  asó=i=sid
+pusa=i=sid  asu=i=sid
+cat=SPEC=PL dog=SPEC=PL
 'The dogs are the cats'
 
 #61 (NP is NP) complement shouldn't be case-marked
