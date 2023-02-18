@@ -2390,9 +2390,12 @@ ginuyod := transitive_verbs-verb-lex &
   [ STEM < "ginuyod" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pullsomething_v_rel" ].
 
+;bitíl := stative-verb-lex &
+;  [ STEM < "bitíl" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
 bitíl := stative-verb-lex &
   [ STEM < "bitíl" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
 
 uná_27 := stative-verb-lex &
   [ STEM < "uná'" >,

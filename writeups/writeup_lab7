@@ -1,0 +1,243 @@
+Language: Northern Alta (aqn)
+Lab 7
+Group: Jon Davenport & Steven Anaya
+Author: Steven Anaya
+Date: 17 Feburary, 2023
+
+1. Non-verbal predicates in Northern Alta
+
+  AP Predicate
+
+  This form of predicate is formed by a stative-voice word and its 
+  absolutive argument. This type of predicate has already appeared in
+  a previous lab as it is also used to describe sleeping.
+
+    ma-póled in asó
+    ST-sleep ABS dog
+    'The dog sleeps'
+
+    me-bitíl siden asó-i
+    ST-hunger PL.ABS dog=SPEC
+    'The dogs are hungry'
+
+
+
+  PP Predicate
+
+  This form of predicate is formed by using a clause-initial existential
+  predicate, such as 'meiwadde' (have) or 'isay' (be.at). For this lab, we
+  implemented 'isay,' which takes a case-unmarked subject and locative argument.
+
+    Isay asó-i-sid ta kampo
+    be.at dog=SPEC=PL LOC field
+    'The dogs are in the park'
+
+
+  NP Predicate
+
+  This form of predicate is formed by either juxtaposing two NPs or by
+  using the "predicate marker" 'ay', forming an "Ay Phrase". 'Ay' is
+  described in our resource as "a particle that always occurs in the
+  leftmost position of the phrase, which marks the predicate when another
+  element is fronted. The PM is not obligatory ... as an intonational break
+  may appear instead." (As it is unclear what type of grammatical unit 'ay'
+  is, we were recommended to skip implementing it in this lab.)
+
+    si'aw di'әn, si'en ay di'aw
+    2s    1s.LOC 1s    PM 2s.LOC
+    'You are mine, I am yours'
+
+    asó-i-sid pósa-i-sid 
+    dog=SPEC=PL cat=SPEC=PL
+    'The dogs are the cats'
+
+2. Implementation
+
+  AP Predicate
+
+  No changes were required to implement stative-voice predicates as they were
+  previously implemented to describe sleeping. Stative-voice predicates are
+  implemented as a verb lexical type 'stative-verb-lex' and lexical rule
+  'prefix_stative-lex-rule' which allow words to take a stative-voice prefix me- or ma-.
+
+  northern_alta.tdl:
+    stative-verb-lex := intransitive-verb-lex &
+      [ INFLECTED [ UM-VERB-FLAG na-or--,
+                    MEN_INTRANS-VERB-FLAG na-or--,
+                    CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
+                    STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG + ] ].
+
+    prefix_stative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
+      [ DTR [ INFLECTED.STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
+              ARG-ST #arg-st ],
+        ARG-ST #arg-st &
+              < [ LOCAL.CAT.HEAD.CASE abs ] >,
+        SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                        CASE-MARKED + ] ].
+
+  irules.tdl:
+    prefix_stative-prefix :=
+    %prefix (* me-) (* ma-)
+    prefix_stative-lex-rule.
+
+  PP Predicate
+
+  The existential predicate 'isay' was added to the lexicon as well as a verb lexical
+  type 'noninflected_trans-verb-lex'. We additionally had to modify the verb lexical rule
+  'perfect_aspect-lex-rule' to forbid it from inflecting verbs of this type.
+
+  northern_alta.tdl:
+    noninflected_trans-verb-lex := transitive-verb-lex &
+      [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE-MARKED - ],
+                              COMPS.FIRST.LOCAL.CAT.HEAD [ CASE loc,
+                                                            CASE-MARKED + ] ],
+        INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                    LOCATIVE-VERB-FLAG na-or--,
+                    NONINFLECTED_TRANS-VERB-FLAG +,
+                    MEN_TRANS-VERB-FLAG na-or--,
+                    CONVEYANCE-VERB-FLAG na-or--,
+                    LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or-- ] ].
+
+    perfect_aspect-lex-rule := infix_perfect_third-lex-rule-super & infl-lex-rule &
+      [ DTR.INFLECTED [ NOT_PROGRESSIVE-FLAG +,
+                        NONINFLECTED_TRANS-VERB-FLAG na ],
+        SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT perfective ].
+
+  NP Predicate
+
+  We attempted to implement the non-copular NP predicate using a slightly modified
+  'n-bar-predicate-rule', which was taken from the lab 7 instructions. We were able to
+  successfully translate 'The dogs are the cats' using this rule but it also caused
+  caused intractable amounts of ambiguity in NPs in several other test sentences
+  and ultimately had to be commented out to run our testsuite. An additional limitation
+  of our grammar is that, as predicate words are clause-initial, the order of our
+  'NP is NP' predicates had to be switched, which does not align with the phenomena
+  observed in the resource grammar.
+
+  e.g., Correct NP predicate:
+
+    asó-i-sid pósa-i-sid 
+    dog=SPEC=PL cat=SPEC=PL
+    'The dogs are the cats'
+
+
+  e.g., Our grammar's NP predicate:
+
+    pósa-i-sid asó-i-sid 
+    cat=SPEC=PL dog=SPEC=PL
+    'The dogs are the cats'
+
+  We are still wondering what is wrong with the tdl below. With this code uncommented,
+  parsing the following sentence creates a massive tree of embedded PPs before failing
+  due to reaching the edge limit. We're still unsure what about this code is causing
+  this and would like your advice on how to fix it.
+    
+    Ma-póled in sasakyan nen asó
+    ST-sleep ABS vehicle POSS dog
+    'The dog's car sleeps'
+
+  northern_alta.tdl:
+    ;n-bar-predicate-rule := unary-phrase & nocoord &
+    ;  [ SYNSEM [ LOCAL.CAT [ HEAD verb,
+    ;                         VAL [ COMPS < >,
+    ;                               SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
+    ;                                                CAT [ HEAD noun,
+    ;                                                VAL.SPR < > ] ] ] > ] ],
+    ;             NON-LOCAL #nl ],
+    ;    C-CONT [ HOOK [ LTOP #ltop,
+    ;                    INDEX #index,
+    ;		    		        XARG #arg1 ],
+    ;             RELS.LIST < arg12-ev-relation &
+    ;                          [ PRED "_be_v_id_rel",
+    ;                            LBL #ltop,
+    ;                            ARG0 #index,
+    ;                            ARG1 #arg1,
+    ;                            ARG2 #arg2 ] >,
+    ;             HCONS.LIST < qeq & [ LARG #larg ] > ],
+    ;             ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun,
+    ;                                             VAL.SPR < > ],
+    ;                                       CONT.HOOK [ INDEX #arg2,
+    ;                                                   LTOP #larg ] ],
+    ;                               NON-LOCAL #nl ] ] > ].
+
+  rules.tdl:
+    ;n-bar-predicate := n-bar-predicate-rule.
+
+3. MT Sentences
+
+  Sentence 15 (Me-bitíl siden asó-i/The dogs are hungry) translates from aqn to eng
+  with minor ambiguity in tense and specificity, resulting in 4 sentences. From eng
+  to aqn, it results in more ambiguity in morphology, plurality, and specificity,
+  resulting in 16 sentences.
+
+  Sentence 16 (Isay asó-i-sid ta kampo/The dogs are in the park) translates from aqn
+  to eng with similar ambiguity in specificity, tense, and plurality in both nouns,
+  resulting in 16 sentences. From eng to aqn, there is only ambiguity in specificity
+  and plurality, resulting in 8 sentences.
+
+  When the n-bar-predicate code above is uncommented and the grammar is recompiled
+  with ace, sentence 17 (Pósa-i-sid asó-i-sid/The dogs are the cats) translates from
+  aqn to eng with ambiguity in specificity and tense, resulting in 8 sentences. It
+  translates from eng to aqn with ambiguity in specificity and plurality, resulting
+  in 16 sentences.
+
+4. Wh- question words
+
+  Wh- question words (described as "interrogative pronouns" in our resource) are
+  typically fronted and take an absolutive marked argument (even if asking 'where')
+  in non-verbal predicates. Although words such as 'adino' (where) and 'aheno' (what)
+  are included in our lexicon, they do not currently parse in our grammar as the wh- NP
+  does not unify successfully with its PP complement. Wh- words also appear to often
+  take an enclitic '=d', whose function is unknown even to our resource author.
+  
+  Hypothetical test sentences include:
+
+    aheno in sasakyan?
+    what  ABS vehicle
+    'What is a vehicle?'
+
+    adino isay in sasakyan?
+    where be.at ABS vehicle
+    'Where is the vehicle?'
+
+5. Performance Comparison
+
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             |                      | Lab 6                   | Lab 7                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    | Test Corpus | Items Parsed         | 2240                    | 2240                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Results        | 74                      | 74                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Readings       | 152                     | 152                                   |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Avg. Readings/Result | 2.054                   | 2.054                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Coverage             | 3.3%                    | 3.3%                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Overgeneration       | 100%                    | 100%                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Most Ambiguous Item  | 8 Readings, Item 16,420 | 8 Readings, Item 16,420               |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Sources of           | HEAD-ADJ-INT rule,      | There is no additional ambiguity      |
+    |             | Ambiguity            | Omitted Arguments,      | compared to lab 6                     |
+    |             |                      | EX-COMP, EX-SUBJ        |                                       |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    | Testsuite   | Items Parsed         | 61                      | 61                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Results        | 24                      | 25                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Total Readings       | 30                      | 32                                    |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Avg. Readings/Result | 1.25                    | 1.28                                  |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Coverage             | 90.9%                   | 95.5%                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Overgeneration       | 10.3%                   | 10.3%                                 |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Most Ambiguous Item  | 2 readings, Items 1, 17 | 2 readings                            |
+    |             |                      |          19, 31, 35, 46 | Items 1, 17, 19, 31, 35, 46, 57       |
+    +-------------+----------------------+-------------------------+---------------------------------------+
+    |             | Sources of Ambiguity | HEAD-ADJ-INT rule       | HEAD-ADJ-INT rule,                    |
+    |             |                      |                         | 'kampo' has two lex ents              |
+    +-------------+----------------------+-------------------------+---------------------------------------+
