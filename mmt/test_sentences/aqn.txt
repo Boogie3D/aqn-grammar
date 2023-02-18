@@ -1,6 +1,6 @@
 Ma-póled in asó
-damólag-en ni asó in sasakyan
-damólag-en ='o ='a
+Damólag-en ni asó in sasakyan
+Damólag-en ='o ='a
 Meng-án in asó
 Awon meng-damolag siden asó-i ti sasakyan
 SKIPPED
@@ -12,9 +12,9 @@ Meng-damolag bat in pósa ti pósa
 Meng-án in asó a bitélen
 Meng-án in asó ni kampo
 Meng-án in asó ta kampo
-Ma-bitíl siden asó-i
+Me-bitíl siden asó-i
 Isay asó-i-sid ta kampo
-Asó-i-sid ay pósa-i-sid
+Asó-i-sid pósa-i-sid
 Ma-póled in sasakyan nen asó
 Ma-póled in asó ='o
 Tiyaheno ma-póled
@@ -25,3 +25,4 @@ SKIPPED
 Dahil ma-póled in pósa-i ma-póled in asó-i
 SKIPPED
 Palit-an na in beli nen aparato
+asó e'
