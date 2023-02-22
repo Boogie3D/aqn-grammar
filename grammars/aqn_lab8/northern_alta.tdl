@@ -128,8 +128,8 @@ adj-head-int-phrase :+ [ HEAD-DTR.SYNSEM.NON-LOCAL.SLASH.LIST < > ].
 
 
 n-bar-predicate-rule := unary-phrase & nocoord &
-  [ SYNSEM [ LOCAL.CAT [ HEAD verb,
-                         VAL [ COMPS < >,
+  [ SYNSEM [ LOCAL.CAT [ HEAD verb & [ MOD < >],
+                         VAL [ COMPS < >, SPR < >, SPEC < >,
                                SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
                                                 CAT [ HEAD noun,
                                                 VAL.SPR < > ] ] ] > ] ],
