@@ -83,4 +83,4 @@ ex-subj := extracted-subj-phrase.
 
 wh-ques := wh-ques-phrase.
 
-;n-bar-predicate := n-bar-predicate-rule.
+n-bar-predicate := n-bar-predicate-rule.
