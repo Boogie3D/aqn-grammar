@@ -1,0 +1,61 @@
+1@author@@@1@c,pn,wo@ma-'uná siya@@@@1@2@ST-say    =3s.ABS'He said'@jon davenport & steven anaya@25 january 2023
+2@author@@@1@c,pn@ma-'uná mo@@@@0@2@ST-say    =2s.GEN'Your said'@jon davenport & steven anaya@25 january 2023
+3@author@@@1@c,pn@ma-'uná 'o@@@@0@2@ST-say    =1s.GEN'my said'@jon davenport & steven anaya@25 january 2023
+4@author@@@1@c,pn@ma-'uná na@@@@0@2@ST-say    =3s.GEN'said their'@jon davenport & steven anaya@25 january 2023
+5@author@@@1@c,pn@ma-'uná tam@@@@0@2@ST-say    =1pi.GEN'said mine'@jon davenport & steven anaya@25 january 2023
+6@author@@@1@c,pn@ma-'uná di'ami@@@@0@2@ST-say    1pi.LOC'I said there'@jon davenport & steven anaya@25 january 2023
+7@author@@@1@c,det@C-um--C-lbut in kaldero@@@@1@3@RDP-AV--PRG-boil ABS  pot'the (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+8@author@@@1@c,det@C-um--C-lbut ni kaldero@@@@0@3@RDP-AV--PRG-boil GEN pot'the (content of the) pot's is boiling'@jon davenport & steven anaya@25 january 2023
+9@author@@@1@c,det@C-um--C-lbut ni kaldero@@@@0@3@RDP-AV--PRG-boil LOC pot'the one (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+10@author@@@1@c,det@C-um--C-lbut ti kaldero@@@@0@3@RDP-AV--PRG-boil OBL pot'from (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+11@a:188@@@1@c,det@meng-aliyo in wadi@@@@1@3@AV-search  ABS  younger.sibling'a younger sibling searches'@jon davenport & steven anaya@25 january 2023
+12@author@@@1@c,det@meng-aliyo ni wadi@@@@0@3@AV-search  GEN younger.sibling'of younger sibling searches'@jon davenport & steven anaya@25 january 2023
+13@author@@@1@c,det@meng-aliyo ti wadi na@@@@0@4@AV-search  OBL younger.sibling'to younger sibling searches'@jon davenport & steven anaya@25 january 2023
+14@author@@@1@c,det@meng-aliyo ni wadi@@@@0@3@AV-search  LOC younger.sibling'this younger sibling searches'@jon davenport & steven anaya@25 january 2023
+15@a:188@@@1@c,wo@C-um--C-lbut in kaldero@@@@1@3@RDP-AV--PRG-boil ABS  pot'the (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+16@author@@@1@c,wo@C-um--C-lbut ti kaldero@@@@0@3@RDP-AV--PRG-boil ABS  pot'the (content of the) pot is still boiling'@jon davenport & steven anaya@25 january 2023
+17@author@@@1@tam,wo@dya'yay C-um--C-lbut in kaldero@@@@1@4@now      RDP-AV--PRG-boil ABS  pot'now the (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+18@author@@@1@tam,wo@C-um--C-lbut dya'yay in kaldero@@@@0@4@RDP-AV--PRG-boil now      ABS  pot'now the (content of the) pot is boiling'@jon davenport & steven anaya@25 january 2023
+19@author@@@1@c,tam,det,wo@ududma C-um--C-lbut in kaldero@@@@1@4@tomorrow RDP-AV--PRG-boil ABS  pot'tomorrow the (content of the) pot will be boiling'@jon davenport & steven anaya@25 january 2023
+20@author@@@1@tam,wo@C-um--C-lbut ududma in kaldero@@@@0@4@RDP-AV--PRG-boil tomorrow ABS pot'tomorrow the (content of the) pot will be boiling'@jon davenport & steven anaya@25 january 2023
+21@a:188@@@1@c,det,wo@C-um--C-daténg in ána' ='o@@@@1@4@RDP-AV--PRG-boil ABS  child =1s.GEN'my child is arriving'@jon davenport & steven anaya@25 january 2023
+22@author@@@1@c,det@C-um--C-daténg ni ána' ='o@@@@0@4@RDP-AV--PRG-boil GEN child =1s.GEN'my child's is arriving'@jon davenport & steven anaya@25 january 2023
+23@a:155@@@1@c,det,wo@eg'ang-en de in karajum-i-sid@@@@1@4@leave-PV  =3s.GEN ABS  needle=SPEC=PL'they remove the needles'@jon davenport & steven anaya@25 january 2023
+24@author@@@1@wo@eg'ang-en de in karajum-sid-i@@@@0@4@leave-PV  =3s.GEN ABS  needle=PL=SPEC'they remove the needles'@jon davenport & steven anaya@25 january 2023
+25@a:148-149@@@1@pro-d,c,crd,neg,pn,wo@men-siyá men-siyá@@@@1@2@AV-cry   AV-cry'(he) cries and cries'@jon davenport & steven anaya@25 january 2023
+26@author@@@1@crd@men-siyá kesara men-siyá@@@@0@3@AV-cry   than   AV-cry'(he) cries than cries'@jon davenport & steven anaya@25 january 2023
+27@a:201@@@1@pro-d,c,tam@C-in-guyód-en ni asó@@@@1@3@RDP-<PRF.PV>-pull GEN dog'The dog pulled it'@jon davenport & steven anaya@25 january 2023
+28@author@@@1@pro-d@C-in-guyód-en@@@@0@1@RDP-<PRF>-pull'(Someone) pulled it'@jon davenport & steven anaya@25 january 2023
+29@author@@@1@c,det@ma-póled in asó@@@@1@3@ST-sleep ABS dog'The dog sleeps'@jon davenport & steven anaya@25 january 2023
+30@author@@@1@det@ma-póled ti asó@@@@0@3@ST-sleep ABS  dog'The dog sleeps'@jon davenport & steven anaya@25 january 2023
+31@a@@@1@poss@palit-an na in beli nen aparato@@@@1@6@change-LV =3s.GEN  ABS  house D.GEN device'he changes the frame of the device'@jon davenport & steven anaya@25 january 2023
+32@a@@@1@poss@palit-an na in beli aparato@@@@0@5@change-LV =3s.GEN  ABS  house device'he changes the frame device'@jon davenport & steven anaya@25 january 2023
+33@a@@@1@poss@palit-an na in beli aparato@@@@0@5@change-LV =3s.GEN  ABS D.GEN house device'he changes of frame device'@jon davenport & steven anaya@25 january 2023
+34@a@@@1@poss@palit-an na in beli aparato nen@@@@0@6@change-LV =3s.GEN  ABS  house device   D.GEN'he changes of frame device'@jon davenport & steven anaya@25 january 2023
+35@a@@@1@poss@palit-an na in beli nen@@@@0@5@change-LV =3s.GEN  ABS  house D.GEN'he changes the frame of the'@jon davenport & steven anaya@25 january 2023
+36@a@@@1@poss@palit-an na in nen aparato@@@@0@5@change-LV =3s.GEN  ABS   D.GEN device'he changes the of the device'@jon davenport & steven anaya@25 january 2023
+37@a@@@1@poss@palit-an na siya nen aparato@@@@0@5@change-LV =3s.GEN  3s.ABS    D.GEN  device'he changes it of the device'@jon davenport & steven anaya@25 january 2023
+38@a:190@@@1@poss@eg'ang-en =mi in set =na@@@@1@5@remove-PV =1pe.GEN ABS  thorn =3s.GEN'we remove his thorn'@jon davenport & steven anaya@25 january 2023
+39@a:190@@@1@poss@eg'ang-en  =mi in =na set@@@@0@5@remove-PV =1pe.GEN ABS  =3s.GEN thorn'we remove thorn his'@jon davenport & steven anaya@25 january 2023
+40@a:190@@@1@poss@eg'ang-en  =mi =na in set@@@@0@5@remove-PV =1pe.GEN =3s.GEN ABS  thorn'we remove his a thorn'@jon davenport & steven anaya@25 january 2023
+41@a:222@@@1@poss@C-um--C-daténg in asó =miyu@@@@1@4@RDP-<AV>--PRG-arrive ABS dog =2p.Gen'your dog arrives'@jon davenport & steven anaya@25 january 2023
+42@a:222@@@1@poss@C-um--C-daténg miyu asó@@@@0@3@RDP-<AV>--PRG-arrive =2p.Gen dog'dog your arrives'@jon davenport & steven anaya@25 january 2023
+43@a:222@@@1@poss@C-um--C-daténg miyu@@@@0@2@RDP-<AV>--PRG-arrive =2p.Gen'your arrives'@jon davenport & steven anaya@25 january 2023
+44@a:222@@@1@poss@C-um--C-daténg siya miyu@@@@0@3@RDP-<AV>--PRG-arrive ABS  =2p.Gen'your he arrives'@jon davenport & steven anaya@25 january 2023
+45@author@@@1@clausalmodifier@C-um--C-daténg in asó habang meng-án@@@@1@5@RDP-<AV>--PRG-arrive ABS dog  while  AV-eat.ABS'the dog arrives while eating'@jon davenport & steven anaya@25 january 2023
+46@author@@@1@clausalmodifier@habang meng-án, C-um--C-daténg in asó@@@@1@5@while  AV-eat.ABS RDP-<AV>--PRG-arrive ABS dog'while eating, the dog arrives'@jon davenport & steven anaya@25 january 2023
+47@author@@@1@clausalmodifier@meng-án, C-um--C-daténg in asó@@@@0@4@AV-eat.ABS RDP-<AV>--PRG-arrive ABS dog'eating, the dog arrives'@jon davenport & steven anaya@25 january 2023
+48@author@@@1@clausalmodifier@C-um--C-daténg in asó meng-án@@@@0@4@RDP-<AV>--PRG-arrive ABS dog while  AV-eat.ABS'dog arrives eats'@jon davenport & steven anaya@25 january 2023
+49@author@@@1@clausalmodifier@C-um--C-daténg habang in asó meng-án@@@@0@5@RDP-<AV>--PRG-arrive while ABS dog AV-eat.ABS'arrives while dog eats'@jon davenport & steven anaya@25 january 2023
+50@author@@@1@wh-clauses@adino meng--in-gína?@@@@1@2@where      <PRF>AV-run?'where did (you) run?'@jon davenport & steven anaya@25 january 2023
+51@author@@@1@wh-clauses@meng--in-gína adino?@@@@0@2@AV--PRF-run   where?'run (you) where?'@jon davenport & steven anaya@25 january 2023
+52@author@@@1@wh-clauses@tiyaheno C-um--C-daténg?@@@@1@2@who      RDP-<AV>--PRG-arrive'who arrives?'@jon davenport & steven anaya@25 january 2023
+53@author@@@1@wh-clauses@C-um--C-daténg tiyaheno?@@@@0@2@RDP-<AV>--PRG-arrive who?'arrives who?'@jon davenport & steven anaya@25 january 2023
+54@author@@@1@c,morphotactics@damólag-en ='o ='a@@@@1@3@chase-PV =GEN.1s =ABS.2s'I chase you'@jon davenport & steven anaya@25 january 2023
+55@author@@@1@c,non-verbalpredicates@me-bitíl siden asó-i@@@@1@3@ST-hunger PL.ABS dog=SPEC'The dogs are hungry'@jon davenport & steven anaya@25 january 2023
+56@author@@@1@c@me-bitíl niden asó-i@@@@0@3@ST-hunger PL.GEN dog=SPEC'The dogs' are hungry'@jon davenport & steven anaya@25 january 2023
+57@author@@@1@c,non-verbalpredicates@isay asó-i-sid ta kampo@@@@1@4@be.at dog=SPEC=PL LOC field'The dogs are in the park'@jon davenport & steven anaya@25 january 2023
+58@author@@@1@c@isay in asó-i-sid ta kampo@@@@0@5@be.at ABS dog=SPEC=PL LOC field'The dogs are in the park'@jon davenport & steven anaya@25 january 2023
+59@author@@@1@c@isay asó-i-sid in kampo@@@@0@4@be.at dog=SPEC=PL ABS field'The dogs are the park'@jon davenport & steven anaya@25 january 2023
+60@author@@@1@non-verbalpredicates@pósa-i-sid asó-i-sid@@@@1@2@cat=SPEC=PL dog=SPEC=PL'The dogs are the cats'@jon davenport & steven anaya@25 january 2023
+61@author@@@1@non-verbalpredicates@pósa-i-sid in asó-i-sid@@@@0@3@cat=SPEC=PL ABS dog=SPEC=PL'The dogs are the cats'@jon davenport & steven anaya@25 january 2023
