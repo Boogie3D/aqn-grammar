@@ -642,17 +642,17 @@ noninflected_trans-verb-lex := transitive-verb-lex &
 
 ;;; Clausal complements
 
-;;;clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
-;;;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
-;;;				 [ LOCAL.CAT [ MC -,
-;;;					       HEAD +vc ,
-;;;					       VAL [ SUBJ < >,
-;;;						     COMPS < > ]]] >,
-;;;    ARG-ST < [], #comps > ].
+clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
+				 [ LOCAL.CAT [ MC -,
+					       HEAD +vc ,
+					       VAL [ SUBJ < >,
+						     COMPS < > ]]] >,
+    ARG-ST < [], #comps > ].
 
-;;;prop-comp-verb-lex := clausal-comp-verb-lex &
-;;;  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
-;;;                                            CONT.HOOK.INDEX.SF prop ]].
+prop-comp-verb-lex := clausal-comp-verb-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
+                                            CONT.HOOK.INDEX.SF prop ]].
 
 
 ;;; Auxiliaries
@@ -796,18 +796,17 @@ phrase-or-lexrule :+ [ SYNSEM.L-QUE #lque,
 
 ;;; Complementizers
 
-;;;comp-lex-item := raise-sem-lex-item & basic-one-arg & non-mod-lex-item &
-;;;  [ SYNSEM.LOCAL.CAT [ HEAD comp,
-;;;		       VAL [ SUBJ < >,
-;;;			     SPR < >,
-;;;			     COMPS < #comps &
-;;;				     [ LOCAL.CAT [ HEAD verb & [ INV -,
-;;;								 FORM finite ],
-;;;						   VAL.SUBJ < > ]] > ]],
-;;;    ARG-ST < #comps > ].
+comp-lex-item := raise-sem-lex-item & non-local-none-lex-item & non-mod-lex-item &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp,
+		       VAL [ SUBJ < >,
+			     SPR < >,
+			     COMPS < #comps &
+				     [ LOCAL.CAT [ HEAD verb,
+						   VAL.SUBJ < > ]] > ]],
+    ARG-ST < #comps > ].
 
-;;;prop-comp-lex-item := comp-lex-item &
-;;;  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
+prop-comp-lex-item := comp-lex-item &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
 
 ;;; Others
 
@@ -1459,6 +1458,17 @@ added-arg2of2-applicative-lex-rule := basic-applicative-lex-rule & added-arg2of2
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
+
+;;; Negation
+
+; Type for negative adverbs.
+
+neg-adv-lex := basic-scopal-adverb-lex &
+  [ SYNSEM.LOCAL.CAT [ VAL [ SPR < >,
+                             COMPS < >,
+                             SUBJ < > ],
+		       POSTHEAD -,
+                       HEAD.MOD < [ LOCAL.CAT.HEAD verb ] > ] ] .
 
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2

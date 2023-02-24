@@ -2679,9 +2679,25 @@ aliyo_3 := men_intrans-verb-lex &
   [ STEM < "aliyo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
+basa := men_intrans-verb-lex &
+  [ STEM < "basa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_read_v_rel" ].
+
 isay := noninflected_trans-verb-lex &
   [ STEM < "isay" >,
     SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
+
+know := prop-comp-verb-lex &
+  [ STEM < "men-nol" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
+
+think := prop-comp-verb-lex &
+  [ STEM < "akála-en" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
+
+ask := prop-comp-verb-lex &
+  [ STEM < "men-tanóng" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -2699,9 +2715,9 @@ bísa := neg6-aux-lex &
 baga := aux8-aux-lex &
   [ STEM < "baga" > ].
 
-awon := neg_exist-aux-lex &
-  [ STEM < "awon" >,
-    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
+;;;awon := neg_exist-aux-lex &
+;;;  [ STEM < "awon" >,
+;;;    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
 
 ;;; Determiners
 
@@ -2711,10 +2727,14 @@ te := common_nonspec_sg-determiner-lex &
 
 ;;; complementizers
 
-;;;a := prop-comp-lex-item &
-;;;  [ STEM < "a" > ].
+a := prop-comp-lex-item &
+  [ STEM < "a" > ].
 
 ;;; Adverbs
+
+awon := neg-adv-lex &
+  [ STEM < "awon" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_neg_a_rel" ] .
 
 sep := still-adverb-lex &
   [ STEM < "sep" >,
