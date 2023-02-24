@@ -76,7 +76,113 @@ Date: 23 Feburary, 2023
     we removed this item from our lexicon. These three alterations resolved our 
     runaway rule error.
 
-2.
+2. Clausal complements
+        Northern Alta has one particle "a" that introduces clausal complements. This linker particle
+    has no single English translation but may functions as "of," "that," "such that,"
+    and more. Since the descriptive grammar resource does not contain many examples of clausal complements,
+    and those offered use grammatical features beyond our current grammar, we decided to use the mmt
+    sentence as a our base test case.
 
+        # nested clausal complement
+        akála-en 'o a men-nol mo a damólag-en ni asó in sasakyan
+        akala-en ʔo ʔa mәn-nul mo ʔa damólag-en ni aso in sasakjan
+        think-PV GEN.1s LK AV.know GEN.2s LK chase-PV GEN dog ABS car 
+        I think that you know that dogs chase cars
 
+        #62 clausal complement particle and verbs
+        Source: author
+        Vetted: f
+        Judgment: g
+        Phenomena: {clausal complements}
+        men-nol itam a men-basa
+        mәn-nul itam ʔa  mәn-basa
+        AV-know 2p1.ABS LK AV-read
+        we know how to write
 
+        This clausal complement strategy proved difficult to implement. The matrix customization system
+    threw a bug when we tried to implement clausal complements, so instead we had to do so via tdl editing.
+    We relied on the given clausal complement strategies in the English grammar tdl files to model our own.
+    Between consulting colleagues for assistance and tweeking our own settings, we eventually arrived at the
+    following specificaitons:
+
+            ;;; Clausal complements
+
+        clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+        [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
+                        [ LOCAL.CAT [ MC -,
+                                HEAD +vc ,
+                                VAL [ SUBJ < >,
+                                    COMPS < > ]]] >,
+            ARG-ST < [], #comps > ].
+
+        prop-comp-verb-lex := clausal-comp-verb-lex &
+        [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
+                                                    CONT.HOOK.INDEX.SF prop ]].
+
+        Notably we removed any constrains on the first clausal complement's first daughter, removed
+    all FORM constraints and removed the [INV -] constraint from the prop-comp-verb-lex definition.
+    We also coppied and edited the Complementizer section from english.tdl, resulting with:
+
+            ;;; Complementizers
+
+        comp-lex-item := raise-sem-lex-item & non-local-none-lex-item & non-mod-lex-item &
+        [ SYNSEM.LOCAL.CAT [ HEAD comp,
+                    VAL [ SUBJ < >,
+                        SPR < >,
+                        COMPS < #comps &
+                            [ LOCAL.CAT [ HEAD verb,
+                                VAL.SUBJ < > ]] > ]],
+            ARG-ST < #comps > ].
+
+        prop-comp-lex-item := comp-lex-item &
+        [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
+
+        Here again we removed the [INV -] constraint on the lexical type's complement.
+    We also replaced the supertype basic-one-arg with non-local-none-lex-item.
+
+        We also added a transfer rule based on that found in the englist mmt grammar. Our 
+    slightly edited version looks as follows:
+
+        comp_gtr := generator_rule &
+        [ CONTEXT [ RELS <! [ ARG0 #e & [ SF prop ]] !> ],
+        FLAGS [ EQUAL < #e >,
+                TRIGGER "a" ]].
+
+        But this transfer rule seemed to interfere with generation in MMT. Our grammar
+    no longer translates successfully from eng or sje to aqn, or even aqn to aqn, but
+    still translates well from aqn to eng and sje.
+    
+    Finally, we modified our lexicon.tdl file by adding complementizers and verbs that take
+    clausal complements as arguments. The complementizer "a" to our lexicon.tdl file looks
+    as follows:
+
+            ;;; complementizers
+
+        a := prop-comp-lex-item &
+        [ STEM < "a" > ].
+
+    And we added some verbs that take clausal complements to our lexicon as well:
+
+        know := prop-comp-verb-lex &
+        [ STEM < "men-nol" >,
+            SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
+
+        think := prop-comp-verb-lex &
+        [ STEM < "akála-en" >,
+            SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
+
+        ask := prop-comp-verb-lex &
+        [ STEM < "men-tanóng" >,
+            SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+    
+        These edits were enough to get testsuite item #62 to parse. However, the longer
+    item with a nested clausal complement will not successfully parse in LKB. We hit the 
+    400 active edge limit error, and the parse chart shows  with a long chain of S phrases
+    resulting from the HEAD-SPEC or HEAD-COMP rule. The separate components of longer example
+    will parse successfully. We tested the first "half" (with two clausal complement verbs)
+    and through interactive unification we note that our rule does permit CP over
+    a + damólag-en ni asó in sasakyan. Some part of the clausal complement rule seems to
+    interact poorly with the HEAD-SPEC and HEAD-COMP rule, generating tons of ambiguity.
+
+3. Sentential Negation
+    
