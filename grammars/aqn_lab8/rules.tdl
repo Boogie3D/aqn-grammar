@@ -77,7 +77,7 @@ adj-head := my-adj-head-phrase.
 
 ex-comp := extracted-comp-phrase.
 
-ex-adj := basic-extracted-adj-phrase.
+;ex-adj := basic-extracted-adj-phrase.
 
 ex-subj := extracted-subj-phrase.
 

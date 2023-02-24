@@ -144,7 +144,7 @@ n-bar-predicate-rule := unary-phrase & nocoord &
                             ARG1 #arg1,
                             ARG2 #arg2 ] >,
              HCONS.LIST <  > ],
-             ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun,
+             ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ PRON - ],
                                              VAL.SPR < > ],
                                        CONT.HOOK [ INDEX #arg2
                                                   ] ],
@@ -642,17 +642,18 @@ noninflected_trans-verb-lex := transitive-verb-lex &
 
 ;;; Clausal complements
 
-clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
-				 [ LOCAL.CAT [ MC -,
-					       HEAD +vc & [ FORM finite ],
-					       VAL [ SUBJ < >,
-						     COMPS < > ]]] >,
-    ARG-ST < [ LOCAL.CAT.HEAD.CASE abs], #comps > ].
+;;;clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+;;;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
+;;;				 [ LOCAL.CAT [ MC -,
+;;;					       HEAD +vc ,
+;;;					       VAL [ SUBJ < >,
+;;;						     COMPS < > ]]] >,
+;;;    ARG-ST < [], #comps > ].
 
-prop-comp-verb-lex := clausal-comp-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [ CAT.HEAD.INV -,
-                                             CONT.HOOK.INDEX.SF prop ]].
+;;;prop-comp-verb-lex := clausal-comp-verb-lex &
+;;;  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
+;;;                                            CONT.HOOK.INDEX.SF prop ]].
+
 
 ;;; Auxiliaries
 
@@ -794,6 +795,19 @@ phrase-or-lexrule :+ [ SYNSEM.L-QUE #lque,
     ARGS.FIRST.SYNSEM.L-QUE #lque ].
 
 ;;; Complementizers
+
+;;;comp-lex-item := raise-sem-lex-item & basic-one-arg & non-mod-lex-item &
+;;;  [ SYNSEM.LOCAL.CAT [ HEAD comp,
+;;;		       VAL [ SUBJ < >,
+;;;			     SPR < >,
+;;;			     COMPS < #comps &
+;;;				     [ LOCAL.CAT [ HEAD verb & [ INV -,
+;;;								 FORM finite ],
+;;;						   VAL.SUBJ < > ]] > ]],
+;;;    ARG-ST < #comps > ].
+
+;;;prop-comp-lex-item := comp-lex-item &
+;;;  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
 
 ;;; Others
 

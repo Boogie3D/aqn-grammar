@@ -185,10 +185,6 @@ taném_1 := unvoiced_common-noun-lex &
   [ STEM < "taném" >,
     SYNSEM.LKEYS.KEYREL.PRED "_plant_n_rel" ].
 
-a := unvoiced_common-noun-lex &
-  [ STEM < "a" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_lk_n_rel" ].
-
 agtáy := unvoiced_common-noun-lex &
   [ STEM < "agtáy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_liver_n_rel" ].
@@ -1080,6 +1076,10 @@ i_27en := demonstrative_pronouns-noun-lex &
 i_27én := demonstrative_pronouns-noun-lex &
   [ STEM < "i'én" >,
     SYNSEM.LKEYS.KEYREL.PRED "_this_n_rel" ].
+
+i_27yay := demonstrative_pronouns-noun-lex &
+  [ STEM < "i'yay" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_it_n_rel" ].    
 
 aheno := interrogative_pronouns-noun-lex &
   [ STEM < "aheno" >,
@@ -2711,8 +2711,8 @@ te := common_nonspec_sg-determiner-lex &
 
 ;;; complementizers
 
-a := prop-comp-lex-item &
-  [ STEM < "a" > ].
+;;;a := prop-comp-lex-item &
+;;;  [ STEM < "a" > ].
 
 ;;; Adverbs
 
