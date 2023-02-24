@@ -800,6 +800,7 @@ comp-lex-item := raise-sem-lex-item & non-local-none-lex-item & non-mod-lex-item
   [ SYNSEM.LOCAL.CAT [ HEAD comp,
 		       VAL [ SUBJ < >,
 			     SPR < >,
+           SPEC < >,
 			     COMPS < #comps &
 				     [ LOCAL.CAT [ HEAD verb,
 						   VAL.SUBJ < > ]] > ]],
