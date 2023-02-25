@@ -4,185 +4,401 @@ Group: Jon Davenport & Steven Anaya
 Author: Jon Davenport
 Date: 23 Feburary, 2023
 
-1. Updated Non-verbal Predicate NP rule
-        We attempted to get a non-verbal NP predicate rule to work for Northern
-    Alta. This project is a hold-over from lab 7, wherein our implementation
-    of the n-bar-predicate-rule resulted in a runaway rule error when loaded in
-    lkb and stalled while parsing the Northern Alta corpus. Rectifying this
-    n-bar-predicate-rule took several steps outlined below and based on our
-    attempt to parse the corpus item:
+1. New Phenomena and Clean-Up
 
-        álap-en =mo obra =séla a ulámen in pusó =na ni'nén a ságing
-        alap-әn       =mo       obra  =séla   a     ulamen  =na       a   ságing
-        get-something =2s.GEN   can   =also   LK    lunch   =already  LK  banana
-        you can also get a banana for lunch 
+    A. Updated Non-verbal Predicate NP rule
+            We attempted to get a non-verbal NP predicate rule to work for Northern
+        Alta. This project is a hold-over from lab 7, wherein our implementation
+        of the n-bar-predicate-rule resulted in a runaway rule error when loaded in
+        lkb and stalled while parsing the Northern Alta corpus. Rectifying this
+        n-bar-predicate-rule took several steps outlined below and based on our
+        attempt to parse the corpus item:
 
-    But since this item contains some tricky vocabulary that and phenomena 
-    beyond the current rule, it is more convenient to reference the following example
-    instead for clarification.
+            álap-en =mo obra =séla a ulámen in pusó =na ni'nén a ságing
+            alap-әn       =mo       obra  =séla   a     ulamen  =na       a   ságing
+            get-something =2s.GEN   can   =also   LK    lunch   =already  LK  banana
+            you can also get a banana for lunch 
 
-        #60 Non-verbal predicate (NP is NP)
-        Source: author
-        Vetted: f
-        Judgment: g
-        Phenomena: {non-verbal predicates}
-        pósa-i-sid asó-i-sid
-        pósa=i=sid  asó=i=sid
-        pusa=i=sid  asu=i=sid
-        cat=SPEC=PL dog=SPEC=PL
-        'The dogs are the cats'
-    
-    We noticed the lkb parse trees for failed readings of the longer example above
-    included a suprising number of VP-B and VP-T phrases, which result from
-    the application of vp1-bottom-cord and the vp2-top-cord rules respectively.
-    
-        The initial step we took to resolve this runaway rule error was to modify the
-    n-bar-predicate-rule such that it will not apply to pronouns. This meant editing 
-    the northern_alta.tdl by adding a [PRON -] constraint on the HEAD value of the phrases
-    first daughter:
+        But since this item contains some tricky vocabulary that and phenomena 
+        beyond the current rule, it is more convenient to reference the following example
+        instead for clarification.
 
-            n-bar-predicate-rule := unary-phrase & nocoord &
-        [ SYNSEM [ LOCAL.CAT [ HEAD verb & [ MOD < >],
-                                VAL [ COMPS < >, SPR < >, SPEC < >,
-                                    SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
-                                                        CAT [ HEAD noun,
-                                                        VAL.SPR < > ] ] ] > ] ],
-                    NON-LOCAL #nl ],
-            C-CONT [ HOOK [ LTOP #ltop,
-                            INDEX #index,
-                                    XARG #arg1 ],
-                    RELS.LIST < arg12-ev-relation &
-                                [ PRED "_be_v_id_rel",
-                                    LBL #ltop,
-                                    ARG0 #index,
-                                    ARG1 #arg1,
-                                    ARG2 #arg2 ] >,
-                    HCONS.LIST <  > ],
-                    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ PRON - ],
-                                                    VAL.SPR < > ],
-                                            CONT.HOOK [ INDEX #arg2
-                                                        ] ],
-                                    NON-LOCAL #nl ] ] > ].
+            #60 Non-verbal predicate (NP is NP)
+            Source: author
+            Vetted: f
+            Judgment: g
+            Phenomena: {non-verbal predicates}
+            pósa-i-sid asó-i-sid
+            pósa=i=sid  asó=i=sid
+            pusa=i=sid  asu=i=sid
+            cat=SPEC=PL dog=SPEC=PL
+            'The dogs are the cats'
+        
+        We noticed the lkb parse trees for failed readings of the longer example above
+        included a suprising number of VP-B and VP-T phrases, which result from
+        the application of vp1-bottom-cord and the vp2-top-cord rules respectively.
+        
+            The initial step we took to resolve this runaway rule error was to modify the
+        n-bar-predicate-rule such that it will not apply to pronouns. This meant editing 
+        the northern_alta.tdl by adding a [PRON -] constraint on the HEAD value of the phrases
+        first daughter:
 
-        Next we noticed the ex-adj rule was adding to undesirable parses, so
-    we commented that rule out from our rules.tdl file as follows:
+                n-bar-predicate-rule := unary-phrase & nocoord &
+            [ SYNSEM [ LOCAL.CAT [ HEAD verb & [ MOD < >],
+                                    VAL [ COMPS < >, SPR < >, SPEC < >,
+                                        SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
+                                                            CAT [ HEAD noun,
+                                                            VAL.SPR < > ] ] ] > ] ],
+                        NON-LOCAL #nl ],
+                C-CONT [ HOOK [ LTOP #ltop,
+                                INDEX #index,
+                                        XARG #arg1 ],
+                        RELS.LIST < arg12-ev-relation &
+                                    [ PRED "_be_v_id_rel",
+                                        LBL #ltop,
+                                        ARG0 #index,
+                                        ARG1 #arg1,
+                                        ARG2 #arg2 ] >,
+                        HCONS.LIST <  > ],
+                        ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ PRON - ],
+                                                        VAL.SPR < > ],
+                                                CONT.HOOK [ INDEX #arg2
+                                                            ] ],
+                                        NON-LOCAL #nl ] ] > ].
 
-        ;ex-adj := basic-extracted-adj-phrase.
+            Next we noticed the ex-adj rule was adding to undesirable parses, so
+        we commented that rule out from our rules.tdl file as follows:
 
-        Finally, we noticed that the particular item that stalled our grammar's
-    attempt to process the corpus contained the token "a," and that this token was
-    analyzed as a noun. However, "a" is a linker particle, cannot be parsed as a noun,
-    and thus cannot serve as input to the n-bar-predicate rule, as it was. Consequently
-    we removed this item from our lexicon. These three alterations resolved our 
-    runaway rule error.
+            ;ex-adj := basic-extracted-adj-phrase.
 
-2. Clausal complements
-        Northern Alta has one particle "a" that introduces clausal complements. This linker particle
-    has no single English translation but may functions as "of," "that," "such that,"
-    and more. Since the descriptive grammar resource does not contain many examples of clausal complements,
-    and those offered use grammatical features beyond our current grammar, we decided to use the mmt
-    sentence as a our base test case.
+            Finally, we noticed that the particular item that stalled our grammar's
+        attempt to process the corpus contained the token "a," and that this token was
+        analyzed as a noun. However, "a" is a linker particle, cannot be parsed as a noun,
+        and thus cannot serve as input to the n-bar-predicate rule, as it was. Consequently
+        we removed this item from our lexicon. These three alterations resolved our 
+        runaway rule error.
 
-        # nested clausal complement
-        akála-en 'o a men-nol mo a damólag-en ni asó in sasakyan
-        akala-en ʔo ʔa mәn-nul mo ʔa damólag-en ni aso in sasakjan
-        think-PV GEN.1s LK AV.know GEN.2s LK chase-PV GEN dog ABS car 
-        I think that you know that dogs chase cars
+    B. Clausal complements
+            Northern Alta has one particle "a" that introduces clausal complements. This linker particle
+        has no single English translation but may functions as "of," "that," "such that,"
+        and more. Since the descriptive grammar resource does not contain many examples of clausal complements,
+        and those offered use grammatical features beyond our current grammar, we decided to use the mmt
+        sentence as a our base test case.
 
-        #62 clausal complement particle and verbs
-        Source: author
-        Vetted: f
-        Judgment: g
-        Phenomena: {clausal complements}
-        men-nol itam a men-basa
-        mәn-nul itam ʔa  mәn-basa
-        AV-know 2p1.ABS LK AV-read
-        we know how to write
+            # nested clausal complement
+            akála-en 'o a men-nol mo a damólag-en ni asó in sasakyan
+            akala-en ʔo ʔa mәn-nul mo ʔa damólag-en ni aso in sasakjan
+            think-PV GEN.1s LK AV.know GEN.2s LK chase-PV GEN dog ABS car 
+            I think that you know that dogs chase cars
 
-        This clausal complement strategy proved difficult to implement. The matrix customization system
-    threw a bug when we tried to implement clausal complements, so instead we had to do so via tdl editing.
-    We relied on the given clausal complement strategies in the English grammar tdl files to model our own.
-    Between consulting colleagues for assistance and tweeking our own settings, we eventually arrived at the
-    following specificaitons:
+            #62 clausal complement particle and verbs
+            Source: author
+            Vetted: f
+            Judgment: g
+            Phenomena: {clausal complements}
+            men-nol itam a men-basa
+            mәn-nul itam ʔa  mәn-basa
+            AV-know 2p1.ABS LK AV-read
+            we know how to write
+
+            #64 clausal complement particle and verbs
+            Source: author
+            Vetted: f
+            Judgment: g
+            Phenomena: {clausal complements}
+            men-nol ='o a damólag-en ni asó in sasakyan
+            mәn-nul =ʔu    ʔa  damólag-en ni  aso in  sasakjan
+            AV-know 1s.GEN LK  chase-PV   GEN dog ABS car
+            I know that the dogs chase the cars
+
+            This clausal complement strategy proved difficult to implement. The matrix customization system
+        threw a bug when we tried to implement clausal complements, so instead we had to do so via tdl editing.
+        We relied on the given clausal complement strategies in the English grammar tdl files to model our own.
+        Between consulting colleagues for assistance and tweeking our own settings, we eventually arrived at the
+        following specificaitons. We attempted to limit the morphotactic affixes applicable to these verbs, by 
+        appending the INFLECTED list in the lexeme definition as well as adding PROP-COMP-VERB-FLAG na to the
+        INFLECTED feature of inflectional rules, such as inifx_um_intrans-lexical-rule shown below. But 
+        these edits did not seem to help use get mmt sentence 6 translating.
 
             ;;; Clausal complements
 
-        clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
-        [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
-                        [ LOCAL.CAT [ MC -,
-                                HEAD +vc ,
-                                VAL [ SUBJ < >,
-                                    COMPS < > ]]] >,
-            ARG-ST < [], #comps > ].
+            clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+            [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
+                            [ LOCAL.CAT [ MC -,
+                                    HEAD +vc ,
+                                    VAL [ SUBJ < >,
+                                        COMPS < > ]]] >,
+                ARG-ST < [], #comps > ].
 
-        prop-comp-verb-lex := clausal-comp-verb-lex &
-        [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
-                                                    CONT.HOOK.INDEX.SF prop ]].
+            prop-comp-verb-lex := clausal-comp-verb-lex &
+                [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [ 
+                                                        CONT.HOOK.INDEX.SF prop ],
+                INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                            PROP-COMP-VERB-FLAG +,
+                            LOCATIVE-VERB-FLAG na-or--,
+                            UM-VERB-FLAG na-or--,
+                            MEN_INTRANS-VERB-FLAG na-or--,
+                            MEN_TRANS-VERB-FLAG na-or--,
+                            CONVEYANCE-VERB-FLAG na-or--,
+                            STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
+                            LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or--,
+                            CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ,
+                            PROGRESSIVE_FIRST_INFIX-FLAG na-or--,
+                            INFIX_UM_SECOND-FLAG na-or--,
+                            PREFIX_VOICE_FINAL-FLAG na-or--,
+                            INFIX_PERFECT_THIRD-FLAG na-or-- ] ].
 
-        Notably we removed any constrains on the first clausal complement's first daughter, removed
-    all FORM constraints and removed the [INV -] constraint from the prop-comp-verb-lex definition.
-    We also coppied and edited the Complementizer section from english.tdl, resulting with:
+            infix_um_second-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-rule-dtr & prefix_voice_final-rule-dtr & suffix-rule-dtr &
+                [ INFLECTED [ INFIX_UM_SECOND-FLAG +,
+                                PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
+                                
+            
+            DTR infix_um_second-rule-dtr &
+                [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                            PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
+            
+            infix_um_intrans-lex-rule := infix_um_second-lex-rule-super & infl-lex-rule &
+                [ DTR [ INFLECTED [ UM-VERB-FLAG +, PROP-COMP-VERB-FLAG na ] ,
+                        ARG-ST #arg-st ],
+                    ARG-ST #arg-st &
+                        < [ LOCAL.CAT.HEAD.CASE abs ] >,
+                    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE abs,
+                                                                    CASE-MARKED + ] ].
+            
+
+            Notably we removed any constrains on the first clausal complement's first daughter, removed
+        all FORM constraints and removed the [INV -] constraint from the prop-comp-verb-lex definition.
+        Here again we removed the [INV -] constraint on the lexical type's complement. We also replaced
+        the supertype basic-one-arg with non-local-none-lex-item.We also coppied and edited the 
+        Complementizer section from english.tdl, resulting with:
 
             ;;; Complementizers
 
-        comp-lex-item := raise-sem-lex-item & non-local-none-lex-item & non-mod-lex-item &
-        [ SYNSEM.LOCAL.CAT [ HEAD comp,
-                    VAL [ SUBJ < >,
-                        SPR < >,
-                        COMPS < #comps &
-                            [ LOCAL.CAT [ HEAD verb,
-                                VAL.SUBJ < > ]] > ]],
-            ARG-ST < #comps > ].
+            comp-lex-item := raise-sem-lex-item & non-local-none-lex-item & non-mod-lex-item &
+            [ SYNSEM.LOCAL.CAT [ HEAD comp,
+                        VAL [ SUBJ < >,
+                            SPR < >,
+                    SPEC < >,
+                            COMPS < #comps &
+                                [ LOCAL.CAT [ HEAD verb,
+                                    VAL.SUBJ < > ]] > ]],
+                ARG-ST < #comps > ].
 
-        prop-comp-lex-item := comp-lex-item &
-        [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
+            prop-comp-lex-item := comp-lex-item &
+            [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop ].
 
-        Here again we removed the [INV -] constraint on the lexical type's complement.
-    We also replaced the supertype basic-one-arg with non-local-none-lex-item.
+            We also added a transfer rule based on that found in the english mmt grammar. 
+        Our slightly edited version looks as follows:
 
-        We also added a transfer rule based on that found in the englist mmt grammar. Our 
-    slightly edited version looks as follows:
+            comp_gtr := generator_rule &
+            [ CONTEXT [ RELS <! [ ARG0 #e & [ SF prop ]] !> ],
+            FLAGS [ EQUAL < #e >,
+                    TRIGGER "a" ]].
 
-        comp_gtr := generator_rule &
-        [ CONTEXT [ RELS <! [ ARG0 #e & [ SF prop ]] !> ],
-        FLAGS [ EQUAL < #e >,
-                TRIGGER "a" ]].
+            But this transfer rule seemed to interfere with generation in MMT. Our grammar
+        no longer translates successfully from eng or sje to aqn, or even aqn to aqn, but
+        still translates well from aqn to eng and sje.
+        
+        Finally, we modified our lexicon.tdl file by adding complementizers and verbs that take
+        clausal complements as arguments. The complementizer "a" to our lexicon.tdl file looks
+        as follows:
 
-        But this transfer rule seemed to interfere with generation in MMT. Our grammar
-    no longer translates successfully from eng or sje to aqn, or even aqn to aqn, but
-    still translates well from aqn to eng and sje.
-    
-    Finally, we modified our lexicon.tdl file by adding complementizers and verbs that take
-    clausal complements as arguments. The complementizer "a" to our lexicon.tdl file looks
-    as follows:
+                ;;; complementizers
 
-            ;;; complementizers
+            a := prop-comp-lex-item &
+            [ STEM < "a" > ].
 
-        a := prop-comp-lex-item &
-        [ STEM < "a" > ].
+        And we added some verbs that take clausal complements to our lexicon as well:
 
-    And we added some verbs that take clausal complements to our lexicon as well:
+            know := prop-comp-verb-lex &
+            [ STEM < "men-nol" >,
+                SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
 
-        know := prop-comp-verb-lex &
-        [ STEM < "men-nol" >,
-            SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
+            think := prop-comp-verb-lex &
+            [ STEM < "akála-en" >,
+                SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
 
-        think := prop-comp-verb-lex &
-        [ STEM < "akála-en" >,
-            SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
+            ask := prop-comp-verb-lex &
+            [ STEM < "men-tanóng" >,
+                SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+        
+            These edits were enough to get testsuite item #62 to parse. The longer
+        item with a nested clausal complement also successfully parse in LKB, with what appears
+        to be an accurate mrs. However, we could not get this longer example, mmt item 6, to translate
+        from eng, sje, or aqn to aqn.
 
-        ask := prop-comp-verb-lex &
-        [ STEM < "men-tanóng" >,
-            SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
-    
-        These edits were enough to get testsuite item #62 to parse. However, the longer
-    item with a nested clausal complement will not successfully parse in LKB. We hit the 
-    400 active edge limit error, and the parse chart shows  with a long chain of S phrases
-    resulting from the HEAD-SPEC or HEAD-COMP rule. The separate components of longer example
-    will parse successfully. We tested the first "half" (with two clausal complement verbs)
-    and through interactive unification we note that our rule does permit CP over
-    a + damólag-en ni asó in sasakyan. Some part of the clausal complement rule seems to
-    interact poorly with the HEAD-SPEC and HEAD-COMP rule, generating tons of ambiguity.
+    C. Sentential Negation
+            Northern Alta has an adverb "awon" that acts as a sentential negator. We decided to see if we 
+        could implement this sentential negation strategy in tdl. Typically, "awon" comes at the beginning
+        of a clause, and simply negates its complement, typically an S phrase. 
 
-3. Sentential Negation
-    
+            #63 awon as an adverb sentential negation
+            Source: author
+            Vetted: f
+            Judgment: g
+            Phenomena: {sentential negation}
+            Awon damólag-en ni asó in sasakyan
+            ʔawun damólag-en ni  aso in  sasakjan
+            NEG   chase-PV   GEN dog ABS car
+            The dogs do not chase the car
+
+            To that end, we looked at how the adv "not" is implemented in the English grammar. We 
+        added a neg-adv-lex type to northern_alta.tdl and a lexical entry for "awon" in the lexicon
+        as follows:
+
+                ;;; Negation
+
+            ; Type for negative adverbs.
+
+            neg-adv-lex := basic-scopal-adverb-lex &
+            [ SYNSEM.LOCAL.CAT [ VAL [ SPR < >,
+                                        COMPS < >,
+                                        SUBJ < > ],
+                        POSTHEAD -,
+                                HEAD.MOD < [ LOCAL.CAT.HEAD verb ] > ] ] .
+
+            ;;; Adverbs
+
+            awon := neg-adv-lex &
+            [ STEM < "awon" >,
+                SYNSEM.LKEYS.KEYREL.PRED "_neg_a_rel" ] .
+        
+        This implementaiton seemed effective for testsuite item #63 above. There are still
+        other uses for "awon" in the descriptive grammar, but it seems reasonable to leave 
+        those for another time.
+
+2. MMT item statuses:
+
+            +----+----------------------+----------------------+
+            |    | eng -> aqn           | sje -> aqn           |
+            +----+----------------------+----------------------+
+            | 1  | Works, 16 outputs    | Doesn't work, MRSes  |
+            |    |                      | look the same, not   |
+            |    |                      | sure what's going on |
+            +----+----------------------+----------------------+
+            | 2  | Works, 192 outputs   | Works, 384 outputs   |
+            +----+----------------------+----------------------+
+            | 3  | Works, 168 outputs   | Works, 96 outputs    |
+            +----+----------------------+----------------------+
+            | 4  | Works, 64 outputs    | Works, 64 outputs    |
+            +----+----------------------+----------------------+
+            | 5  | Works, 192 outputs   | Works, 384 outputs   |
+            +----+----------------------+----------------------+
+            | 6  | Doesn't work, MRSes  | Doesn't work, MRSes  |
+            |    | look the same, not   | look the same, not   |
+            |    | sure what's going on | sure what's going on |
+            +----+----------------------+----------------------+
+            | 7  | Doesn't work, MRSes  | no sje sentence      |
+            |    | look the same, not   |                      |
+            |    | sure what's going on |                      |
+            +----+----------------------+----------------------+
+            | 8  | Works, 4608 outputs  | Works, 4608 outputs  |
+            +----+----------------------+----------------------+
+            | 9  | Works, 18709 outputs | Works, 18417 outputs |
+            +----+----------------------+----------------------+
+            | 10 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 11 | Works, 384 outputs   | Works, 384 outputs   |
+            +----+----------------------+----------------------+
+            | 12 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 13 | Doesn't work,        | no sje sentence      |
+            |    | because aqn string   |                      |
+            |    | doesn't parse        |                      |
+            +----+----------------------+----------------------+
+            | 14 | Doesn't work,        | no sje sentence      |
+            |    | because aqn string   |                      |
+            |    | doesn't parse        |                      |
+            +----+----------------------+----------------------+
+            | 15 | Doesn't work,        | no sje sentence      |
+            |    | because aqn string   |                      |
+            |    | doesn't parse        |                      |
+            +----+----------------------+----------------------+
+            | 16 | Works, 8 outputs     | no sje sentence      |
+            +----+----------------------+----------------------+
+            | 17 | Works, 16 outputs    | no sje sentence      |
+            +----+----------------------+----------------------+
+            | 18 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 19 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 20 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 21 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 22 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 23 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 24 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 25 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+            | 26 | Doesn't work,        | Doesn't work,        |
+            |    | because aqn string   | because aqn string   |
+            |    | doesn't parse        | doesn't parse        |
+            +----+----------------------+----------------------+
+
+3. Performance Comparison
+
+        +-------------+----------------------+--------------------------+---------------+
+        |             |                      | Lab 7                    | Lab 8         |
+        +-------------+----------------------+--------------------------+---------------+
+        | Test Corpus | Items Parsed         | 2240                     | 2240          |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Total Results        | 74                       | 162           |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Total Readings       | 152                      | 325           |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Avg. Readings/Result | 2.054                    | 2.006         |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Coverage             | 3.3%                     | 7.2%          |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Overgeneration       | 100%                     | 100%          |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Most Ambiguous Item  | 8 Readings,              | 12 readings   |
+        |             |                      | Item 16,420              | Item 6,170    |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Sources of           | HEAD-ADJ-INT rule,       | VP1-TOP-COORD |
+        |             | Ambiguity            | Omitted Arguments,       | VP1-BOT-COORD |
+        |             |                      | EX-COMP, EX-SUBJ         |               |
+        +-------------+----------------------+--------------------------+---------------+
+        | Testsuite   | Items Parsed         | 64                       | 64            |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Total Results        | 25                       | 27            |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Total Readings       | 32                       | 36            |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Avg. Readings/Result | 1.28                     | 1.333         |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Coverage             | 84%                      | 88%           |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Overgeneration       | 10.3%                    | 12.8%         |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Most Ambiguous Item  | 2 readings               | 4 readings    |
+        |             |                      | Items 1, 17, 19,         | Item 63       |
+        |             |                      | 31, 35, 46, 57           |               |
+        +-------------+----------------------+--------------------------+---------------+
+        |             | Sources of Ambiguity | HEAD-ADJ-INT rule,       | ADJ-HEAD-SCOP |
+        |             |                      | 'kampo' has two lex ents |               |
+        +-------------+----------------------+--------------------------+---------------+
