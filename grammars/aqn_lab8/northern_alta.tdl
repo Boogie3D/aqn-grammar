@@ -32,6 +32,7 @@ head :+ [ PRON bool,
     CASE case ].
 
 inflected :+ [ ULTIMATE_SUFFIX-FLAG luk,
+    PROP-COMP-VERB-FLAG luk,
     UM-VERB-FLAG luk,
     INITIAL_SUFFIX-FLAG luk,
     PATIENT-VERB-FLAG luk,
@@ -50,9 +51,10 @@ inflected :+ [ ULTIMATE_SUFFIX-FLAG luk,
     INFIX_UM_SECOND-FLAG luk,
     PREFIX_VOICE_FINAL-FLAG luk,
     INFIX_PERFECT_THIRD-FLAG luk,
-    MEN_TRANS-VERB-FLAG luk ].
+    MEN_TRANS-VERB-FLAG luk].
 
 infl-satisfied :+ [ ULTIMATE_SUFFIX-FLAG na-or-+,
+    PROP-COMP-VERB-FLAG na-or-+,
     UM-VERB-FLAG na-or-+,
     INITIAL_SUFFIX-FLAG na-or-+,
     PATIENT-VERB-FLAG na-or-+,
@@ -71,7 +73,7 @@ infl-satisfied :+ [ ULTIMATE_SUFFIX-FLAG na-or-+,
     INFIX_UM_SECOND-FLAG na-or-+,
     PREFIX_VOICE_FINAL-FLAG na-or-+,
     INFIX_PERFECT_THIRD-FLAG na-or-+,
-    MEN_TRANS-VERB-FLAG na-or-+ ].
+    MEN_TRANS-VERB-FLAG na-or-+].
 
 png :+ [ PERNUM pernum ].
 
@@ -651,9 +653,22 @@ clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
     ARG-ST < [], #comps > ].
 
 prop-comp-verb-lex := clausal-comp-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [
-                                            CONT.HOOK.INDEX.SF prop ]].
-
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [ 
+                                                  CONT.HOOK.INDEX.SF prop ],
+    INFLECTED [ PATIENT-VERB-FLAG na-or--,
+                PROP-COMP-VERB-FLAG +,
+                LOCATIVE-VERB-FLAG na-or--,
+                UM-VERB-FLAG na-or--,
+                MEN_INTRANS-VERB-FLAG na-or--,
+                MEN_TRANS-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-FLAG na-or--,
+                STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or--,
+                LOCATIVE-VERB-OR-PATIENT-VERB-FLAG na-or--,
+                CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na-or-- ,
+                PROGRESSIVE_FIRST_INFIX-FLAG na-or--,
+                INFIX_UM_SECOND-FLAG na-or--,
+                PREFIX_VOICE_FINAL-FLAG na-or--,
+                INFIX_PERFECT_THIRD-FLAG na-or-- ] ].
 
 ;;; Auxiliaries
 
@@ -999,7 +1014,7 @@ prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ul
                 PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
                 INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
                 MEN_TRANS-VERB-FLAG #men_trans-verb,
-                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
+                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb],
     DTR unvoiced_common-noun-lex &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       UM-VERB-FLAG #um-verb,
@@ -1019,7 +1034,7 @@ prefixes-lex-rule-super := add-only-no-ccont-rule & initial_suffix-rule-dtr & ul
                       PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
                       INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
                       MEN_TRANS-VERB-FLAG #men_trans-verb,
-                      NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
+                      NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb] ] ].
 
 content_word_prefixes-lex-rule := infl-lex-rule & prefixes-lex-rule-super.
 
@@ -1045,7 +1060,7 @@ initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-d
                 PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
                 INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
                 MEN_TRANS-VERB-FLAG #men_trans-verb,
-                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
+                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb],
     DTR initial_suffix-rule-dtr &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       UM-VERB-FLAG #um-verb,
@@ -1065,7 +1080,7 @@ initial_suffix-lex-rule-super := add-only-no-ccont-rule & ultimate_suffix-rule-d
                       PREFIX_VOICE_FINAL-FLAG #prefix_voice_final,
                       INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
                       MEN_TRANS-VERB-FLAG #men_trans-verb,
-                      NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
+                      NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb] ] ].
 
 no_initial_suffix-lex-rule := const-lex-rule & initial_suffix-lex-rule-super.
 
@@ -1126,6 +1141,7 @@ plural_ultimate_suffix-lex-rule := infl-lex-rule & ultimate_suffix-lex-rule-supe
 
 suffix-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ SUFFIX-FLAG +,
+                PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 UM-VERB-FLAG #um-verb,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
@@ -1147,6 +1163,7 @@ suffix-lex-rule-super := add-only-no-ccont-rule &
                 NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
     DTR suffix-rule-dtr &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,                   
                       UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       PATIENT-VERB-FLAG #patient-verb,
@@ -1167,14 +1184,14 @@ suffix-lex-rule-super := add-only-no-ccont-rule &
                       NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
 
 suffix_patient_voice-lex-rule := infl-lex-rule & suffix-lex-rule-super &
-  [ DTR.INFLECTED.PATIENT-VERB-FLAG +,
+  [ DTR.INFLECTED [ PATIENT-VERB-FLAG +, PROP-COMP-VERB-FLAG na ] ,
     SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
                                                         CASE-MARKED + ] ] ].
 
 suffix_locative_voice-lex-rule := infl-lex-rule & suffix-lex-rule-super &
-  [ DTR.INFLECTED.LOCATIVE-VERB-FLAG +,
+  [ DTR.INFLECTED [ PATIENT-VERB-FLAG +, PROP-COMP-VERB-FLAG na ] ,
     SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD [ CASE gen,
                                                        CASE-MARKED + ],
                            COMPS.FIRST.LOCAL.CAT.HEAD [ CASE abs,
@@ -1187,6 +1204,7 @@ infix_um_second-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-r
   [ INFLECTED [ INFIX_UM_SECOND-FLAG +,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 UM-VERB-FLAG #um-verb,
+                PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
                 PATIENT-VERB-FLAG #patient-verb,
                 PREFIXES-FLAG #prefixes,
@@ -1206,6 +1224,7 @@ infix_um_second-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-r
                 NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
     DTR infix_um_second-rule-dtr &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                       UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       PATIENT-VERB-FLAG #patient-verb,
@@ -1226,7 +1245,7 @@ infix_um_second-lex-rule-super := add-only-no-ccont-rule & infix_perfect_third-r
                       NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
 
 infix_um_intrans-lex-rule := infix_um_second-lex-rule-super & infl-lex-rule &
-  [ DTR [ INFLECTED.UM-VERB-FLAG +,
+  [ DTR [ INFLECTED [ UM-VERB-FLAG +, PROP-COMP-VERB-FLAG na ] ,
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
@@ -1240,6 +1259,7 @@ infix_perfect_third-lex-rule-super := add-only-no-ccont-rule & prefix_voice_fina
   [ INFLECTED [ INFIX_PERFECT_THIRD-FLAG +,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 UM-VERB-FLAG #um-verb,
+                PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
                 PATIENT-VERB-FLAG #patient-verb,
                 PREFIXES-FLAG #prefixes,
@@ -1259,6 +1279,7 @@ infix_perfect_third-lex-rule-super := add-only-no-ccont-rule & prefix_voice_fina
                 NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
     DTR infix_perfect_third-rule-dtr &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                       UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       PATIENT-VERB-FLAG #patient-verb,
@@ -1279,7 +1300,7 @@ infix_perfect_third-lex-rule-super := add-only-no-ccont-rule & prefix_voice_fina
                       NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
 
 perfect_aspect-lex-rule := infix_perfect_third-lex-rule-super & infl-lex-rule &
-  [ DTR.INFLECTED [ NOT_PROGRESSIVE-FLAG +,
+  [ DTR.INFLECTED [ NOT_PROGRESSIVE-FLAG +, PROP-COMP-VERB-FLAG na,
                     NONINFLECTED_TRANS-VERB-FLAG na ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT perfective ].
 
@@ -1289,6 +1310,7 @@ prefix_voice_final-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex
   [ INFLECTED [ PREFIX_VOICE_FINAL-FLAG +,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 UM-VERB-FLAG #um-verb,
+                PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
                 PATIENT-VERB-FLAG #patient-verb,
                 PREFIXES-FLAG #prefixes,
@@ -1305,9 +1327,10 @@ prefix_voice_final-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex
                 INFIX_UM_SECOND-FLAG #infix_um_second,
                 INFIX_PERFECT_THIRD-FLAG #infix_perfect_third,
                 MEN_TRANS-VERB-FLAG #men_trans-verb,
-                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ],
+                NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb],
     DTR prefix_voice_final-rule-dtr &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
+                      PROP-COMP-VERB-FLAG #PROP-COMP-VERB-lex,
                       UM-VERB-FLAG #um-verb,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       PATIENT-VERB-FLAG #patient-verb,
@@ -1328,7 +1351,7 @@ prefix_voice_final-lex-rule-super := suffix-rule-dtr & val-change-with-ccont-lex
                       NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
 
 prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
-  [ DTR [ INFLECTED.MEN_INTRANS-VERB-FLAG +,
+  [ DTR [ INFLECTED [ MEN_INTRANS-VERB-FLAG +, PROP-COMP-VERB-FLAG na ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
@@ -1336,8 +1359,8 @@ prefix_meng_intrans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_
                                                      CASE-MARKED + ] ].
 
 prefix_meng_trans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
-  [ DTR [ INFLECTED [ MEN_TRANS-VERB-FLAG +,
-                      MEN_INTRANS-VERB-FLAG na ],
+  [ DTR [ INFLECTED [ MEN_TRANS-VERB-FLAG +, 
+                      MEN_INTRANS-VERB-FLAG na, PROP-COMP-VERB-FLAG na ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ],
@@ -1350,7 +1373,7 @@ prefix_meng_trans-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_vo
 prefix_conveyance-lex-rule := added-arg2of2-applicative-lex-rule & added-arg2of2-np-head-lex-rule & infl-lex-rule & prefix_voice_final-lex-rule-super & same-cont-lex-rule &
   [ C-CONT.RELS.LIST < [ PRED "conveyance" ] >,
     DTR [ INFLECTED [ CONVEYANCE-VERB-FLAG +,
-                      INTRANS_VERBS-VERB-FLAG na ],
+                      INTRANS_VERBS-VERB-FLAG na, PROP-COMP-VERB-FLAG na ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE gen ],
@@ -1364,7 +1387,7 @@ no_voice_prefix-lex-rule := add-only-no-ccont-rule & const-lex-rule & prefix_voi
   [ DTR.INFLECTED.CONVEYANCE-VERB-OR-MEN_TRANS-VERB-OR-STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG na ].
 
 prefix_stative-lex-rule := add-only-no-ccont-rule & infl-lex-rule & prefix_voice_final-lex-rule-super &
-  [ DTR [ INFLECTED.STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +,
+  [ DTR [ INFLECTED [ STATIVE-VERB-OR-STATIVE_INTRANSITIVE-VERB-FLAG +, PROP-COMP-VERB-FLAG - ],
           ARG-ST #arg-st ],
     ARG-ST #arg-st &
            < [ LOCAL.CAT.HEAD.CASE abs ] >,
@@ -1375,6 +1398,7 @@ progressive_first_infix-lex-rule-super := add-only-no-ccont-rule & infix_perfect
   [ INFLECTED [ PROGRESSIVE_FIRST_INFIX-FLAG +,
                 ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                 UM-VERB-FLAG #um-verb,
+                PROP-COMP-VERB-FLAG #prop-comp-verb-lex,
                 INITIAL_SUFFIX-FLAG #initial_suffix,
                 PATIENT-VERB-FLAG #patient-verb,
                 PREFIXES-FLAG #prefixes,
@@ -1394,6 +1418,7 @@ progressive_first_infix-lex-rule-super := add-only-no-ccont-rule & infix_perfect
     DTR verb-lex &
         [ INFLECTED [ ULTIMATE_SUFFIX-FLAG #ultimate_suffix,
                       UM-VERB-FLAG #um-verb,
+                      PROP-COMP-VERB-FLAG #prop-comp-verb-lex,
                       INITIAL_SUFFIX-FLAG #initial_suffix,
                       PATIENT-VERB-FLAG #patient-verb,
                       PREFIXES-FLAG #prefixes,
@@ -1417,12 +1442,12 @@ not_progressive-lex-rule := const-lex-rule & progressive_first_infix-lex-rule-su
 progressive_C_um_only-lex-rule := infl-lex-rule & progressive_first_infix-lex-rule-super &
   [ INFLECTED.NOT_PROGRESSIVE-FLAG #not_progressive,
     DTR.INFLECTED [ UM-VERB-FLAG +,
-                    NOT_PROGRESSIVE-FLAG #not_progressive ],
+                    NOT_PROGRESSIVE-FLAG #not_progressive, PROP-COMP-VERB-FLAG - ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 progressive_CV_meng_only-lex-rule := infl-lex-rule & progressive_first_infix-lex-rule-super &
   [ INFLECTED.NOT_PROGRESSIVE-FLAG #not_progressive,
-    DTR.INFLECTED [ MEN_TRANS-VERB-FLAG +,
+    DTR.INFLECTED [ MEN_TRANS-VERB-FLAG +, PROP-COMP-VERB-FLAG -,
                     NOT_PROGRESSIVE-FLAG #not_progressive ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 

@@ -2812,7 +2812,7 @@ possessor-adp-1 := possessor-adp-lex-1 &
   [ STEM < "nen" > ].
 
 1s-noun := 1s-noun-lex &
-  [ STEM < "='o" > ].
+  [ STEM < "'o" > ].
 
 1salt-noun := 1salt-noun-lex &
   [ STEM < "='" > ].
