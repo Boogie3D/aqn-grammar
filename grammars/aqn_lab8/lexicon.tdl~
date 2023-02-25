@@ -185,6 +185,10 @@ taném_1 := unvoiced_common-noun-lex &
   [ STEM < "taném" >,
     SYNSEM.LKEYS.KEYREL.PRED "_plant_n_rel" ].
 
+a := unvoiced_common-noun-lex &
+  [ STEM < "a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_lk_n_rel" ].
+
 agtáy := unvoiced_common-noun-lex &
   [ STEM < "agtáy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_liver_n_rel" ].
@@ -789,7 +793,7 @@ pósa := unvoiced_common-noun-lex &
   [ STEM < "pósa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-sasakyan := unvoiced_common-noun-lex &
+sasakyan_1 := unvoiced_common-noun-lex &
   [ STEM < "sasakyan" >,
     SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 
@@ -1076,10 +1080,6 @@ i_27en := demonstrative_pronouns-noun-lex &
 i_27én := demonstrative_pronouns-noun-lex &
   [ STEM < "i'én" >,
     SYNSEM.LKEYS.KEYREL.PRED "_this_n_rel" ].
-
-i_27yay := demonstrative_pronouns-noun-lex &
-  [ STEM < "i'yay" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_it_n_rel" ].    
 
 aheno := interrogative_pronouns-noun-lex &
   [ STEM < "aheno" >,
@@ -2679,25 +2679,9 @@ aliyo_3 := men_intrans-verb-lex &
   [ STEM < "aliyo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_search_v_rel" ].
 
-basa := men_intrans-verb-lex &
-  [ STEM < "basa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_read_v_rel" ].
-
 isay := noninflected_trans-verb-lex &
   [ STEM < "isay" >,
     SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
-
-know := prop-comp-verb-lex &
-  [ STEM < "men-nol" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
-
-think := prop-comp-verb-lex &
-  [ STEM < "akála-en" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
-
-ask := prop-comp-verb-lex &
-  [ STEM < "men-tanóng" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -2715,9 +2699,9 @@ bísa := neg6-aux-lex &
 baga := aux8-aux-lex &
   [ STEM < "baga" > ].
 
-;;;awon := neg_exist-aux-lex &
-;;;  [ STEM < "awon" >,
-;;;    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
+awon := neg_exist-aux-lex &
+  [ STEM < "awon" >,
+    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
 
 ;;; Determiners
 
@@ -2725,16 +2709,7 @@ te := common_nonspec_sg-determiner-lex &
   [ STEM < "te" >,
     SYNSEM.LKEYS.KEYREL.PRED "_the_rel" ].
 
-;;; complementizers
-
-a := prop-comp-lex-item &
-  [ STEM < "a" > ].
-
 ;;; Adverbs
-
-awon := neg-adv-lex &
-  [ STEM < "awon" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_neg_a_rel" ] .
 
 sep := still-adverb-lex &
   [ STEM < "sep" >,
@@ -2812,7 +2787,7 @@ possessor-adp-1 := possessor-adp-lex-1 &
   [ STEM < "nen" > ].
 
 1s-noun := 1s-noun-lex &
-  [ STEM < "'o" > ].
+  [ STEM < "='o" > ].
 
 1salt-noun := 1salt-noun-lex &
   [ STEM < "='" > ].
