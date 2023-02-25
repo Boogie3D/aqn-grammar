@@ -1,0 +1,16 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+no_noun_prefix-lex := no_noun_prefix-lex-rule.
+
+no_initial_suffix-lex := no_initial_suffix-lex-rule.
+
+no_ultimate_suffix-lex := no_ultimate_suffix-lex-rule.
+
+suffix_none-lex := suffix_none-lex-rule.
+
+no_um_infix-lex := no_um_infix-lex-rule.
+
+not_perfect-lex := not_perfect-lex-rule.
+
+no_voice_prefix-lex := no_voice_prefix-lex-rule.
+
+not_progressive-lex := not_progressive-lex-rule.
