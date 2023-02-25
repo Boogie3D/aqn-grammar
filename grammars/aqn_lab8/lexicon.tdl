@@ -789,7 +789,7 @@ pósa := unvoiced_common-noun-lex &
   [ STEM < "pósa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-sasakyan_1 := unvoiced_common-noun-lex &
+sasakyan := unvoiced_common-noun-lex &
   [ STEM < "sasakyan" >,
     SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 

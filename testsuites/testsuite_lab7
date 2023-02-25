@@ -563,7 +563,7 @@ Phenomena: {wh- clauses}
 meng--in-gína adino?
 meng--in-gina adino?
 mәng--in-gina ʔadinu?
-AV--PRF-run  where?
+AV--PRF-run   where?
 'run (you) where?'
 
 #52 'tiyaheno' is an interrogative pronoun
@@ -574,7 +574,7 @@ Phenomena: {wh- clauses}
 tiyaheno C-um--C-daténg?
 tiʔahinu d-<um>--d-dateng?
 tiʔahinu d-<um>--d-datәŋ?
-who  RDP-<AV>--PRG-arrive
+who      RDP-<AV>--PRG-arrive
 'who arrives?'
 
 #53 pronominal question word order
@@ -583,20 +583,95 @@ Vetted: f
 Judgment: u
 Phenomena: {wh- clauses}
 C-um--C-daténg tiyaheno?
-d-<um>--d-dateng tiʔahinu?
-d-<um>--d-datәŋ tiʔahinu?
+d-<um>--d-dateng     tiyaheno?
+d-<um>--d-datәŋ      tijaʔhinu?
 RDP-<AV>--PRG-arrive who?
 'arrives who?'
 
-#54 pronominal question word order
+#54
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: {case, morphotactics}
 damólag-en ='o ='a
-damolag-en ='o ='a
-damolag-en =ʔo =ʔa
+damólag-en ='o ='a
+damulag-әn =ʔo =ʔa
 chase-PV =GEN.1s =ABS.2s
 'I chase you'
 
+#55 Non-verbal predicate (NP is AP)
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, non-verbal predicates}
+me-bitíl siden asó-i
+me-bitíl  siden  asó=i
+mә-bitíl  sidәn  asu=i
+ST-hunger PL.ABS dog=SPEC
+'The dogs are hungry'
 
+#56 Stative-voice VP takes absolutive argument
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case}
+me-bitíl niden asó-i
+me-bitíl  niden  asó=i
+mә-bitíl  nidәn  asu=i
+ST-hunger PL.GEN dog=SPEC
+'The dogs' are hungry'
+
+#57 Non-verbal predicate (NP is PP)
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {case, non-verbal predicates}
+isay asó-i-sid ta kampo
+isay  asó=i=sid   ta  kampo
+ʔisaj asu=i=sid   ta  kampo
+be.at dog=SPEC=PL LOC field
+'The dogs are in the park'
+
+#58 Isay takes case-unmarked subject
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case}
+isay in asó-i-sid ta kampo
+isay  in  asó=i=sid   ta kampo
+ʔisaj ʔin asu=i=sid   ta kampu
+be.at ABS dog=SPEC=PL LOC field
+'The dogs are in the park'
+
+#59 Isay takes locative argument
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {case}
+isay asó-i-sid in kampo
+isay asó=i=sid    in  kampo
+ʔisaj asu=i=sid   ʔin kampu
+be.at dog=SPEC=PL ABS field
+'The dogs are the park'
+
+#60 Non-verbal predicate (NP is NP)
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {non-verbal predicates}
+pósa-i-sid asó-i-sid
+pósa=i=sid  asó=i=sid
+pusa=i=sid  asu=i=sid
+cat=SPEC=PL dog=SPEC=PL
+'The dogs are the cats'
+
+#61 (NP is NP) complement shouldn't be case-marked
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {non-verbal predicates}
+pósa-i-sid in asó-i-sid
+pósa=i=sid  in  asó=i=sid
+pusa=i=sid  ʔin asu=i=sid
+cat=SPEC=PL ABS dog=SPEC=PL
+'The dogs are the cats'
