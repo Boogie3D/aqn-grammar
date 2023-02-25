@@ -682,6 +682,29 @@ Vetted: f
 Judgment: g
 Phenomena: {clausal complements}
 men-nol itam a men-basa
-mәn-nul itam ʔa  mәn-basa
-AV-know 2p1.ABS LK AV-read
+mәn-nul itam   ʔa  mәn-basa
+mәn-nul itam   ʔa  mәn-basa
+AV-know 2p1    LK  AV-read
 we know how to write
+
+#63 awon as an adverb sentential negation
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {sentential negation}
+Awon damólag-en ni asó in sasakyan
+ʔawun damólag-en ni  aso in  sasakjan
+ʔawun damólag-en ni  aso in  sasakjan
+NEG   chase-PV   GEN dog ABS car
+The dogs do not chase the car
+
+#64 clausal complement particle and verbs
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {clausal complements}
+men-nol ='o a damólag-en ni asó in sasakyan
+mәn-nul =ʔu    ʔa  damólag-en ni  aso in  sasakjan
+mәn-nul =ʔu    ʔa  damólag-en ni  aso in  sasakjan
+AV-know =1s.GEN LK  chase-PV   GEN dog ABS car
+I know that the dogs chase the cars
