@@ -3,8 +3,8 @@ Damólag-en ni asó in sasakyan
 Damólag-en ='o ='a
 Meng-án in asó
 Awon damólag-en siden asó-i ti sasakyan
-SKIPPED
-SKIPPED
+akála-en ='o a men-nol =mo a damólag-en ni asó in sasakyan
+men-tanóng ='o a men-nol =mo a damólag-en ni asó in sasakyan
 Damólag-en in pósa at asó ti sasakyan
 Damólag-en in asó ti sasakyan at saka meng-damólag in pósa ti asó
 Damólag-en in pósa ti asó at meng-póled
@@ -24,3 +24,4 @@ SKIPPED
 SKIPPED
 Dahil ma-póled in pósa-i ma-póled in asó-i
 SKIPPED
+men-nol =mo a damólag-en ni asó in sasakyan
