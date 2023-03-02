@@ -1,0 +1,82 @@
+Language: Northern Alta (aqn)
+Lab 8
+Group: Jon Davenport & Steven Anaya
+Author: Jon Davenport
+Date: 23 Feburary, 2023
+
+1. Updated Non-verbal Predicate NP rule
+        We attempted to get a non-verbal NP predicate rule to work for Northern
+    Alta. This project is a hold-over from lab 7, wherein our implementation
+    of the n-bar-predicate-rule resulted in a runaway rule error when loaded in
+    lkb and stalled while parsing the Northern Alta corpus. Rectifying this
+    n-bar-predicate-rule took several steps outlined below and based on our
+    attempt to parse the corpus item:
+
+        álap-en =mo obra =séla a ulámen in pusó =na ni'nén a ságing
+        alap-әn       =mo       obra  =séla   a     ulamen  =na       a   ságing
+        get-something =2s.GEN   can   =also   LK    lunch   =already  LK  banana
+        you can also get a banana for lunch 
+
+    But since this item contains some tricky vocabulary that and phenomena 
+    beyond the current rule, it is more convenient to reference the following example
+    instead for clarification.
+
+        #60 Non-verbal predicate (NP is NP)
+        Source: author
+        Vetted: f
+        Judgment: g
+        Phenomena: {non-verbal predicates}
+        pósa-i-sid asó-i-sid
+        pósa=i=sid  asó=i=sid
+        pusa=i=sid  asu=i=sid
+        cat=SPEC=PL dog=SPEC=PL
+        'The dogs are the cats'
+    
+    We noticed the lkb parse trees for failed readings of the longer example above
+    included a suprising number of VP-B and VP-T phrases, which result from
+    the application of vp1-bottom-cord and the vp2-top-cord rules respectively.
+    
+        The initial step we took to resolve this runaway rule error was to modify the
+    n-bar-predicate-rule such that it will not apply to pronouns. This meant editing 
+    the northern_alta.tdl by adding a [PRON -] constraint on the HEAD value of the phrases
+    first daughter:
+
+            n-bar-predicate-rule := unary-phrase & nocoord &
+        [ SYNSEM [ LOCAL.CAT [ HEAD verb & [ MOD < >],
+                                VAL [ COMPS < >, SPR < >, SPEC < >,
+                                    SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
+                                                        CAT [ HEAD noun,
+                                                        VAL.SPR < > ] ] ] > ] ],
+                    NON-LOCAL #nl ],
+            C-CONT [ HOOK [ LTOP #ltop,
+                            INDEX #index,
+                                    XARG #arg1 ],
+                    RELS.LIST < arg12-ev-relation &
+                                [ PRED "_be_v_id_rel",
+                                    LBL #ltop,
+                                    ARG0 #index,
+                                    ARG1 #arg1,
+                                    ARG2 #arg2 ] >,
+                    HCONS.LIST <  > ],
+                    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ PRON - ],
+                                                    VAL.SPR < > ],
+                                            CONT.HOOK [ INDEX #arg2
+                                                        ] ],
+                                    NON-LOCAL #nl ] ] > ].
+
+        Next we noticed the ex-adj rule was adding to undesirable parses, so
+    we commented that rule out from our rules.tdl file as follows:
+
+        ;ex-adj := basic-extracted-adj-phrase.
+
+        Finally, we noticed that the particular item that stalled our grammar's
+    attempt to process the corpus contained the token "a," and that this token was
+    analyzed as a noun. However, "a" is a linker particle, cannot be parsed as a noun,
+    and thus cannot serve as input to the n-bar-predicate rule, as it was. Consequently
+    we removed this item from our lexicon. These three alterations resolved our 
+    runaway rule error.
+
+2.
+
+
+

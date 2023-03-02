@@ -1,0 +1,105 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Semantically Empty Lexical Entries
+
+comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG0 #e & [ SF prop ]] !> ],
+  FLAGS [ EQUAL < #e >,
+          TRIGGER "a" ]].
+
+o_case-marker_ti_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "o_case-marker_ti" ] ].
+
+o_case-marker_ti_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "o_case-marker_ti" ] ].
+
+o_case-marker_ti_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "o_case-marker_ti" ] ].
+
+focus-marker_in_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_in" ] ].
+
+focus-marker_in_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_in" ] ].
+
+focus-marker_in_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_in" ] ].
+
+focus-marker_siden_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_siden" ] ].
+
+focus-marker_siden_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_siden" ] ].
+
+focus-marker_siden_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "focus-marker_siden" ] ].
+
+a_case-marker_ni_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case-marker_ni" ] ].
+
+a_case-marker_ni_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case-marker_ni" ] ].
+
+a_case-marker_ni_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case-marker_ni" ] ].
+
+a_case_2C_20loc-marker_niden_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case_2C_20loc-marker_niden" ] ].
+
+a_case_2C_20loc-marker_niden_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case_2C_20loc-marker_niden" ] ].
+
+a_case_2C_20loc-marker_niden_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "a_case_2C_20loc-marker_niden" ] ].
+
+loc-marker_ta_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG1 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "loc-marker_ta" ] ].
+
+loc-marker_ta_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG2 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "loc-marker_ta" ] ].
+
+loc-marker_ta_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG3 individual & #i ] >,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "loc-marker_ta" ] ].
+
+ti_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ ARG0.E.MOOD oblig ] >,
+    FLAGS.TRIGGER "ti" ].
+
+baga_gr := arg0e_gtr &
+  [ CONTEXT.RELS.LIST < [ PRED "non_existing_rel" ] >,
+    FLAGS.TRIGGER "baga" ].
