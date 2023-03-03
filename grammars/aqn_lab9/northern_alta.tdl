@@ -1675,3 +1675,8 @@ s9-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
 
 s9-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "9" ].
+
+;;; qeq rule for multiply embedded clauses
+qeq :+
+  [ HARG.INSTLOC #il,
+    LARG.INSTLOC #il ].
