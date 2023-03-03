@@ -1,5 +1,7 @@
 ;;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
 
+hunger-hungry := hunger-hungry-mtr.
+
 ;pro-insert-arg1 := pro-insert-arg1-mtr & [].
 ;pro-insert-arg2 := pro-insert-arg2-mtr & [].
 
