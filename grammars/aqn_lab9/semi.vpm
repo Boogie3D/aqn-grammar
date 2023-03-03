@@ -64,10 +64,12 @@ E.TENSE : TENSE
   present << [e]
 
 E.ASPECT : ASPECT
+  imperfective << prog
   imperfective << progressive
   imperfective <> imperfective
   perfective <> perfective
-  aspect << [e]
+  no-aspect << [e]
+  aspect <> *
 
 E.MOOD : MOOD
   oblig <> oblig

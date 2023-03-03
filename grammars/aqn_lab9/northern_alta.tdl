@@ -229,6 +229,7 @@ present := tense.
 
 perfective := aspect.
 imperfective := aspect.
+no-aspect := aspect.
 
 ;;; Mood
 
@@ -1301,7 +1302,8 @@ infix_perfect_third-lex-rule-super := add-only-no-ccont-rule & prefix_voice_fina
                       NONINFLECTED_TRANS-VERB-FLAG #noninflected_trans-verb ] ] ].
 
 perfect_aspect-lex-rule := infix_perfect_third-lex-rule-super & infl-lex-rule &
-  [ DTR.INFLECTED [ NOT_PROGRESSIVE-FLAG +, PROP-COMP-VERB-FLAG na,
+  [ DTR.INFLECTED [ NOT_PROGRESSIVE-FLAG +,
+                    PROP-COMP-VERB-FLAG na,
                     NONINFLECTED_TRANS-VERB-FLAG na ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT perfective ].
 
