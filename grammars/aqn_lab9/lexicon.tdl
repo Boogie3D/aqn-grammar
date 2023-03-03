@@ -17,6 +17,10 @@ ayúh := unvoiced_common-noun-lex &
   [ STEM < "ayúh" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tree-or-wood_n_rel" ].
 
+bitélen := unvoiced_common-noun-lex &
+  [ STEM < "bitélen" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hunger_n_rel" ].
+
 bitsín := unvoiced_common-noun-lex &
   [ STEM < "bitsín" >,
     SYNSEM.LKEYS.KEYREL.PRED "_vetsin_n_rel" ].
@@ -2392,8 +2396,7 @@ ginuyod := transitive_verbs-verb-lex &
 
 bitíl := stative-verb-lex &
   [ STEM < "bitíl" >,
-;   SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
-    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_hunger_v_rel" ].
 
 uná_27 := stative-verb-lex &
   [ STEM < "uná'" >,
