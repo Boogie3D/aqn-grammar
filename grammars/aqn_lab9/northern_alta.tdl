@@ -650,9 +650,10 @@ clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
 				 [ LOCAL.CAT [ MC -,
 					       HEAD comp ,
 					       VAL [ SUBJ < >,
-						     COMPS < > ]]] >,
-    ARG-ST < [LOCAL.CAT.HEAD +np &
-                              [ CASE gen ]], #comps > ].
+						     COMPS < > ] ] ] >,
+    ARG-ST < [ LOCAL.CAT.HEAD +np &
+               [ CASE gen ] ],
+               #comps > ].
 
 prop-comp-verb-lex := clausal-comp-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL [ 
