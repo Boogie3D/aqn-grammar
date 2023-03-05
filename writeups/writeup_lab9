@@ -1,0 +1,350 @@
+Language: Northern Alta (aqn)
+Lab 9
+Group: Jon Davenport & Steven Anaya
+Author: Steven Anaya
+Date: 3 March, 2023
+
+1. MRS Refinement
+
+    Much of our work to refine the MRS was accomplished in previous labs,
+    including implementation of the n-bar-predicate-rule and clausal
+    complementizer 'a' as well as corrections to faulty implementations of
+    pronouns (lacking pron_rel relations) and wh- words (lacking _thing_n_rel
+    and _person_n_rel relations and lacking wh-pronoun-noun-lex lexical type).
+
+    In this lab, we corrected a mistake in the clausal-comp-verb-lex, namely
+    the correction of clausal-comp-verb-lex to constrain the subject to be a
+    genitive-case NP and the complement to have a 'comp' HEAD value. This
+    correction should provide better MRS for sentences with clausal complements,
+    such as mmt sentences 6 and 7.
+
+    northern_alta.tdl:
+
+        clausal-comp-verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+            [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & 
+                     [ LOCAL.CAT [ MC -,
+                             HEAD comp ,
+                             VAL [ SUBJ < >,
+                             COMPS < > ] ] ] >,
+              ARG-ST < [ LOCAL.CAT.HEAD +np &
+                       [ CASE gen ] ],
+                       #comps > ].
+
+    Additionally, we implemented the following rule to prevent embedded clauses
+    from being arbitrarily switched in translation. Its effect was seen to
+    correctly prevent switching of 'because' clauses such as mmt sentence 25,
+    where 'dahil' and 'kasi' are subordinate clause-initial analogs of
+    'because'. (Note that the order of the clauses may change due to free
+    clause order, but 'dahil'/'kasi' always co-occurs with 'pósa' [cat] and
+    never 'asó' [dog], as was previously seen before implementing the rule.
+
+    northern_alta.tdl:
+
+        qeq :+
+          [ HARG.INSTLOC #il,
+            LARG.INSTLOC #il ].
+
+    Lastly, we reverted a previous change to the lexical entry for 'bitíl', wherein
+    its relation _hungry_v_rel was changed to _hungry_a_rel as a translation
+    workaround. We instead implemented and instantiated the following transfer
+    rules to reconcile the differences in MRS.
+
+    mmt/tm/acm.tdl:
+
+        ;; From aqn: change _hunger_v_rel to _hungry_a_rel
+
+        hunger-hungry-mtr := monotonic_mtr &
+        [ INPUT [ RELS < [ PRED "_hunger_v_rel",
+                LBL #lbl,
+                ARG0 #arg0,
+                ARG1 #arg1 ] >,
+            HCONS < [ HARG #harg,
+                        LARG #larg ] > ],
+        OUTPUT [ RELS < [ PRED "_hungry_a_rel",
+                    LBL #lbl,
+                    ARG0 #arg0,
+                    ARG1 #arg1 ] >,
+            HCONS < [ HARG #harg,
+                        LARG #larg ] > ]].
+
+        ;; To aqn: change _hungry_a_rel to _hunger_v_rel
+
+        hungry-hunger-mtr := monotonic_mtr &
+        [ INPUT [ RELS < [ PRED "_hungry_a_rel",
+                LBL #lbl,
+                ARG0 #arg0,
+                ARG1 #arg1 ] >,
+            HCONS < [ HARG #harg,
+                        LARG #larg ] > ],
+        OUTPUT [ RELS < [ PRED "_hunger_v_rel",
+                    LBL #lbl,
+                    ARG0 #arg0,
+                    ARG1 #arg1 ] >,
+            HCONS < [ HARG #harg,
+                        LARG #larg ] > ]].
+
+    mmt/tm/aqn/acm.mtr:
+
+        hungry-hunger := hungry-hunger-mtr.
+
+    mmt/tm/eng/acm.mtr:
+
+        hunger-hungry := hunger-hungry-mtr.
+
+    Note that this change applies only to hungry as an AP predicate, i.e.
+    mmt sentence 15, not as a modifer, i.e. sentence 12. To implement hungry
+    as a modifier we would need to implement an additional usage of 'a' as a
+    modifier clause-linking particle in addition to complement clause-linking.
+    As such, mmt sentence 15 parses and translates, but not 12.
+
+2. Overgeneration Reduction
+
+    Two major sources of mmt overgeneration were a lack of a no-aspect type for
+    unaspected predicates and a mistake in the suffix_locative_voice-lex-rule
+    definition.
+
+    The first problem caused sentences with extraneous verbal inflection for
+    perfective or imperfective aspect to be generated in addition to sentences
+    with unaspected verbs. The consequence of this could be seen in the
+    translation of virtually every mmt sentence with a verbal predicate. In the
+    case of sentence 7, it caused the mmt to run out of RAM.
+
+    This problem was corrected by creating a no-aspect subtype of aspect and
+    creating additional semi.vpm rules to facilitate proper translation of
+    aspect. Although sentence 7 still fails to translate, it is no longer
+    intractable, and other mmt sentences such as 2, 3, 5, 8-14, etc. no longer
+    show any sign of perfective affixes such as 'C-in-' or '-in-', nor
+    imperfective affixes such as 'eC-'.
+
+    northern_alta.tdl:
+
+        no-aspect := aspect.
+    
+    semi.vpm:
+
+        E.ASPECT : ASPECT
+          [...]
+          no-aspect << [e]
+          aspect <> *
+
+    The second problem was caused by an accidental constraint of PATIENT-VERB-FLAG +
+    rather than LOCATIVE-VERB-FLAG + in suffix_locative_voice-lex-rule. This caused
+    verbs which take patient voice-marking suffix '-en' (such as 'damólag') to also
+    take locative voice-marking suffix '-an', creating extraneous mmt translations
+    containing the incorrectly-inflected word 'damólag-an' in addition to those
+    containing the correctly-inflected word 'damólag-en'.
+
+    This was corrected by simply replacing 'PATIENT-VERB-FLAG' with 'LOCATIVE-VERB-FLAG'
+    in the relevant lexical rule definition.
+
+    northern_alta.tdl:
+
+        suffix_locative_voice-lex-rule := infl-lex-rule & suffix-lex-rule-super &
+          [ DTR.INFLECTED [ LOCATIVE-VERB-FLAG + ],
+
+    The effects of this correction may be seen in any mmt sentence containing the
+    morpheme 'damólag', such as 2, 3, 5, 6, 8-11, 27, none of which produces any
+    translation with the incorrect 'damólag-an' when translated into aqn.
+
+
+3. Residual Realization Ambiguity
+
+    A minor source of overgeneration is the switching of order of 'because'
+    clauses, which, as previously discussed, is not incorrect behavior and is
+    also fairly negligible.
+
+    One of the remaining apparent sources of overgeneration is redundant lexical
+    entries for enclitic pronouns, such as 1s.GEN "'o", 2s.GEN "m"/"mo",
+    2p.ABS "am"/"amyu"/"am'yu", etc. These lexical entries were included to
+    increase coverage of the corpus, which uses many of these variants
+    inconsistently. Examples of such lexical entries are shown below:
+
+    lexicon.tdl:
+
+        _27o := gen_1s-noun-lex &
+        [ STEM < "'o" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3D_27o := gen_1s-noun-lex &
+        [ STEM < "='o" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        mo := gen_2s-noun-lex &
+        [ STEM < "mo" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        m := gen_2s-noun-lex &
+        [ STEM < "m" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Dm := gen_2s-noun-lex &
+        [ STEM < "=m" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Dmo := gen_2s-noun-lex &
+        [ STEM < "=mo" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        am := abs_2p-noun-lex &
+        [ STEM < "am" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Dam := abs_2p-noun-lex &
+        [ STEM < "=am" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        amyu := abs_2p-noun-lex &
+        [ STEM < "amyu" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        am_27yu := abs_2p-noun-lex &
+        [ STEM < "am'yu" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Damyu := abs_2p-noun-lex &
+        [ STEM < "=amyu" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Dam_27yu := abs_2p-noun-lex &
+        [ STEM < "=am'yu" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+        _3Damyú := abs_2p-noun-lex &
+        [ STEM < "=amyú" >,
+            SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+    While the ambiguity of these redundant lexical entries is likely responsible
+    for much overgeneration, we would not consider any of the overgenerated
+    sentences to be necessarily incorrect.
+
+    Another apparent source of overgeneration is the apparent ambiguity of
+    common nouns between singular and plural, which is unlikely to be resolved
+    as this ambiguous behavior is supported by some examples in the resource
+    grammar. This alone does not necessarily cause overgeneration, however, the
+    enclitic '=sid' is used to explicitly mark common nouns as plural, which
+    results in translations which may either include or omit this morpheme,
+    effectively doubling the number of generated sentences for each common noun.
+
+    The last apparent source of ambiguity is the specificity marker '-i', which
+    we liken to usage of 'the' as a definite article in English. However, its
+    usage seems to be sometimes optional or context-dependent in many examples
+    in the resource grammar. Thus, its behavior is unspecified in the MRS and so
+    its inclusion in translations is entirely optional, resulting in translations
+    that may either include or omit it, again effectively doubling the number
+    of generated sentences for each common noun.
+
+    Here is an IGT example from the grammar resource of a sentence containing a
+    plural noun which is apparently understood to undergo existential
+    quantification, and in which neither '-i' nor '=sid' is used (note that 'in'
+    is a SINGULAR absolutive case-marking article):
+
+        meng-alaw in  duwa a  aso
+        AV-play   ABS two  LK dog
+        'the two dogs are playing'
+
+    These 3 sources of ambiguity compound to produce, in some cases, many
+    thousands of overgenerated sentences (e.g. mmt sentences 6 and 9), but we
+    would not necessarily discount all of these sentences as incorrect.
+
+4. MT Coverage
+
+            +----+----------------------+----------------------+
+            |    | eng -> aqn           | sje -> aqn           |
+            +----+----------------------+----------------------+
+            | 1  | Works, 8 results     | Works, 8 results     |
+            +----+----------------------+----------------------+
+            | 2  | Works, 64 results    | Works, 64 results    |
+            +----+----------------------+----------------------+
+            | 3  | Works, 56 results    | Works, 16 results    |
+            +----+----------------------+----------------------+
+            | 4  | Works, 32 results    | Works, 32 results    |
+            +----+----------------------+----------------------+
+            | 5  | Works, 32 results    | Works, 32 results    |
+            +----+----------------------+----------------------+
+            | 6  | Works, 2816 results  | Works, 1536 results  |
+            +----+----------------------+----------------------+
+            | 7  | Doesn't work         | N/A                  |
+            +----+----------------------+----------------------+
+            | 8  | Works, 768 results   | Works, 768 results   |
+            +----+----------------------+----------------------+
+            | 9  | Works, 12288 results | Works, 12288 results |
+            +----+----------------------+----------------------+
+            | 10 | Doesn't work,        | Works, 576 results   |
+            |    | unclear why          |                      |
+            +----+----------------------+----------------------+
+            | 11 | Works, 64 results    | Works, 64 results    |
+            +----+----------------------+----------------------+
+            | 12 | Doesn't work,        | Doesn't work,        |
+            |    | unsupported syntax   | unsupported syntax   |
+            +----+----------------------+----------------------+
+            | 13 | Doesn't work,        | N/A                  |
+            |    | unsupported syntax   |                      |
+            +----+----------------------+----------------------+
+            | 14 | Doesn't work,        | N/A                  |
+            |    | unsupported syntax   |                      |
+            +----+----------------------+----------------------+
+            | 15 | Works, 8 results     | N/A                  |
+            +----+----------------------+----------------------+
+            | 16 | Works, 8 results     | N/A                  |
+            +----+----------------------+----------------------+
+            | 17 | Works, 16 results    | N/A                  |
+            +----+----------------------+----------------------+
+            | 18 | Works, 8 results     | Works, 8 results     |
+            +----+----------------------+----------------------+
+            | 19 | Works, 16 results    | Works, 16 results    |
+            +----+----------------------+----------------------+
+            | 20 | Doesn't work,        | Doesn't work,        |
+            |    | some rels not covered| some rels not covered|
+            +----+----------------------+----------------------+
+            | 21 | Doesn't work,        | Doesn't work,        |
+            |    | some rels not covered| some rels not covered|
+            +----+----------------------+----------------------+
+            | 22 | Doesn't work         | Doesn't work         |
+            +----+----------------------+----------------------+
+            | 23 | Doesn't work         | Doesn't work         |
+            +----+----------------------+----------------------+
+            | 24 | Doesn't work         | Doesn't work         |
+            +----+----------------------+----------------------+
+            | 25 | Works, 16 results    | N/A                  |
+            +----+----------------------+----------------------+
+            | 26 | Doesn't work         | N/A                  |
+            +----+----------------------+----------------------+
+
+5. Performance Comparison
+
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             |                      | Lab 8                   | Lab 9                   |
+    +-------------+----------------------+-------------------------+-------------------------+
+    | Test Corpus | Items Parsed         | 2240                    | 2240                    |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Total Results        | 162                     | 163                     |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Total Readings       | 325                     | 328                     |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Avg. Readings/Result | 2.006                   | 2.012                   |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Coverage             | 7.2%                    | 7.3%                    |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Overgeneration       | 100%                    | 100%                    |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Most Ambiguous Item  | 12 readings, Item 6,170 | 12 Readings, Item 6,170 |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Sources of           | Coordination rules,     | Coordination rules,     |
+    |             | Ambiguity            | ADJ-HEAD-SCOP           | ADJ-HEAD-SCOP           |
+    +-------------+----------------------+-------------------------+-------------------------+
+    | Testsuite   | Items Parsed         | 64                      | 64                      |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Total Results        | 27                      | 29                      |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Total Readings       | 36                      | 40                      |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Avg. Readings/Result | 1.333                   | 1.38                    |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Coverage             | 88.0%                   | 88.0%                   |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Overgeneration       | 12.8%                   | 17.9%                   |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Most Ambiguous Item  | 4 readings, Item 63     | 4 readings              |
+    +-------------+----------------------+-------------------------+-------------------------+
+    |             | Sources of Ambiguity | ADJ-HEAD-SCOP, 'Awon'   | ADJ-HEAD-SCOP, 'Awon'   |
+    +-------------+----------------------+-------------------------+-------------------------+
